@@ -15,6 +15,9 @@ class sobreController extends Controller
     //
     public function about2()
     {
-        return view('sobre2');
+
+        $variavel = 'teste';
+
+        return view('sobre2')->with('nomela',$variavel);
     }
 }
