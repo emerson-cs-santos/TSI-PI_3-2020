@@ -14,3 +14,11 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+// Route::get('/sobre', function () {
+//     return view('sobre');
+// });
+
+Route::get('/sobre', 'sobreController@about');
+
+Route::get('/sobre2', 'sobreController@about2');
