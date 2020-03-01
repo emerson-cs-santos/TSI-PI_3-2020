@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit083ca3c01fe36c93b14ae2d85751b8e3
+class ComposerStaticInit00ea92a61b66438bab2bc6a0495e5550
 {
     public static $files = array (
         '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
@@ -100,6 +100,7 @@ class ComposerStaticInit083ca3c01fe36c93b14ae2d85751b8e3
         array (
             'League\\Flysystem\\' => 17,
             'League\\CommonMark\\' => 18,
+            'Laravel\\Ui\\' => 11,
             'Laravel\\Tinker\\' => 15,
         ),
         'J' => 
@@ -309,6 +310,10 @@ class ComposerStaticInit083ca3c01fe36c93b14ae2d85751b8e3
         array (
             0 => __DIR__ . '/..' . '/league/commonmark/src',
         ),
+        'Laravel\\Ui\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/laravel/ui/src',
+        ),
         'Laravel\\Tinker\\' => 
         array (
             0 => __DIR__ . '/..' . '/laravel/tinker/src',
@@ -414,7 +419,7 @@ class ComposerStaticInit083ca3c01fe36c93b14ae2d85751b8e3
         'App\\Http\\Controllers\\Auth\\ResetPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ResetPasswordController.php',
         'App\\Http\\Controllers\\Auth\\VerificationController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/VerificationController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
-        'App\\Http\\Controllers\\sobreController' => __DIR__ . '/../..' . '/app/Http/Controllers/sobreController.php',
+        'App\\Http\\Controllers\\HomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/HomeController.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
         'App\\Http\\Middleware\\Authenticate' => __DIR__ . '/../..' . '/app/Http/Middleware/Authenticate.php',
         'App\\Http\\Middleware\\CheckForMaintenanceMode' => __DIR__ . '/../..' . '/app/Http/Middleware/CheckForMaintenanceMode.php',
@@ -1307,6 +1312,7 @@ class ComposerStaticInit083ca3c01fe36c93b14ae2d85751b8e3
         'Illuminate\\Broadcasting\\Broadcasters\\RedisBroadcaster' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Broadcasting/Broadcasters/RedisBroadcaster.php',
         'Illuminate\\Broadcasting\\Broadcasters\\UsePusherChannelConventions' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Broadcasting/Broadcasters/UsePusherChannelConventions.php',
         'Illuminate\\Broadcasting\\Channel' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Broadcasting/Channel.php',
+        'Illuminate\\Broadcasting\\EncryptedPrivateChannel' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Broadcasting/EncryptedPrivateChannel.php',
         'Illuminate\\Broadcasting\\InteractsWithSockets' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Broadcasting/InteractsWithSockets.php',
         'Illuminate\\Broadcasting\\PendingBroadcast' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Broadcasting/PendingBroadcast.php',
         'Illuminate\\Broadcasting\\PresenceChannel' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Broadcasting/PresenceChannel.php',
@@ -2101,6 +2107,13 @@ class ComposerStaticInit083ca3c01fe36c93b14ae2d85751b8e3
         'Laravel\\Tinker\\Console\\TinkerCommand' => __DIR__ . '/..' . '/laravel/tinker/src/Console/TinkerCommand.php',
         'Laravel\\Tinker\\TinkerCaster' => __DIR__ . '/..' . '/laravel/tinker/src/TinkerCaster.php',
         'Laravel\\Tinker\\TinkerServiceProvider' => __DIR__ . '/..' . '/laravel/tinker/src/TinkerServiceProvider.php',
+        'Laravel\\Ui\\AuthCommand' => __DIR__ . '/..' . '/laravel/ui/src/AuthCommand.php',
+        'Laravel\\Ui\\Presets\\Bootstrap' => __DIR__ . '/..' . '/laravel/ui/src/Presets/Bootstrap.php',
+        'Laravel\\Ui\\Presets\\Preset' => __DIR__ . '/..' . '/laravel/ui/src/Presets/Preset.php',
+        'Laravel\\Ui\\Presets\\React' => __DIR__ . '/..' . '/laravel/ui/src/Presets/React.php',
+        'Laravel\\Ui\\Presets\\Vue' => __DIR__ . '/..' . '/laravel/ui/src/Presets/Vue.php',
+        'Laravel\\Ui\\UiCommand' => __DIR__ . '/..' . '/laravel/ui/src/UiCommand.php',
+        'Laravel\\Ui\\UiServiceProvider' => __DIR__ . '/..' . '/laravel/ui/src/UiServiceProvider.php',
         'League\\CommonMark\\Block\\Element\\AbstractBlock' => __DIR__ . '/..' . '/league/commonmark/src/Block/Element/AbstractBlock.php',
         'League\\CommonMark\\Block\\Element\\AbstractStringContainerBlock' => __DIR__ . '/..' . '/league/commonmark/src/Block/Element/AbstractStringContainerBlock.php',
         'League\\CommonMark\\Block\\Element\\BlockQuote' => __DIR__ . '/..' . '/league/commonmark/src/Block/Element/BlockQuote.php',
@@ -4453,10 +4466,10 @@ class ComposerStaticInit083ca3c01fe36c93b14ae2d85751b8e3
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit083ca3c01fe36c93b14ae2d85751b8e3::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit083ca3c01fe36c93b14ae2d85751b8e3::$prefixDirsPsr4;
-            $loader->prefixesPsr0 = ComposerStaticInit083ca3c01fe36c93b14ae2d85751b8e3::$prefixesPsr0;
-            $loader->classMap = ComposerStaticInit083ca3c01fe36c93b14ae2d85751b8e3::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit00ea92a61b66438bab2bc6a0495e5550::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit00ea92a61b66438bab2bc6a0495e5550::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInit00ea92a61b66438bab2bc6a0495e5550::$prefixesPsr0;
+            $loader->classMap = ComposerStaticInit00ea92a61b66438bab2bc6a0495e5550::$classMap;
 
         }, null, ClassLoader::class);
     }
