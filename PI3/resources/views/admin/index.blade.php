@@ -1,164 +1,20 @@
 <!doctype html>
-<html lang="en">
+<html lang="pt-br">
   <head>
-    <title>Title</title>
+    <title>Admin - Gamer Shopping</title>
+
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <script src="https://kit.fontawesome.com/c0fc838bea.js" crossorigin="anonymous"></script>
+
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-    <style>
-body{
-    font-family: Arial, Helvetica, sans-serif;
-    background-color: white;
-}
-/*nav bar*/
-.sidebar {
-height: 100vh;
-background-color: #7CB342;
-
-background-position: center;
-background-repeat: no-repeat;
-background-size: cover;
-box-shadow:black;
-}
-.bottom-border {
-border-bottom: 5px dotted white;
-}
-.sidebar-link{
-    transition: all .4s;
-}
-.sidebar-link:hover{
-    background-color:#C62828;
-    border-radius: 5px;
-}
-.current{
-    background-color:#B71C1C;
-    border-radius: 8px;
-    box-shadow: 2px 5px 5px white;
-    transition: all .3s;
-}
-.current:hover{
-    background-color:#C62828;
-    border-radius: 8px;
-    box-shadow: 2px 5px 5px white;
-    transform: transform: translateY(-1px);
-}
-.top-bar {
-background-color:#689F38;
-}
-/*input:placeholder{
-    color: white;
-    opacity: 1;
-}*/
-.search-input{
-    background: transparent;
-
-    border: none;
-    border-radius: 0;
-    border-bottom:2px solid #B71C1C;
-    transition: all .4s;
-}
-.search-input:focus{
-    background: transparent;
-    box-shadow: none;
-    border-bottom: 2px solid #B71C1C;
-}
-.search-button{
-    border-radius: 50%;
-    padding: 10px 16px;
-    transition: all .4s;
-}
-.search-button:hover {
-    background-color: white;
-    transform: translateY(-1px);
-}
-.icon-parent{
-position: relative;
-}
-.icon-bullet ::after{
-    content: "";
-    position: absolute;
-    top: 7px;
-    left: 15px;
-    height: 12px;
-    width: 12px;
-    background-color:#B71C1C;
-border-radius: 50%;
-}
-@media (max-width: 768px){
-    .sidebar {
-        position: static;
-        height: auto;
-    }
-    .top-nav{
-        position: static;
-    }
-}
-/*Cards*/
-.card-common{
-    box-shadow: 1px 2px 5px gray;
-   transition: all .4s;
-}
-.card-common:hover {
-    box-shadow: 2px 3px 15px gray;
-    transform: translateY(-1px);
-}
-/*End of cards*/
-.table-color{
-    background:#DCEDC8;
-}
-.bg-progress{
-    background: #C5E1A5;
-}
-
-.page-item{
-    color: #7CB342;
-}
-.page-link{
-    color: #7CB342;
-
-}
-.page-item.active .page-link{
-    background-color:#7CB342;
-    border-color: #7CB342;
-    box-shadow: none;
-}
-/*task list*/
-.task-border{
-    border-left: 3px solid #689F38;
-}
-
-.bg-1{
-    background-color: #DCEDC8;
-}
-.bg-2{
-background-color: #C5E1A5;
-}
-.bg-3{
-    background-color: #DCEDC8;
-}
-.bg-4{
-    background-color: #C5E1A5;
-}
-/*End of task list*/
-.bg-button{
-  background:  #7CB342;
-}
-.bd-bottom{
-    border-bottom: 6px solid #689F38;
-}
-input.form-control{
-    color: white;
-}
-
-
-    </style>
-
+    <link rel="stylesheet" href="admin_assets/css/admin.css">
 
 </head>
+
   <body>
      <!---Nav bar-->
       <nav class="navbar navbar-expand-md navbar-light">
@@ -175,13 +31,13 @@ data-toggle="collapse" data-target="#navbar">
                 <a href="#" class="navbar-brand text-white d-block
                 mx-auto text-center py-3 mb-4"><i class="fas fa-cannabis text-light fa-3x"></i></a>
                 <div class="bottom-border pb-3">
-                    <img src="images\john.jpg" width="50" class="rounded-circle mr-3">
+                    <img src="admin_assets/images/john.png" alt="Imagem do perfil" width="50" class="rounded-circle mr-3">
                     <a href="#" class="text-white ">John Doe</a>
                 </div>
                 <ul class="navbar-nav flex-column mt-4">
                    <li class="nav-item"><a href="#" class="nav-link text-white p-3 mb-2
                     current"><i class="fas fa-home text-light fa-lg mr-3"></i>
-                Dashboard</a></li>
+                Home</a></li>
                 <li class="nav-item"><a href="#" class="nav-link text-white p-3 mb-2
                     sidebar-link"><i class="fas fa-user text-light fa-lg mr-3"></i>
                 Profile</a></li>
@@ -214,7 +70,7 @@ data-toggle="collapse" data-target="#navbar">
 <div class="col-xl-10 col-lg-9 col-md-8 ml-auto top-bar fixed-top py-2 top-nav">
     <div class="row align-item-center">
    <div class="col-md-4">
- <h4 class="text-light text-uppercase mb-0">Dashboard</h4>
+ <h4 class="text-light text-uppercase mb-0">Gamer Shopping</h4>
    </div>
    <div class="col-md-5">
 <form>
@@ -232,19 +88,19 @@ data-toggle="collapse" data-target="#navbar">
             <i class="fas fa-comments text-light fa-lg"></i></a>
             <li class="nav-item icon-parent"><a href="#" class="nav-link icon-bullet">
              <i class="fas fa-bell text-light fa-lg"></i></a>
-             <li class="nav-item ml-md-auto"><a href="#"class="nav-link"
+             <li class="nav-item ml-md-auto"><a href="#" class="nav-link"
             data-toggle="modal" data-target="#sign-out">
              <i class="fas fa-sign-out-alt text-danger fa-lg"></i></a>
        </ul>
    </div>
         </div>
 </div>
-            <!---End of Top Nav-->
+            <!--End of Top Nav-->
         </div>
     </div>
 </div>
       </nav>
-      <!----End of Navbar-->
+      <!--End of Navbar-->
       <!---Modal-->
       <div class="modal" id="sign-out">
           <div class="modal-dialog">
@@ -552,13 +408,13 @@ data-toggle="collapse" data-target="#navbar">
                                                 adipisicing elit.
                                             </div>
                                 <div class="col-1">
-                                <a href="#"data-toggle="tooltip" title="Edit"
+                                <a href="#" data-toggle="tooltip" title="Edit"
                                 data-placement="top">
                                 <i class="fas fa-edit fa-lg text-success mr-2">
                                 </i></a>
                                             </div>
                                 <div class="col-1">
-                                <a href="#"data-toggle="tooltip" title="Delete"
+                                <a href="#" data-toggle="tooltip" title="Delete"
                                 data-placement="top">
                                 <i class="fas fa-trash-alt fa-lg text-danger">
                                 </i></a>
@@ -576,13 +432,13 @@ data-toggle="collapse" data-target="#navbar">
                                               adipisicing elit.
                                           </div>
                                 <div class="col-1">
-                                <a href="#"data-toggle="tooltip" title="Edit"
+                                <a href="#" data-toggle="tooltip" title="Edit"
                                 data-placement="top">
                                 <i class="fas fa-edit fa-lg text-success mr-2">
                                 </i></a>
                                           </div>
                                 <div class="col-1">
-                                <a href="#"data-toggle="tooltip" title="Delete"
+                                <a href="#" data-toggle="tooltip" title="Delete"
                                 data-placement="top">
                                 <i class="fas fa-trash-alt fa-lg text-danger">
                                 </i></a>
@@ -600,13 +456,13 @@ data-toggle="collapse" data-target="#navbar">
                                               adipisicing elit.
                                           </div>
                                 <div class="col-1">
-                                <a href="#"data-toggle="tooltip" title="Edit"
+                                <a href="#" data-toggle="tooltip" title="Edit"
                                 data-placement="top">
                                 <i class="fas fa-edit fa-lg text-success mr-2">
                                 </i></a>
                                           </div>
                                 <div class="col-1">
-                                <a href="#"data-toggle="tooltip" title="Delete"
+                                <a href="#" data-toggle="tooltip" title="Delete"
                                 data-placement="top">
                                 <i class="fas fa-trash-alt fa-lg text-danger">
                                 </i></a>
@@ -624,13 +480,13 @@ data-toggle="collapse" data-target="#navbar">
                                               adipisicing elit.
                                           </div>
                                 <div class="col-1">
-                                <a href="#"data-toggle="tooltip" title="Edit"
+                                <a href="#" data-toggle="tooltip" title="Edit"
                                 data-placement="top">
                                 <i class="fas fa-edit fa-lg text-success mr-2">
                                 </i></a>
                                           </div>
                                 <div class="col-1">
-                                <a href="#"data-toggle="tooltip" title="Delete"
+                                <a href="#" data-toggle="tooltip" title="Delete"
                                 data-placement="top">
                                 <i class="fas fa-trash-alt fa-lg text-danger">
                                 </i></a>
@@ -639,7 +495,7 @@ data-toggle="collapse" data-target="#navbar">
                                   </div>
                                   </div>
                                   <!---End of Task List-->
-            <!---Quick Post--->
+            <!---Quick Post-->
          <div class="col-xl-6 mt-5">
             <div class="card rounded">
              <div class="card-body">
@@ -709,7 +565,7 @@ data-toggle="collapse" data-target="#navbar">
       </section>
 
       <!---End of Quick post-->
-      <!----Footer-->
+      <!---Footer-->
 <div class="container-fluid">
     <div class="row">
         <div class="col-xl-10 col-lg-9 col-md-8 ml-auto mt-3 bd-bottom">
@@ -739,7 +595,7 @@ data-toggle="collapse" data-target="#navbar">
                 </ul>
              </div>
                 <div class="col-lg-6 text-center text-success">
-                    <p>&copy; 2019 Copyright</p>
+                    <p>&copy; Copyright. Senac 2020 - Sistemas para Internet - Projeto integrador 3</p>
 
                     </div>
             </div>

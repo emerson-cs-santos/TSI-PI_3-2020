@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js" lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html class="no-js" lang="pt-br">
 
     <head>
         <!-- meta data -->
@@ -11,8 +11,7 @@
         <!--font-family-->
 		<link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i" rel="stylesheet">
 
-        <!-- title of site -->
-        <title>Furniture</title>
+        <title>Gamer Shopping</title>
 
         <!-- For favicon png -->
 		<link rel="shortcut icon" type="image/icon" href="shop/logo/favicon.png"/>
@@ -41,26 +40,9 @@
 
         <!--responsive.css-->
         <link rel="stylesheet" href="shop/css/responsive.css">
-
-        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-
-        <!--[if lt IE 9]>
-			<script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-			<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-        <![endif]-->
-
     </head>
 
 	<body>
-
-
-
-        <!--[if lte IE 9]>
-            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
-        <![endif]-->
-
-
 
 		<!--welcome-hero start -->
 		<header id="home" class="welcome-hero">
@@ -213,7 +195,7 @@
 			<div class="top-area">
 				<div class="header-area">
 					<!-- Start Navigation -->
-				    <nav class="navbar navbar-default bootsnav  navbar-sticky navbar-scrollspy"  data-minus-value-desktop="70" data-minus-value-mobile="55" data-speed="1000">
+				    <nav class="navbar navbar-default bootsnav  navbar-sticky navbar-scrollspy sticked"  data-minus-value-desktop="70" data-minus-value-mobile="55" data-speed="1000">
 
 				        <!-- Start Top Search -->
 				        <div class="top-search">
@@ -288,7 +270,7 @@
 				                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
 				                    <i class="fa fa-bars"></i>
 				                </button>
-				                <a class="navbar-brand" href="index.html">furn.</a>
+				                <a class="navbar-brand" href="/">Gamer Shopping</a>
 
 				            </div><!--/.navbar-header-->
 				            <!-- End Header Navigation -->
@@ -297,10 +279,10 @@
 				            <div class="collapse navbar-collapse menu-ui-design" id="navbar-menu">
 				                <ul class="nav navbar-nav navbar-center" data-in="fadeInDown" data-out="fadeOutUp">
 				                    <li class=" scroll active"><a href="#home">home</a></li>
-				                    <li class="scroll"><a href="#new-arrivals">new arrival</a></li>
-				                    <li class="scroll"><a href="#feature">features</a></li>
+				                    <li class="scroll"><a href="#new-arrivals">Novos Lançamentos</a></li>
+				                    <li class="scroll"><a href="#feature">Em destaque</a></li>
 				                    <li class="scroll"><a href="#blog">blog</a></li>
-				                    <li class="scroll"><a href="#newsletter">contact</a></li>
+				                    <li class="scroll"><a href="#newsletter">Contato</a></li>
 				                </ul><!--/.nav -->
 				            </div><!-- /.navbar-collapse -->
 				        </div><!--/.container-->
@@ -386,7 +368,7 @@
 		<section id="new-arrivals" class="new-arrivals">
 			<div class="container">
 				<div class="section-header">
-					<h2>new arrivals</h2>
+					<h2>Novos lançamentos</h2>
 				</div><!--/.section-header-->
 				<div class="new-arrivals-content">
 					<div class="row">
@@ -616,7 +598,7 @@
 		<section id="feature" class="feature">
 			<div class="container">
 				<div class="section-header">
-					<h2>featured products</h2>
+					<h2>Em destaque</h2>
 				</div><!--/.section-header-->
 				<div class="feature-content">
 					<div class="row">
@@ -699,7 +681,7 @@
 		<section id="blog" class="blog">
 			<div class="container">
 				<div class="section-header">
-					<h2>latest blog</h2>
+					<h2>Mundo Games Blog</h2>
 				</div><!--/.section-header-->
 				<div class="blog-content">
 					<div class="row">
@@ -756,8 +738,11 @@
 		</section><!--/.blog-->
 		<!--blog end -->
 
-		<!-- clients strat -->
+		{{-- <!-- clients strat -->
 		<section id="clients"  class="clients">
+            <div class="section-header">
+                <h2>Teste</h2>
+            </div><!--/.section-header-->
 			<div class="container">
 				<div class="owl-carousel owl-theme" id="client">
 						<div class="item">
@@ -790,7 +775,7 @@
 			</div><!--/.container-->
 
 		</section><!--/.clients-->
-		<!-- clients end -->
+		<!-- clients end --> --}}
 
 		<!--newsletter strat -->
 		<section id="newsletter"  class="newsletter">
@@ -800,14 +785,14 @@
 						<div class=" col-md-3 col-sm-6 col-xs-12">
 							<div class="hm-footer-widget">
 								<div class="hm-foot-title">
-									<h4>information</h4>
+									<h4>Sobre nós</h4>
 								</div><!--/.hm-foot-title-->
 								<div class="hm-foot-menu">
 									<ul>
-										<li><a href="#">about us</a></li><!--/li-->
-										<li><a href="#">contact us</a></li><!--/li-->
-										<li><a href="#">news</a></li><!--/li-->
-										<li><a href="#">store</a></li><!--/li-->
+										<li><a href="#">Quem somos</a></li><!--/li-->
+										<li><a href="#">contato</a></li><!--/li-->
+										<li><a href="#">Novidades</a></li><!--/li-->
+										<li><a href="#">a Loja</a></li><!--/li-->
 									</ul><!--/ul-->
 								</div><!--/.hm-foot-menu-->
 							</div><!--/.hm-footer-widget-->
@@ -815,15 +800,15 @@
 						<div class=" col-md-3 col-sm-6 col-xs-12">
 							<div class="hm-footer-widget">
 								<div class="hm-foot-title">
-									<h4>collections</h4>
+									<h4>Acervo</h4>
 								</div><!--/.hm-foot-title-->
 								<div class="hm-foot-menu">
 									<ul>
-										<li><a href="#">wooden chair</a></li><!--/li-->
-										<li><a href="#">royal cloth sofa</a></li><!--/li-->
-										<li><a href="#">accent chair</a></li><!--/li-->
-										<li><a href="#">bed</a></li><!--/li-->
-										<li><a href="#">hanging lamp</a></li><!--/li-->
+										<li><a href="#">Mega-Drive</a></li><!--/li-->
+										<li><a href="#">Super-Nintendo</a></li><!--/li-->
+										<li><a href="#">Playstation</a></li><!--/li-->
+										<li><a href="#">Xbox</a></li><!--/li-->
+										<li><a href="#">Game Cube</a></li><!--/li-->
 									</ul><!--/ul-->
 								</div><!--/.hm-foot-menu-->
 							</div><!--/.hm-footer-widget-->
@@ -831,15 +816,14 @@
 						<div class=" col-md-3 col-sm-6 col-xs-12">
 							<div class="hm-footer-widget">
 								<div class="hm-foot-title">
-									<h4>my accounts</h4>
+									<h4>Minha conta</h4>
 								</div><!--/.hm-foot-title-->
 								<div class="hm-foot-menu">
 									<ul>
-										<li><a href="#">my account</a></li><!--/li-->
-										<li><a href="#">wishlist</a></li><!--/li-->
-										<li><a href="#">Community</a></li><!--/li-->
-										<li><a href="#">order history</a></li><!--/li-->
-										<li><a href="#">my cart</a></li><!--/li-->
+										<li><a href="#">Configurações</a></li><!--/li-->
+										<li><a href="#">Lista de desejos</a></li><!--/li-->
+										<li><a href="#">Carrinho</a></li><!--/li-->
+										<li><a href="#">Pedidos</a></li><!--/li-->
 									</ul><!--/ul-->
 								</div><!--/.hm-foot-menu-->
 							</div><!--/.hm-footer-widget-->
@@ -851,12 +835,12 @@
 								</div><!--/.hm-foot-title-->
 								<div class="hm-foot-para">
 									<p>
-										Subscribe  to get latest news,update and information.
+										Receba informações sobre jogos e nossas promoções!
 									</p>
 								</div><!--/.hm-foot-para-->
 								<div class="hm-foot-email">
 									<div class="foot-email-box">
-										<input type="text" class="form-control" placeholder="Enter Email Here....">
+										<input type="text" class="form-control" placeholder="Digite seu e-mail aqui....">
 									</div><!--/.foot-email-box-->
 									<div class="foot-email-subscribe">
 										<span><i class="fa fa-location-arrow"></i></span>
@@ -884,7 +868,7 @@
 						<a href="#"><i class="fa fa-behance"></i></a>
 					</div>
 					<p>
-						&copy;copyright. designed and developed by <a href="https://www.themesine.com/">themesine</a>
+						&copy;Copyright. Senac 2020 - Sistemas para Internet - Projeto integrador 3
 					</p><!--/p-->
 				</div><!--/.text-center-->
 			</div><!--/.container-->
