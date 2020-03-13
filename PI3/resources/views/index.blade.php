@@ -215,10 +215,13 @@
 				                <ul>
 				                	<li class="search">
 				                		<a href="#"><span class="lnr lnr-magnifier"></span></a>
-				                	</li><!--/.search-->
+                                    </li><!--/.search-->
 				                	<li class="nav-setting">
-				                		<a href="#"><span class="lnr lnr-cog"></span></a>
-				                	</li><!--/.search-->
+				                		<a href="login"><span class="lnr lnr-cog"></span></a>
+				                	</li>
+				                	<li class="nav-setting">
+				                		<a href="login"><span class="lnr lnr-user"></span></a>
+				                	</li>
 				                    <li class="dropdown">
 				                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" >
 				                            <span class="lnr lnr-cart"></span>
