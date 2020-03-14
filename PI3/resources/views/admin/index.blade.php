@@ -18,8 +18,7 @@
   <body>
      <!---Nav bar-->
       <nav class="navbar navbar-expand-md navbar-light">
-<button class="navbar-toggler ml-auto mb-2 bg-light" type="button"
-data-toggle="collapse" data-target="#navbar">
+<button class="navbar-toggler ml-auto mb-2 bg-light" type="button" data-toggle="collapse" data-target="#navbar">
 <span class="navbar-toggler-icon"></span>
 
 </button>
@@ -28,12 +27,14 @@ data-toggle="collapse" data-target="#navbar">
         <div class="row">
             <!---Sidebar-->
             <div class=" col-xl-2 col-lg-3 col-md-4 sidebar fixed-top">
-                <a href="#" class="navbar-brand text-white d-block
-                mx-auto text-center py-3 mb-4"><i class="fas fa-cannabis text-light fa-3x"></i></a>
+
+                <a href="#" class="navbar-brand text-white d-block  mx-auto text-center py-3 mb-4"><i class="fas fa-cannabis text-light fa-3x"></i></a>
+
                 <div class="bottom-border pb-3">
                     <img src="admin_assets/images/john.png" alt="Imagem do perfil" width="50" class="rounded-circle mr-3">
-                    <a href="#" class="text-white ">John Doe</a>
+                    <a href="#" class="text-white ">{{ Auth::user()->name }}</a>
                 </div>
+
                 <ul class="navbar-nav flex-column mt-4">
                    <li class="nav-item"><a href="#" class="nav-link text-white p-3 mb-2
                     current"><i class="fas fa-home text-light fa-lg mr-3"></i>
