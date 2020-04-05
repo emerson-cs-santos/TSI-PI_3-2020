@@ -25,6 +25,14 @@ Route::get('admin', 'AdminController@index')->middleware('is_admin')->name('admi
 // Shop
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::get('/produto', function () {
+    return view('produto');
+});
+
+Route::get('/usuario', function () {
+    return view('admin/usuario');
+});
+
 
 
 
