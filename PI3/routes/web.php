@@ -13,17 +13,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Auth::routes();
+
+// SHOPPING Inicio **************************************************************************************************************************
+
 Route::get('/', function () {
     return view('index');
 });
 
-Auth::routes();
-
-// Admin
-Route::get('admin', 'AdminController@index')->middleware('is_admin')->name('admin');
-
-// Shop
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/usuario_shop', 'Shop\usuarioShopController@usuario');
 
 Route::get('/produto', function () {
     return view('produto');
@@ -41,20 +40,22 @@ Route::get('/blog', function () {
     return view('blog');
 });
 
-
 Route::get('/contato', function () {
     return view('contato');
 });
 
+// SHOPPING Fim **************************************************************************************************************************
 
 
+
+
+
+// ADMIN - DASHBOARD Inicio **************************************************************************************************************************
+
+Route::get('admin', 'AdminController@index')->middleware('is_admin')->name('admin');
 
 Route::get('/usuario', function () {
     return view('admin/usuario');
 });
 
-
-
-
-
-
+// ADMIN - DASHBOARD Fim **************************************************************************************************************************

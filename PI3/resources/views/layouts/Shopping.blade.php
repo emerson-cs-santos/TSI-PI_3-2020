@@ -72,10 +72,10 @@
 				                		<a href="#"><span class="lnr lnr-magnifier"></span></a>
                                     </li><!--/.search-->
 				                	<li class="nav-setting">
-				                		<a href="login"><span class="lnr lnr-cog"></span></a>
+				                		<a href="/login"><span class="lnr lnr-question-circle"></span></a>
 				                	</li>
 				                	<li class="nav-setting">
-				                		<a href="login"><span class="lnr lnr-user"></span></a>
+				                		<a href="/usuario_shop"><span class="lnr lnr-user"></span></a>
 				                	</li>
 				                    <li class="dropdown">
 				                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" >
@@ -136,11 +136,11 @@
 				            <!-- Collect the nav links, forms, and other content for toggling -->
 				            <div class="collapse navbar-collapse menu-ui-design" id="navbar-menu">
 				                <ul class="nav navbar-nav navbar-center" data-in="fadeInDown" data-out="fadeOutUp">
-				                    <li class=""><a href="/home">home</a></li>
+				                    <li class=""><a href="/home">Jogos</a></li>
 				                    <li class=""><a href="/novos">Novos Lançamentos</a></li>
 				                    <li class=""><a href="/destaque">Em destaque</a></li>
 				                    <li class=""><a href="/blog">blog</a></li>
-				                    <li class=""><a href="/contato">Contato</a></li>
+				                    <li class=""><a href="/contato">Meus Pedidos</a></li>
 				                </ul><!--/.nav -->
 				            </div><!-- /.navbar-collapse -->
 				        </div><!--/.container-->
