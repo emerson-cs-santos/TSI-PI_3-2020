@@ -136,11 +136,11 @@
 				            <!-- Collect the nav links, forms, and other content for toggling -->
 				            <div class="collapse navbar-collapse menu-ui-design" id="navbar-menu">
 				                <ul class="nav navbar-nav navbar-center" data-in="fadeInDown" data-out="fadeOutUp">
-				                    <li class=" scroll active"><a href="/home">home</a></li>
-				                    <li class="scroll"><a href="#new-arrivals">Novos Lançamentos</a></li>
-				                    <li class="scroll"><a href="#feature">Em destaque</a></li>
-				                    <li class="scroll"><a href="#blog">blog</a></li>
-				                    <li class="scroll"><a href="#newsletter">Contato</a></li>
+				                    <li class=""><a href="/home">home</a></li>
+				                    <li class=""><a href="/novos">Novos Lançamentos</a></li>
+				                    <li class=""><a href="/destaque">Em destaque</a></li>
+				                    <li class=""><a href="/blog">blog</a></li>
+				                    <li class=""><a href="/contato">Contato</a></li>
 				                </ul><!--/.nav -->
 				            </div><!-- /.navbar-collapse -->
 				        </div><!--/.container-->
@@ -156,7 +156,87 @@
 		<!--welcome-hero end -->
 
         <main>
+
             @yield('content_Shopping')
+
+            <!--newsletter strat -->
+            <section id="newsletter"  class="newsletter">
+                <div class="container">
+                    <div class="hm-footer-details">
+                        <div class="row">
+                            <div class=" col-md-3 col-sm-6 col-xs-12">
+                                <div class="hm-footer-widget">
+                                    <div class="hm-foot-title">
+                                        <h4>Sobre nós</h4>
+                                    </div><!--/.hm-foot-title-->
+                                    <div class="hm-foot-menu">
+                                        <ul>
+                                            <li><a href="#">Quem somos</a></li><!--/li-->
+                                            <li><a href="#">contato</a></li><!--/li-->
+                                            <li><a href="#">Novidades</a></li><!--/li-->
+                                            <li><a href="#">a Loja</a></li><!--/li-->
+                                        </ul><!--/ul-->
+                                    </div><!--/.hm-foot-menu-->
+                                </div><!--/.hm-footer-widget-->
+                            </div><!--/.col-->
+                            <div class=" col-md-3 col-sm-6 col-xs-12">
+                                <div class="hm-footer-widget">
+                                    <div class="hm-foot-title">
+                                        <h4>Acervo</h4>
+                                    </div><!--/.hm-foot-title-->
+                                    <div class="hm-foot-menu">
+                                        <ul>
+                                            <li><a href="#">Mega-Drive</a></li><!--/li-->
+                                            <li><a href="#">Super-Nintendo</a></li><!--/li-->
+                                            <li><a href="#">Playstation</a></li><!--/li-->
+                                            <li><a href="#">Xbox</a></li><!--/li-->
+                                            <li><a href="#">Game Cube</a></li><!--/li-->
+                                        </ul><!--/ul-->
+                                    </div><!--/.hm-foot-menu-->
+                                </div><!--/.hm-footer-widget-->
+                            </div><!--/.col-->
+                            <div class=" col-md-3 col-sm-6 col-xs-12">
+                                <div class="hm-footer-widget">
+                                    <div class="hm-foot-title">
+                                        <h4>Minha conta</h4>
+                                    </div><!--/.hm-foot-title-->
+                                    <div class="hm-foot-menu">
+                                        <ul>
+                                            <li><a href="#">Configurações</a></li><!--/li-->
+                                            <li><a href="#">Lista de desejos</a></li><!--/li-->
+                                            <li><a href="#">Carrinho</a></li><!--/li-->
+                                            <li><a href="#">Pedidos</a></li><!--/li-->
+                                        </ul><!--/ul-->
+                                    </div><!--/.hm-foot-menu-->
+                                </div><!--/.hm-footer-widget-->
+                            </div><!--/.col-->
+                            <div class=" col-md-3 col-sm-6  col-xs-12">
+                                <div class="hm-footer-widget">
+                                    <div class="hm-foot-title">
+                                        <h4>newsletter</h4>
+                                    </div><!--/.hm-foot-title-->
+                                    <div class="hm-foot-para">
+                                        <p>
+                                            Receba informações sobre jogos e nossas promoções!
+                                        </p>
+                                    </div><!--/.hm-foot-para-->
+                                    <div class="hm-foot-email">
+                                        <div class="foot-email-box">
+                                            <input type="text" class="form-control" placeholder="Digite seu e-mail aqui....">
+                                        </div><!--/.foot-email-box-->
+                                        <div class="foot-email-subscribe">
+                                            <span><i class="fa fa-location-arrow"></i></span>
+                                        </div><!--/.foot-email-icon-->
+                                    </div><!--/.hm-foot-email-->
+                                </div><!--/.hm-footer-widget-->
+                            </div><!--/.col-->
+                        </div><!--/.row-->
+                    </div><!--/.hm-footer-details-->
+
+                </div><!--/.container-->
+
+            </section><!--/newsletter-->
+            <!--newsletter end -->
         </main>
 
 		<!--footer start-->

@@ -29,6 +29,26 @@ Route::get('/produto', function () {
     return view('produto');
 });
 
+Route::get('/novos', function () {
+    return view('novos');
+});
+
+Route::get('/destaque', function () {
+    return view('destaque');
+});
+
+Route::get('/blog', function () {
+    return view('blog');
+});
+
+
+Route::get('/contato', function () {
+    return view('contato');
+});
+
+
+
+
 Route::get('/usuario', function () {
     return view('admin/usuario');
 });

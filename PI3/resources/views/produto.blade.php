@@ -12,9 +12,7 @@
                             <figcaption class='text-center'>Testando conteudo na página</figcaption>
                         </figure>
                     </div>
-
                 </div>
-
             </div>
         </div>
     </div>
