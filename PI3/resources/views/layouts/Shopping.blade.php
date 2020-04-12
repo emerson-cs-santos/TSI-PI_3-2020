@@ -136,11 +136,11 @@
 				            <!-- Collect the nav links, forms, and other content for toggling -->
 				            <div class="collapse navbar-collapse menu-ui-design" id="navbar-menu">
 				                <ul class="nav navbar-nav navbar-center" data-in="fadeInDown" data-out="fadeOutUp">
-				                    <li class=""><a href="/home">Jogos</a></li>
-				                    <li class=""><a href="/novos">Novos Lançamentos</a></li>
-				                    <li class=""><a href="/destaque">Em destaque</a></li>
-				                    <li class=""><a href="/blog">blog</a></li>
-				                    <li class=""><a href="/contato">Meus Pedidos</a></li>
+				                    <li class=" {{ \Request::is('home_shop') ? ' active' : '' }} "><a href="/home_shop">Jogos</a></li>
+				                    <li class=" {{ \Request::is('novos_shop') ? ' active' : '' }} "><a href="/novos_shop">Novos Lançamentos</a></li>
+				                    <li class=" {{ \Request::is('destaque_shop') ? ' active' : '' }} "><a href="/destaque_shop">Em destaque</a></li>
+				                    <li class=" {{ \Request::is('blog_shop') ? ' active' : '' }} "><a href="/blog_shop">blog</a></li>
+				                    <li class=" {{ \Request::is('contato_shop') ? ' active' : '' }} "><a href="/contato_shop">Meus Pedidos</a></li>
 				                </ul><!--/.nav -->
 				            </div><!-- /.navbar-collapse -->
 				        </div><!--/.container-->

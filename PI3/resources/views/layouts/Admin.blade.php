@@ -8,7 +8,18 @@
         <script src="https://kit.fontawesome.com/c0fc838bea.js" crossorigin="anonymous"></script>
 
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        <link rel="stylesheet" href="admin_assets/css/admin.css">
+
+        {{-- Referenciar javascript local --}}
+        {{-- <script type="text/javascript" src="{{ asset('js/custom.js') }}"></script> --}}
+
+        {{-- Referenciar javascript na Web --}}
+        {{-- <script type="text/javascript" src="{{ URL::asset('js/custom.js') }}"></script> --}}
+
+        {{-- Referenciar CSS local --}}
+        <link href="{{ asset('admin_assets/css/admin.css') }}" rel="stylesheet" type="text/css" >
+
+        {{-- Referenciar CSS na web --}}
+        {{-- <link href="{{ URL::asset('css/app.css') }}" rel="stylesheet" type="text/css" > --}}
     </head>
 
     <body>
@@ -26,20 +37,31 @@
                                 <a href="#" class="navbar-brand text-white d-block  mx-auto text-center py-3 mb-4"><i class="fas fa-cannabis text-light fa-3x"></i></a>
 
                                 <div class="bottom-border pb-3">
-                                    <img src="admin_assets/images/john.png" alt="Imagem do perfil" width="50" class="rounded-circle mr-3">
+                                    <img src=" {{ asset('admin_assets/images/john.png') }} " alt="Imagem do perfil" width="50" class="rounded-circle mr-3">
                                     <a href="#" class="text-white ">{{ Auth::user()->name }}</a>
                                 </div>
 
                                 <ul class="navbar-nav flex-column mt-4">
-                                    <li class="nav-item"><a href="#" class="nav-link text-white p-3 mb-2 current"> <i class="fas fa-home text-light fa-lg mr-3"></i> Home</a></li>
+                                                                                                                        {{-- {{ \Request::is('admin') ? ' current' : '' }} --}}
+                                    <li class="nav-item"><a href="/admin"   class="nav-link text-white p-3 mb-2 sidebar-link {{ Str::contains(Request::path(), 'admin') ? ' current' : '' }} "> <i class="fas fa-home text-light fa-lg mr-3"></i> Home</a></li>
 
-                                    <li class="nav-item"><a href="/usuario" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-user text-light fa-lg mr-3"></i> Profile</a></li>
+                                    <li class="nav-item"><a href="/Users" class="nav-link text-white p-3 mb-2 sidebar-link {{ Str::contains(Request::path(), 'Users') ? ' current' : '' }}"><i class="fas fa-user text-light fa-lg mr-3"></i> Usuários</a></li>
 
-                                    <li class="nav-item"><a href="#" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-envelope text-light fa-lg mr-3"></i> inbox</a></li>
+                                    <li class="nav-item"><a href="/categories" class="nav-link text-white p-3 mb-2 sidebar-link {{ Str::contains(Request::path(), 'categories') ? ' current' : '' }}"  ><i class="fa fa-cubes text-light fa-lg mr-3"></i> Categorias</a></li>
 
-                                    <li class="nav-item"><a href="#" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-shopping-cart text-light fa-lg mr-3"></i> Sales</a></li>
+                                    <li class="nav-item"><a href="/products" class="nav-link text-white p-3 mb-2 sidebar-link {{ Str::contains(Request::path(), 'products') ? ' current' : '' }}"  ><i class="fa fa-shopping-bag text-light fa-lg mr-3"></i> Produtos</a></li>
 
-                                    <li class="nav-item"><a href="#" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-wrench text-light fa-lg mr-3"></i> Settings</a></li>
+                                    <li class="nav-item"><a href="#" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-users text-light fa-lg mr-3"></i> Clientes</a></li>
+
+                                    <li class="nav-item"><a href="#" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-shopping-cart text-light fa-lg mr-3"></i> Carrinhos</a></li>
+
+                                    <li class="nav-item"><a href="#" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-truck-moving text-light fa-lg mr-3"></i> Pedidos</a></li>
+
+                                    <li class="nav-item"><a href="#" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fa fa-exchange text-light fa-lg mr-3"></i> Movimentações</a></li>
+
+                                    <li class="nav-item"><a href="#" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-envelope text-light fa-lg mr-3"></i> Mensagens</a></li>
+
+                                    <li class="nav-item"><a href="#" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-wrench text-light fa-lg mr-3"></i> Parâmetros</a></li>
                                 </ul>
                             </div>
                             <!---end of side bar-->

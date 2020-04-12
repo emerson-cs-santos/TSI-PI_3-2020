@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddImageProfileToUsers extends Migration
+class AddSoftDeleteToCategoriesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class AddImageProfileToUsers extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->binary('imagem');
-        });
+        Schema::table('categories', function (Blueprint $table) {
+            $table->softDeletes();
+        }); 
     }
 
     /**
@@ -25,8 +25,8 @@ class AddImageProfileToUsers extends Migration
      */
     public function down()
     {
-        Schema::table('shop_users', function (Blueprint $table) {
-            $table->dropColumn(['imagem']);
+        Schema::table('categories', function (Blueprint $table) {
+            $table->dropColumn('deleted_at');
         });
     }
 }

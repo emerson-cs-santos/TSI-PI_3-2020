@@ -115,6 +115,7 @@ border-radius: 50%;
     border-color: #7CB342;
     box-shadow: none;
 }
+
 /*task list*/
 .task-border{
     border-left: 3px solid #689F38;
@@ -140,5 +141,20 @@ background-color: #C5E1A5;
     border-bottom: 6px solid #689F38;
 }
 input.form-control{
-    color: white;
+    /* color: white; */
 }
+
+
+
+
+
+
+/*Tabelas Inicio*/
+.tableFormat
+{
+	
+}
+
+
+/*Tabelas Fim*/
+
