@@ -14,19 +14,25 @@
                             <h2 class="text-center">Usuário {{$usuario->name}}</h2>
 
                                 <div class='p-3 bg-white'>
-                                    
+
                                     <div class="form-group">
-                                        <input type="text" class='form-control' name="name" value="{{$usuario->name}}">
-                                    </div>
-                                    
-                                    <div class="form-group">
-                                        <input type="text" class='form-control' name="email" value="{{$usuario->email}}">
+                                        <label for="name">Nome</label>
+                                        <input type="text" class='form-control' name="name" placeholder="Digite o nome do Usuário" value="{{$usuario->name}}">
                                     </div>
 
                                     <div class="form-group">
-                                        <input type="text" class='form-control' name="password">
-                                    </div>                                    
-                                    
+                                        <label for="email">E-mail</label>
+                                        <input type="email" class='form-control' name="email" placeholder="Digite o nome do E-mail" value="{{$usuario->email}}">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="type">Nível de Acesso</label>
+                                        <select name="type" class="form-control">
+                                            <option value="padrao"  @if( $usuario->type == "padrao" ) selected @endif   >Padrão</option>
+                                            <option value="adm"     @if( $usuario->type == "adm" )selected @endif       >Adminstrador</option>
+                                        </select>
+                                    </div>
+
                                     <a href="{{route('Users.index')}}" class='btn btn-success'>Voltar</a>
                                 </div>
                             </div>

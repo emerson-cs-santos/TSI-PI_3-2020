@@ -10,6 +10,7 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
         {{-- Referenciar javascript local --}}
+        <script type="text/javascript" src="{{ asset('admin_assets/js/geral.js') }}"></script>
         {{-- <script type="text/javascript" src="{{ asset('js/custom.js') }}"></script> --}}
 
         {{-- Referenciar javascript na Web --}}
@@ -38,7 +39,7 @@
 
                                 <div class="bottom-border pb-3">
                                     <img src=" {{ asset('admin_assets/images/john.png') }} " alt="Imagem do perfil" width="50" class="rounded-circle mr-3">
-                                    <a href="#" class="text-white ">{{ Auth::user()->name }}</a>
+                                    <a href="{{ route( 'Users.edit', Auth::user()->id ) }}" class="text-white " data-placement="top" data-toggle="tooltip" title="Abrir cadastro">{{ Auth::user()->name }}</a>
                                 </div>
 
                                 <ul class="navbar-nav flex-column mt-4">
@@ -58,8 +59,6 @@
                                     <li class="nav-item"><a href="#" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-truck-moving text-light fa-lg mr-3"></i> Pedidos</a></li>
 
                                     <li class="nav-item"><a href="#" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fa fa-exchange text-light fa-lg mr-3"></i> Movimentações</a></li>
-
-                                    <li class="nav-item"><a href="#" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-envelope text-light fa-lg mr-3"></i> Mensagens</a></li>
 
                                     <li class="nav-item"><a href="#" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-wrench text-light fa-lg mr-3"></i> Parâmetros</a></li>
                                 </ul>

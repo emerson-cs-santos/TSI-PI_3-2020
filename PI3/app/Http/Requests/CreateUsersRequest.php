@@ -15,8 +15,11 @@ class CreateUsersRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required'
-            ,'email' => 'required|unique:users'
+            'name'                      => 'required|unique:users|min:3|alpha_num'
+            ,'email'                    => 'required|unique:users|email:filter'
+            ,'password'                 => 'required_with:password_confirmation|same:password_confirmation|min:8'
+            ,'password_confirmation'    => 'min:8'
+            ,'type'                     => 'required'
         ];
     }
 }

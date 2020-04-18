@@ -25,23 +25,49 @@
                                     @endif
                                     @csrf
                                     @method('PUT')
-                                    
+
+                                    <div class="form-group" hidden>
+                                        <label for="id">ID</label>
+                                        <input type="number" class='form-control' name="id" value="{{$usuario->id}}">
+                                    </div>
+
                                     <div class="form-group">
                                         <label for="name">Nome</label>
                                         <input type="text" class='form-control' name="name" placeholder="Digite o nome do Usuário" value="{{$usuario->name}}">
                                     </div>
-                                    
+
                                     <div class="form-group">
                                         <label for="email">E-mail</label>
-                                        <input type="text" class='form-control' name="email" placeholder="Digite o nome do E-mail" value="{{$usuario->name}}">
+                                        <input type="email" class='form-control' name="email" placeholder="Digite o nome do E-mail" value="{{$usuario->email}}">
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="password">senha</label>
-                                        <input type="text" class='form-control' name="password" placeholder="Digite a senha">
-                                    </div>                                    
-                                    
-                                    <button type="submit" class="btn btn-success">Alterar Usuário</button>
+                                        <label for="type">Nível de Acesso</label>
+                                        <select name="type" class="form-control">
+                                            <option value="padrao"  @if( $usuario->type == "padrao" ) selected @endif   >Padrão</option>
+                                            <option value="adm"     @if( $usuario->type == "adm" )selected @endif       >Adminstrador</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="form-group">
+                                            <label for="password">Senha</label>
+                                            <input type="password" id='usuario_editar_senha' class="form-control @error('password') is-invalid @enderror" name="password" placeholder="Digite a senha" required autocomplete="new-password" disabled >
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="password_confirmation">Confirme a senha</label>
+                                            <input type="password" id='usuario_editar_confirmarSenha' class='form-control' name="password_confirmation" placeholder="Digite a senha" required autocomplete="new-password" disabled>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <input id = 'usuario_editar_senha_checkbox' type="checkbox" name="" value="" onchange='senhaHabilitar()' data-placement="top" data-toggle="tooltip" title="Ative essa opção para definir uma nova senha">
+                                            <label>Alterar Senha</label>
+                                        </div>
+                                    </div>
+
+                                    <button type="submit" class="btn btn-warning">Salvar</button>
+                                    <a href="{{route('Users.index')}}" class='btn btn-primary'>Voltar</a>
                                 </form>
                             </div>
                         </div>

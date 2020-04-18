@@ -5,6 +5,7 @@ namespace App\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 
 class EditUserRequest extends FormRequest
+{
 
     public function authorize()
     {
@@ -14,10 +15,11 @@ class EditUserRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|unique:categories'
-            ,'image' => 'required'
-            ,'desc' => 'required'
-            ,'price' => 'required'
+            'name'                      => 'required|min:3|alpha_num'
+            ,'email'                    => 'required|email:filter'
+            ,'password'                 => 'required_with:password_confirmation|same:password_confirmation|min:8'
+            ,'password_confirmation'    => 'min:8'
+            ,'type'                     => 'required'
         ];
     }
 }
