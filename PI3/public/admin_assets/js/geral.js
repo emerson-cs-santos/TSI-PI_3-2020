@@ -25,7 +25,7 @@ function preview_image(event)
     reader.onload =
         function()
         {
-            var output = document.getElementById('usuario_create_ExibirIMG_inputfile');
+            var output = document.getElementById('ExibirIMG_inputfile');
             output.src = reader.result;
         }
     reader.readAsDataURL(event.target.files[0]);

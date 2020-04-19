@@ -22,5 +22,5 @@ class Product extends Model
 
         // Abaixo para laravel versão 6
         //return $this->belongsTo('App\Category');
-    }    
+    }
 }

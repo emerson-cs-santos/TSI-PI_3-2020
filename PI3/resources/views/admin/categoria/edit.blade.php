@@ -25,13 +25,14 @@
                                     @endif
                                     @csrf
                                     @method('PUT')
-                                    
+
                                     <div class="form-group">
                                         <label for="name">Nome</label>
                                         <input type="text" class='form-control' name="name" placeholder="Digite o nome da categoria" value="{{$category->name}}">
                                     </div>
-                                
-                                    <button type="submit" class="btn btn-warning">Alterar Categoria</button>
+
+                                    <button type="submit" class="btn btn-warning">Salvar</button>
+                                    <a href="{{route('categories.index')}}" class='btn btn-primary'>Voltar</a>
                                 </form>
                             </div>
                         </div>

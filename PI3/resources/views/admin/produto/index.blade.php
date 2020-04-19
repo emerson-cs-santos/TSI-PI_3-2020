@@ -30,6 +30,7 @@
                                         <thead class="text-dark">
                                             <th>Código</th>
                                             <th>Nome</th>
+                                            <th>Preview</th>
                                             <th>Preço</th>
                                             <th>Desconto</th>
                                         </thead>
@@ -38,6 +39,7 @@
                                             <tr>
                                                 <td>{{$product->id}}</th>
                                                 <td>{{$product->name}}</td>
+                                                <td> <img src="@if ( empty($product->image) ) {{asset('admin_assets/images/produto_sem_imagem.jpg')}} @else {{$product->image}} @endif" alt="Preview do produto" class='img_preview'> </td>
                                                 <td>{{$product->price}}</td>
                                                 <td>{{$product->discount}}</td>
                                                 <td>
@@ -50,7 +52,7 @@
                                                     <form action="{{ route('products.destroy', $product->id) }}" method="POST" onsubmit="return confirm('Você tem certeza que quer apagar?')">
                                                         @csrf
                                                         @method('DELETE')
-                                                        <button type="submit" href="#" class="btn btn-danger btn-sm float-right">Excluir</a>
+                                                        <button type="submit" href="#" class="btn btn-danger btn-sm float-center">Excluir</a>
                                                     </form>
                                                 </td>
                                             </tr>

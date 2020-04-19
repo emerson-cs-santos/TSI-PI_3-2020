@@ -24,13 +24,14 @@
                                         </div>
                                     @endif
                                     @csrf
-                                    
+
                                     <div class="form-group">
                                         <label for="name">Nome</label>
                                         <input type="text" class='form-control' name="name" placeholder="Digite o nome da categoria" value="{{old('name')}}">
                                     </div>
-                                
-                                    <button type="submit" class="btn btn-success">Criar Categoria</button>
+
+                                    <button type="submit" class="btn btn-success">Criar</button>
+                                    <a href="{{route('categories.index')}}" class='btn btn-primary'>Voltar</a>
                                 </form>
                             </div>
                         </div>

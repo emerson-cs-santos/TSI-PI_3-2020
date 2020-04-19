@@ -46,7 +46,7 @@
                                                 <td>{{$usuario->name}}</td>
                                                 <td>{{$usuario->email}}</td>
                                                 <td>{{ $usuario->type == 'admin' ? ' Administrador' : 'Padrão' }}</td>
-                                                
+
                                                 <td>
                                                     <a href="{{ route('Users.show', $usuario->id) }}" class="btn btn-xs btn-primary">Visualizar</a>
                                                 </td>
@@ -59,7 +59,7 @@
                                                     <form action="{{ route('Users.destroy', $usuario->id) }}" class="d-inline" method="POST" onsubmit="return confirm('Você tem certeza que quer apagar?')">
                                                         @csrf
                                                         @method('DELETE')
-                                                        <button type="submit" href="#" class="btn btn-danger btn-sm float-right">Excluir</a>
+                                                        <button type="submit" href="#" class="btn btn-danger btn-sm float-center">Excluir</a>
                                                     </form>
                                                 </td>
                                             </tr>

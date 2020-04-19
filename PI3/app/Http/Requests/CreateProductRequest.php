@@ -16,11 +16,11 @@ class CreateProductRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|unique:categories'
-            ,'image' => 'required'
-            ,'desc' => 'required'
-            ,'price' => 'required'
-            ,'category_id' => 'required'
+            'name'          => 'required|unique:products'
+            ,'imagem'       => 'max:2000'
+            ,'descricao'    => 'required'
+            ,'preco'        => 'required'
+            ,'category_id'  => 'required'
         ];
     }
 }

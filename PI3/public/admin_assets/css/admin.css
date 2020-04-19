@@ -158,6 +158,13 @@ input.form-control{
 
 /*Tabelas Fim*/
 
+.img_preview
+{
+    height: 100px;
+    width: 100px;
+    border:solid;
+}
+
 
 /************************************************************ Usuário inicio ******************************************************************/
 /* @media screen and (max-width: 440px)
@@ -200,7 +207,7 @@ input.form-control{
     }
 }
 
-@media screen and (min-width: 441px)  and (max-width: 533px)
+@media screen and (min-width: 441px)  and (max-width: 579px)
 {
     .img_small_prod
     {
@@ -209,8 +216,7 @@ input.form-control{
     }
 }
 
-/* For width 400px and larger: */
-@media only screen and (min-width: 534px)
+@media only screen and (min-width: 580px)
 {
     .img_normal_prod
     {

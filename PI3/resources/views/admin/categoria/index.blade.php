@@ -42,11 +42,11 @@
                                                 <td>
                                                     <a href="{{ route('categories.edit', $category->id) }}" class="btn btn-xs btn-warning">Editar</a>
                                                 </td>
-                                                <td class='align-items-center'>
-                                                    <form action="{{ route('categories.destroy', $category->id) }}" method="POST" onsubmit="return confirm('Você tem certeza que quer apagar?')">
+                                                <td>
+                                                    <form  action="{{ route('categories.destroy', $category->id) }}" method="POST" onsubmit="return confirm('Você tem certeza que quer apagar?')">
                                                         @csrf
                                                         @method('DELETE')
-                                                        <button type="submit" href="#" class="btn btn-danger btn-sm float-right">Excluir</a>
+                                                        <button type="submit" href="#" class="btn btn-danger btn-sm float-center">Excluir</button>
                                                     </form>
                                                 </td>
                                             </tr>

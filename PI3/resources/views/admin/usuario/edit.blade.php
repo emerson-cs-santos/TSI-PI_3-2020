@@ -44,7 +44,7 @@
                                     <div class="form-group">
                                         <label>Imagem de usuário</label>
                                         <input class="form-control" type="file" name="imagem" accept="image/png, image/jpeg, image/jpg" onchange="preview_image(event)" >
-                                        <img id="usuario_create_ExibirIMG_inputfile" class="form-control rounded mx-auto d-block img_extra_small_cli img_small_cli img_normal_cli mt-5" alt="Imagem do Produto" src=" @if( empty($usuario->image) )  {{asset('admin_assets/images/produto_sem_imagem.jpg')}} @else {{$usuario->image}} @endif" >
+                                        <img id="ExibirIMG_inputfile" class="form-control rounded mx-auto d-block img_extra_small_cli img_small_cli img_normal_cli mt-5" alt="Imagem do Usuário" src=" @if( empty($usuario->image) )  {{asset('admin_assets/images/produto_sem_imagem.jpg')}} @else {{$usuario->image}} @endif" >
                                     </div>
 
                                     <div class="form-group">

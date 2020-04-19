@@ -14,7 +14,7 @@
                             <h2 class="text-center">Produto {{$product->name}}</h2>
 
                                 <div class='form-group'>
-                                    
+
                                     <div class="form-group">
                                         <label for="name">Nome</label>
                                         <input type="text" class='form-control' name="name" placeholder="Digite o nome do produto" value="{{$product->name}}">
@@ -29,28 +29,28 @@
                                             </option>
                                             @endforeach
                                         </select>
-                                    </div>                                     
-                            
+                                    </div>
+
                                     <div class="form-group">
                                         <label for="desc">Descrição</label>
                                         <textarea name="desc" class='form-control' placeholder="Digite uma descrição para o produto">{{$product->desc}}}</textarea>
                                     </div>
-                            
+
                                     <div class="form-group">
                                         <label for="price">Preço</label>
                                         <input type="number" class='form-control' name="price" placeholder="Digite o preço" value="{{$product->price}}">
                                     </div>
-                            
+
                                     <div class="form-group">
                                         <label for="discount">Desconto</label>
                                         <input type="number" class='form-control' name="discount" placeholder="Digite o desconto" value="{{$product->discount}}">
                                     </div>
-                            
-                                    <div class='form-group'>
-                                        <label for="image">Imagem do produto</label>
-                                        <input type="text" name="image" class='form-control' value="{{$product->image}}">
-                                    </div>                                 
-                                    
+
+                                    <div class="form-group">
+                                        <label>Imagem do Produto</label>
+                                        <img id="ExibirIMG_inputfile" class="form-control img_extra_small_prod img_small_prod img_normal_prod mt-5" alt="Imagem do Produto" src=" @if( empty($product->image) )  {{asset('admin_assets/images/produto_sem_imagem.jpg')}} @else {{$product->image}} @endif" >
+                                    </div>
+
                                     <a href="{{route('products.index')}}" class='btn btn-success'>Voltar</a>
                                 </div>
                             </div>
