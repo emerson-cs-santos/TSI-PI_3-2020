@@ -18,3 +18,15 @@ function senhaHabilitar()
         confirmarSenha.value = '';
     }
 }
+
+function preview_image(event)
+{
+    var reader = new FileReader();
+    reader.onload =
+        function()
+        {
+            var output = document.getElementById('usuario_create_ExibirIMG_inputfile');
+            output.src = reader.result;
+        }
+    reader.readAsDataURL(event.target.files[0]);
+}

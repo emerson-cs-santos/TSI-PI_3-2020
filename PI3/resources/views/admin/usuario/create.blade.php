@@ -1,24 +1,24 @@
 @extends('layouts.Admin')
 
 @section('content_Admin')
-    <section class='mt-5'>
-        <div class="container-fluid mt-5">
+    <section>
+        <div class="container-fluid">
             <div class="row">
                 <div class="col-xl-10 col-lg-9 col-md-8 ml-auto">
                     <div class="row align-items-center">
 
                         {{-- Conteiner final onde as informações são de fato exibidas --}}
                         <div class="container mt-5">
-                            <div class="col-12">
+                            <div class="col-12 mt-5">
 
                                 <h2 class="text-center">Cadastrar Usuário</h2>
 
-                                <form action="{{route('Users.store')}}" class='p-3 bg-white' method="post">
+                                <form action="{{route('Users.store')}}" class='p-3 bg-white' method="post" enctype="multipart/form-data">
                                     @if($errors->any())
                                         <div class="alert alert-danger">
                                             <ul class="list-group">
                                                 @foreach ($errors->all() as $error)
-                                                    <li class="list-group-item text-danger">{{$error}}</li>
+                                                    <li class="list-group-item text-danger">{{ Str::replaceArray('2000 kilobytes', ['2 MegaBytes'], $error) }}</li>
                                                 @endforeach
                                             </ul>
                                         </div>
@@ -36,10 +36,16 @@
                                     </div>
 
                                     <div class="form-group">
+                                        <label>Imagem de usuário</label>
+                                        <input class="form-control" type="file" name="imagem" accept="image/png, image/jpeg, image/jpg" onchange="preview_image(event)" >
+                                        <img id="usuario_create_ExibirIMG_inputfile" class="form-control rounded mx-auto d-block img_extra_small_cli img_small_cli img_normal_cli mt-5" alt="Imagem do Produto" src=" @if( empty(old('imagem')) )  {{asset('admin_assets/images/produto_sem_imagem.jpg')}} @endif" >
+                                    </div>
+
+                                    <div class="form-group">
                                         <label for="type">Nível de Acesso</label>
                                         <select name="type" class="form-control">
-                                            <option value="padrao"  @if(old('type') == 'padrao')selected @endif >Padrão</option>
-                                            <option value="adm"     @if(old('type') == 'adm')selected @endif    >Adminstrador</option>
+                                            <option value="padrao"  @if(old('type') == 'padrao') selected @endif >Padrão</option>
+                                            <option value="adm"     @if(old('type') == 'adm') selected @endif    >Adminstrador</option>
                                         </select>
                                     </div>
 
@@ -64,3 +70,4 @@
         </div>
     </section>
 @endsection
+

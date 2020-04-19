@@ -152,9 +152,70 @@ input.form-control{
 /*Tabelas Inicio*/
 .tableFormat
 {
-	
+
 }
 
 
 /*Tabelas Fim*/
 
+
+/************************************************************ Usuário inicio ******************************************************************/
+/* @media screen and (max-width: 440px)
+{
+    .img_extra_small_cli
+    {
+        height:100;
+        width:100px;
+    }
+}
+
+@media screen and (min-width: 441px)  and (max-width: 533px)
+{
+    .img_small_cli
+    {
+        height:200;
+        width:200px;
+    }
+} */
+
+/* For width 400px and larger: */
+@media only screen and (min-width: 534px)
+{
+    .img_normal_cli
+    {
+        height:300px;
+        width:300px;
+    }
+}
+/************************************************************ Usuário fim ******************************************************************/
+
+
+/************************************************************ Produtos inicio ******************************************************************/
+@media screen and (max-width: 440px)
+{
+    .img_extra_small_prod
+    {
+        height:300px;
+        width:300px;
+    }
+}
+
+@media screen and (min-width: 441px)  and (max-width: 533px)
+{
+    .img_small_prod
+    {
+        height:400px;
+        width:400px;
+    }
+}
+
+/* For width 400px and larger: */
+@media only screen and (min-width: 534px)
+{
+    .img_normal_prod
+    {
+        height:500px;
+        width:500px;
+    }
+}
+/************************************************************ Produtos fim ******************************************************************/

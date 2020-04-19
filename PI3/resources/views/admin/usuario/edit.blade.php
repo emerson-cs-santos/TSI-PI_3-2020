@@ -13,12 +13,12 @@
 
                                 <h2 class="text-center">Alterar Usuário</h2>
 
-                                <form action="{{route('Users.update', $usuario->id)}}" class='p-3 bg-white' method="post">
+                                <form action="{{route('Users.update', $usuario->id)}}" class='p-3 bg-white' method="post" enctype="multipart/form-data">
                                     @if($errors->any())
                                         <div class="alert alert-danger">
                                             <ul class="list-group">
                                                 @foreach ($errors->all() as $error)
-                                                    <li class="list-group-item text-danger">{{$error}}</li>
+                                                    <li class="list-group-item text-danger"> {{ Str::replaceArray('2000 kilobytes', ['2 MegaBytes'], $error) }} </li>
                                                 @endforeach
                                             </ul>
                                         </div>
@@ -39,6 +39,12 @@
                                     <div class="form-group">
                                         <label for="email">E-mail</label>
                                         <input type="email" class='form-control' name="email" placeholder="Digite o nome do E-mail" value="{{$usuario->email}}">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>Imagem de usuário</label>
+                                        <input class="form-control" type="file" name="imagem" accept="image/png, image/jpeg, image/jpg" onchange="preview_image(event)" >
+                                        <img id="usuario_create_ExibirIMG_inputfile" class="form-control rounded mx-auto d-block img_extra_small_cli img_small_cli img_normal_cli mt-5" alt="Imagem do Produto" src=" @if( empty($usuario->image) )  {{asset('admin_assets/images/produto_sem_imagem.jpg')}} @else {{$usuario->image}} @endif" >
                                     </div>
 
                                     <div class="form-group">

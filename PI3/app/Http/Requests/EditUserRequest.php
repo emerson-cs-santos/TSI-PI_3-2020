@@ -20,6 +20,9 @@ class EditUserRequest extends FormRequest
             ,'password'                 => 'required_with:password_confirmation|same:password_confirmation|min:8'
             ,'password_confirmation'    => 'min:8'
             ,'type'                     => 'required'
+            ,'imagem'                   => 'max:2000'
+
+            //,'imagem'                   => 'file|max:2000' , file obriga a ter um arquivo
         ];
     }
 }

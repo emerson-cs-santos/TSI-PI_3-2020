@@ -38,7 +38,7 @@
                                 <a href="#" class="navbar-brand text-white d-block  mx-auto text-center py-3 mb-4"><i class="fas fa-cannabis text-light fa-3x"></i></a>
 
                                 <div class="bottom-border pb-3">
-                                    <img src=" {{ asset('admin_assets/images/john.png') }} " alt="Imagem do perfil" width="50" class="rounded-circle mr-3">
+                                    <img src=" {{ Auth::user()->image }} " alt="Imagem do perfil" width="50" class="rounded-circle mr-3">
                                     <a href="{{ route( 'Users.edit', Auth::user()->id ) }}" class="text-white " data-placement="top" data-toggle="tooltip" title="Abrir cadastro">{{ Auth::user()->name }}</a>
                                 </div>
 

@@ -25,6 +25,11 @@
                                         <input type="email" class='form-control' name="email" placeholder="Digite o nome do E-mail" value="{{$usuario->email}}">
                                     </div>
 
+                                    <div class="form-group text-center">
+                                        <label>Imagem de usuário</label>
+                                        <img class="form-control rounded mx-auto d-block img_extra_small_cli img_small_cli img_normal_cli mt-1" alt="Imagem do Produto" src="{{$usuario->image}}" >
+                                    </div>
+
                                     <div class="form-group">
                                         <label for="type">Nível de Acesso</label>
                                         <select name="type" class="form-control">

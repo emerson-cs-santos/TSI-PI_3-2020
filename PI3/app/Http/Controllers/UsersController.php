@@ -33,6 +33,32 @@ class UsersController extends Controller
     {
         //dd($request);
 
+        //$imagePath = $request->myFile;
+
+        $file = $request->file('imagem');
+
+        // 2000000 = 1mb
+        // 2000000 = 2mb
+        // 4000000 = 4mb
+        // 8000000 = 8mb
+        // 10000000 = 10mb
+       // if ( filesize($file) > 1000000)
+        //{
+            //echo 'maior';
+            //return false;
+        //}
+
+        //dd(filesize($file));
+
+        $imagem_convertida = "";
+
+       if ( !empty($file) )
+       {
+            $data               = file_get_contents($file);
+            $dataEncoded        = base64_encode($data);
+            $imagem_convertida  = "data:image/jpeg;base64,$dataEncoded";
+       }
+
         // Pegando Nivel de acesso enviado pela pagina de criar novo cadastro
         $nivel_acesso = "";
         if ($request->type == 'adm')
@@ -49,6 +75,7 @@ class UsersController extends Controller
             ,'email' => $request->email
             ,'password' => Hash::make($request['password']) //$request->password
             ,'type' => $nivel_acesso
+            ,'image' => $imagem_convertida
         ]);
 
        session()->flash('success', 'Usuário criado com sucesso!');
@@ -62,7 +89,14 @@ class UsersController extends Controller
     {
        // return view('admin.usuario.show')->with('usuario',$user);
 
-        return view('admin.usuario.show')->with('usuario', User::find($id));
+       $usuario_visualizar = User::find($id);
+
+       if ( empty($usuario_visualizar->image) )
+       {
+        $usuario_visualizar->image = asset('admin_assets/images/produto_sem_imagem.jpg');
+       }
+
+        return view('admin.usuario.show')->with('usuario', $usuario_visualizar );
     }
 
 
@@ -85,22 +119,6 @@ class UsersController extends Controller
 
         return view('admin.usuario.edit')->with('usuario',$usuario_editar);
     }
-
-
-    // public function update(EditUserRequest $request, User $user)
-    // {
-
-             //dd($user);
-    //     $user->update([
-    //         'name' => $request->name
-    //         ,'email' => $request->email
-    //         ,'password' => $request->password
-    //     ]);
-
-    //     session()->flash('success', 'Usuário alterado com sucesso!');
-
-    //     return redirect(route('Users.index'));
-    // }
 
 
     public function update(EditUserRequest $request)
@@ -132,6 +150,17 @@ class UsersController extends Controller
         {
             $usuario->password = Hash::make( $request['password'] );
         }
+
+        // Apenas gravar imagem se foi alterada
+        $file = $request->file('imagem');
+       if ( !empty($file) )
+       {
+            $data               = file_get_contents($file);
+            $dataEncoded        = base64_encode($data);
+            $imagem_convertida  = "data:image/jpeg;base64,$dataEncoded";
+
+            $usuario->image     = $imagem_convertida;
+       }
 
        $usuario->save();
 
