@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Cliente;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Requests\CreateClienteRequest;
+use App\Http\Requests\EditClienteRequest;
 
 class ClientesController extends Controller
 {
@@ -34,7 +36,7 @@ class ClientesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateClienteRequest $request)
     {
         Cliente::create([
             'name' => $request->name
@@ -76,7 +78,7 @@ class ClientesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Cliente $cliente)
+    public function update(EditClienteRequest $request, Cliente $cliente)
     {
         $cliente->update([
             'name'=> $request->name,
