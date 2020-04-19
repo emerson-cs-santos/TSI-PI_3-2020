@@ -13,6 +13,11 @@
 
                                 <h2 class="text-center">Cadastrar Categoria</h2>
 
+                                {{-- Mostra mensagem que precisa cadastrar uma categoria antes de cadastrar um produto --}}
+                                @if ( session()->has('error') )
+                                    <div class="alert alert-danger"> {{ session()->get('error') }}</div>
+                                @endif
+
                                 <form action="{{route('categories.store')}}" class='p-3 bg-white' method="post">
                                     @if($errors->any())
                                         <div class="alert alert-danger">

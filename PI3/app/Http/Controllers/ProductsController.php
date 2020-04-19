@@ -13,7 +13,8 @@ class ProductsController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth');
+        //$this->middleware('auth');
+        $this->middleware('VerifyCategoriesCount')->only(['create','store']);
     }
 
     public function index()
@@ -95,10 +96,34 @@ class ProductsController extends Controller
     }
 
 
-    public function destroy(Product $product)
+    public function destroy($id)
     {
-        $product->delete();
-        session()->flash('success', 'Produto deletado com sucesso!');
-        return redirect(route('products.index'));
+        $product = Product::withTrashed()->where('id', $id)->firstOrFail();
+
+        if($product->trashed())
+        {
+            $product->forceDelete();
+            session()->flash('success', 'Produto removido com sucesso!');
+        }
+        else
+        {
+            $product->delete();
+            session()->flash('success', 'Produto movido para lixeira com sucesso!');
+        }
+        return redirect()->back();
+
+        //return redirect(route('products.index'));
+    }
+
+    public function trashed()
+    {
+        return view('admin.produto.index')->with('products',Product::onlyTrashed()->get());
+    }
+
+    public function restore($id){
+        $product = Product::withTrashed()->where('id', $id)->firstOrFail();
+        $product->restore();
+        session()->flash('success', 'Produto ativado com sucesso!');
+        return redirect()->back();
     }
 }

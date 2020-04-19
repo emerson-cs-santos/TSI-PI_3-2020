@@ -24,11 +24,13 @@
                                     </div>
                                 @endif
 
-                                <h2 class="text-center">Cadastro de Usuários</h2>
+                                <h2 class="text-center"> {{ Request::path() == 'Users' ? 'Cadastro de Usuários' : 'Lixeira de Usuários' }} </h2>
 
-                                <div class='d-flex mb-2 justify-content-center'>
-                                    <a href="{{route('Users.create')}}" class='btn btn-success'>Novo</a>
-                                </div>
+                                @if( Request::path() == 'Users' )
+                                    <div class='d-flex mb-2 justify-content-center'>
+                                        <a href="{{route('Users.create')}}" class='btn btn-success'>Novo</a>
+                                    </div>
+                                @endif
 
                                 {{-- Tabela inicio --}}
                                 <div class="table-responsive mt-3">
@@ -47,19 +49,29 @@
                                                 <td>{{$usuario->email}}</td>
                                                 <td>{{ $usuario->type == 'admin' ? ' Administrador' : 'Padrão' }}</td>
 
-                                                <td>
-                                                    <a href="{{ route('Users.show', $usuario->id) }}" class="btn btn-xs btn-primary">Visualizar</a>
-                                                </td>
+                                                @if(!$usuario->trashed())
+                                                    <td>
+                                                        <a href="{{ route('Users.show', $usuario->id) }}" class="btn btn-xs btn-primary">Visualizar</a>
+                                                    </td>
+
+                                                    <td>
+                                                        <a href="{{ route('Users.edit', $usuario->id) }}" class="btn btn-xs btn-warning">Editar</a>
+                                                    </td>
+                                                @else
+                                                    <td>
+                                                        <form action="{{ route('restore-Users.update', $usuario->id) }}"  method="POST" onsubmit="return confirm('Você tem certeza que quer reativar?')">
+                                                            @csrf
+                                                            @method('PUT')
+                                                            <button type="submit" href="#" class="btn btn-primary btn-sm float-center ml-1">Reativar</button>
+                                                        </form>
+                                                    </td>
+                                                @endif
 
                                                 <td>
-                                                    <a href="{{ route('Users.edit', $usuario->id) }}" class="btn btn-xs btn-warning">Editar</a>
-                                                </td>
-
-                                                <td>
-                                                    <form action="{{ route('Users.destroy', $usuario->id) }}" class="d-inline" method="POST" onsubmit="return confirm('Você tem certeza que quer apagar?')">
+                                                    <form action="{{ route('Users.destroy', $usuario->id) }}" class="d-inline" method="POST" onsubmit="return confirm('Você tem certeza?')">
                                                         @csrf
                                                         @method('DELETE')
-                                                        <button type="submit" href="#" class="btn btn-danger btn-sm float-center">Excluir</a>
+                                                        <button type="submit" href="#" class="btn btn-danger btn-sm float-center"> {{ $usuario->trashed() ? 'Apagar' : 'Mover para Lixeira' }} </a>
                                                     </form>
                                                 </td>
                                             </tr>
@@ -95,6 +107,12 @@
                                     </ul>
                                 </nav>
                                 <!---End of Pagination-->
+
+                                @if( Request::path() == 'Users' )
+                                    <a href="{{ route('trashed-Users.index') }}" class="btn btn-xs btn-info" data-placement="top" data-toggle="tooltip" title="Acessar registros excluídos">Lixeira</a>
+                                @else
+                                    <a href="{{route('Users.index')}}" class='btn btn-info'>Voltar ao cadastro</a>
+                                @endif
                             </div>
                         </div>
                     </div>

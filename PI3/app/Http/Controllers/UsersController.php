@@ -13,7 +13,7 @@ class UsersController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth');
+        //$this->middleware('auth');
     }
 
 
@@ -175,10 +175,33 @@ class UsersController extends Controller
     {
         //$user->delete();
 
-        $usuario = User::find($id);
-        $usuario->delete();
+        // $usuario = User::find($id);
+        // $usuario->delete();
 
-        session()->flash('success', 'Usuário apagado com sucesso!');
-        return redirect(route('Users.index'));
+        // session()->flash('success', 'Usuário apagado com sucesso!');
+        // return redirect(route('Users.index'));
+
+        $User = User::withTrashed()->where('id', $id)->firstOrFail();
+        if($User->trashed()){
+            $User->forceDelete();
+            session()->flash('success', 'Usuário apagado com sucesso!');
+        }else{
+            $User->delete();
+            session()->flash('success', 'Usuário movido para lixeira com sucesso!');
+        }
+        return redirect()->back();
+    }
+
+    public function trashed()
+    {
+        return view('admin.usuario.index')->with('usuarios',User::onlyTrashed()->get());
+    }
+
+    public function restore($id)
+    {
+        $user = User::withTrashed()->where('id', $id)->firstOrFail();
+        $user->restore();
+        session()->flash('success', 'Usuário ativado com sucesso!');
+        return redirect()->back();
     }
 }

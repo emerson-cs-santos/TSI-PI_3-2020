@@ -55,16 +55,38 @@ Route::get('/contato_shop', function () {
 
 Route::get('admin', 'AdminController@index')->middleware('is_admin')->name('admin');
 
-// Usuarios
-Route::resource('Users','UsersController');
+Route::middleware('auth')->group(function()
+{
+    // Usuarios
+    Route::resource('Users','UsersController');
+    Route::get('trashed-Users','UsersController@trashed')->name('trashed-Users.index');
+    Route::put('restore-Users/{category}','UsersController@restore')->name('restore-Users.update');
 
-// Categorias
-Route::resource('categories','CategoriesController');
+    // Categorias
+    Route::resource('categories','CategoriesController');
+    Route::get('trashed-categories','CategoriesController@trashed')->name('trashed-categories.index');
+    Route::put('restore-categories/{category}','CategoriesController@restore')->name('restore-categories.update');
 
-// Produtos
-Route::resource('products','ProductsController');
+    // Produtos
+    Route::resource('products','ProductsController');
+    Route::get('trashed-product','ProductsController@trashed')->name('trashed-product.index');
+    Route::put('restore-product/{product}','ProductsController@restore')->name('restore-product.update');
 
-//Clientes
-Route::resource('clientes', 'ClientesController');
+    //Clientes
+    Route::resource('clientes', 'ClientesController');
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // ADMIN - DASHBOARD Fim **************************************************************************************************************************

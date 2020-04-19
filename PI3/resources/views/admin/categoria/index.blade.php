@@ -18,11 +18,13 @@
                                     </div>
                                 @endif
 
-                                <h2 class="text-center">Cadastro de Categorias</h2>
+                                <h2 class="text-center"> {{ Request::path() == 'categories' ? 'Cadastro de Categorias' : 'Lixeira de Categorias' }} </h2>
 
-                                <div class='d-flex mb-2 justify-content-center'>
-                                    <a href="{{route('categories.create')}}" class='btn btn-success'>Novo</a>
-                                </div>
+                                @if( Request::path() == 'categories' )
+                                    <div class='d-flex mb-2 justify-content-center'>
+                                        <a href="{{route('categories.create')}}" class='btn btn-success'>Novo</a>
+                                    </div>
+                                @endif
 
                                 {{-- Tabela inicio --}}
                                 <div class="table-responsive mt-3">
@@ -36,17 +38,29 @@
                                             <tr>
                                                 <td>{{$category->id}}</th>
                                                 <td>{{$category->name}}</td>
+
+                                                @if(!$category->trashed())
+                                                    <td>
+                                                        <a href="{{ route('categories.show', $category->id) }}" class="btn btn-xs btn-primary">Visualizar</a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="{{ route('categories.edit', $category->id) }}" class="btn btn-xs btn-warning">Editar</a>
+                                                    </td>
+                                                @else
+                                                    <td>
+                                                        <form action="{{ route('restore-categories.update', $category->id) }}"  method="POST" onsubmit="return confirm('Você tem certeza que quer reativar?')">
+                                                            @csrf
+                                                            @method('PUT')
+                                                            <button type="submit" href="#" class="btn btn-primary btn-sm float-center ml-1">Reativar</button>
+                                                        </form>
+                                                    </td>
+                                                @endif
+
                                                 <td>
-                                                    <a href="{{ route('categories.show', $category->id) }}" class="btn btn-xs btn-primary">Visualizar</a>
-                                                </td>
-                                                <td>
-                                                    <a href="{{ route('categories.edit', $category->id) }}" class="btn btn-xs btn-warning">Editar</a>
-                                                </td>
-                                                <td>
-                                                    <form  action="{{ route('categories.destroy', $category->id) }}" method="POST" onsubmit="return confirm('Você tem certeza que quer apagar?')">
+                                                    <form  action="{{ route('categories.destroy', $category->id) }}" method="POST" onsubmit="return confirm('Você tem certeza?')">
                                                         @csrf
                                                         @method('DELETE')
-                                                        <button type="submit" href="#" class="btn btn-danger btn-sm float-center">Excluir</button>
+                                                        <button type="submit" href="#" class="btn btn-danger btn-sm float-center"> {{ $category->trashed() ? 'Apagar' : 'Mover para Lixeira' }} </a>
                                                     </form>
                                                 </td>
                                             </tr>
@@ -82,6 +96,12 @@
                                     </ul>
                                 </nav>
                                 <!---End of Pagination-->
+
+                                @if( Request::path() == 'categories' )
+                                    <a href="{{ route('trashed-categories.index') }}" class="btn btn-xs btn-info" data-placement="top" data-toggle="tooltip" title="Acessar registros excluídos">Lixeira</a>
+                                @else
+                                    <a href="{{route('categories.index')}}" class='btn btn-info'>Voltar ao cadastro</a>
+                                @endif
                             </div>
                         </div>
                     </div>
