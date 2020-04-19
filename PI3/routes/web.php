@@ -64,4 +64,7 @@ Route::resource('categories','CategoriesController');
 // Produtos
 Route::resource('products','ProductsController');
 
+//Clientes
+Route::resource('clientes', 'ClientesController');
+
 // ADMIN - DASHBOARD Fim **************************************************************************************************************************
