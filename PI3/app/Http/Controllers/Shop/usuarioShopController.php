@@ -14,6 +14,11 @@ class usuarioShopController extends Controller
 
     public function usuario()
     {
-        return view('usuarioShop');
+        return view('shop.usuario.usuarioShop');
+    }
+
+    public function usuarioSenha()
+    {
+        return view('shop.usuario.usuarioShopSenha');
     }
 }

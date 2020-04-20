@@ -40,6 +40,8 @@
 
         <!--responsive.css-->
         <link rel="stylesheet" href="shop/css/responsive.css">
+
+        <link rel="stylesheet" href="shop/css/geral.css">
     </head>
 
 	<body>
@@ -57,7 +59,7 @@
 				            <div class="container">
 				                <div class="input-group">
 				                    <span class="input-group-addon"><i class="fa fa-search"></i></span>
-				                    <input type="text" class="form-control" placeholder="Search">
+				                    <input type="text" class="form-control" placeholder="O que está buscando?">
 				                    <span class="input-group-addon close-search"><i class="fa fa-times"></i></span>
 				                </div>
 				            </div>
@@ -69,15 +71,18 @@
 				            <div class="attr-nav">
 				                <ul>
 				                	<li class="search">
-				                		<a href="#"><span class="lnr lnr-magnifier"></span></a>
+				                		<a href="#" data-placement="top" data-toggle="tooltip" title="Buscar produtos no site"><span class="lnr lnr-magnifier"></span></a>
                                     </li><!--/.search-->
-				                	<li class="nav-setting">
+
+                                    {{-- <li class="nav-setting">
 				                		<a href="/login"><span class="lnr lnr-question-circle"></span></a>
+				                	</li> --}}
+
+                                    <li class="nav-setting">
+				                		<a href="/usuario_shop" data-placement="top" data-toggle="tooltip" title="Acessar sua conta"><span class="lnr lnr-user">-{{ Auth::user()->name }}</span></a>
 				                	</li>
-				                	<li class="nav-setting">
-				                		<a href="/usuario_shop"><span class="lnr lnr-user"></span></a>
-				                	</li>
-				                    <li class="dropdown">
+
+                                    <li class="dropdown" data-placement="top" data-toggle="tooltip" title="Seu carrinho">
 				                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" >
 				                            <span class="lnr lnr-cart"></span>
 											<span class="badge badge-bg-1">2</span>
@@ -128,7 +133,7 @@
 				                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
 				                    <i class="fa fa-bars"></i>
 				                </button>
-				                <a class="navbar-brand" href="/">Gamer Shopping</a>
+				                <a class="navbar-brand" href="/" data-placement="top" data-toggle="tooltip" title="Voltar a página inicial">Gamer Shopping</a>
 
 				            </div><!--/.navbar-header-->
 				            <!-- End Header Navigation -->
@@ -136,11 +141,11 @@
 				            <!-- Collect the nav links, forms, and other content for toggling -->
 				            <div class="collapse navbar-collapse menu-ui-design" id="navbar-menu">
 				                <ul class="nav navbar-nav navbar-center" data-in="fadeInDown" data-out="fadeOutUp">
-				                    <li class=" {{ \Request::is('home_shop') ? ' active' : '' }} "><a href="/home_shop">Jogos</a></li>
-				                    <li class=" {{ \Request::is('novos_shop') ? ' active' : '' }} "><a href="/novos_shop">Novos Lançamentos</a></li>
-				                    <li class=" {{ \Request::is('destaque_shop') ? ' active' : '' }} "><a href="/destaque_shop">Em destaque</a></li>
-				                    <li class=" {{ \Request::is('blog_shop') ? ' active' : '' }} "><a href="/blog_shop">blog</a></li>
-				                    <li class=" {{ \Request::is('contato_shop') ? ' active' : '' }} "><a href="/contato_shop">Meus Pedidos</a></li>
+				                    <li class=" {{ \Request::is('jogos_shop')        ? ' active' : '' }} "><a href="/jogos_shop"    >Jogos</a></li>
+				                    <li class=" {{ \Request::is('novos_shop')       ? ' active' : '' }} "><a href="/novos_shop"     >Lançamentos</a></li>
+				                    <li class=" {{ \Request::is('destaque_shop')    ? ' active' : '' }} "><a href="/destaque_shop"  >Em destaque</a></li>
+                                    <li class=" {{ \Request::is('contato_shop')     ? ' active' : '' }} "><a href="/contato_shop"   >Meus Pedidos</a></li>
+                                    <li class=" {{ \Request::is('blog_shop')        ? ' active' : '' }} "><a href="/blog_shop"      >blog</a></li>
 				                </ul><!--/.nav -->
 				            </div><!-- /.navbar-collapse -->
 				        </div><!--/.container-->
@@ -202,10 +207,10 @@
                                     </div><!--/.hm-foot-title-->
                                     <div class="hm-foot-menu">
                                         <ul>
-                                            <li><a href="#">Configurações</a></li><!--/li-->
-                                            <li><a href="#">Lista de desejos</a></li><!--/li-->
-                                            <li><a href="#">Carrinho</a></li><!--/li-->
-                                            <li><a href="#">Pedidos</a></li><!--/li-->
+                                            <li><a href="#">Cadastro</a></li>
+                                            <li><a href="#">Lista de desejos</a></li>
+                                            <li><a href="#">Carrinho</a></li>
+                                            <li><a href="#">Pedidos</a></li>
                                         </ul><!--/ul-->
                                     </div><!--/.hm-foot-menu-->
                                 </div><!--/.hm-footer-widget-->

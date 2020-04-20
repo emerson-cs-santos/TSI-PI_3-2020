@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Product;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,16 +19,18 @@ Auth::routes();
 // SHOPPING Inicio **************************************************************************************************************************
 
 Route::get('/', function () {
-    return view('index');
+    return view('index')->with('products', Product::all()->take(3));
 });
 
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/usuario_shop', 'Shop\usuarioShopController@usuario');
+Route::get('/usuario_senha', 'Shop\usuarioShopController@usuarioSenha');
 
-Route::get('/produto_shop', function () {
-    return view('produto');
+Route::get('/jogos_shop', function () {
+    return view('jogos')->with('products', Product::all());
 });
+
 
 Route::get('/novos_shop', function () {
     return view('novos');
@@ -43,6 +46,10 @@ Route::get('/blog_shop', function () {
 
 Route::get('/contato_shop', function () {
     return view('contato');
+});
+
+Route::get('/produto_shop', function () {
+    return view('produto');
 });
 
 // SHOPPING Fim **************************************************************************************************************************

@@ -130,7 +130,7 @@
                 <div class="col-xl-10 col-lg-9 col-md-8 ml-auto mt-3 bd-bottom">
                     <div class="row border-top pt-3">
                     </div>
-                    <div class="col-lg-6 text-center text-success">
+                    <div class="col-12 text-center text-success">
                         <p>&copy; Copyright. Senac 2020 - Sistemas para Internet - Projeto integrador 3</p>
                     </div>
                 </div>
