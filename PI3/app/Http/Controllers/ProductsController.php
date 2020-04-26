@@ -19,7 +19,10 @@ class ProductsController extends Controller
 
     public function index()
     {
-        return view('admin.produto.index')->with('products', Product::all());
+        $products = Product::paginate(4);
+        return view('admin.produto.index', ['products' => $products]);
+
+      //return view('admin.produto.index')->with('products', Product::all() );
     }
 
 
@@ -117,7 +120,10 @@ class ProductsController extends Controller
 
     public function trashed()
     {
-        return view('admin.produto.index')->with('products',Product::onlyTrashed()->get());
+        $products = Product::onlyTrashed()->paginate(4);
+        return view('admin.produto.index', ['products' => $products]);
+
+       // return view('admin.produto.index')->with('products',Product::onlyTrashed()->get());
     }
 
     public function restore($id){

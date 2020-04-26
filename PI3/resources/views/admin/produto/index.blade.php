@@ -77,30 +77,9 @@
                                 {{-- Tabela fim --}}
 
                                 <!---Pagination-->
-                                <nav class="color">
-                                    <ul class="pagination justify-content-center">
-
-                                        <li class="page-item">
-                                            <a href="#" class="page-link py-2 px-3">
-                                                <span>&laquo;</span>
-                                            </a>
-                                        </li>
-
-                                        @for ($i = 1; $i <= 5; $i++)
-                                            <li class="page-item {{ $i == 1 ? ' active' : '' }} ">
-                                                <a href="#" class="page-link py-2 px-3">
-                                                    {{ $i }}
-                                                </a>
-                                            </li>
-                                        @endfor
-
-                                        <li class="page-item">
-                                            <a href="#" class="page-link py-2 px-3">
-                                                <span>&raquo;</span>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </nav>
+                                <div class="pagination justify-content-center">
+                                    {{ $products->links() }}
+                                </div>
                                 <!---End of Pagination-->
 
                                 @if( Request::path() == 'products' )

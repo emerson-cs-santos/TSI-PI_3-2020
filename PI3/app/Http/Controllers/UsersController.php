@@ -7,6 +7,7 @@ use App\User;
 use App\Http\Requests\CreateUsersRequest;
 use App\Http\Requests\EditUserRequest;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\DB;
 
 class UsersController extends Controller
 {
@@ -19,7 +20,10 @@ class UsersController extends Controller
 
     public function index()
     {
-        return view('admin.usuario.index')->with('usuarios', User::all());
+       $users = User::paginate(5);
+       return view('admin.usuario.index', ['usuarios' => $users]);
+
+        //return view('admin.usuario.index')->with('usuarios', User::all());
     }
 
 
@@ -194,7 +198,9 @@ class UsersController extends Controller
 
     public function trashed()
     {
-        return view('admin.usuario.index')->with('usuarios',User::onlyTrashed()->get());
+        $users = User::onlyTrashed()->paginate(5);
+        return view('admin.usuario.index', ['usuarios' => $users]);
+//      return view('admin.usuario.index')->with('usuarios',User::onlyTrashed()->get());
     }
 
     public function restore($id)

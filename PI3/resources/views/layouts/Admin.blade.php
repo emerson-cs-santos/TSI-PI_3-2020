@@ -60,7 +60,6 @@
 
                                     <li class="nav-item"><a href="#" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fa fa-exchange text-light fa-lg mr-3"></i> Movimentações</a></li>
 
-                                    <li class="nav-item"><a href="#" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-wrench text-light fa-lg mr-3"></i> Parâmetros</a></li>
                                 </ul>
                             </div>
                             <!---end of side bar-->
@@ -76,7 +75,7 @@
                                     <div class="col-md-5">
                                         <form>
                                             <div class="input-group">
-                                                <input type="text" class="form-control search-input" placeholder="search">
+                                                <input type="text" class="form-control search-input" placeholder="Procurar no site">
                                                 <button type="button" class="btn btn-white search-button">
                                                     <i class="fas fa-search text-dark"></i>
                                                 </button>
@@ -86,9 +85,7 @@
 
                                     <div class="col-md-3">
                                         <ul class="navbar-nav">
-                                            <li class="nav-item icon-parent"><a href="#" class="nav-link icon-bullet"> <i class="fas fa-comments text-light fa-lg"></i></a>
-                                            <li class="nav-item icon-parent"><a href="#" class="nav-link icon-bullet"><i class="fas fa-bell text-light fa-lg"></i></a>
-                                            <li class="nav-item ml-md-auto"><a href="#" class="nav-link" data-toggle="modal" data-target="#sign-out"> <i class="fas fa-sign-out-alt text-danger fa-lg"></i></a>
+                                            <li class="nav-item ml-md-auto" data-placement="top" data-toggle="tooltip" title="Sair"><a href="#" class="nav-link" data-toggle="modal" data-target="#sign-out"> <i class="fas fa-sign-out-alt text-danger fa-lg"></i></a>
                                         </ul>
                                     </div>
                                 </div>
@@ -106,19 +103,21 @@
       </main>
 
         <!---Modal-->
-        <div class="modal" id="sign-out">
+        <div id="sign-out" class="modal" role="dialog">
             <div class="modal-dialog">
                 <div class="modal-content">
-                    <div class="modal-header">
-                        <span class="modal-title">Signout</span>
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+                    <div class="modal-body text-center">
+                        <span class="font-weight-bold">Encerrar sessão?</span>
                     </div>
-                    <div class="modal-body">
-                        press the button
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-success" data-dismiss="modal"> Leave </button>
-                        <button type="button" class="btn btn-danger" data-dismiss="modal"> Cancel </button>
+
+                    <div class="modal-footer d-flex justify-content-center">
+                        <a href=" {{ route('logout') }} " onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class='btn btn-warning' data-dismiss="modal" data-placement="top" data-toggle="tooltip" title="Encerrar acesso">Sim</a>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            @csrf
+                        </form>
+
+                        <input type="button" value="Não" class="btn btn-primary" data-dismiss="modal" data-placement="top" data-toggle="tooltip" title="Voltar para o dashboard">
                     </div>
                 </div>
             </div>

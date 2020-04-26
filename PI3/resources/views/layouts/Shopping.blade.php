@@ -74,15 +74,21 @@
 				                		<a href="#" data-placement="top" data-toggle="tooltip" title="Buscar produtos no site"><span class="lnr lnr-magnifier"></span></a>
                                     </li><!--/.search-->
 
-                                    {{-- <li class="nav-setting">
-				                		<a href="/login"><span class="lnr lnr-question-circle"></span></a>
-				                	</li> --}}
-
-                                    <li class="nav-setting">
+                                    <li class="nav-setting dropdown_shop">
                                         <a href="/usuario_shop" data-placement="top" data-toggle="tooltip" title="Acessar sua conta">
                                             <span class="lnr lnr-user">-
                                                 @if( Auth::check() ) {{ Auth::user()->name }} @else Login @endif
-                                            </span></a>
+                                            </span>
+                                        </a>
+
+                                        @if( Auth::check() )
+                                            <div class="dropdown-content_shop text-center">
+                                                <div onclick="location.href=' {{ route('logout') }} '; event.preventDefault(); document.getElementById('logout-form').submit();" class="shop_sair" data-dismiss="modal" data-placement="top" data-toggle="tooltip" title="Encerrar acesso">Sair</div>
+                                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                                    @csrf
+                                                </form>
+                                            </div>
+                                        @endif
 				                	</li>
 
                                     <li class="dropdown" data-placement="top" data-toggle="tooltip" title="Seu carrinho">

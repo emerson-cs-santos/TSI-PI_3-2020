@@ -19,7 +19,8 @@ Auth::routes();
 // SHOPPING Inicio **************************************************************************************************************************
 
 Route::get('/', function () {
-    return view('index')->with('products', Product::all()->take(3));
+    return view('index')->with('products', Product::all());
+    //return view('index')->with('products', Product::all()->take(3));
 });
 
 Route::get('/home', 'HomeController@index')->name('home');
