@@ -79,7 +79,10 @@
 				                	</li> --}}
 
                                     <li class="nav-setting">
-				                		<a href="/usuario_shop" data-placement="top" data-toggle="tooltip" title="Acessar sua conta"><span class="lnr lnr-user">-{{ Auth::user()->name }}</span></a>
+                                        <a href="/usuario_shop" data-placement="top" data-toggle="tooltip" title="Acessar sua conta">
+                                            <span class="lnr lnr-user">-
+                                                @if( Auth::check() ) {{ Auth::user()->name }} @else Login @endif
+                                            </span></a>
 				                	</li>
 
                                     <li class="dropdown" data-placement="top" data-toggle="tooltip" title="Seu carrinho">
