@@ -35,7 +35,7 @@
                             <!---Sidebar-->
                             <div class=" col-xl-2 col-lg-3 col-md-4 sidebar fixed-top">
 
-                                <a href="#" class="navbar-brand text-white d-block  mx-auto text-center py-3 mb-4"><i class="fas fa-cannabis text-light fa-3x"></i></a>
+                                <a href="/admin" class="navbar-brand text-white d-block  mx-auto text-center py-3 mb-4"><i class="fas fa-cannabis text-light fa-3x"></i></a>
 
                                 <div class="bottom-border pb-3">
                                     <img src=" {{ Auth::user()->image }} " alt="Imagem do perfil" width="50" class="rounded-circle mr-3">
@@ -46,11 +46,11 @@
                                                                                                                         {{-- {{ \Request::is('admin') ? ' current' : '' }} --}}
                                     <li class="nav-item"><a href="/admin"   class="nav-link text-white p-3 mb-2 sidebar-link {{ Str::contains(Request::path(), 'admin') ? ' current' : '' }} "> <i class="fas fa-home text-light fa-lg mr-3"></i> Home</a></li>
 
-                                    <li class="nav-item"><a href="/Users" class="nav-link text-white p-3 mb-2 sidebar-link {{ Str::of( Request::path() )->contains( ['Users', 'trashed-Users'] ) ? ' current' : '' }}"><i class="fas fa-user text-light fa-lg mr-3"></i> Usuários</a></li>
+                                    <li class="nav-item"><a href="{{route('Users.index')}}" class="nav-link text-white p-3 mb-2 sidebar-link {{ Str::of( Request::path() )->contains( ['Users', 'trashed-Users'] ) ? ' current' : '' }}"><i class="fas fa-user text-light fa-lg mr-3"></i> Usuários</a></li>
 
-                                    <li class="nav-item"><a href="/categories" class="nav-link text-white p-3 mb-2 sidebar-link {{ Str::of( Request::path() )->contains( ['categories', 'trashed-categories'] ) ? ' current' : '' }}"  ><i class="fa fa-cubes text-light fa-lg mr-3"></i> Categorias</a></li>
+                                    <li class="nav-item"><a href="{{route('categories.index')}}" class="nav-link text-white p-3 mb-2 sidebar-link {{ Str::of( Request::path() )->contains( ['categories', 'trashed-categories'] ) ? ' current' : '' }}"  ><i class="fa fa-cubes text-light fa-lg mr-3"></i> Categorias</a></li>
 
-                                    <li class="nav-item"><a href="/products" class="nav-link text-white p-3 mb-2 sidebar-link {{ Str::of( Request::path() )->contains( ['products', 'trashed-product'] ) ? ' current' : '' }}"  ><i class="fa fa-shopping-bag text-light fa-lg mr-3"></i> Produtos</a></li>
+                                    <li class="nav-item"><a href="{{route('products.index')}}" class="nav-link text-white p-3 mb-2 sidebar-link {{ Str::of( Request::path() )->contains( ['products', 'trashed-product'] ) ? ' current' : '' }}"  ><i class="fa fa-shopping-bag text-light fa-lg mr-3"></i> Produtos</a></li>
 
                                     <li class="nav-item"><a href="/clientes" class="nav-link text-white p-3 mb-2 sidebar-link {{ Str::contains(Request::path(), 'clientes') ? ' current' : '' }}"><i class="fas fa-users text-light fa-lg mr-3"></i> Clientes</a></li>
 

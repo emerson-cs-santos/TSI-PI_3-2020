@@ -150,9 +150,9 @@
 				            <!-- Collect the nav links, forms, and other content for toggling -->
 				            <div class="collapse navbar-collapse menu-ui-design" id="navbar-menu">
 				                <ul class="nav navbar-nav navbar-center" data-in="fadeInDown" data-out="fadeOutUp">
-				                    <li class=" {{ \Request::is('jogos_shop')        ? ' active' : '' }} "><a href="/jogos_shop"    >Jogos</a></li>
+				                    <li class=" {{ \Request::is('jogos_shop')       ? ' active' : '' }} "><a href="/jogos_shop"    >Jogos</a></li>
 				                    <li class=" {{ \Request::is('novos_shop')       ? ' active' : '' }} "><a href="/novos_shop"     >Lançamentos</a></li>
-				                    <li class=" {{ \Request::is('destaque_shop')    ? ' active' : '' }} "><a href="/destaque_shop"  >Em destaque</a></li>
+				                    <li class=" {{ \Request::is('destaque_shop')	? ' active' : '' }} "><a href="/destaque_shop"  >Em destaque</a></li>
                                     <li class=" {{ \Request::is('contato_shop')     ? ' active' : '' }} "><a href="/contato_shop"   >Meus Pedidos</a></li>
                                     <li class=" {{ \Request::is('blog_shop')        ? ' active' : '' }} "><a href="/blog_shop"      >blog</a></li>
 				                </ul><!--/.nav -->
