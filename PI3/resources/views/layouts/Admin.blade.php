@@ -52,7 +52,7 @@
 
                                     <li class="nav-item"><a href="{{route('products.index')}}" class="nav-link text-white p-3 mb-2 sidebar-link {{ Str::of( Request::path() )->contains( ['products', 'trashed-product'] ) ? ' current' : '' }}"  ><i class="fa fa-shopping-bag text-light fa-lg mr-3"></i> Produtos</a></li>
 
-                                    <li class="nav-item"><a href="/clientes" class="nav-link text-white p-3 mb-2 sidebar-link {{ Str::contains(Request::path(), 'clientes') ? ' current' : '' }}"><i class="fas fa-users text-light fa-lg mr-3"></i> Clientes</a></li>
+                                    <li class="nav-item"><a href="{{route('clientes.index')}}" class="nav-link text-white p-3 mb-2 sidebar-link {{ Str::of( Request::path() )->contains( ['clientes', 'trashed-cliente'] ) ? ' current' : '' }}"><i class="fas fa-users text-light fa-lg mr-3"></i> Clientes</a></li>
 
                                     <li class="nav-item"><a href="#" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-shopping-cart text-light fa-lg mr-3"></i> Carrinhos</a></li>
 

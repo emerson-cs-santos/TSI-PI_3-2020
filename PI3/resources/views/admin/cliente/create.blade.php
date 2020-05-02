@@ -27,7 +27,7 @@
                                     @method('POST')
                                     <div class="form-group">
                                         <label for="name">Nome</label>
-                                        <input type="text" class='form-control' name="name" placeholder="Digite o nome do Usuário" value="{{old('name')}}">
+                                        <input type="text" class='form-control' name="name" placeholder="Digite o nome do cliente" value="{{old('name')}}">
                                     </div>
                                     <button type="submit" class="btn btn-success">Criar</button>
                                     <a href="{{route('clientes.index')}}" class='btn btn-primary'>Voltar</a>

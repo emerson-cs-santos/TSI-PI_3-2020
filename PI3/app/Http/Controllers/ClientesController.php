@@ -18,7 +18,8 @@ class ClientesController extends Controller
 
     public function index()
     {
-        return view('admin.cliente.index')->with('clientes', Cliente::all());
+        $clientes = Cliente::paginate(5);
+        return view('admin.cliente.index', ['clientes' => $clientes]);
     }
 
 
@@ -64,5 +65,19 @@ class ClientesController extends Controller
         $cliente->delete();
         session()->flash('success', 'Cliente apagado com sucesso!');
         return redirect(route('clientes.index'));
+    }
+
+    public function trashed()
+    {
+        $clientes = Cliente::onlyTrashed()->paginate(5);
+        return view('admin.cliente.index', ['clientes' => $clientes]);
+    }
+
+    public function restore($id)
+    {
+        $cliente = Cliente::withTrashed()->where('id', $id)->firstOrFail();
+        $cliente->restore();
+        session()->flash('success', 'Cliente reativado com sucesso!');
+        return redirect()->back();
     }
 }

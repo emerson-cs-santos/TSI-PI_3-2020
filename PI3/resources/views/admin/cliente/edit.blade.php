@@ -26,14 +26,9 @@
                                     @csrf
                                     @method('PUT')
 
-                                    <div class="form-group" hidden>
-                                        <label for="id">ID</label>
-                                        <input type="number" class='form-control' name="id" value="{{$cliente->id}}">
-                                    </div>
-
                                     <div class="form-group">
                                         <label for="name">Nome</label>
-                                        <input type="text" class='form-control' name="name" value="{{$cliente->name}}">
+                                        <input type="text" class='form-control' name="name" placeholder="Digite o nome do cliente" value="{{$cliente->name}}">
                                     </div>
 
                                     <button type="submit" class="btn btn-warning">Salvar</button>

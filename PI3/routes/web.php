@@ -82,6 +82,8 @@ Route::middleware('auth')->group(function()
 
     //Clientes
     Route::resource('clientes', 'ClientesController');
+    Route::get('trashed-cliente', 'ClientesController@trashed')->name('trashed-cliente.index');
+    Route::put('restore-cliente/{cliente}', 'ClientesController@restore')->name('restore-cliente.update');
 });
 
 
