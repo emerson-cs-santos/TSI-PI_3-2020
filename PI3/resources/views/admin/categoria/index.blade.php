@@ -18,6 +18,10 @@
                                     </div>
                                 @endif
 
+                                @if(session()->has('error'))
+                                    <div class="alert alert-danger">{{ session()->get('error') }}</div>
+                                @endif
+
                                 <h2 class="text-center"> {{ Request::path() == 'categories' ? 'Cadastro de Categorias' : 'Lixeira de Categorias' }} </h2>
 
                                 @if( Request::path() == 'categories' )
@@ -32,12 +36,14 @@
                                         <thead class="text-dark">
                                             <th>Código</th>
                                             <th>Nome</th>
+                                            <th>Qtd de Produtos</th>
                                         </thead>
                                         <tbody>
                                             @foreach($categories as $category)
                                             <tr>
                                                 <td>{{$category->id}}</th>
                                                 <td>{{$category->name}}</td>
+                                                <td>{{$category->products()->count()}}</td>
 
                                                 @if(!$category->trashed())
                                                     <td>

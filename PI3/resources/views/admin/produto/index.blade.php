@@ -18,6 +18,10 @@
                                     </div>
                                 @endif
 
+                                @if(session()->has('error'))
+                                    <div class="alert alert-danger">{{ session()->get('error') }}</div>
+                                @endif
+
                                 <h2 class="text-center"> {{ Request::path() == 'products' ? 'Cadastro de Produtos' : 'Lixeira de produtos' }} </h2>
 
                                 @if( Request::path() == 'products' )

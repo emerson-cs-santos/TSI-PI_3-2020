@@ -109,6 +109,12 @@ class UsersController extends Controller
     {
         //return view('admin.usuario.edit')->with('usuario',$user);
 
+        if ( auth()->user()->id  !== intval($id) )
+        {
+            session()->flash('error', "Só é possivel gerenciar seu próprio usuário!");
+            return redirect()->back();
+        }
+
         $usuario_editar =  User::find($id);
 
         // Real tipo que fica salvo no Banco não ser exibido na página
@@ -134,6 +140,12 @@ class UsersController extends Controller
 
        $usuario = User::find($request->id);
 
+       if ( auth()->user()->id  !== intval($request->id) )
+       {
+           session()->flash('error', "Só é possivel gerenciar seu próprio usuário!");
+           return redirect()->back();
+       }
+
        $usuario->name = $request->name;
        $usuario->email = $request->email;
 
@@ -148,6 +160,11 @@ class UsersController extends Controller
             $nivel_acesso ='default';
         }
         $usuario->type = $nivel_acesso;
+
+        if($usuario->email != $request->email){
+            $usuario->email = $request->email;
+            $usuario->email_verified_at = null;
+        }
 
         // Apenas gravar nova senha se foi alterada na edição do cadastro.
         if ( !$request->password == '')
@@ -184,6 +201,12 @@ class UsersController extends Controller
 
         // session()->flash('success', 'Usuário apagado com sucesso!');
         // return redirect(route('Users.index'));
+
+        if ( auth()->user()->id  !== intval($id) )
+        {
+            session()->flash('error', "Só é possivel gerenciar seu próprio usuário!");
+            return redirect()->back();
+        }
 
         $User = User::withTrashed()->where('id', $id)->firstOrFail();
         if($User->trashed()){

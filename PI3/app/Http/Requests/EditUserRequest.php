@@ -16,7 +16,7 @@ class EditUserRequest extends FormRequest
     {
         return [
             'name'                      => 'required|min:3|alpha_num'
-            ,'email'                    => 'required|email:filter'
+            ,'email'                    => 'required|email:filter|unique:users,email,'.auth()->user()->id
             ,'password'                 => 'required_with:password_confirmation|same:password_confirmation|min:8'
             ,'password_confirmation'    => 'min:8'
             ,'type'                     => 'required'

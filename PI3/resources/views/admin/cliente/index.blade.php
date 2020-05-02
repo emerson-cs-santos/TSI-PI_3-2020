@@ -18,6 +18,10 @@
                                 </div>
                             @endif
 
+                            @if(session()->has('error'))
+                                <div class="alert alert-danger">{{ session()->get('error') }}</div>
+                            @endif
+
                             @if(!Str::contains(Request::path(), 'trashed-cliente'))
                                 <h2 class="text-center">Cadastro de Clientes</h2>
                                 <div class='d-flex mb-2 justify-content-center '>

@@ -24,6 +24,10 @@
                                     </div>
                                 @endif
 
+                                @if(session()->has('error'))
+                                    <div class="alert alert-danger">{{ session()->get('error') }}</div>
+                                @endif
+
                                 <h2 class="text-center"> {{ Request::path() == 'Users' ? 'Cadastro de Usuários' : 'Lixeira de Usuários' }} </h2>
 
                                 @if( Request::path() == 'Users' )
