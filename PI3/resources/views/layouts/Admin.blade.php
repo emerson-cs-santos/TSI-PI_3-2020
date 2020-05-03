@@ -44,7 +44,7 @@
 
                                 <ul class="navbar-nav flex-column mt-4">
                                                                                                                         {{-- {{ \Request::is('admin') ? ' current' : '' }} --}}
-                                    <li class="nav-item"><a href="/admin"   class="nav-link text-white p-3 mb-2 sidebar-link {{ Str::contains(Request::path(), 'admin') ? ' current' : '' }} "> <i class="fas fa-home text-light fa-lg mr-3"></i> Home</a></li>
+                                    <li class="nav-item"><a href="/admin" class="nav-link text-white p-3 mb-2 sidebar-link {{ Str::contains(Request::path(), 'admin') ? ' current' : '' }} "> <i class="fas fa-home text-light fa-lg mr-3"></i> Home</a></li>
 
                                     <li class="nav-item"><a href="{{route('Users.index')}}" class="nav-link text-white p-3 mb-2 sidebar-link {{ Str::of( Request::path() )->contains( ['Users', 'trashed-Users'] ) ? ' current' : '' }}"><i class="fas fa-user text-light fa-lg mr-3"></i> Usuários</a></li>
 
@@ -58,7 +58,7 @@
 
                                     <li class="nav-item"><a href="#" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-truck-moving text-light fa-lg mr-3"></i> Pedidos</a></li>
 
-                                    <li class="nav-item"><a href="#" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fa fa-exchange text-light fa-lg mr-3"></i> Movimentações</a></li>
+                                    <li class="nav-item"><a href="{{route('movimentos.index')}}" class="nav-link text-white p-3 mb-2 sidebar-link {{ Str::of( Request::path() )->contains( ['movimentos', 'trashed-movimentos'] ) ? ' current' : '' }}"><i class="fa fa-exchange text-light fa-lg mr-3"></i> Movimentações</a></li>
 
                                 </ul>
                             </div>

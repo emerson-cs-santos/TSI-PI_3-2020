@@ -22,11 +22,11 @@
                                     <div class="alert alert-danger">{{ session()->get('error') }}</div>
                                 @endif
 
-                                <h2 class="text-center"> {{ Request::path() == 'products' ? 'Cadastro de Produtos' : 'Lixeira de produtos' }} </h2>
+                                <h2 class="text-center"> {{ Request::path() == 'movimentos' ? 'Movimentação de Estoque' : 'Lixeira da Movimentação de Estoque' }} </h2>
 
-                                @if( Request::path() == 'products' )
+                                @if( Request::path() == 'movimentos' )
                                     <div class='d-flex mb-2 justify-content-center'>
-                                        <a href="{{route('products.create')}}" class='btn btn-success'>Novo</a>
+                                        <a href="{{route('movimentos.create')}}" class='btn btn-success'>Novo</a>
                                     </div>
                                 @endif
 
@@ -34,33 +34,31 @@
                                 <div class="table-responsive mt-3">
                                     <table class="table table-striped bg-light text-center table-bordered">
                                         <thead class="text-dark">
-                                            <th>Código</th>
-                                            <th>Nome</th>
-                                            <th>Preview</th>
+                                            <th>ID</th>
+                                            <th>Produto</th>
+                                            <th>Tipo</th>
                                             <th>Quantidade</th>
-                                            <th>Preço</th>
-                                            <th>Desconto</th>
+                                            <th>Origem</th>
                                         </thead>
                                         <tbody>
-                                            @foreach($products as $product)
+                                            @foreach($movimentos as $movimento)
                                             <tr>
-                                                <td>{{$product->id}}</td>
-                                                <td>{{$product->name}}</td>
-                                                <td> <img src="@if ( empty($product->image) ) {{asset('admin_assets/images/produto_sem_imagem.jpg')}} @else {{$product->image}} @endif" alt="Preview do produto" class='img_preview'> </td>
-                                                <td> {{ App\Product::find($product->id)->produtoSaldo->sum('quantidade')}} </td>
-                                                <td>{{$product->price}}</td>
-                                                <td>{{$product->discount}}</td>
+                                                <td>{{$movimento->id}}</th>
+                                                <td>{{ App\Movimento::withTrashed()->find($movimento->id)->produto->name }} </td>
+                                                <td>@if( $movimento->tipo == 'E' ) Entrada @else Saída @endif</td>
+                                                <td>@if( $movimento->tipo == 'S' ) {{$movimento->quantidade*-1}} @else {{$movimento->quantidade}} @endif</td>
+                                                <td>@if( $movimento->fk_origem == 0) Manual @else Pedido - Nr X @endif</td>
 
-                                                @if(!$product->trashed())
+                                                @if(!$movimento->trashed())
                                                     <td>
-                                                        <a href="{{ route('products.show', $product->id) }}" class="btn btn-xs btn-primary">Visualizar</a>
+                                                        <a href="{{ route('movimentos.show', $movimento->id) }}" class="btn btn-xs btn-primary">Visualizar</a>
                                                     </td>
                                                     <td>
-                                                        <a href="{{ route('products.edit', $product->id) }}" class="btn btn-xs btn-warning">Editar</a>
+                                                        <a href="{{ route('movimentos.edit', $movimento->id) }}" class="btn btn-xs btn-warning">Editar</a>
                                                     </td>
                                                 @else
                                                     <td>
-                                                        <form action="{{ route('restore-product.update', $product->id) }}" method="POST" onsubmit="return confirm('Você tem certeza que quer reativar?')">
+                                                        <form action="{{ route('restore-movimentos.update', $movimento->id) }}"  method="POST" onsubmit="return confirm('Você tem certeza que quer reativar?')">
                                                             @csrf
                                                             @method('PUT')
                                                             <button type="submit" href="#" class="btn btn-primary btn-sm float-center ml-1">Reativar</button>
@@ -69,10 +67,10 @@
                                                 @endif
 
                                                 <td>
-                                                    <form action="{{ route('products.destroy', $product->id) }}" method="POST" onsubmit="return confirm('Você tem certeza?')">
+                                                    <form  action="{{ route('movimentos.destroy', $movimento->id) }}" method="POST" onsubmit="return confirm('Você tem certeza?')">
                                                         @csrf
                                                         @method('DELETE')
-                                                        <button type="submit" href="#" class="btn btn-danger btn-sm float-center"> {{ $product->trashed() ? 'Apagar' : 'Mover para Lixeira' }} </a>
+                                                        <button type="submit" href="#" class="btn btn-danger btn-sm float-center"> {{ $movimento->trashed() ? 'Apagar' : 'Mover para Lixeira' }} </a>
                                                     </form>
                                                 </td>
                                             </tr>
@@ -84,14 +82,14 @@
 
                                 <!---Pagination-->
                                 <div class="pagination justify-content-center">
-                                    {{ $products->links() }}
+                                    {{ $movimentos->links() }}
                                 </div>
                                 <!---End of Pagination-->
 
-                                @if( Request::path() == 'products' )
-                                    <a href="{{ route('trashed-product.index') }}" class="btn btn-xs btn-info" data-placement="top" data-toggle="tooltip" title="Acessar registros excluídos">Lixeira</a>
+                                @if( Request::path() == 'movimentos' )
+                                    <a href="{{ route('trashed-movimentos.index') }}" class="btn btn-xs btn-info" data-placement="top" data-toggle="tooltip" title="Acessar registros excluídos">Lixeira</a>
                                 @else
-                                    <a href="{{route('products.index')}}" class='btn btn-info'>Voltar ao cadastro</a>
+                                    <a href="{{route('movimentos.index')}}" class='btn btn-info'>Voltar ao cadastro</a>
                                 @endif
                             </div>
                         </div>

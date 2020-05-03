@@ -41,7 +41,7 @@
                                         <tbody>
                                             @foreach($categories as $category)
                                             <tr>
-                                                <td>{{$category->id}}</th>
+                                                <td>{{$category->id}}</td>
                                                 <td>{{$category->name}}</td>
                                                 <td>{{$category->products()->count()}}</td>
 

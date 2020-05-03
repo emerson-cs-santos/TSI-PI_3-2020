@@ -28,7 +28,7 @@ class ProductsController extends Controller
 
     public function create()
     {
-        return view('admin.produto.create')->with('categories', Category::all());
+        return view('admin.produto.create')->with('categories', Category::all() );
     }
 
 

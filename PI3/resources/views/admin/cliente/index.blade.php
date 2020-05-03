@@ -37,12 +37,14 @@
                                     <thead class="text-dark">
                                         <th>Código</th>
                                         <th>Nome</th>
+                                        <th>Usuário no Sistema</th>
                                     </thead>
                                     <tbody>
                                         @foreach($clientes as $cliente)
                                         <tr>
-                                            <td>{{$cliente->id}}</th>
+                                            <td>{{$cliente->id}}</td>
                                             <td>{{$cliente->name}}</td>
+                                            <td> @if ( $cliente->user_id > 0 ) {{App\Cliente::withTrashed()->find($cliente->user_id)->usuario->name}} @else Sem usuário @endif</td>
                                             @if(!$cliente->trashed())
                                             <td>
                                                 <a href="{{ route('clientes.show', $cliente->id) }}" class="btn btn-xs btn-primary">Visualizar</a>

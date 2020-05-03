@@ -80,10 +80,21 @@ Route::middleware('auth')->group(function()
     Route::get('trashed-product','ProductsController@trashed')->name('trashed-product.index');
     Route::put('restore-product/{product}','ProductsController@restore')->name('restore-product.update');
 
-    //Clientes
+    // Clientes
     Route::resource('clientes', 'ClientesController');
     Route::get('trashed-cliente', 'ClientesController@trashed')->name('trashed-cliente.index');
     Route::put('restore-cliente/{cliente}', 'ClientesController@restore')->name('restore-cliente.update');
+
+    // Carrinhos
+
+
+    // Pedidos
+
+
+    // Movimentações
+    Route::resource('movimentos', 'MovimentoController');
+    Route::get('trashed-movimentos', 'MovimentoController@trashed')->name('trashed-movimentos.index');
+    Route::put('restore-movimentos/{movimento}', 'MovimentoController@restore')->name('restore-movimentos.update');
 });
 
 
