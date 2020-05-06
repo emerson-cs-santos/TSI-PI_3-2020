@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Product;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,8 +19,21 @@ Auth::routes();
 
 // SHOPPING Inicio **************************************************************************************************************************
 
-Route::get('/', function () {
+Route::get('/', function ()
+{
     return view('index')->with('products', Product::all());
+
+    // if ( Auth::check() )
+    // {
+    //     if( Auth::user()->isAdmin() )
+    //     {
+    //         return view('admin.index');
+    //     }
+    //     else
+    //     {
+    //         return view('index')->with('products', Product::all());
+    //     }
+    // }
     //return view('index')->with('products', Product::all()->take(3));
 });
 

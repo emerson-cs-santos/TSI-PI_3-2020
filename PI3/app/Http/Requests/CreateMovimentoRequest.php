@@ -16,7 +16,6 @@ class CreateMovimentoRequest extends FormRequest
 
     public function rules()
     {
-        dd($this->route('id'));
         return [
             'tipo'          => 'required'
             ,'quantidade'   => [ 'required', new ProdutoQuantidadeNegativa ,new VerSaldo( request()->all() ) ]
