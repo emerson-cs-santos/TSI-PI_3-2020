@@ -14,7 +14,8 @@
         <title>Gamer Shopping</title>
 
         <!-- For favicon png -->
-		<link rel="shortcut icon" type="image/icon" href="shop/logo/favicon.png"/>
+        {{-- <link rel="shortcut icon" type="image/icon" href="shop/logo/favicon.png"/> --}}
+        <link rel="shortcut icon" href="{{ asset('shop/images/shop.ico') }}" type="image/x-icon">
 
         <!--font-awesome.min.css-->
         <link rel="stylesheet" href="shop/css/font-awesome.min.css">
