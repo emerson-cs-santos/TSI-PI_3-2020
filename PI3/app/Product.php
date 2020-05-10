@@ -37,5 +37,25 @@ class Product extends Model
     // {
     //     return $this->hasMany(Movimento::class, 'product_id')->where('movimentos.tipo', '=', 'S');
     // }
+
+    public function discountPrice()
+    {
+        return $this->fMoney($this->price * (1-$this->discount/100));
+     }
+
+     public function price()
+     {
+         return $this->fMoney($this->price);
+     }
+
+     public function fMoney($value)
+     {
+         return 'R$'.number_format($value, 2);
+     }
+
+     public function descontoExibir()
+     {
+         return number_format($this->discount, 0) . '%';
+     }
 }
 

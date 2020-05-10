@@ -18,31 +18,31 @@
         <link rel="shortcut icon" href="{{ asset('shop/images/shop.ico') }}" type="image/x-icon">
 
         <!--font-awesome.min.css-->
-        <link rel="stylesheet" href="shop/css/font-awesome.min.css">
+        <link rel="stylesheet" href="{{ asset('shop/css/font-awesome.min.css') }}">
 
         <!--linear icon css-->
-		<link rel="stylesheet" href="shop/css/linearicons.css">
+		<link rel="stylesheet" href="{{ asset('shop/css/linearicons.css') }}">
 
 		<!--animate.css-->
-        <link rel="stylesheet" href="shop/css/animate.css">
+        <link rel="stylesheet" href="{{ asset('shop/css/animate.css') }}">
 
         <!--owl.carousel.css-->
-        <link rel="stylesheet" href="shop/css/owl.carousel.min.css">
-		<link rel="stylesheet" href="shop/css/owl.theme.default.min.css">
+        <link rel="stylesheet" href="{{ asset('shop/css/owl.carousel.min.css') }}">
+		<link rel="stylesheet" href="{{ asset('shop/css/owl.theme.default.min.css') }}">
 
         <!--bootstrap.min.css-->
-        <link rel="stylesheet" href="shop/css/bootstrap.min.css">
+        <link rel="stylesheet" href="{{ asset('shop/css/bootstrap.min.css') }}">
 
 		<!-- bootsnav -->
-		<link rel="stylesheet" href="shop/css/bootsnav.css" >
+		<link rel="stylesheet" href="{{ asset('shop/css/bootsnav.css') }}" >
 
         <!--style.css-->
-        <link rel="stylesheet" href="shop/css/style.css">
+        <link rel="stylesheet" href="{{ asset('shop/css/style.css') }}">
 
         <!--responsive.css-->
-        <link rel="stylesheet" href="shop/css/responsive.css">
+        <link rel="stylesheet" href="{{ asset('shop/css/responsive.css') }}">
 
-        <link rel="stylesheet" href="shop/css/geral.css">
+        <link rel="stylesheet" href="{{ asset('shop/css/geral.css') }}">
     </head>
 
 	<body>
@@ -151,11 +151,10 @@
 				            <!-- Collect the nav links, forms, and other content for toggling -->
 				            <div class="collapse navbar-collapse menu-ui-design" id="navbar-menu">
 				                <ul class="nav navbar-nav navbar-center" data-in="fadeInDown" data-out="fadeOutUp">
-				                    <li class=" {{ \Request::is('jogos_shop')       ? ' active' : '' }} "><a href="/jogos_shop"    >Jogos</a></li>
+				                    <li class=" {{ Str::of( Request::path() )->contains( ['jogos_shop', 'search/category'] )  ? ' active' : '' }} "><a href="/jogos_shop"    >Jogos</a></li>
 				                    <li class=" {{ \Request::is('novos_shop')       ? ' active' : '' }} "><a href="/novos_shop"     >Lançamentos</a></li>
-				                    <li class=" {{ \Request::is('destaque_shop')	? ' active' : '' }} "><a href="/destaque_shop"  >Em destaque</a></li>
+				                    <li class=" {{ \Request::is('destaque_shop')	? ' active' : '' }} "><a href="/destaque_shop"  >Mais vendidos</a></li>
                                     <li class=" {{ \Request::is('contato_shop')     ? ' active' : '' }} "><a href="/contato_shop"   >Meus Pedidos</a></li>
-                                    <li class=" {{ \Request::is('blog_shop')        ? ' active' : '' }} "><a href="/blog_shop"      >blog</a></li>
 				                </ul><!--/.nav -->
 				            </div><!-- /.navbar-collapse -->
 				        </div><!--/.container-->
@@ -177,7 +176,7 @@
             <!--newsletter strat -->
             <section id="newsletter"  class="newsletter">
                 <div class="container">
-                    <div class="hm-footer-details">
+                    <div class="hm-footer-details text-center">
                         <div class="row">
                             <div class=" col-md-3 col-sm-6 col-xs-12">
                                 <div class="hm-footer-widget">
@@ -187,8 +186,7 @@
                                     <div class="hm-foot-menu">
                                         <ul>
                                             <li><a href="#">Quem somos</a></li><!--/li-->
-                                            <li><a href="#">contato</a></li><!--/li-->
-                                            <li><a href="#">Novidades</a></li><!--/li-->
+                                            <li><a href="#">Contato</a></li><!--/li-->
                                             <li><a href="#">a Loja</a></li><!--/li-->
                                         </ul><!--/ul-->
                                     </div><!--/.hm-foot-menu-->
@@ -197,7 +195,7 @@
                             <div class=" col-md-3 col-sm-6 col-xs-12">
                                 <div class="hm-footer-widget">
                                     <div class="hm-foot-title">
-                                        <h4>Acervo</h4>
+                                        <h4>Jogos</h4>
                                     </div><!--/.hm-foot-title-->
                                     <div class="hm-foot-menu">
                                         <ul>
@@ -283,26 +281,26 @@
 
 		<!-- Include all js compiled plugins (below), or include individual files as needed -->
 
-		<script src="shop/js/jquery.js"></script>
+		<script src="{{ asset('shop/js/jquery.js') }}"></script>
 
         <!--modernizr.min.js-->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
 
 		<!--bootstrap.min.js-->
-        <script src="shop/js/bootstrap.min.js"></script>
+        <script src="{{ asset('shop/js/bootstrap.min.js') }}"></script>
 
 		<!-- bootsnav js -->
-		<script src="shop/js/bootsnav.js"></script>
+		<script src="{{ asset('shop/js/bootsnav.js') }}"></script>
 
 		<!--owl.carousel.js-->
-        <script src="shop/js/owl.carousel.min.js"></script>
+        <script src="{{ asset('shop/js/owl.carousel.min.js') }}"></script>
 
 
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
 
 
         <!--Custom JS-->
-        <script src="shop/js/custom.js"></script>
+        <script src="{{ asset('shop/js/custom.js') }}"></script>
 
     </body>
 

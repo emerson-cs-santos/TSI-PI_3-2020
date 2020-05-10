@@ -6,15 +6,14 @@ use Illuminate\Support\Facades\Schema;
 
 class AddRelationProductAndCategory extends Migration
 {
- 
+
     public function up()
     {
         Schema::table('products', function (Blueprint $table) {
-            $table->integer('category_id');
+            $table->integer('category_id')->references('id')->on('categories');
         });
     }
 
- 
     public function down()
     {
         Schema::table('products', function (Blueprint $table) {

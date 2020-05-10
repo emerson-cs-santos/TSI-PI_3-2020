@@ -37,14 +37,20 @@ Route::get('/', function ()
     //return view('index')->with('products', Product::all()->take(3));
 });
 
+// HomeController
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/jogos_shop', 'HomeController@jogos');
+Route::get('/search/category/{id}', 'HomeController@searchCategory')->name('search-category');
+//Route::get('/search/category/{category}', 'HomeController@searchCategory')->name('search-category');
 
+// usuarioShopController
 Route::get('/usuario_shop', 'Shop\usuarioShopController@usuario');
 Route::get('/usuario_senha', 'Shop\usuarioShopController@usuarioSenha');
 
-Route::get('/jogos_shop', function () {
-    return view('jogos')->with('products', Product::all());
-});
+// Route::get('/jogos_shop', function () {
+//     return view('jogos')->with('products', Product::all() );
+//     //return view('jogos')->with('products', Product::all()->sortByDesc('price')->take(5) );
+// });
 
 
 Route::get('/novos_shop', function () {

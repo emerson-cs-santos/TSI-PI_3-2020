@@ -44,12 +44,20 @@ class ProductsController extends Controller
              $imagem_convertida  = "data:image/jpeg;base64,$dataEncoded";
         }
 
+        // Banco de dados não aceita nulo
+        $desconto = $request->discount;
+
+        if ($desconto<=0 || $desconto == null)
+        {
+            $desconto = 0;
+        }
+
         Product::create([
             'name' => $request->name
             ,'image' => $imagem_convertida
             ,'desc' => $request->descricao
             ,'price' => $request->preco
-            ,'discount' => $request->discount
+            ,'discount' => $desconto
             ,'category_id'  => $request->category_id
         ]);
 
@@ -72,7 +80,6 @@ class ProductsController extends Controller
 
     public function update(EditProductRequest $request, Product $product)
     {
-
         // Apenas gravar imagem se foi alterada
         $file = $request->file('imagem');
         if ( !empty($file) )
@@ -86,11 +93,19 @@ class ProductsController extends Controller
             ]);
         }
 
+        // Banco de dados não aceita nulo
+        $desconto = $request->discount;
+
+        if ($desconto<=0 || $desconto == null)
+        {
+            $desconto = 0;
+        }
+
         $product->update([
             'name'          => $request->name
             ,'desc'         => $request->descricao
             ,'price'        => $request->preco
-            ,'discount'     => $request->discount
+            ,'discount'     => $desconto
             ,'category_id'  => $request->category_id
         ]);
 

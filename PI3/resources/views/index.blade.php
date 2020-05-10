@@ -149,8 +149,12 @@
     <!--populer-products start -->
     <section id="populer-products" class="populer-products">
         <div class="container">
-            <div class="populer-products-content">
+            <div class="section-header">
+                <h2>Lançamentos</h2>
+            </div><!--/.section-header-->
+            <div class="populer-products-content mt-5">
                 <div class="row">
+
                     <div class="col-md-3">
                         <div class="single-populer-products">
                             <div class="single-populer-product-img mt40">
@@ -162,37 +166,19 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-6">
+
+                    <div class="col-md-3">
                         <div class="single-populer-products">
-                            <div class="single-inner-populer-products">
-                                <div class="row">
-                                    <div class="col-md-4 col-sm-12">
-                                        <div class="single-inner-populer-product-img">
-                                            <img src="shop/images/populer-products/p2.png" alt="populer-products images">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-8 col-sm-12">
-                                        <div class="single-inner-populer-product-txt">
-                                            <h2>
-                                                <a href="#">
-                                                    latest designed stool <span>and</span> chair
-                                                </a>
-                                            </h2>
-                                            <p>
-                                                Edi ut perspiciatis unde omnis iste natusina error sit voluptatem accusantium doloret mque laudantium, totam rem aperiam.
-                                            </p>
-                                            <div class="populer-products-price">
-                                                <h4>Sales Start from <span>$99.00</span></h4>
-                                            </div>
-                                            <button class="btn-cart welcome-add-cart populer-products-btn" onclick="window.location.href='#'">
-                                                discover more
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
+                            <div class="single-populer-product-img mt40">
+                                <img src="shop/images/populer-products/p1.png" alt="populer-products images">
+                            </div>
+                            <h2><a href="#">arm chair</a></h2>
+                            <div class="single-populer-products-para">
+                                <p>Nemo enim ipsam voluptatem quia volu ptas sit asperna aut odit aut fugit.</p>
                             </div>
                         </div>
                     </div>
+
                     <div class="col-md-3">
                         <div class="single-populer-products">
                             <div class="single-populer-products">
@@ -206,6 +192,19 @@
                             </div>
                         </div>
                     </div>
+
+                    <div class="col-md-3">
+                        <div class="single-populer-products">
+                            <div class="single-populer-product-img mt40">
+                                <img src="shop/images/populer-products/p1.png" alt="populer-products images">
+                            </div>
+                            <h2><a href="#">arm chair</a></h2>
+                            <div class="single-populer-products-para">
+                                <p>Nemo enim ipsam voluptatem quia volu ptas sit asperna aut odit aut fugit.</p>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div><!--/.container-->
@@ -213,241 +212,11 @@
     </section><!--/.populer-products-->
     <!--populer-products end-->
 
-    <!--new-arrivals start -->
-    <section id="new-arrivals" class="new-arrivals">
-        <div class="container">
-            <div class="section-header">
-                <h2>Novos lançamentos</h2>
-            </div><!--/.section-header-->
-            <div class="new-arrivals-content">
-                <div class="row">
-                    <div class="col-md-3 col-sm-4">
-                        <div class="single-new-arrival">
-                            <div class="single-new-arrival-bg">
-                                <img src="shop/images/collection/arrivals1.png" alt="new-arrivals images">
-                                <div class="single-new-arrival-bg-overlay"></div>
-                                <div class="sale bg-1">
-                                    <p>sale</p>
-                                </div>
-                                <div class="new-arrival-cart">
-                                    <p>
-                                        <span class="lnr lnr-cart"></span>
-                                        <a href="#">add <span>to </span> cart</a>
-                                    </p>
-                                    <p class="arrival-review pull-right">
-                                        <span class="lnr lnr-heart"></span>
-                                        <span class="lnr lnr-frame-expand"></span>
-                                    </p>
-                                </div>
-                            </div>
-                            <h4><a href="#">wooden chair</a></h4>
-                            <p class="arrival-product-price">$65.00</p>
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-sm-4">
-                        <div class="single-new-arrival">
-                            <div class="single-new-arrival-bg">
-                                <img src="shop/images/collection/arrivals2.png" alt="new-arrivals images">
-                                <div class="single-new-arrival-bg-overlay"></div>
-                                <div class="sale bg-2">
-                                    <p>sale</p>
-                                </div>
-                                <div class="new-arrival-cart">
-                                    <p>
-                                        <span class="lnr lnr-cart"></span>
-                                        <a href="#">add <span>to </span> cart</a>
-                                    </p>
-                                    <p class="arrival-review pull-right">
-                                        <span class="lnr lnr-heart"></span>
-                                        <span class="lnr lnr-frame-expand"></span>
-                                    </p>
-                                </div>
-                            </div>
-                            <h4><a href="#">single armchair</a></h4>
-                            <p class="arrival-product-price">$80.00</p>
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-sm-4">
-                        <div class="single-new-arrival">
-                            <div class="single-new-arrival-bg">
-                                <img src="shop/images/collection/arrivals3.png" alt="new-arrivals images">
-                                <div class="single-new-arrival-bg-overlay"></div>
-                                <div class="new-arrival-cart">
-                                    <p>
-                                        <span class="lnr lnr-cart"></span>
-                                        <a href="#">add <span>to </span> cart</a>
-                                    </p>
-                                    <p class="arrival-review pull-right">
-                                        <span class="lnr lnr-heart"></span>
-                                        <span class="lnr lnr-frame-expand"></span>
-                                    </p>
-                                </div>
-                            </div>
-                            <h4><a href="#">wooden armchair</a></h4>
-                            <p class="arrival-product-price">$40.00</p>
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-sm-4">
-                        <div class="single-new-arrival">
-                            <div class="single-new-arrival-bg">
-                                <img src="shop/images/collection/arrivals4.png" alt="new-arrivals images">
-                                <div class="single-new-arrival-bg-overlay"></div>
-                                <div class="sale bg-1">
-                                    <p>sale</p>
-                                </div>
-                                <div class="new-arrival-cart">
-                                    <p>
-                                        <span class="lnr lnr-cart"></span>
-                                        <a href="#">add <span>to </span> cart</a>
-                                    </p>
-                                    <p class="arrival-review pull-right">
-                                        <span class="lnr lnr-heart"></span>
-                                        <span class="lnr lnr-frame-expand"></span>
-                                    </p>
-                                </div>
-                            </div>
-                            <h4><a href="#">stylish chair</a></h4>
-                            <p class="arrival-product-price">$100.00</p>
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-sm-4">
-                        <div class="single-new-arrival">
-                            <div class="single-new-arrival-bg">
-                                <img src="shop/images/collection/arrivals5.png" alt="new-arrivals images">
-                                <div class="single-new-arrival-bg-overlay"></div>
-                                <div class="new-arrival-cart">
-                                    <p>
-                                        <span class="lnr lnr-cart"></span>
-                                        <a href="#">add <span>to </span> cart</a>
-                                    </p>
-                                    <p class="arrival-review pull-right">
-                                        <span class="lnr lnr-heart"></span>
-                                        <span class="lnr lnr-frame-expand"></span>
-                                    </p>
-                                </div>
-                            </div>
-                            <h4><a href="#">modern chair</a></h4>
-                            <p class="arrival-product-price">$120.00</p>
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-sm-4">
-                        <div class="single-new-arrival">
-                            <div class="single-new-arrival-bg">
-                                <img src="shop/images/collection/arrivals6.png" alt="new-arrivals images">
-                                <div class="single-new-arrival-bg-overlay"></div>
-                                <div class="sale bg-1">
-                                    <p>sale</p>
-                                </div>
-                                <div class="new-arrival-cart">
-                                    <p>
-                                        <span class="lnr lnr-cart"></span>
-                                        <a href="#">add <span>to </span> cart</a>
-                                    </p>
-                                    <p class="arrival-review pull-right">
-                                        <span class="lnr lnr-heart"></span>
-                                        <span class="lnr lnr-frame-expand"></span>
-                                    </p>
-                                </div>
-                            </div>
-                            <h4><a href="#">mapple wood dinning table</a></h4>
-                            <p class="arrival-product-price">$140.00</p>
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-sm-4">
-                        <div class="single-new-arrival">
-                            <div class="single-new-arrival-bg">
-                                <img src="shop/images/collection/arrivals7.png" alt="new-arrivals images">
-                                <div class="single-new-arrival-bg-overlay"></div>
-                                <div class="sale bg-2">
-                                    <p>sale</p>
-                                </div>
-                                <div class="new-arrival-cart">
-                                    <p>
-                                        <span class="lnr lnr-cart"></span>
-                                        <a href="#">add <span>to </span> cart</a>
-                                    </p>
-                                    <p class="arrival-review pull-right">
-                                        <span class="lnr lnr-heart"></span>
-                                        <span class="lnr lnr-frame-expand"></span>
-                                    </p>
-                                </div>
-                            </div>
-                            <h4><a href="#">arm chair</a></h4>
-                            <p class="arrival-product-price">$90.00</p>
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-sm-4">
-                        <div class="single-new-arrival">
-                            <div class="single-new-arrival-bg">
-                                <img src="shop/images/collection/arrivals8.png" alt="new-arrivals images">
-                                <div class="single-new-arrival-bg-overlay"></div>
-                                <div class="new-arrival-cart">
-                                    <p>
-                                        <span class="lnr lnr-cart"></span>
-                                        <a href="#">add <span>to </span> cart</a>
-                                    </p>
-                                    <p class="arrival-review pull-right">
-                                        <span class="lnr lnr-heart"></span>
-                                        <span class="lnr lnr-frame-expand"></span>
-                                    </p>
-                                </div>
-                            </div>
-                            <h4><a href="#">wooden bed</a></h4>
-                            <p class="arrival-product-price">$140.00</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div><!--/.container-->
-
-    </section><!--/.new-arrivals-->
-    <!--new-arrivals end -->
-
-    <!--sofa-collection start -->
-    <section id="sofa-collection">
-        <div class="owl-carousel owl-theme" id="collection-carousel">
-            <div class="sofa-collection collectionbg1">
-                <div class="container">
-                    <div class="sofa-collection-txt">
-                        <h2>unlimited sofa collection</h2>
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                        </p>
-                        <div class="sofa-collection-price">
-                            <h4>strting from <span>$ 199</span></h4>
-                        </div>
-                        <button class="btn-cart welcome-add-cart sofa-collection-btn" onclick="window.location.href='#'">
-                            view more
-                        </button>
-                    </div>
-                </div>
-            </div><!--/.sofa-collection-->
-            <div class="sofa-collection collectionbg2">
-                <div class="container">
-                    <div class="sofa-collection-txt">
-                        <h2>unlimited dainning table collection</h2>
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                        </p>
-                        <div class="sofa-collection-price">
-                            <h4>strting from <span>$ 299</span></h4>
-                        </div>
-                        <button class="btn-cart welcome-add-cart sofa-collection-btn" onclick="window.location.href='#'">
-                            view more
-                        </button>
-                    </div>
-                </div>
-            </div><!--/.sofa-collection-->
-        </div><!--/.collection-carousel-->
-
-    </section><!--/.sofa-collection-->
-    <!--sofa-collection end -->
-
     <!--feature start -->
     <section id="feature" class="feature">
         <div class="container">
             <div class="section-header">
-                <h2>Em destaque</h2>
+                <h2>Mais vendidos</h2>
             </div><!--/.section-header-->
             <div class="feature-content">
                 <div class="row">
@@ -525,65 +294,4 @@
 
     </section><!--/.feature-->
     <!--feature end -->
-
-    <!--blog start -->
-    <section id="blog" class="blog">
-        <div class="container">
-            <div class="section-header">
-                <h2>Mundo Games Blog</h2>
-            </div><!--/.section-header-->
-            <div class="blog-content">
-                <div class="row">
-                    <div class="col-sm-4">
-                        <div class="single-blog">
-                            <div class="single-blog-img">
-                                <img src="shop/images/blog/b1.jpg" alt="blog image">
-                                <div class="single-blog-img-overlay"></div>
-                            </div>
-                            <div class="single-blog-txt">
-                                <h2><a href="#">Why Brands are Looking at Local Language</a></h2>
-                                <h3>By <a href="#">Robert Norby</a> / 18th March 2018</h3>
-                                <p>
-                                    Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt....
-                                </p>
-                            </div>
-                        </div>
-
-                    </div>
-                    <div class="col-sm-4">
-                        <div class="single-blog">
-                            <div class="single-blog-img">
-                                <img src="shop/images/blog/b2.jpg" alt="blog image">
-                                <div class="single-blog-img-overlay"></div>
-                            </div>
-                            <div class="single-blog-txt">
-                                <h2><a href="#">Why Brands are Looking at Local Language</a></h2>
-                                <h3>By <a href="#">Robert Norby</a> / 18th March 2018</h3>
-                                <p>
-                                    Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt....
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-4">
-                        <div class="single-blog">
-                            <div class="single-blog-img">
-                                <img src="shop/images/blog/b3.jpg" alt="blog image">
-                                <div class="single-blog-img-overlay"></div>
-                            </div>
-                            <div class="single-blog-txt">
-                                <h2><a href="#">Why Brands are Looking at Local Language</a></h2>
-                                <h3>By <a href="#">Robert Norby</a> / 18th March 2018</h3>
-                                <p>
-                                    Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt....
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div><!--/.container-->
-
-    </section><!--/.blog-->
-    <!--blog end -->
 @endsection
