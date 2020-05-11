@@ -22,7 +22,7 @@
                 @foreach($products as $product)
 
                     <div class="col-sm-12 col-md-3">
-                        <div class="single-new-arrival">
+                        {{-- <div class="single-new-arrival"> --}}
                             <div class="single-new-arrival-bg">
                                 <img class="imagemShop" src="@if( empty($product->image) )  {{asset('admin_assets/images/produto_sem_imagem.jpg')}} @else {{$product->image}} @endif" alt="{{$product->name}}">
                                 <div class="single-new-arrival-bg-overlay"></div>
@@ -51,7 +51,7 @@
                             @if( $product->discount > 0 )
                                 <p class="arrival-product-price">{{$product->discountPrice()}}</p>
                             @endif
-                        </div>
+                        {{-- </div> --}}
                     </div>
                 @endforeach
 

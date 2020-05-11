@@ -19,63 +19,40 @@ Auth::routes();
 
 // SHOPPING Inicio **************************************************************************************************************************
 
-Route::get('/', function ()
-{
-    return view('index')->with('products', Product::all());
+// Route::get('/', function ()
+// {
+//     return view('index')->with('products', Product::all());
 
-    // if ( Auth::check() )
-    // {
-    //     if( Auth::user()->isAdmin() )
-    //     {
-    //         return view('admin.index');
-    //     }
-    //     else
-    //     {
-    //         return view('index')->with('products', Product::all());
-    //     }
-    // }
-    //return view('index')->with('products', Product::all()->take(3));
-});
+//     // if ( Auth::check() )
+//     // {
+//     //     if( Auth::user()->isAdmin() )
+//     //     {
+//     //         return view('admin.index');
+//     //     }
+//     //     else
+//     //     {
+//     //         return view('index')->with('products', Product::all());
+//     //     }
+//     // }
+//     //return view('index')->with('products', Product::all()->take(3));
+// });
 
 // HomeController
+Route::get('/', 'HomeController@index')->name('home');
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/jogos_shop', 'HomeController@jogos');
-Route::get('/search/category/{id}', 'HomeController@searchCategory')->name('search-category');
-//Route::get('/search/category/{category}', 'HomeController@searchCategory')->name('search-category');
+    // Jogos
+    Route::get('/jogos_shop', 'HomeController@jogos');
+    Route::get('/search/category/{id}', 'HomeController@searchCategory')->name('search-category');
+    Route::get('/novos_shop', 'HomeController@novos_shop');
+    Route::get('/destaque_shop', 'HomeController@destaque_shop');
+    Route::get('/produto_loja/{id}', 'HomeController@produto_loja');
+//Route::get('/search/categoryteste/{category}', 'HomeController@searchCategoryTeste')->name('searchCategoryTeste');
 
 // usuarioShopController
 Route::get('/usuario_shop', 'Shop\usuarioShopController@usuario');
 Route::get('/usuario_senha', 'Shop\usuarioShopController@usuarioSenha');
 
-// Route::get('/jogos_shop', function () {
-//     return view('jogos')->with('products', Product::all() );
-//     //return view('jogos')->with('products', Product::all()->sortByDesc('price')->take(5) );
-// });
-
-
-Route::get('/novos_shop', function () {
-    return view('novos');
-});
-
-Route::get('/destaque_shop', function () {
-    return view('destaque');
-});
-
-Route::get('/blog_shop', function () {
-    return view('blog');
-});
-
-Route::get('/contato_shop', function () {
-    return view('contato');
-});
-
-Route::get('/produto_shop', function () {
-    return view('produto');
-});
-
 // SHOPPING Fim **************************************************************************************************************************
-
-
 
 
 

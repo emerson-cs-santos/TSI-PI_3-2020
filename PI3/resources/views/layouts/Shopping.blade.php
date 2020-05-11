@@ -199,11 +199,9 @@
                                     </div><!--/.hm-foot-title-->
                                     <div class="hm-foot-menu">
                                         <ul>
-                                            <li><a href="#">Mega-Drive</a></li><!--/li-->
-                                            <li><a href="#">Super-Nintendo</a></li><!--/li-->
-                                            <li><a href="#">Playstation</a></li><!--/li-->
-                                            <li><a href="#">Xbox</a></li><!--/li-->
-                                            <li><a href="#">Game Cube</a></li><!--/li-->
+                                            @foreach(\App\Category::all()->sortBy('name')->take(5) as $categoryFooter)
+                                                <li> <a href="{{ route('search-category', $categoryFooter->id) }}">{{$categoryFooter->name}}</a></li>
+                                            @endforeach
                                         </ul><!--/ul-->
                                     </div><!--/.hm-foot-menu-->
                                 </div><!--/.hm-footer-widget-->

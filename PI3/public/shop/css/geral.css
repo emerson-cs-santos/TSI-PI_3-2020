@@ -36,7 +36,7 @@
 
 .imagemShop
 {
-	height: 300px!important;
+	height: 250px!important;
 	width: 300px!important;
 }
 
@@ -98,3 +98,28 @@
     box-shadow: none;
 }
 
+
+.imagemCarrossel
+{
+	height: 500px!important;
+	width: 500px!important;
+}
+
+.imagemLancamentos
+{
+	height: 200px!important;
+	width: 200px!important;
+}
+
+.imagemMaisVendidos
+{
+	height: 300px!important;
+	width: 300px!important;
+}
+
+
+
+.linkMaisVendidos:hover
+{
+    color: #e99c2e!important;;
+}
