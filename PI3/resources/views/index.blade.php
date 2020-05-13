@@ -46,7 +46,7 @@
                                                     <span class="lnr lnr-plus-circle"></span>
                                                     Add ao carrinho
                                                 </button>
-                                                <button class="btn-cart welcome-add-cart welcome-more-info" onclick="window.location.href='#'">
+                                                <button class="btn-cart welcome-add-cart welcome-more-info" onclick="window.location.href='{{ route('produto-loja', $carrossel_produto->id) }}'">
                                                     Ver produto
                                                 </button>
                                             </div><!--/.welcome-hero-txt-->
@@ -91,7 +91,7 @@
                                     <img class="imagemLancamentos" src="@if( empty($lancamento->image) )  {{asset('admin_assets/images/produto_sem_imagem.jpg')}} @else {{$lancamento->image}} @endif" alt="{{$lancamento->name}}">
                                 </div>
 
-                                <h2><a href="#">{{$lancamento->name}}</a></h2>
+                                <h2><a href="{{ route('produto-loja', $lancamento->id) }}">{{$lancamento->name}}</a></h2>
 
                                 <div class="single-populer-products-para">
                                     <p>{{ App\Category::find($lancamento->category_id)->name }}</p>
@@ -126,7 +126,7 @@
 
                                 <div class="single-feature-txt text-center">
 
-                                    <h3><a class="linkMaisVendidos" href="/produto">{{$maisVendido->name}}</a></h3>
+                                    <h3><a class="linkMaisVendidos" href="{{ route('produto-loja', $maisVendido->id) }}">{{$maisVendido->name}}</a></h3>
 
                                     <p class="@if( $maisVendido->discount > 0 ) old-price @endif">{{$maisVendido->price()}}</p>
 

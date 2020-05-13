@@ -37,7 +37,7 @@
                                             <th>Código</th>
                                             <th>Nome</th>
                                             <th>Preview</th>
-                                            <th>Quantidade</th>
+                                            <th>Estoque</th>
                                             <th>Preço</th>
                                             <th>Desconto</th>
                                         </thead>

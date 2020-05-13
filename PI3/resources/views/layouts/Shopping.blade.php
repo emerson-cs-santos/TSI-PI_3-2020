@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js" lang="pt-br">
+<html class="no-js" lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
     <head>
         <!-- meta data -->
@@ -143,7 +143,7 @@
 				                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
 				                    <i class="fa fa-bars"></i>
 				                </button>
-				                <a class="navbar-brand" href="/" data-placement="top" data-toggle="tooltip" title="Voltar a página inicial">Gamer Shopping</a>
+				                <a class="navbar-brand titleHover" href="/" data-placement="top" data-toggle="tooltip" title="Voltar a página inicial">Gamer Shopping</a>
 
 				            </div><!--/.navbar-header-->
 				            <!-- End Header Navigation -->

@@ -5,78 +5,40 @@
     <section id="feature" class="feature">
         <div class="container">
             <div class="section-header">
-                <h2>Em destaque</h2>
+                <h2>Mais vendidos</h2>
             </div><!--/.section-header-->
+
             <div class="feature-content">
                 <div class="row">
-                    <div class="col-sm-3">
-                        <div class="single-feature">
-                            <img src="shop/images/features/f1.jpg" alt="feature image">
-                            <div class="single-feature-txt text-center">
-                                <p>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <span class="spacial-feature-icon"><i class="fa fa-star"></i></span>
-                                    <span class="feature-review">(45 review)</span>
-                                </p>
-                                <h3><a href="/produto">designed sofa</a></h3>
-                                <h5>$160.00</h5>
+
+                    @foreach($maisVendidos as $maisVendido)
+
+                        <div class="col-sm-3">
+                            <div class="single-feature">
+
+                                <img class="imagemMaisVendidos" src="@if( empty($maisVendido->image) )  {{asset('admin_assets/images/produto_sem_imagem.jpg')}} @else {{$maisVendido->image}} @endif" alt="{{$maisVendido->name}}">
+
+                                <div class="single-feature-txt text-center">
+
+                                    <h3><a class="linkMaisVendidos" href="{{ route('produto-loja', $maisVendido->id) }}">{{$maisVendido->name}}</a></h3>
+
+                                    <p class="@if( $maisVendido->discount > 0 ) old-price @endif">{{$maisVendido->price()}}</p>
+
+                                    @if( $maisVendido->discount > 0 )
+                                        <p>{{$maisVendido->discountPrice()}}</p>
+                                    @endif
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-sm-3">
-                        <div class="single-feature">
-                            <img src="shop/images/features/f2.jpg" alt="feature image">
-                            <div class="single-feature-txt text-center">
-                                <p>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <span class="spacial-feature-icon"><i class="fa fa-star"></i></span>
-                                    <span class="feature-review">(45 review)</span>
-                                </p>
-                                <h3><a href="#">dinning table </a></h3>
-                                <h5>$200.00</h5>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-3">
-                        <div class="single-feature">
-                            <img src="shop/images/features/f3.jpg" alt="feature image">
-                            <div class="single-feature-txt text-center">
-                                <p>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <span class="spacial-feature-icon"><i class="fa fa-star"></i></span>
-                                    <span class="feature-review">(45 review)</span>
-                                </p>
-                                <h3><a href="#">chair and table</a></h3>
-                                <h5>$100.00</h5>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-3">
-                        <div class="single-feature">
-                            <img src="shop/images/features/f4.jpg" alt="feature image">
-                            <div class="single-feature-txt text-center">
-                                <p>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <span class="spacial-feature-icon"><i class="fa fa-star"></i></span>
-                                    <span class="feature-review">(45 review)</span>
-                                </p>
-                                <h3><a href="#">modern arm chair</a></h3>
-                                <h5>$299.00</h5>
-                            </div>
-                        </div>
-                    </div>
+
+                    @endforeach
+
+                </div>
+            </div>
+
+            <div class="container text-center">
+                <div>
+                    {{ $maisVendidos->links() }}
                 </div>
             </div>
         </div><!--/.container-->

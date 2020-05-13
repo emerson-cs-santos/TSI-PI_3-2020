@@ -33,7 +33,7 @@
 
                                     <div class="form-group">
                                         <label for="desc">Descrição</label>
-                                        <textarea name="desc" class='form-control' placeholder="Digite uma descrição para o produto">{{$product->desc}}}</textarea>
+                                        <textarea name="desc" class='form-control' placeholder="Digite uma descrição para o produto">{{$product->desc}}</textarea>
                                     </div>
 
                                     <div class="form-group">

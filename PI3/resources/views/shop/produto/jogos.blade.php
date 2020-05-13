@@ -46,8 +46,10 @@
 
                             </div>
 
-                            <h4><a href="#">{{$product->name}}</a></h4>
+                            <h4><a href="{{ route('produto-loja', $product->id) }}">{{$product->name}}</a></h4>
+
                             <p class="arrival-product-price @if( $product->discount > 0 ) old-price @endif">{{$product->price()}}</p>
+
                             @if( $product->discount > 0 )
                                 <p class="arrival-product-price">{{$product->discountPrice()}}</p>
                             @endif

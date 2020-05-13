@@ -45,12 +45,14 @@ Route::get('/home', 'HomeController@index')->name('home');
     Route::get('/search/category/{id}', 'HomeController@searchCategory')->name('search-category');
     Route::get('/novos_shop', 'HomeController@novos_shop');
     Route::get('/destaque_shop', 'HomeController@destaque_shop');
-    Route::get('/produto_loja/{id}', 'HomeController@produto_loja');
+    Route::get('/produto_loja/{id}', 'HomeController@produto_loja')->name('produto-loja');
 //Route::get('/search/categoryteste/{category}', 'HomeController@searchCategoryTeste')->name('searchCategoryTeste');
 
 // usuarioShopController
-Route::get('/usuario_shop', 'Shop\usuarioShopController@usuario');
-Route::get('/usuario_senha', 'Shop\usuarioShopController@usuarioSenha');
+Route::get('/usuario_shop', 'Shop\usuarioShopController@usuario')->name('usuario-shop');
+Route::get('/usuario_senha', 'Shop\usuarioShopController@usuarioSenha')->name('usuario-senha');
+Route::put('usuario-atualizar','Shop\usuarioShopController@updateUserShop')->name('usuario-atualizar');
+Route::put('usuario-atualizar-senha','Shop\usuarioShopController@updateUserShopSenha')->name('usuario-atualizar-senha');
 
 // SHOPPING Fim **************************************************************************************************************************
 

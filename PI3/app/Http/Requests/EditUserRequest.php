@@ -19,9 +19,9 @@ class EditUserRequest extends FormRequest
             ,'email'                    => 'required|email:filter|unique:users,email,'.auth()->user()->id
             ,'password'                 => 'required_with:password_confirmation|same:password_confirmation|min:8'
             ,'password_confirmation'    => 'min:8'
-            ,'type'                     => 'required'
             ,'imagem'                   => 'max:2000'
 
+            //,'type'                     => 'required'
             //,'imagem'                   => 'file|max:2000' , file obriga a ter um arquivo
         ];
     }

@@ -117,9 +117,48 @@
 	width: 300px!important;
 }
 
+.imagemProdutoLoja
+{
+	height: 500px!important;
+	width: 500px!important;
+}
+
+.divLoja
+{
+    border-style: solid;
+    height:500px;
+    border-width: 2px;
+    border-radius: 5px;
+    background-color: #f8f9fc;
+}
+
+.camposLoja
+{
+    font-weight: bolder;
+    color: #e99c2e;
+
+}
+
+.valoresCamposLoja
+{
+    font-size: 150%;
+}
+
+.botao_comprar_loja_produto
+{
+    width: 100%!important;
+}
+
+
 
 
 .linkMaisVendidos:hover
 {
-    color: #e99c2e!important;;
+    color: #e99c2e!important;
+}
+
+
+.titleHover:hover
+{
+    color: #e99c2e!important;
 }

@@ -88,9 +88,10 @@ class HomeController extends Controller
 
     public function destaque_shop()
     {
-        $lancamentos = Product::all()->sortByDesc('id')->take(4);
+       // $maisVendidos = Product::all()->sortByDesc('id')->take(4);
+        $maisVendidos = Product::selectRaw('products.*')->orderBy('id','desc')->paginate(4);
 
-        return view('shop.produto.destaque')  ->with('lancamentos', $lancamentos);
+        return view('shop.produto.destaque')  ->with('maisVendidos', $maisVendidos);
     }
 
     public function produto_loja($id)

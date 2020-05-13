@@ -25,7 +25,7 @@
                                         <div class="col-md-8 col-sm-12">
                                             <div class="single-inner-populer-product-txt">
                                                 <h2>
-                                                    <a href="#">
+                                                    <a href="{{ route('produto-loja', $lancamento->id) }}">
                                                         {{$lancamento->name}}
                                                     </a>
                                                 </h2>
@@ -39,7 +39,7 @@
                                                     </p>
 
                                                 </div>
-                                                <button class="btn-cart welcome-add-cart populer-products-btn" onclick="window.location.href='#'" data-placement="top" data-toggle="tooltip" title="Ver mais informações">
+                                                <button class="btn-cart welcome-add-cart populer-products-btn" onclick="window.location.href='{{ route('produto-loja', $lancamento->id) }}'" data-placement="top" data-toggle="tooltip" title="Ver mais informações">
                                                     Mais detalhes
                                                 </button>
                                             </div>

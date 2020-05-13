@@ -9,11 +9,35 @@
 
             <div class="feature-content row">
 
+                @if (session()->has('success'))
+                    <div class="alert alert-success">
+                        {{ session()->get('success') }}
+                    </div>
+                @endif
+
+                @if(session()->has('error'))
+                    <div class="alert alert-danger">{{ session()->get('error') }}</div>
+                @endif
+
+                @if($errors->any())
+                    <div class="alert alert-danger">
+                        <ul class="list-group">
+                            @foreach ($errors->all() as $error)
+                                <li class="list-group-item text-danger"> {{ $error }} </li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+
                 <div class="col-md-2">
                     @include('shop.usuario.usuario_Shop_menu')
                 </div>
 
                 <div class="col-md-10 mt-5">
+                    <form action="{{route('usuario-atualizar')}}" method="post" enctype="multipart/form-data">
+                        @csrf
+                        @method('PUT')
+
                     <div class="form-group">
                         <label for="name">Nome</label>
                         <input type="text" class='form-control' name="name" value="{{ Auth::user()->name }}">
