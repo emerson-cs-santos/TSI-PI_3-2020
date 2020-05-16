@@ -41,7 +41,7 @@
 
                                     <div class="form-group">
                                         <label for="descricao">Descrição</label>
-                                        <textarea name="descricao" class='form-control' placeholder="Digite uma descrição para o produto">{{old('desc')}}</textarea>
+                                        <textarea name="descricao" class='form-control' rows=10 placeholder="Digite uma descrição para o produto">{{old('desc')}}</textarea>
                                     </div>
 
                                     <div class="form-group">

@@ -76,11 +76,27 @@
                                     </li><!--/.search-->
 
                                     <li class="nav-setting dropdown_shop">
-                                        <a href="/usuario_shop" data-placement="top" data-toggle="tooltip" title="Acessar sua conta">
-                                            <span class="lnr lnr-user">-
-                                                @if( Auth::check() ) {{ Auth::user()->name }} @else Login @endif
-                                            </span>
-                                        </a>
+                                        @if( Auth::check() )
+                                            <a href="/usuario_shop"
+                                                class=
+                                                "
+                                                    {{ Str::of( Request::path() )
+                                                    ->contains( ['usuario_shop', 'usuario_senha'] ) ? ' link_ativo' : '' }}
+                                                "
+
+                                                data-placement="top" data-toggle="tooltip" title="Acessar sua conta">
+
+                                                <span class="lnr lnr-user">-
+                                                    {{ Auth::user()->name }}
+                                                </span>
+                                            </a>
+                                        @else
+                                            <a href="{{ route('login') }}" data-placement="top" data-toggle="tooltip" title="Fazer login">
+                                                <span class="lnr lnr-user">-
+                                                    Login
+                                                </span>
+                                            </a>
+                                        @endif
 
                                         @if( Auth::check() )
                                             <div class="dropdown-content_shop text-center">
@@ -92,45 +108,75 @@
                                         @endif
 				                	</li>
 
-                                    <li class="dropdown" data-placement="top" data-toggle="tooltip" title="Seu carrinho">
-				                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" >
+                                    <li class="dropdown">
+
+                                        @php
+                                            $qtdProdutosCarrinho = 0;
+                                            if ( Auth::check() )
+                                            {
+                                                // Select para testes
+                                                // select
+                                                //     carrinhos.product_id
+                                                // from
+                                                //     carrinhos
+                                                // where
+                                                //     user_id = 2
+                                                // group by
+                                                //     product_id
+                                                $Produtos = App\Carrinho::selectRaw('carrinhos.product_id')
+                                                ->where('user_id', '=', auth()->user()->id )
+                                                ->groupBy('carrinhos.product_id')
+                                                ->get();
+
+                                                $qtdProdutosCarrinho = sizeof($Produtos);
+
+                                                $itens = App\Carrinho::selectRaw('carrinhos.product_id, sum(carrinhos.quantidade) as qtd_total')
+                                                ->where('user_id', '=', auth()->user()->id )
+                                                ->groupBy('carrinhos.product_id')
+                                                ->orderBy('carrinhos.product_id')
+                                                ->get();
+                                            }
+                                        @endphp
+
+				                        <a href="{{route('carrinho-shop-index')}}" class="dropdown-toggle {{ Str::contains(Request::path(), 'carrinho-shop-index') ? ' link_ativo' : '' }}" data-toggle="dropdown" >
 				                            <span class="lnr lnr-cart"></span>
-											<span class="badge badge-bg-1">2</span>
+                                            <span class="badge badge-bg-1">{{$qtdProdutosCarrinho}}</span>
 				                        </a>
 				                        <ul class="dropdown-menu cart-list s-cate">
-				                            <li class="single-cart-list">
-				                                <a href="#" class="photo"><img src="shop/images/collection/arrivals1.png" class="cart-thumb" alt="image" /></a>
-				                                <div class="cart-list-txt">
-				                                	<h6><a href="#">arm <br> chair</a></h6>
-				                                	<p>1 x - <span class="price">$180.00</span></p>
-				                                </div><!--/.cart-list-txt-->
-				                                <div class="cart-close">
-				                                	<span class="lnr lnr-cross"></span>
-				                                </div><!--/.cart-close-->
-				                            </li><!--/.single-cart-list -->
-				                            <li class="single-cart-list">
-				                                <a href="#" class="photo"><img src="shop/images/collection/arrivals2.png" class="cart-thumb" alt="image" /></a>
-				                                <div class="cart-list-txt">
-				                                	<h6><a href="#">single <br> armchair</a></h6>
-				                                	<p>1 x - <span class="price">$180.00</span></p>
-				                                </div><!--/.cart-list-txt-->
-				                                <div class="cart-close">
-				                                	<span class="lnr lnr-cross"></span>
-				                                </div><!--/.cart-close-->
-				                            </li><!--/.single-cart-list -->
-				                            <li class="single-cart-list">
-				                                <a href="#" class="photo"><img src="shop/images/collection/arrivals3.png" class="cart-thumb" alt="image" /></a>
-				                                <div class="cart-list-txt">
-				                                	<h6><a href="#">wooden arn <br> chair</a></h6>
-				                                	<p>1 x - <span class="price">$180.00</span></p>
-				                                </div><!--/.cart-list-txt-->
-				                                <div class="cart-close">
-				                                	<span class="lnr lnr-cross"></span>
-				                                </div><!--/.cart-close-->
-				                            </li><!--/.single-cart-list -->
-				                            <li class="total">
-				                                <span>Total: $0.00</span>
-				                                <button class="btn-cart pull-right" onclick="window.location.href='#'">view cart</button>
+                                            @php
+                                                $total = 0;
+                                            @endphp
+
+                                            @if ( Auth::check() )
+                                                @foreach($itens as $item)
+
+                                                    @php
+                                                        $produto    = App\Product::withTrashed()->find($item->product_id);
+                                                        $subTotal   = $item->qtd_total * $produto->price;
+                                                        $total      = $total + $subTotal;
+                                                    @endphp
+
+                                                    <li class="single-cart-list">
+                                                        <a href="{{ route('produto-loja', $produto->id) }}" class="photo"><img src="@if ( empty($produto->image) ) {{asset('admin_assets/images/produto_sem_imagem.jpg')}} @else {{$produto->image}} @endif" alt="Preview do produto" class="cart-thumb" data-placement="top" data-toggle="tooltip" title="Ver Produto" /></a>
+                                                        <div class="cart-list-txt">
+                                                            <span class="h6"><a href="{{ route('produto-loja', $produto->id) }}" class="carrinho_nome_produto" data-placement="top" data-toggle="tooltip" title="Ver Produto">{{$produto->name}}</a></span>
+                                                            <p>{{$item->qtd_total}} X - {{ 'R$'.number_format($produto->price, 2) }}</p>
+                                                            <p>SubTotal = {{ 'R$'.number_format($subTotal, 2) }}</p>
+                                                        </div>
+                                                        <div class="cart-close">
+                                                            <form action="{{ route('carrinho-shop-destroy', $produto->id) }}" method="POST" onsubmit="return confirm('Você tem certeza?')">
+                                                                @csrf
+                                                                @method('DELETE')
+                                                                <button type="submit" href="#" class="lnr lnr-cross" data-placement="top" data-toggle="tooltip" title="Remover do carrinho"></button>
+                                                            </form>
+                                                        </div>
+                                                    </li>
+                                                @endforeach
+                                            @endif
+
+                                            <li class="total">
+				                                <span>Total: {{ 'R$'.number_format($total, 2) }}</span>
+				                                <button class="btn-cart pull-right" onclick="window.location.href='{{route('carrinho-shop-index')}}'" data-placement="top" data-toggle="tooltip" title="Abrir Carrinho">Ver Carrinho</button>
 				                            </li>
 				                        </ul>
 				                    </li><!--/.dropdown-->
@@ -151,10 +197,10 @@
 				            <!-- Collect the nav links, forms, and other content for toggling -->
 				            <div class="collapse navbar-collapse menu-ui-design" id="navbar-menu">
 				                <ul class="nav navbar-nav navbar-center" data-in="fadeInDown" data-out="fadeOutUp">
-				                    <li class=" {{ Str::of( Request::path() )->contains( ['jogos_shop', 'search/category'] )  ? ' active' : '' }} "><a href="/jogos_shop"    >Jogos</a></li>
-				                    <li class=" {{ \Request::is('novos_shop')       ? ' active' : '' }} "><a href="/novos_shop"     >Lançamentos</a></li>
-				                    <li class=" {{ \Request::is('destaque_shop')	? ' active' : '' }} "><a href="/destaque_shop"  >Mais vendidos</a></li>
-                                    <li class=" {{ \Request::is('contato_shop')     ? ' active' : '' }} "><a href="/contato_shop"   >Meus Pedidos</a></li>
+				                    <li class=" {{ Str::of( Request::path() )->contains( ['jogos_shop', 'search/category'] )  ? ' active' : '' }} "><a href="/jogos_shop">Jogos</a></li>
+				                    <li class=" {{ \Request::is('novos_shop')           ? ' active' : '' }} "><a href="/novos_shop"     >Lançamentos</a></li>
+				                    <li class=" {{ \Request::is('destaque_shop')	    ? ' active' : '' }} "><a href="/destaque_shop"  >Mais vendidos</a></li>
+                                    <li class=" {{ Str::of( Request::path() )->contains( ['pedido-shop-index', 'item-pedido-shop-index'] ) ? ' active' : '' }} "><a href="{{route('pedido-shop-index')}}">Meus Pedidos</a></li>
 				                </ul><!--/.nav -->
 				            </div><!-- /.navbar-collapse -->
 				        </div><!--/.container-->
@@ -213,10 +259,10 @@
                                     </div><!--/.hm-foot-title-->
                                     <div class="hm-foot-menu">
                                         <ul>
-                                            <li><a href="#">Cadastro</a></li>
+                                            <li><a href="{{route('usuario-shop')}}">Cadastro</a></li>
+                                            <li><a href="{{route('carrinho-shop-index')}}">Carrinho</a></li>
+                                            <li><a href="{{route('pedido-shop-index')}}">Pedidos</a></li>
                                             <li><a href="#">Lista de desejos</a></li>
-                                            <li><a href="#">Carrinho</a></li>
-                                            <li><a href="#">Pedidos</a></li>
                                         </ul><!--/ul-->
                                     </div><!--/.hm-foot-menu-->
                                 </div><!--/.hm-footer-widget-->
@@ -255,11 +301,11 @@
 			<div class="container">
 				<div class="hm-footer-copyright text-center">
 					<div class="footer-social">
-						<a href="#"><i class="fa fa-facebook"></i></a>
-						<a href="#"><i class="fa fa-instagram"></i></a>
-						<a href="#"><i class="fa fa-linkedin"></i></a>
-						<a href="#"><i class="fa fa-pinterest"></i></a>
-						<a href="#"><i class="fa fa-behance"></i></a>
+						<a href="https://www.facebook.com/pages/Super-Potato-Akihabara/169636663054466" data-placement="top" data-toggle="tooltip" title="Facebook">    <i class="fa fa-facebook">  </i></a>
+						<a href="https://www.instagram.com/playasia/"                                   data-placement="top" data-toggle="tooltip" title="Instagram">   <i class="fa fa-instagram"> </i></a>
+						<a href="https://www.linkedin.com/company/gamestop/"                            data-placement="top" data-toggle="tooltip" title="Linkedin">    <i class="fa fa-linkedin">  </i></a>
+						<a href="https://pl.pinterest.com/gameshop/"                                    data-placement="top" data-toggle="tooltip" title="Pinterest">   <i class="fa fa-pinterest"> </i></a>
+						<a href="https://www.behance.net/gallery/55138775/Game-Shop"                    data-placement="top" data-toggle="tooltip" title="Behance">     <i class="fa fa-behance">   </i></a>
 					</div>
 					<p>
 						&copy;Copyright. Senac 2020 - Sistemas para Internet - Projeto integrador 3

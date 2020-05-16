@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Product;
 use App\Category;
+use App\ItemPedido;
 use Illuminate\Support\Facades\DB;
 
 use Illuminate\Http\Request;
@@ -22,7 +23,12 @@ class HomeController extends Controller
 
         $carrossel      = Product::all()->take(3);
         $lancamentos    = Product::all()->sortByDesc('id')->take(4);
-        $maisVendidos   = Product::all()->sortBy('id')->take(4); // Trocar para select de fato vendo nos pedidos
+
+        // // Query para testes no mySQL: select item_pedidos.product_id, sum(item_pedidos.quantidade) as maisVendido from item_pedidos group by item_pedidos.product_id order by maisVendido desc
+        $maisVendidos   = ItemPedido::selectRaw('item_pedidos.product_id, sum(item_pedidos.quantidade) as maisVendido')
+        ->groupBy('item_pedidos.product_id')
+        ->orderBy('maisVendido','desc')
+        ->paginate(4);
 
         return view('index')    ->with( 'carrossel_produtos', $carrossel )  ->with('lancamentos', $lancamentos) ->with('maisVendidos', $maisVendidos) ;
     }
@@ -89,7 +95,14 @@ class HomeController extends Controller
     public function destaque_shop()
     {
        // $maisVendidos = Product::all()->sortByDesc('id')->take(4);
-        $maisVendidos = Product::selectRaw('products.*')->orderBy('id','desc')->paginate(4);
+
+       // $maisVendidos = Product::selectRaw('products.*')->orderBy('id','desc')->paginate(4);
+
+       // Query para testes no mySQL: select item_pedidos.product_id, sum(item_pedidos.quantidade) as maisVendido from item_pedidos group by item_pedidos.product_id order by maisVendido desc
+       $maisVendidos = ItemPedido::selectRaw('item_pedidos.product_id, sum(item_pedidos.quantidade) as maisVendido')
+       ->groupBy('item_pedidos.product_id')
+       ->orderBy('maisVendido','desc')
+       ->paginate(4);
 
         return view('shop.produto.destaque')  ->with('maisVendidos', $maisVendidos);
     }

@@ -7,6 +7,8 @@ use App\Product;
 use App\Category;
 use App\Http\Requests\CreateProductRequest;
 use App\Http\Requests\EditProductRequest;
+use App\Carrinho;
+use App\ItemPedido;
 
 class ProductsController extends Controller
 {
@@ -15,6 +17,7 @@ class ProductsController extends Controller
     {
         //$this->middleware('auth');
         $this->middleware('VerifyCategoriesCount')->only(['create','store']);
+        $this->middleware('is_admin');
     }
 
     public function index()
@@ -116,6 +119,21 @@ class ProductsController extends Controller
 
     public function destroy($id)
     {
+        $carrinhoQtd = Carrinho::withTrashed()->where('product_id',$id)->count();
+
+        if ( $carrinhoQtd > 0 )
+        {
+            session()->flash('error', "Produto já está em carrinho(s) de compra!");
+            return redirect()->back();
+        }
+
+        $pedidoQtd = ItemPedido::all()->where('product_id',$id)->count();
+        if ($pedidoQtd > 0)
+        {
+            session()->flash('error', "Produto já está em pedido(s)!");
+            return redirect()->back();
+        }
+
         $product = Product::withTrashed()->where('id', $id)->firstOrFail();
 
         if($product->trashed())

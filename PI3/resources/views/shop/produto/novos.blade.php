@@ -4,6 +4,7 @@
     <!--populer-products start -->
     <section id="populer-products" class="populer-products">
         <div class="container">
+            @include('exibirErros')
             <div class="section-header">
                 <h2>Lançamentos</h2>
             </div><!--/.section-header-->
@@ -19,7 +20,7 @@
                                     <div class="row">
                                         <div class="col-md-4 col-sm-12">
                                             <div class="single-inner-populer-product-img">
-                                                <img class="imagemLancamentos" src="@if( empty($lancamento->image) )  {{asset('admin_assets/images/produto_sem_imagem.jpg')}} @else {{$lancamento->image}} @endif" alt="{{$lancamento->name}}">
+                                                <a href="{{ route('produto-loja', $lancamento->id) }}" > <img class="imagemLancamentos" src="@if( empty($lancamento->image) )  {{asset('admin_assets/images/produto_sem_imagem.jpg')}} @else {{$lancamento->image}} @endif" alt="{{$lancamento->name}}" data-placement="top" data-toggle="tooltip" title="Ver Produto"> </a>
                                             </div>
                                         </div>
                                         <div class="col-md-8 col-sm-12">
@@ -39,9 +40,12 @@
                                                     </p>
 
                                                 </div>
-                                                <button class="btn-cart welcome-add-cart populer-products-btn" onclick="window.location.href='{{ route('produto-loja', $lancamento->id) }}'" data-placement="top" data-toggle="tooltip" title="Ver mais informações">
-                                                    Mais detalhes
-                                                </button>
+                                                <form action="{{route('carrinho-shop-store',$lancamento->id)}}" class='p-3 bg-white' method="post">
+                                                    @csrf
+                                                    <button class="btn-cart welcome-add-cart populer-products-btn" data-placement="top" data-toggle="tooltip" title="Adicionar ao carrinho">
+                                                        Add ao carrinho
+                                                    </button>
+                                                </form>
                                             </div>
                                         </div>
                                     </div>

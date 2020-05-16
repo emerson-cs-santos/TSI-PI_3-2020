@@ -34,10 +34,42 @@
 	margin-top: 3rem!important;
 }
 
+.mb-1,.my-1
+{
+	margin-bottom: .25rem!important
+}
+
+.mb-2,.my-2
+{
+	margin-bottom: .5rem!important
+}
+
+.mb-3,.my-3
+{
+	margin-bottom: 1rem!important
+}
+
+.mb-4,.my-4
+{
+	margin-bottom: 1.5rem!important
+}
+
+.mb-5,.my-5
+{
+	margin-bottom: 3rem!important
+}
+
+.mb-6,.my-6
+{
+	margin-bottom: 4rem!important
+}
+
+
 .imagemShop
 {
 	height: 250px!important;
-	width: 300px!important;
+    width: 300px!important;
+    border:solid;
 }
 
 
@@ -102,25 +134,29 @@
 .imagemCarrossel
 {
 	height: 500px!important;
-	width: 500px!important;
+    width: 500px!important;
+    border:solid;
 }
 
 .imagemLancamentos
 {
 	height: 200px!important;
-	width: 200px!important;
+    width: 200px!important;
+    border:solid;
 }
 
 .imagemMaisVendidos
 {
 	height: 300px!important;
-	width: 300px!important;
+    width: 300px!important;
+    border:solid;
 }
 
 .imagemProdutoLoja
 {
 	height: 500px!important;
-	width: 500px!important;
+    width: 500px!important;
+    border:solid;
 }
 
 .divLoja
@@ -132,16 +168,20 @@
     background-color: #f8f9fc;
 }
 
+.divLojaDesc
+{
+    border-style: solid;
+    word-wrap: break-word;
+    border-width: 2px;
+    border-radius: 5px;
+    background-color: #f8f9fc;
+}
+
 .camposLoja
 {
     font-weight: bolder;
     color: #e99c2e;
 
-}
-
-.valoresCamposLoja
-{
-    font-size: 150%;
 }
 
 .botao_comprar_loja_produto
@@ -161,4 +201,48 @@
 .titleHover:hover
 {
     color: #e99c2e!important;
+}
+
+.carrinho_nome_produto:hover
+{
+    color: #e99c2e!important;
+}
+
+.img_preview
+{
+    border:solid;
+}
+
+.link_ativo
+{
+    color: #e99c2e!important;
+}
+
+.PedidoCancelado
+{
+    text-decoration: line-through;
+    color:#c7564e;
+}
+.PedidoCanceladoTitlo
+{
+    font-weight: bolder;
+}
+
+@media screen and (max-width: 590px)
+{
+    .img_extra
+    {
+        height: 60px;
+        width: 60px;
+    }
+}
+
+
+@media only screen and (min-width: 591px)
+{
+    .img_normal
+    {
+        height: 100px;
+        width: 100px;
+    }
 }

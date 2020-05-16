@@ -4,6 +4,7 @@
     <!--feature start -->
     <section id="feature" class="feature">
         <div class="container">
+            @include('exibirErros')
             <div class="section-header">
                 <h2>Mais vendidos</h2>
             </div><!--/.section-header-->
@@ -13,19 +14,40 @@
 
                     @foreach($maisVendidos as $maisVendido)
 
+                        @php
+                            $produto = App\Product::withTrashed()->find($maisVendido->product_id);
+                        @endphp
+
                         <div class="col-sm-3">
                             <div class="single-feature">
 
-                                <img class="imagemMaisVendidos" src="@if( empty($maisVendido->image) )  {{asset('admin_assets/images/produto_sem_imagem.jpg')}} @else {{$maisVendido->image}} @endif" alt="{{$maisVendido->name}}">
+                                <a href="{{ route('produto-loja', $produto->id) }}" >
+                                    <img class="imagemMaisVendidos" src="
+
+                                    @if( empty( $produto->image )  )
+                                        {{asset('admin_assets/images/produto_sem_imagem.jpg')}}
+                                    @else
+                                        {{$produto->image}}
+                                    @endif"
+
+                                    alt="{{$produto->name}}" data-placement="top" data-toggle="tooltip" title="Ver Produto">
+                                </a>
+
+                                <div class="text-center mt-4">
+                                    <form action="{{route('carrinho-shop-store',$produto->id)}}" class='p-3 bg-white' method="post">
+                                        @csrf
+                                        <button type="submit" class="btn btn-warning">Adicionar ao carrinho</button>
+                                    </form>
+                                </div>
 
                                 <div class="single-feature-txt text-center">
 
-                                    <h3><a class="linkMaisVendidos" href="{{ route('produto-loja', $maisVendido->id) }}">{{$maisVendido->name}}</a></h3>
+                                    <h3><a class="linkMaisVendidos" href="{{ route('produto-loja', $produto->id) }}">{{$produto->name}}</a></h3>
 
-                                    <p class="@if( $maisVendido->discount > 0 ) old-price @endif">{{$maisVendido->price()}}</p>
+                                    <p class="@if( $produto->discount > 0 ) old-price @endif">{{$produto->price()}}</p>
 
-                                    @if( $maisVendido->discount > 0 )
-                                        <p>{{$maisVendido->discountPrice()}}</p>
+                                    @if( $produto->discount > 0 )
+                                        <p>{{$produto->discountPrice()}}</p>
                                     @endif
                                 </div>
                             </div>

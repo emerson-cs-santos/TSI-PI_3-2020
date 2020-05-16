@@ -30,6 +30,7 @@
                                 <div class="row">
                                     <div class="col-sm-7">
                                         <div class="single-welcome-hero">
+                                            @include('exibirErros')
                                             <div class="welcome-hero-txt">
                                                 <h2 >Os melhores jogos!</h2>
                                                 <h3>{{$carrossel_produto->name}}</h3>
@@ -42,10 +43,13 @@
                                                         @if( $carrossel_produto->discount > 0 ) <del> {{$carrossel_produto->price()}} </del> @else {{$carrossel_produto->price()}}  @endif
                                                     </p>
                                                 </div>
-                                                <button class="btn-cart welcome-add-cart" onclick="window.location.href='#'">
-                                                    <span class="lnr lnr-plus-circle"></span>
-                                                    Add ao carrinho
-                                                </button>
+                                                <form action="{{route('carrinho-shop-store',$carrossel_produto->id)}}" class='p-3 bg-white' method="post">
+                                                    @csrf
+                                                    <button class="btn-cart welcome-add-cart">
+                                                        <span class="lnr lnr-plus-circle"></span>
+                                                        Add ao carrinho
+                                                    </button>
+                                                </form>
                                                 <button class="btn-cart welcome-add-cart welcome-more-info" onclick="window.location.href='{{ route('produto-loja', $carrossel_produto->id) }}'">
                                                     Ver produto
                                                 </button>
@@ -55,7 +59,7 @@
                                     <div class="col-sm-5">
                                         <div class="single-welcome-hero">
                                             <div class="welcome-hero-img">
-                                                <img class="imagemCarrossel" src="@if( empty($carrossel_produto->image) )  {{asset('admin_assets/images/produto_sem_imagem.jpg')}} @else {{$carrossel_produto->image}} @endif" alt="{{$carrossel_produto->name}}">
+                                                <a href="{{ route('produto-loja', $carrossel_produto->id) }}" > <img class="imagemCarrossel" src="@if( empty($carrossel_produto->image) )  {{asset('admin_assets/images/produto_sem_imagem.jpg')}} @else {{$carrossel_produto->image}} @endif" alt="{{$carrossel_produto->name}}" data-placement="top" data-toggle="tooltip" title="Ver Produto"> </a>
                                             </div><!--/.welcome-hero-txt-->
                                         </div><!--/.single-welcome-hero-->
                                     </div><!--/.col-->
@@ -88,7 +92,7 @@
                         <div class="col-md-3">
                             <div class="single-populer-products">
                                 <div class="single-populer-product-img mt40">
-                                    <img class="imagemLancamentos" src="@if( empty($lancamento->image) )  {{asset('admin_assets/images/produto_sem_imagem.jpg')}} @else {{$lancamento->image}} @endif" alt="{{$lancamento->name}}">
+                                    <a href="{{ route('produto-loja', $lancamento->id) }}" > <img class="imagemLancamentos" src="@if( empty($lancamento->image) )  {{asset('admin_assets/images/produto_sem_imagem.jpg')}} @else {{$lancamento->image}} @endif" alt="{{$lancamento->name}}" data-placement="top" data-toggle="tooltip" title="Ver Produto"> </a>
                                 </div>
 
                                 <h2><a href="{{ route('produto-loja', $lancamento->id) }}">{{$lancamento->name}}</a></h2>
@@ -119,19 +123,35 @@
 
                     @foreach($maisVendidos as $maisVendido)
 
+                        @php
+                            $produto = App\Product::withTrashed()->find($maisVendido->product_id);
+                        @endphp
+
                         <div class="col-sm-3">
                             <div class="single-feature">
 
-                                <img class="imagemMaisVendidos" src="@if( empty($maisVendido->image) )  {{asset('admin_assets/images/produto_sem_imagem.jpg')}} @else {{$maisVendido->image}} @endif" alt="{{$maisVendido->name}}">
+                                <a href="{{ route('produto-loja', $lancamento->id) }}" >
+
+                                    <img class="imagemMaisVendidos" src="
+
+                                    @if( empty($produto->image) )
+                                        {{asset('admin_assets/images/produto_sem_imagem.jpg')}}
+                                    @else
+                                        {{$produto->image}}
+                                    @endif"
+
+                                    alt="{{$produto->name}}" data-placement="top" data-toggle="tooltip" title="Ver Produto">
+
+                                </a>
 
                                 <div class="single-feature-txt text-center">
 
-                                    <h3><a class="linkMaisVendidos" href="{{ route('produto-loja', $maisVendido->id) }}">{{$maisVendido->name}}</a></h3>
+                                    <h3><a class="linkMaisVendidos" href="{{ route('produto-loja', $produto->id) }}">{{$produto->name}}</a></h3>
 
-                                    <p class="@if( $maisVendido->discount > 0 ) old-price @endif">{{$maisVendido->price()}}</p>
+                                    <p class="@if( $produto->discount > 0 ) old-price @endif">{{$produto->price()}}</p>
 
-                                    @if( $maisVendido->discount > 0 )
-                                        <p>{{$maisVendido->discountPrice()}}</p>
+                                    @if( $produto->discount > 0 )
+                                        <p>{{$produto->discountPrice()}}</p>
                                     @endif
                                 </div>
                             </div>

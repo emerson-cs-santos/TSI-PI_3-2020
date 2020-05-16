@@ -48,17 +48,17 @@
                                                                                                                         {{-- {{ \Request::is('admin') ? ' current' : '' }} --}}
                                     <li class="nav-item"><a href="/admin" class="nav-link text-white p-3 mb-2 sidebar-link {{ Str::contains(Request::path(), 'admin') ? ' current' : '' }} "> <i class="fas fa-home text-light fa-lg mr-3"></i> Home</a></li>
 
-                                    <li class="nav-item"><a href="{{route('Users.index')}}" class="nav-link text-white p-3 mb-2 sidebar-link {{ Str::of( Request::path() )->contains( ['Users', 'trashed-Users'] ) ? ' current' : '' }}"><i class="fas fa-user text-light fa-lg mr-3"></i> Usuários</a></li>
+                                    <li class="nav-item"><a href="{{route('Users.index')}}" class="nav-link text-white p-3 mb-2 sidebar-link {{ Str::of( Request::path() )->contains( ['Users', 'trashed-Users'] ) ? ' current' : '' }}"><i class="fas fa-users text-light fa-lg mr-3"></i> Usuários</a></li>
 
                                     <li class="nav-item"><a href="{{route('categories.index')}}" class="nav-link text-white p-3 mb-2 sidebar-link {{ Str::of( Request::path() )->contains( ['categories', 'trashed-categories'] ) ? ' current' : '' }}"  ><i class="fa fa-cubes text-light fa-lg mr-3"></i> Categorias</a></li>
 
                                     <li class="nav-item"><a href="{{route('products.index')}}" class="nav-link text-white p-3 mb-2 sidebar-link {{ Str::of( Request::path() )->contains( ['products', 'trashed-product'] ) ? ' current' : '' }}"  ><i class="fa fa-shopping-bag text-light fa-lg mr-3"></i> Produtos</a></li>
 
-                                    <li class="nav-item"><a href="{{route('clientes.index')}}" class="nav-link text-white p-3 mb-2 sidebar-link {{ Str::of( Request::path() )->contains( ['clientes', 'trashed-cliente'] ) ? ' current' : '' }}"><i class="fas fa-users text-light fa-lg mr-3"></i> Clientes</a></li>
+                                    {{-- <li class="nav-item"><a href="{{route('clientes.index')}}" class="nav-link text-white p-3 mb-2 sidebar-link {{ Str::of( Request::path() )->contains( ['clientes', 'trashed-cliente'] ) ? ' current' : '' }}"><i class="fas fa-users text-light fa-lg mr-3"></i> Clientes</a></li> --}}
 
-                                    <li class="nav-item"><a href="#" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-shopping-cart text-light fa-lg mr-3"></i> Carrinhos</a></li>
+                                    <li class="nav-item"><a href="{{route('carrinho.index')}}" class="nav-link text-white p-3 mb-2 sidebar-link {{ Str::of( Request::path() )->contains( ['carrinho', 'trashed-carrinho'] ) ? ' current' : '' }}"><i class="fas fa-shopping-cart text-light fa-lg mr-3"></i> Carrinhos</a></li>
 
-                                    <li class="nav-item"><a href="#" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-truck-moving text-light fa-lg mr-3"></i> Pedidos</a></li>
+                                    <li class="nav-item"><a href="{{route('index-pedido')}}" class="nav-link text-white p-3 mb-2 sidebar-link {{ Str::of( Request::path() )->contains( ['pedido', 'trashed-pedido', 'item-pedido'] ) ? ' current' : '' }}"><i class="fas fa-truck-moving text-light fa-lg mr-3"></i> Pedidos</a></li>
 
                                     <li class="nav-item"><a href="{{route('movimentos.index')}}" class="nav-link text-white p-3 mb-2 sidebar-link {{ Str::of( Request::path() )->contains( ['movimentos', 'trashed-movimentos'] ) ? ' current' : '' }}"><i class="fa fa-exchange text-light fa-lg mr-3"></i> Movimentações</a></li>
 

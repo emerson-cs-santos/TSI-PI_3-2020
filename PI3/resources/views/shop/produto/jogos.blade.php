@@ -3,6 +3,7 @@
 @section('content_Shopping')
     <section class="new-arrivals">
         <div class="container">
+            @include('exibirErros')
             <header class="section-header mt-5">
                 <h2>Os melhores Jogos!</h2>
             </header>
@@ -24,7 +25,7 @@
                     <div class="col-sm-12 col-md-3">
                         {{-- <div class="single-new-arrival"> --}}
                             <div class="single-new-arrival-bg">
-                                <img class="imagemShop" src="@if( empty($product->image) )  {{asset('admin_assets/images/produto_sem_imagem.jpg')}} @else {{$product->image}} @endif" alt="{{$product->name}}">
+                               <img class="imagemShop" src="@if( empty($product->image) )  {{asset('admin_assets/images/produto_sem_imagem.jpg')}} @else {{$product->image}} @endif" alt="{{$product->name}}">
                                 <div class="single-new-arrival-bg-overlay"></div>
 
                                 @if( $product->discount > 0 )
@@ -35,13 +36,16 @@
 
                                 <div class="new-arrival-cart">
                                     <p>
-                                        <span class="lnr lnr-cart"></span>
-                                        <a href="#" data-placement="top" data-toggle="tooltip" title="Adicionar ao carrinho">Adicionar <span>ao </span> carrinho</a>
+                                        <form action="{{route('carrinho-shop-store',$product->id)}}" class='p-3 bg-white' method="post">
+                                        @csrf
+                                            <button type="submit"><span class="lnr lnr-cart"></span> Adicionar ao carrinho</button>
+                                        </form>
                                     </p>
-                                    <p class="arrival-review pull-right">
+
+                                    {{-- <p class="arrival-review pull-right">
                                         <a href="#" data-placement="top" data-toggle="tooltip" title="Adicionar para lista de desejos"><span class="lnr lnr-heart"> </span></a>
                                         <a href="#" data-placement="top" data-toggle="tooltip" title="Aumentar imagem"><span class="lnr lnr-frame-expand"> </span></a>
-                                    </p>
+                                    </p> --}}
                                 </div>
 
                             </div>
