@@ -241,11 +241,11 @@
                             <div class=" col-md-3 col-sm-6 col-xs-12">
                                 <div class="hm-footer-widget">
                                     <div class="hm-foot-title">
-                                        <h4>Jogos</h4>
+                                        <h4>Categorias</h4>
                                     </div><!--/.hm-foot-title-->
                                     <div class="hm-foot-menu">
                                         <ul>
-                                            @foreach(\App\Category::all()->sortBy('name')->take(5) as $categoryFooter)
+                                            @foreach(\App\Category::all()->where('home','S')->sortBy('name') as $categoryFooter)
                                                 <li> <a href="{{ route('search-category', $categoryFooter->id) }}">{{$categoryFooter->name}}</a></li>
                                             @endforeach
                                         </ul><!--/ul-->

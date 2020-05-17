@@ -20,6 +20,14 @@
                                     </div>
 
                                     <div class="form-group">
+                                        <label for="home">Aparecer no rodapé do site?</label>
+                                        <select name="home" class="form-control">
+                                            <option value="N" @if( $category->home == 'N') selected @endif >Não</option>
+                                            <option value="S" @if( $category->home == 'S') selected @endif >Sim</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="form-group">
                                         @php
                                             if ( $category->updated_at == null )
                                             {

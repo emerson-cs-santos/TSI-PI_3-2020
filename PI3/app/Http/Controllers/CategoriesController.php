@@ -34,7 +34,8 @@ class CategoriesController extends Controller
     public function store(CreateCategoryRequest $request)
     {
         Category::create([
-            'name' => $request->name
+            'name'  => $request->name
+            ,'home' => $request->home
         ]);
 
        session()->flash('success', 'Categoria criada com sucesso!');
@@ -57,7 +58,8 @@ class CategoriesController extends Controller
     public function update(EditCategoryRequest $request, Category $category)
     {
         $category->update([
-            'name' => $request->name
+            'name'  => $request->name
+            ,'home' => $request->home
         ]);
 
         session()->flash('success', 'Categoria alterada com sucesso!');

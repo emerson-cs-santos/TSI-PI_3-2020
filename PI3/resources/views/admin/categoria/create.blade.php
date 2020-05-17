@@ -35,6 +35,14 @@
                                         <input type="text" class='form-control' name="name" placeholder="Digite o nome da categoria" value="{{old('name')}}">
                                     </div>
 
+                                    <div class="form-group">
+                                        <label for="home">Aparecer no rodapé do site?</label>
+                                        <select name="home" class="form-control">
+                                            <option value="N" @if( old('home') == 'N') selected @endif >Não</option>
+                                            <option value="S" @if( old('home') == 'S') selected @endif >Sim</option>
+                                        </select>
+                                    </div>
+
                                     <button type="submit" class="btn btn-success">Criar</button>
                                     <a href="{{route('categories.index')}}" class='btn btn-primary'>Voltar</a>
                                 </form>
