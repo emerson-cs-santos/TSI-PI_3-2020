@@ -38,7 +38,7 @@
 
                     {{-- Tabela inicio --}}
                     <div class="table-responsive mt-3">
-                        <table class="table table-striped bg-light text-center table-bordered">
+                        <table class="table table-striped bg-light text-center table-bordered table-hover">
                             <thead class="text-dark">
                                 <th>Código</th>
                                 <th>Produto</th>
@@ -48,12 +48,24 @@
                             </thead>
                             <tbody>
                                 @foreach($itensPedido as $itemPedido)
+
+                                @php
+                                    $produto = App\ItemPedido::find($itemPedido->id)->produto;
+                                @endphp
+
                                 <tr>
                                     <td>{{$itemPedido->id}}</td>
-                                    <td> @if ( $itemPedido->product_id > 0 ) {{App\ItemPedido::find($itemPedido->id)->produto->name}} @else Sem produto @endif</td>
+                                    <td><a
+                                        href="{{ route('produto-loja', $produto->id) }}"
+                                        class="carrinho_nome_produto"
+                                        data-placement="top" data-toggle="tooltip" title="Ver Produto">
+                                        {{$produto->name}}
+                                    </a>
+                                    </td>
+
                                     <td>{{$itemPedido->quantidade}}</td>
-                                    <td>{{'R$'.number_format($itemPedido->preco, 2) }}</td>
-                                    <td>{{'R$'.number_format($itemPedido->quantidade * $itemPedido->preco, 2) }}</td>
+                                    <td>{{'R$'.number_format($itemPedido->preco, 2,',','.') }}</td>
+                                    <td>{{'R$'.number_format($itemPedido->quantidade * $itemPedido->preco, 2,',','.') }}</td>
                                 </tr>
                                 @endforeach
                             </tbody>
@@ -78,9 +90,6 @@
                             {{ $itensPedido->links() }}
                         </div>
                     </div>
-
-
-
                 </div>
             </div>
         </div>

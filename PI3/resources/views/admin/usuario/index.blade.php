@@ -38,7 +38,7 @@
 
                                 {{-- Tabela inicio --}}
                                 <div class="table-responsive mt-3">
-                                    <table class="table table-striped bg-light text-center table-bordered">
+                                    <table class="table table-striped bg-light text-center table-bordered table-hover">
                                         <thead class="text-dark">
                                             <th>Código</th>
                                             <th>Nome</th>

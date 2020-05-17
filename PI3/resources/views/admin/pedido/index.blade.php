@@ -32,41 +32,50 @@
 
                                 {{-- Tabela inicio --}}
                                 <div class="table-responsive mt-3">
-                                    <table class="table table-striped bg-light text-center table-bordered">
+                                    <table class="table table-striped bg-light text-center table-bordered table-hover">
                                         <thead class="text-dark">
                                             <th>Nro Pedido(ID)</th>
                                             <th>Usuário</th>
+                                            <th>Data</th>
+                                            <th>Valor Total</th>
                                         </thead>
                                         <tbody>
                                             @foreach($pedidos as $pedido)
-                                            <tr>
-                                                <td>{{$pedido->id}}</td>
-                                                <td> @if ( $pedido->user_id > 0 ) {{App\Pedido::withTrashed()->find($pedido->id)->usuario->name}} @else Sem usuário @endif</td>
+                                                <tr>
+                                                    <td>{{$pedido->id}}</td>
+                                                    <td> @if ( $pedido->user_id > 0 ) {{App\Pedido::withTrashed()->find($pedido->id)->usuario->name}} @else Sem usuário @endif</td>
+                                                    @php
+                                                        $date = DateTime::createFromFormat('Y-m-d H:i:s', $pedido->created_at );
+                                                    @endphp
 
-                                                <td>
-                                                    <a href="{{ route('item-pedido', $pedido->id) }}" class="btn btn-xs btn-secondary">Ver Pedido</a>
-                                                </td>
+                                                    <td>{{$date->format('d/m/Y')}}</td>
 
-                                                {{-- @if($pedido->trashed())
+                                                    <td>{{ $pedido->valorTotal() }}</td>
+
                                                     <td>
-                                                        <form action="{{ route('restore-pedido.update', $pedido->id) }}"  method="POST" onsubmit="return confirm('Você tem certeza que quer reativar?')">
-                                                            @csrf
-                                                            @method('PUT')
-                                                            <button type="submit" href="#" class="btn btn-primary btn-sm float-center ml-1">Descancelar Pedido</button>
-                                                        </form>
+                                                        <a href="{{ route('item-pedido', $pedido->id) }}" class="btn btn-xs btn-secondary">Ver Pedido</a>
                                                     </td>
-                                                @endif --}}
 
-                                                @if ( !$pedido->trashed() )
-                                                    <td>
-                                                        <form  action="{{ route('pedido.destroy', $pedido->id) }}" method="POST" onsubmit="return confirm('Você tem certeza?')">
-                                                            @csrf
-                                                            @method('DELETE')
-                                                            <button type="submit" href="#" class="btn btn-danger btn-sm float-center"> Cancelar Pedido </a>
-                                                        </form>
-                                                    </td>
-                                                @endif
-                                            </tr>
+                                                    {{-- @if($pedido->trashed())
+                                                        <td>
+                                                            <form action="{{ route('restore-pedido.update', $pedido->id) }}"  method="POST" onsubmit="return confirm('Você tem certeza que quer reativar?')">
+                                                                @csrf
+                                                                @method('PUT')
+                                                                <button type="submit" href="#" class="btn btn-primary btn-sm float-center ml-1">Descancelar Pedido</button>
+                                                            </form>
+                                                        </td>
+                                                    @endif --}}
+
+                                                    @if ( !$pedido->trashed() )
+                                                        <td>
+                                                            <form  action="{{ route('pedido.destroy', $pedido->id) }}" method="POST" onsubmit="return confirm('Você tem certeza?')">
+                                                                @csrf
+                                                                @method('DELETE')
+                                                                <button type="submit" href="#" class="btn btn-danger btn-sm float-center"> Cancelar Pedido </a>
+                                                            </form>
+                                                        </td>
+                                                    @endif
+                                                </tr>
                                             @endforeach
                                         </tbody>
                                     </table>

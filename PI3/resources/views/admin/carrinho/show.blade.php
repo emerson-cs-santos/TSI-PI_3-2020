@@ -29,6 +29,25 @@
                                         <input type="number" class='form-control' name="Quantidade" placeholder="Digite a quantidade" value="{{$carrinho->quantidade}}">
                                     </div>
 
+                                    <div class="form-group">
+                                        @php
+                                            if ( $carrinho->updated_at == null )
+                                            {
+                                                $DataAlteracao = 'Sem data';
+                                            }
+                                            else
+                                            {
+                                                $date = DateTime::createFromFormat('Y-m-d H:i:s', $carrinho->updated_at );
+                                                $DataAlteracao = $date->format('d/m/Y');
+                                            }
+                                        @endphp
+
+                                        <div>
+                                            <span>Última Alteração:</span>
+                                        </div>
+                                        <input type="text" value="{{ $DataAlteracao }}" class="form-control">
+                                    </div>
+
                                     <a href="{{route('carrinho.index')}}" class='btn btn-success'>Voltar</a>
                                 </div>
                             </div>

@@ -197,7 +197,7 @@
 				            <!-- Collect the nav links, forms, and other content for toggling -->
 				            <div class="collapse navbar-collapse menu-ui-design" id="navbar-menu">
 				                <ul class="nav navbar-nav navbar-center" data-in="fadeInDown" data-out="fadeOutUp">
-				                    <li class=" {{ Str::of( Request::path() )->contains( ['jogos_shop', 'search/category'] )  ? ' active' : '' }} "><a href="/jogos_shop">Jogos</a></li>
+				                    <li class=" {{ Str::of( Request::path() )->contains( ['jogos_shop', 'search/category', 'produto_loja'] )  ? ' active' : '' }} "><a href="/jogos_shop">Jogos</a></li>
 				                    <li class=" {{ \Request::is('novos_shop')           ? ' active' : '' }} "><a href="/novos_shop"     >Lançamentos</a></li>
 				                    <li class=" {{ \Request::is('destaque_shop')	    ? ' active' : '' }} "><a href="/destaque_shop"  >Mais vendidos</a></li>
                                     <li class=" {{ Str::of( Request::path() )->contains( ['pedido-shop-index', 'item-pedido-shop-index'] ) ? ' active' : '' }} "><a href="{{route('pedido-shop-index')}}">Meus Pedidos</a></li>

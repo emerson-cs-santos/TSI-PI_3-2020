@@ -21,7 +21,7 @@ class HomeController extends Controller
     {
         //return view('home');
 
-        $carrossel      = Product::all()->take(3);
+        $carrossel      = Product::all()->where('home','S');
         $lancamentos    = Product::all()->sortByDesc('id')->take(4);
 
         // // Query para testes no mySQL: select item_pedidos.product_id, sum(item_pedidos.quantidade) as maisVendido from item_pedidos group by item_pedidos.product_id order by maisVendido desc

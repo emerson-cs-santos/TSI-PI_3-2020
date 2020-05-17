@@ -15,6 +15,7 @@ class Product extends Model
         ,'price'
         ,'discount'
         ,'category_id'
+        ,'home'
     ];
 
     public function category()
@@ -50,7 +51,7 @@ class Product extends Model
 
      public function fMoney($value)
      {
-         return 'R$'.number_format($value, 2);
+         return 'R$'.number_format($value, 2,',','.');
      }
 
      public function descontoExibir()

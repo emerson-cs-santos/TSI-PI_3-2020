@@ -38,6 +38,25 @@
                                         </select>
                                     </div>
 
+                                    <div class="form-group">
+                                        @php
+                                            if ( $usuario->updated_at == null )
+                                            {
+                                                $DataAlteracao = 'Sem data';
+                                            }
+                                            else
+                                            {
+                                                $date = DateTime::createFromFormat('Y-m-d H:i:s', $usuario->updated_at );
+                                                $DataAlteracao = $date->format('d/m/Y');
+                                            }
+                                        @endphp
+
+                                        <div>
+                                            <span>Última Alteração:</span>
+                                        </div>
+                                        <input type="text" value="{{ $DataAlteracao }}" class="form-control">
+                                    </div>
+
                                     <a href="{{route('Users.index')}}" class='btn btn-success'>Voltar</a>
                                 </div>
                             </div>

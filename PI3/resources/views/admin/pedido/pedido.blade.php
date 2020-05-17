@@ -1,4 +1,3 @@
-teste
 @extends('layouts.Admin')
 
 @section('content_Admin')
@@ -33,6 +32,14 @@ teste
                                 <div class="row">
                                     <span class="h3 col-md-2" >Valor Total: </span>
                                     <span class="h3 col-md-10 font-weight-bold" >{{ $pedido->valorTotal() }} </span>
+                                </div>
+
+                                <div class="row">
+                                    <span class="h3 col-md-2" >Data: </span>
+                                    @php
+                                        $date = DateTime::createFromFormat('Y-m-d H:i:s', $pedido->created_at );
+                                    @endphp
+                                    <span class="h3 col-md-10 font-weight-bold" >{{ $date->format('d/m/Y') }} </span>
                                 </div>
 
                                 <div class="row">

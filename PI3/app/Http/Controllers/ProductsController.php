@@ -56,12 +56,13 @@ class ProductsController extends Controller
         }
 
         Product::create([
-            'name' => $request->name
-            ,'image' => $imagem_convertida
-            ,'desc' => $request->descricao
-            ,'price' => $request->preco
-            ,'discount' => $desconto
+            'name'          => $request->name
+            ,'image'        => $imagem_convertida
+            ,'desc'         => $request->descricao
+            ,'price'        => $request->preco
+            ,'discount'     => $desconto
             ,'category_id'  => $request->category_id
+            ,'home'         => $request->home
         ]);
 
        session()->flash('success', 'Produto criado com sucesso!');
@@ -110,6 +111,7 @@ class ProductsController extends Controller
             ,'price'        => $request->preco
             ,'discount'     => $desconto
             ,'category_id'  => $request->category_id
+            ,'home'         => $request->home
         ]);
 
         session()->flash('success', 'Produto alterado com sucesso!');

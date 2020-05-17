@@ -3,11 +3,22 @@
 @section('content_Shopping')
 
     <div id="header-carousel" class="carousel slide carousel-fade" data-ride="carousel">
+
+        @php
+            $itemCount = 0
+        @endphp
+
         <!--/.carousel-indicator -->
         <ol class="carousel-indicators">
-            <li data-target="#header-carousel" data-slide-to="0" class="active"><span class="small-circle"></span></li>
-            <li data-target="#header-carousel" data-slide-to="1">               <span class="small-circle"></span></li>
-            <li data-target="#header-carousel" data-slide-to="2">               <span class="small-circle"></span></li>
+
+            @foreach($carrossel_produtos as $carrossel_produto)
+
+                <li data-target="#header-carousel" data-slide-to="{{$itemCount}}" class="@if( $itemCount == 0 ) active @endif" ><span class="small-circle"></span></li>
+
+                @php
+                    $itemCount++
+                @endphp
+             @endforeach
         </ol><!-- /ol-->
         <!--/.carousel-indicator -->
 
@@ -70,7 +81,6 @@
 
                 </div>
                 <!-- /.item .active-->
-
             @endforeach
         </div>
         <!-- /.carousel-inner-->

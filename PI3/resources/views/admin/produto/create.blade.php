@@ -41,17 +41,25 @@
 
                                     <div class="form-group">
                                         <label for="descricao">Descrição</label>
-                                        <textarea name="descricao" class='form-control' rows=10 placeholder="Digite uma descrição para o produto">{{old('desc')}}</textarea>
+                                        <textarea name="descricao" class='form-control' rows=10 placeholder="Digite uma descrição para o produto">{{old('descricao')}}</textarea>
                                     </div>
 
                                     <div class="form-group">
                                         <label for="preco">Preço</label>
-                                        <input type="number" class='form-control' name="preco" placeholder="Digite o preço" value="{{old('price')}}">
+                                        <input type="number" class='form-control' name="preco" placeholder="Digite o preço" value="{{old('preco')}}">
                                     </div>
 
                                     <div class="form-group">
                                         <label for="discount">Desconto</label>
                                         <input type="number" class='form-control' name="discount" placeholder="Digite o desconto" value="{{old('discount')}}">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="home">Aparecer na Home?</label>
+                                        <select name="home" class="form-control">
+                                            <option value="N" @if( old('home') == 'N') selected @endif >Não</option>
+                                            <option value="S" @if( old('home') == 'S') selected @endif >Sim</option>
+                                        </select>
                                     </div>
 
                                     <div class="form-group">

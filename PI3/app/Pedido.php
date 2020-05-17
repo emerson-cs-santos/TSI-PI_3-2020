@@ -31,10 +31,10 @@ class Pedido extends Model
 
        $valores = ItemPedido::selectRaw('sum(item_pedidos.quantidade * item_pedidos.preco) as total')->where('fk_pedido', '=', $this->id)->groupBy('fk_pedido')->get();
        $valorTotal = '0';
-       foreach ($valores as $valor)
+       foreach ($valores as $valor) // Sempre vai retornar apenas 1 registro (cada pedido só tem 1 valor total), mas é preciso fazer um foreach para acessar o valor
        {
             $valorTotal = floatval($valor->total);
        }
-        return 'R$'.number_format($valorTotal, 2);
+        return 'R$'.number_format($valorTotal, 2,',','.');
     }
 }

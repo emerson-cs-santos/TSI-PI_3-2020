@@ -31,6 +31,25 @@
                                     <input type="number" class='form-control' name="fk_produto" placeholder="Digite o id do produto" value="{{$movimento->product_id}}">
                                 </div>
 
+                                <div class="form-group">
+                                    @php
+                                        if ( $movimento->updated_at == null )
+                                        {
+                                            $DataAlteracao = 'Sem data';
+                                        }
+                                        else
+                                        {
+                                            $date = DateTime::createFromFormat('Y-m-d H:i:s', $movimento->updated_at );
+                                            $DataAlteracao = $date->format('d/m/Y');
+                                        }
+                                    @endphp
+
+                                    <div>
+                                        <span>Última Alteração:</span>
+                                    </div>
+                                    <input type="text" value="{{ $DataAlteracao }}" class="form-control">
+                                </div>
+
                                 <a href="{{route('movimentos.index')}}" class='btn btn-primary'>Voltar</a>
                             </div>
                         </div>

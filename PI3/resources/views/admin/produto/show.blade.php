@@ -47,8 +47,35 @@
                                     </div>
 
                                     <div class="form-group">
+                                        <label for="home">Aparecer na Home?</label>
+                                        <select name="home" class="form-control">
+                                            <option value="N" @if( $product->home == 'N') selected @endif >Não</option>
+                                            <option value="S" @if( $product->home == 'S') selected @endif >Sim</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="form-group">
                                         <label>Imagem do Produto</label>
                                         <img id="ExibirIMG_inputfile" class="form-control img_extra_small_prod img_small_prod img_normal_prod mt-5" alt="Imagem do Produto" src=" @if( empty($product->image) )  {{asset('admin_assets/images/produto_sem_imagem.jpg')}} @else {{$product->image}} @endif" >
+                                    </div>
+
+                                    <div class="form-group">
+                                        @php
+                                            if ( $product->updated_at == null )
+                                            {
+                                                $DataAlteracao = 'Sem data';
+                                            }
+                                            else
+                                            {
+                                                $date = DateTime::createFromFormat('Y-m-d H:i:s', $product->updated_at );
+                                                $DataAlteracao = $date->format('d/m/Y');
+                                            }
+                                        @endphp
+
+                                        <div>
+                                            <span>Última Alteração:</span>
+                                        </div>
+                                        <input type="text" value="{{ $DataAlteracao }}" class="form-control">
                                     </div>
 
                                     <a href="{{route('products.index')}}" class='btn btn-success'>Voltar</a>

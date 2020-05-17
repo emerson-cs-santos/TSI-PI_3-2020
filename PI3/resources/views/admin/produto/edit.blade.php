@@ -58,6 +58,14 @@
                                     </div>
 
                                     <div class="form-group">
+                                        <label for="home">Aparecer na Home?</label>
+                                        <select name="home" class="form-control">
+                                            <option value="N" @if( $product->home == 'N') selected @endif >Não</option>
+                                            <option value="S" @if( $product->home == 'S') selected @endif >Sim</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="form-group">
                                         <label>Imagem do Produto</label>
                                         <input class="form-control" type="file" name="imagem" accept="image/png, image/jpeg, image/jpg" onchange="preview_image(event)" >
                                         <img id="ExibirIMG_inputfile" class="form-control img_extra_small_prod img_small_prod img_normal_prod mt-5" alt="Imagem do Produto" src=" @if( empty($product->image) )  {{asset('admin_assets/images/produto_sem_imagem.jpg')}} @else {{$product->image}} @endif" >

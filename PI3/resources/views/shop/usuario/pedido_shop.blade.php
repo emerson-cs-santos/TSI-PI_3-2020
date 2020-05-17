@@ -37,10 +37,11 @@
 
                     {{-- Tabela inicio --}}
                     <div class="table-responsive mt-3">
-                        <table class="table table-striped bg-light text-center table-bordered">
+                        <table class="table table-striped bg-light text-center table-bordered table-hover">
                             <thead class="text-dark">
                                 <th class="text-center">Número do Pedido</th>
                                 <th class="text-center">Valor Total</th>
+                                <th class="text-center">Data</th>
                                 <th class="text-center">Status</th>
                                 <th class="text-center">Entrega</th>
                             </thead>
@@ -49,6 +50,12 @@
                                 <tr class=" {{ $pedido->trashed() ? ' PedidoCancelado' : ''  }} ">
                                     <td>Nro. {{$pedido->id}}</td>
                                     <td>{{ $pedido->valorTotal() }}</td>
+
+                                    @php
+                                        $date = DateTime::createFromFormat('Y-m-d H:i:s', $pedido->created_at );
+                                    @endphp
+                                    <td>{{$date->format('d/m/Y')}}</td>
+
                                     <td>
                                         @if( $pedido->trashed() )
                                             CANCELADO

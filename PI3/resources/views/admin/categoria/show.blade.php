@@ -19,6 +19,25 @@
                                         <input type="text" class='form-control' name="name" placeholder="Digite o nome da categoria" value="{{$category->name}}">
                                     </div>
 
+                                    <div class="form-group">
+                                        @php
+                                            if ( $category->updated_at == null )
+                                            {
+                                                $DataAlteracao = 'Sem data';
+                                            }
+                                            else
+                                            {
+                                                $date = DateTime::createFromFormat('Y-m-d H:i:s', $category->updated_at );
+                                                $DataAlteracao = $date->format('d/m/Y');
+                                            }
+                                        @endphp
+
+                                        <div>
+                                            <span>Última Alteração:</span>
+                                        </div>
+                                        <input type="text" value="{{ $DataAlteracao }}" class="form-control">
+                                    </div>
+
                                     <a href="{{route('categories.index')}}" class='btn btn-success'>Voltar</a>
                                 </div>
                             </div>

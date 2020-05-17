@@ -40,7 +40,7 @@
                         <button type="submit" class="btn btn-warning mt-2">Limpar Carrinho</button>
                     </form>
                     <div class="table-responsive mt-3">
-                        <table class="table table-striped bg-light text-center table-bordered">
+                        <table class="table table-striped bg-light text-center table-bordered table-hover">
                             <thead class="text-dark">
                                 <th class="text-center">Produto</th>
                                 <th class="text-center">Preview</th>
@@ -91,7 +91,7 @@
 
                                     <td>{{$item->qtd_total}}</td>
 
-                                    <td>{{ 'R$'.number_format($subTotal, 2) }}</td>
+                                    <td>{{ 'R$'.number_format($subTotal, 2,',','.') }}</td>
 
                                     <td>
                                         <form action="{{ route('carrinho-shop-destroy', $produto->id) }}" method="POST" onsubmit="return confirm('Você tem certeza?')">
@@ -114,7 +114,7 @@
 
                     <div class="container col-md-12">
                         <div class="text-center">
-                            <span class="h3 col-md-12">Total: {{ 'R$'.number_format($total, 2) }}</span>
+                            <span class="h3 col-md-12">Total: {{ 'R$'.number_format($total, 2,',','.') }}</span>
                             <div>
                                 <form action="{{ route('carrinho-shop-finalizar') }}" method="GET" onsubmit="return confirm('Confimar compra?')">
                                     @csrf

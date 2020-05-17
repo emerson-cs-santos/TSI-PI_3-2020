@@ -5,7 +5,10 @@
     <section>
         <header class="container-fluid">
             <div class="col-xl-10 col-lg-9 col-md-8 ml-auto row pt-md-5 mt-2 text-dark">
-                <h2 class="">Status</h2>
+                @php
+                    date_default_timezone_set('America/Sao_Paulo');
+                @endphp
+                <h2 class="">Status: ( Atualizado em {{ date('d/m/Y \à\s H:i:s',time())}} )</h2>
             </div>
         </header>
 
@@ -21,14 +24,16 @@
                                     <div class="d-flex justify-content-between">
                                         <i class="fas fa-shopping-cart fa-3x text-info"></i>
                                         <div class="text-right text-dark">
-                                            <h3 class='h5'>Sales</h3>
-                                            <h3>$10,000.00</h3>
+                                            <h3>Total em Carrinhos</h3>
+                                            <div>
+                                                <span class="h4">{{ 'R$'.number_format($totalCarrinho, 2,",",".") }}</span>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="card-footer text-dark">
                                     <i class="fas fa-spinner fa-pulse text-info mr-3"></i>
-                                    <span>Updating</span>
+                                    <span>Atualizando</span>
                                 </div>
                             </div>
                         </div>
@@ -42,14 +47,16 @@
                                     <div class="d-flex justify-content-between">
                                         <i class="fas fa-money-bill-alt fa-3x text-success"></i>
                                         <div class="text-right text-dark">
-                                            <h3 class='h5'>Expenses</h3>
-                                            <h3>$6000.00</h3>
+                                            <h3>Total de Vendas</h3>
+                                            <div>
+                                                <span class="h4">{{ 'R$'.number_format($totalPedido, 2,",",".") }}</span>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="card-footer text-dark">
                                     <i class="fas fa-spinner fa-pulse text-success mr-3"></i>
-                                    <span>Updating</span>
+                                    <span>Atualizando</span>
                                 </div>
                             </div>
                         </div>
@@ -63,14 +70,16 @@
                                     <div class="d-flex justify-content-between">
                                         <i class="fas fa-users fa-3x text-warning"></i>
                                         <div class="text-right text-dark">
-                                            <h3 class='h5'>Users</h3>
-                                            <h3>3,000.00</h3>
+                                            <h3>Total de Usuários</h3>
+                                            <div>
+                                                <span class="h4">{{ number_format($totalUsuarios, 0,",",".") }}</span>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="card-footer text-dark">
                                     <i class="fas fa-spinner fa-pulse text-warning mr-3"></i>
-                                    <span>Updating</span>
+                                    <span>Atualizando</span>
                                 </div>
                             </div>
                         </div>
@@ -82,16 +91,18 @@
                             <div class="card card-common">
                                 <div class="card-body">
                                     <div class="d-flex justify-content-between">
-                                        <i class="fas fa-chart-line fa-3x text-danger"></i>
+                                        <i class="fas fa-dolly-flatbed fa-3x text-danger"></i>
                                         <div class="text-right text-dark">
-                                            <h3 class='h5'>Visitors</h3>
-                                            <h3>2,000.00</h3>
+                                            <h3>Estoque Total</h3>
+                                            <div>
+                                                <span class="h4">{{ number_format($totalEstoque, 0,",",".") }}</span>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="card-footer text-dark">
                                     <i class="fas fa-spinner fa-pulse text-danger mr-3"></i>
-                                    <span>Updating</span>
+                                    <span>Atualizando</span>
                                 </div>
                             </div>
                         </div>
@@ -120,177 +131,75 @@
                     <div class="row align-items-center">
 
                         <!---Table 1 BEGIN-->
-                        <div class="col-xl-6 col-12 mb-4 mb-xl-0">
-                            <h3 class="text-dark text-center mb-3"> Staff Salary </h3>
-                            <table class="table table-striped bg-light text-center">
-                                <thead>
-                                    <tr class="text-dark">
-                                        <th>#</th>
-                                        <th>Name</th>
-                                        <th>Salary</th>
-                                        <th>Date</th>
-                                        <th>Contact</th>
-                                    </tr>
+                        <div class="col-xl-12 col-12">
+                            <h3 class="text-dark text-center mb-3">Últimas Vendas</h3>
+                            <table class="table table-striped bg-light text-center table-bordered table-hover">
+                                <thead class="text-dark">
+                                    <th>Nro Pedido(ID)</th>
+                                    <th>Usuário</th>
+                                    <th>Valor Total</th>
+                                    <th>Data</th>
                                 </thead>
-
                                 <tbody>
-                                    <tr>
-                                        <th>1</th>
-                                        <td>Jade</td>
-                                        <td>$6000</td>
-                                        <td>10-09-2019</td>
-                                        <td><button type="button" class="btn btn-danger btn-sm">Message</button></td>
-                                    </tr>
+                                    @foreach($pedidosRecente as $pedido)
+                                        <tr>
+                                            <td>{{$pedido->id}}</td>
+                                            <td> @if ( $pedido->user_id > 0 ) {{App\Pedido::withTrashed()->find($pedido->id)->usuario->name}} @else Sem usuário @endif</td>
+                                            <td>{{ $pedido->valorTotal() }}</td>
 
-                                    <tr>
-                                        <th>2</th>
-                                        <td>Jane</td>
-                                        <td>$5000</td>
-                                        <td>10-09-2019</td>
-                                        <td><button type="button" class="btn btn-danger btn-sm">Message</button></td>
-                                    </tr>
-
-                                    <tr>
-                                        <th>3</th>
-                                        <td>Elon</td>
-                                        <td>$7000</td>
-                                        <td>10-09-2019</td>
-                                        <td><button type="button" class="btn btn-danger btn-sm">Message</button></td>
-                                    </tr>
-
-                                    <tr>
-                                        <th>4</th>
-                                        <td>Dave</td>
-                                        <td>$9000</td>
-                                        <td>10-09-2019</td>
-                                        <td><button type="button" class="btn btn-danger btn-sm">Message</button></td>
-                                    </tr>
+                                            @php
+                                                $date = DateTime::createFromFormat('Y-m-d H:i:s', $pedido->created_at );
+                                            @endphp
+                                            <td>{{$date->format('d/m/Y')}}</td>
+                                        </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
 
-                            <!---Pagination-->
-                            <nav class="color">
-                                <ul class="pagination justify-content-center">
-
-                                    <li class="page-item">
-                                        <a href="#" class="page-link py-2 px-3">
-                                            <span>&laquo;</span>
-                                        </a>
-                                    </li>
-
-                                    <li class="page-item active">
-                                        <a href="#" class="page-link py-2 px-3">
-                                            1
-                                        </a>
-                                    </li>
-
-                                    <li class="page-item">
-                                        <a href="#" class="page-link py-2 px-3">
-                                            2
-                                        </a>
-                                    </li>
-
-                                    <li class="page-item">
-                                        <a href="#" class="page-link py-2 px-3">
-                                            3
-                                        </a>
-                                    </li>
-
-                                    <li class="page-item">
-                                        <a href="#" class="page-link py-2 px-3">
-                                            <span>&raquo;</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </nav>
-                            <!---End of Pagination-->
+                            <div class="pagination justify-content-center">
+                                {{ $pedidosRecente->links() }}
+                            </div>
                         </div>
                         <!---Table 1 END-->
 
 
                         <!---Table 2 BEGIN-->
-                        <div class="col-xl-6 col-12">
-                            <h3 class="text-dark text-center mb-3">Recent Payments</h3>
-                            <table class="table table-color  table-hover">
-                                <thead>
-                                    <tr class="text-dark">
-                                        <th>#</th>
-                                        <th>Name</th>
-                                        <th>Price</th>
-                                        <th>Date</th>
-                                        <th>Status</th>
-                                    </tr>
-                                </thead>
+                        <div class="col-xl-12 col-12 mt-5">
+                            <h3 class="text-dark text-center mb-3"> Movimentação de Estoque Recente </h3>
+                            <div class="table-responsive mt-3">
+                                <table class="table table-striped bg-light text-center table-bordered table-hover">
+                                    <thead class="text-dark">
+                                        <th>ID</th>
+                                        <th>Produto</th>
+                                        <th>Tipo</th>
+                                        <th>Quantidade</th>
+                                        <th>Origem</th>
+                                        <th>Data</th>
+                                    </thead>
+                                    <tbody>
+                                        @foreach($movimentacaoRecente as $movimento)
+                                        <tr>
+                                            <td>{{$movimento->id}}</th>
+                                            <td> @if ( $movimento->product_id > 0 ) {{App\Movimento::withTrashed()->find($movimento->id)->produto->name}} @else Sem produto @endif</td>
+                                            <td>@if( $movimento->tipo == 'E' ) Entrada @else Saída @endif</td>
+                                            <td>@if( $movimento->tipo == 'S' ) {{number_format($movimento->quantidade*-1,0,'.',',')}} @else {{number_format($movimento->quantidade,0,',','.')}} @endif</td>
+                                            <td>@if( $movimento->fk_origem == 0) Manual @else Pedido - ID {{$movimento->fk_origem}} @endif</td>
 
-                                <tbody>
-                                    <tr>
-                                        <th>1</th>
-                                        <td>Mike</td>
-                                        <td>$6000</td>
-                                        <td>10-09-2019</td>
-                                        <td><span class="badge badge-success w-75 py-2">Approved</span></td>
-                                    </tr>
+                                            @php
+                                                $date = DateTime::createFromFormat('Y-m-d H:i:s', $movimento->created_at );
+                                            @endphp
 
-                                    <tr>
-                                        <th>2</th>
-                                        <td>Mark</td>
-                                        <td>$6000</td>
-                                        <td>10-09-2019</td>
-                                        <td><span class="badge badge-success w-75 py-2">Approved</span></td>
-                                    </tr>
+                                            <td>{{$date->format('d/m/Y')}}</td>
+                                        </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
 
-                                    <tr>
-                                        <th>3</th>
-                                        <td>David</td>
-                                        <td>$6000</td>
-                                        <td>10-09-2019</td>
-                                        <td><span class="badge badge-danger w-75 py-2">Pending</span></td>
-                                    </tr>
-
-                                    <tr>
-                                        <th>4</th>
-                                        <td>William</td>
-                                        <td>$6000</td>
-                                        <td>10-09-2019</td>
-                                        <td><span class="badge badge-danger w-75 py-2">Pending</span></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-
-                            <nav>
-                                <ul class="pagination justify-content-center">
-
-                                    <li class="page-item">
-                                        <a href="#" class="page-link py-2 px-3">
-                                            <span>Previous</span>
-                                        </a>
-                                    </li>
-
-                                    <li class="page-item active">
-                                        <a href="#" class="page-link py-2 px-3">
-                                            1
-                                        </a>
-                                    </li>
-
-                                    <li class="page-item">
-                                        <a href="#" class="page-link py-2 px-3">
-                                            2
-                                        </a>
-                                    </li>
-
-                                    <li class="page-item">
-                                        <a href="#" class="page-link py-2 px-3">
-                                            3
-                                        </a>
-                                    </li>
-
-                                    <li class="page-item">
-                                        <a href="#" class="page-link py-2 px-3">
-                                            <span>Next</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </nav>
+                            <!---Pagination-->
+                            <div class="pagination justify-content-center">
+                                {{ $movimentacaoRecente->links() }}
+                            </div>
+                            <!---End of Pagination-->
                         </div>
                         <!---Table 2 END-->
 
