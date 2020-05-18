@@ -54,19 +54,22 @@
                                                     </td>
                                                 @else
                                                     <td>
-                                                        <form action="{{ route('restore-categories.update', $category->id) }}"  method="POST" onsubmit="return confirm('Você tem certeza que quer reativar?')">
+                                                        <form action="{{ route('restore-categories.update', $category->id) }}" method="POST">
                                                             @csrf
                                                             @method('PUT')
-                                                            <button type="submit" href="#" class="btn btn-primary btn-sm float-center ml-1">Reativar</button>
+                                                            <button type="button" onclick="confirmar('Reativar registro','Você tem certeza?', this.form)" class="btn btn-primary btn-sm float-center ml-1">Reativar</button>
                                                         </form>
                                                     </td>
                                                 @endif
 
                                                 <td>
-                                                    <form  action="{{ route('categories.destroy', $category->id) }}" method="POST" onsubmit="return confirm('Você tem certeza?')">
+                                                    <form  action="{{ route('categories.destroy', $category->id) }}" method="POST">
                                                         @csrf
                                                         @method('DELETE')
-                                                        <button type="submit" href="#" class="btn btn-danger btn-sm float-center"> {{ $category->trashed() ? 'Apagar' : 'Mover para Lixeira' }} </a>
+                                                        @php
+                                                            $acaoDeletar = $category->trashed() ? 'Apagar' : 'Mover para Lixeira';
+                                                        @endphp
+                                                        <button type="button" onclick="confirmar('{{ $acaoDeletar }}','Você tem certeza?', this.form)" class="btn btn-danger btn-sm float-center"> {{ $acaoDeletar }} </a>
                                                     </form>
                                                 </td>
                                             </tr>

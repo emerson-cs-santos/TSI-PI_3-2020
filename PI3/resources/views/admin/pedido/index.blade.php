@@ -68,10 +68,10 @@
 
                                                     @if ( !$pedido->trashed() )
                                                         <td>
-                                                            <form  action="{{ route('pedido.destroy', $pedido->id) }}" method="POST" onsubmit="return confirm('Você tem certeza?')">
+                                                            <form  action="{{ route('pedido.destroy', $pedido->id) }}" method="POST">
                                                                 @csrf
                                                                 @method('DELETE')
-                                                                <button type="submit" href="#" class="btn btn-danger btn-sm float-center"> Cancelar Pedido </a>
+                                                                <button type="button" onclick="confirmar('Cancelar pedido','Você tem certeza?', this.form)" class="btn btn-danger btn-sm float-center"> Cancelar Pedido </a>
                                                             </form>
                                                         </td>
                                                     @endif

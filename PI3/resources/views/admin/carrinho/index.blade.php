@@ -57,19 +57,22 @@
                                                     </td>
                                                 @else
                                                     <td>
-                                                        <form action="{{ route('restore-carrinho.update', $carrinho->id) }}"  method="POST" onsubmit="return confirm('Você tem certeza que quer reativar?')">
+                                                        <form action="{{ route('restore-carrinho.update', $carrinho->id) }}" method="POST">
                                                             @csrf
                                                             @method('PUT')
-                                                            <button type="submit" href="#" class="btn btn-primary btn-sm float-center ml-1">Reativar</button>
+                                                            <button type="button" onclick="confirmar('Reativar registro','Você tem certeza?', this.form)" class="btn btn-primary btn-sm float-center ml-1">Reativar</button>
                                                         </form>
                                                     </td>
                                                 @endif
 
                                                 <td>
-                                                    <form  action="{{ route('carrinho.destroy', $carrinho->id) }}" method="POST" onsubmit="return confirm('Você tem certeza?')">
+                                                    <form  action="{{ route('carrinho.destroy', $carrinho->id) }}" method="POST">
                                                         @csrf
                                                         @method('DELETE')
-                                                        <button type="submit" href="#" class="btn btn-danger btn-sm float-center"> {{ $carrinho->trashed() ? 'Apagar' : 'Mover para Lixeira' }} </a>
+                                                        @php
+                                                            $acaoDeletar = $carrinho->trashed() ? 'Apagar' : 'Mover para Lixeira';
+                                                        @endphp
+                                                        <button type="button" onclick="confirmar('{{ $acaoDeletar }}','Você tem certeza?', this.form)" class="btn btn-danger btn-sm float-center"> {{ $acaoDeletar }} </a>
                                                     </form>
                                                 </td>
                                             </tr>

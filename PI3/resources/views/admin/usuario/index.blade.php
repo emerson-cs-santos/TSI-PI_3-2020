@@ -63,19 +63,22 @@
                                                     </td>
                                                 @else
                                                     <td>
-                                                        <form action="{{ route('restore-Users.update', $usuario->id) }}"  method="POST" onsubmit="return confirm('Você tem certeza que quer reativar?')">
+                                                        <form action="{{ route('restore-Users.update', $usuario->id) }}" method="POST">
                                                             @csrf
                                                             @method('PUT')
-                                                            <button type="submit" href="#" class="btn btn-primary btn-sm float-center ml-1">Reativar</button>
+                                                            <button type="button" onclick="confirmar('Reativar registro','Você tem certeza?', this.form)" class="btn btn-primary btn-sm float-center ml-1">Reativar</button>
                                                         </form>
                                                     </td>
                                                 @endif
 
                                                 <td>
-                                                    <form action="{{ route('Users.destroy', $usuario->id) }}" class="d-inline" method="POST" onsubmit="return confirm('Você tem certeza?')">
+                                                    <form action="{{ route('Users.destroy', $usuario->id) }}" class="d-inline" method="POST">
                                                         @csrf
                                                         @method('DELETE')
-                                                        <button type="submit" href="#" class="btn btn-danger btn-sm float-center"> {{ $usuario->trashed() ? 'Apagar' : 'Mover para Lixeira' }} </a>
+                                                        @php
+                                                            $acaoDeletar = $usuario->trashed() ? 'Apagar' : 'Mover para Lixeira';
+                                                        @endphp
+                                                        <button type="button" onclick="confirmar('{{ $acaoDeletar }}','Você tem certeza?', this.form)" class="btn btn-danger btn-sm float-center"> {{ $acaoDeletar}} </a>
                                                     </form>
                                                 </td>
                                             </tr>

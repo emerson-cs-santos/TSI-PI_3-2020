@@ -44,7 +44,7 @@
                                             @foreach($movimentos as $movimento)
                                             <tr>
                                                 <td>{{$movimento->id}}</th>
-                                                <td> @if ( $movimento->product_id > 0 ) {{App\Movimento::withTrashed()->find($movimento->id)->produto->name}} @else Sem produto @endif</td>
+                                                <td> @if ( $movimento->product_id > 0 ) {{App\Product::withTrashed()->find($movimento->product_id )->name}} @else Sem produto @endif</td>
                                                 <td>@if( $movimento->tipo == 'E' ) Entrada @else Saída @endif</td>
                                                 <td>@if( $movimento->tipo == 'S' ) {{number_format($movimento->quantidade*-1,0,',','.')}} @else {{number_format($movimento->quantidade,0,',','.')}} @endif</td>
                                                 <td>@if( $movimento->fk_origem == 0) Manual @else Pedido - ID {{$movimento->fk_origem}} @endif</td>
@@ -58,19 +58,22 @@
                                                     </td>
                                                 @else
                                                     <td>
-                                                        <form action="{{ route('restore-movimentos.update', $movimento->id) }}"  method="POST" onsubmit="return confirm('Você tem certeza que quer reativar?')">
+                                                        <form action="{{ route('restore-movimentos.update', $movimento->id) }}"  method="POST">
                                                             @csrf
                                                             @method('PUT')
-                                                            <button type="submit" href="#" class="btn btn-primary btn-sm float-center ml-1">Reativar</button>
+                                                            <button type="button" onclick="confirmar('Reativar registro','Você tem certeza?', this.form)" class="btn btn-primary btn-sm float-center ml-1">Reativar</button>
                                                         </form>
                                                     </td>
                                                 @endif
 
                                                 <td>
-                                                    <form  action="{{ route('movimentos.destroy', $movimento->id) }}" method="POST" onsubmit="return confirm('Você tem certeza?')">
+                                                    <form  action="{{ route('movimentos.destroy', $movimento->id) }}" method="POST">
                                                         @csrf
                                                         @method('DELETE')
-                                                        <button type="submit" href="#" class="btn btn-danger btn-sm float-center"> {{ $movimento->trashed() ? 'Apagar' : 'Mover para Lixeira' }} </a>
+                                                        @php
+                                                            $acaoDeletar = $movimento->trashed() ? 'Apagar' : 'Mover para Lixeira';
+                                                        @endphp
+                                                        <button type="button" onclick="confirmar('{{ $acaoDeletar }}','Você tem certeza?', this.form)" class="btn btn-danger btn-sm float-center"> {{ $acaoDeletar }} </a>
                                                     </form>
                                                 </td>
                                             </tr>

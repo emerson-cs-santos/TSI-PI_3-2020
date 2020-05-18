@@ -34,10 +34,10 @@
                 </div>
 
                 <div class="col-md-10 mt-2">
-                    <form action="{{ route('carrinho-shop-limpar',auth()->user()->id ) }}" method="POST" onsubmit="return confirm('Remover todos os produtos do carrinho?')">
+                    <form action="{{ route('carrinho-shop-limpar',auth()->user()->id ) }}" method="POST">
                         @csrf
                         @method('DELETE')
-                        <button type="submit" class="btn btn-warning mt-2">Limpar Carrinho</button>
+                        <button type="button" class="btn btn-warning mt-2" onclick="confirmar('Remover todos os produtos do carrinho','Você tem certeza?', this.form)" >Limpar Carrinho</button>
                     </form>
                     <div class="table-responsive mt-3">
                         <table class="table table-striped bg-light text-center table-bordered table-hover">
@@ -94,10 +94,10 @@
                                     <td>{{ 'R$'.number_format($subTotal, 2,',','.') }}</td>
 
                                     <td>
-                                        <form action="{{ route('carrinho-shop-destroy', $produto->id) }}" method="POST" onsubmit="return confirm('Você tem certeza?')">
+                                        <form action="{{ route('carrinho-shop-destroy', $produto->id) }}" method="POST">
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit" href="#" class="btn btn-danger btn-sm float-center"> Remover do carrinho </button>
+                                            <button type="button" class="btn btn-danger btn-sm float-center" onclick="confirmar('Remover item do carrinho','Você tem certeza?', this.form)" > Remover do carrinho </button>
                                         </form>
                                     </td>
                                 </tr>
@@ -116,9 +116,9 @@
                         <div class="text-center">
                             <span class="h3 col-md-12">Total: {{ 'R$'.number_format($total, 2,',','.') }}</span>
                             <div>
-                                <form action="{{ route('carrinho-shop-finalizar') }}" method="GET" onsubmit="return confirm('Confimar compra?')">
+                                <form action="{{ route('carrinho-shop-finalizar') }}" method="GET">
                                     @csrf
-                                    <button type="submit" class="btn btn-warning mt-2">Finalizar Compra</button>
+                                    <button type="button" class="btn btn-warning mt-2" onclick="confirmar('Finalizar pedido','Confimar compra?', this.form)">Finalizar Compra</button>
                                 </form>
                             </div>
                         </div>

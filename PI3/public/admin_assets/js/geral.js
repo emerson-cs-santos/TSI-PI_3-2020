@@ -30,3 +30,34 @@ function preview_image(event)
         }
     reader.readAsDataURL(event.target.files[0]);
 }
+
+function confirmar(titulo, pergunta, form)
+{
+    swal({
+        title: titulo,
+        text: pergunta,
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+        })
+        .then((willDelete) => {
+        if (willDelete) {
+            enviarForm(form);
+        }
+        else
+        {
+            swal(
+                {
+                    title:  "Processo cancelado!",
+                    text:   'Registro NÂO foi afetado!',
+                    button: "OK",
+                }
+            )
+        }
+        });
+}
+
+function enviarForm(form)
+{
+    form.submit();
+}

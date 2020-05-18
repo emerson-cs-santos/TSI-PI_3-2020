@@ -8,6 +8,7 @@ use App\Category;
 use App\Http\Requests\CreateProductRequest;
 use App\Http\Requests\EditProductRequest;
 use App\Carrinho;
+use App\Movimento;
 use App\ItemPedido;
 
 class ProductsController extends Controller
@@ -146,6 +147,13 @@ class ProductsController extends Controller
         if ($pedidoQtd > 0)
         {
             session()->flash('error', "Produto já está em pedido(s)!");
+            return redirect()->back();
+        }
+
+        $pedidoQtd = Movimento::all()->where('product_id',$id)->count();
+        if ($pedidoQtd > 0)
+        {
+            session()->flash('error', "Produto já possui movimentação de estoque!");
             return redirect()->back();
         }
 

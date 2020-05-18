@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Pedido;
 use App\User;
+use App\Movimento;
 use App\ItemPedido;
 
 class PedidoController extends Controller
@@ -38,8 +39,20 @@ class PedidoController extends Controller
         }
         else
         {
+            $Itens = ItemPedido::all()->where('fk_pedido',$id);
+
+            foreach ($Itens as $item)
+            {
+                Movimento::create([
+                    'tipo'          => 'E'
+                    ,'quantidade'   => $item->quantidade
+                    ,'fk_origem'    => $pedido->id
+                    ,'product_id'   => $item->product_id
+                ]);
+            }
+
             $pedido->delete();
-            session()->flash('success', 'Pedido cancelado com sucesso!');
+            session()->flash('success', "Pedido Nro $id cancelado com sucesso!");
         }
         return redirect()->back();
     }

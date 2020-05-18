@@ -18,6 +18,9 @@
         {{-- Referenciar javascript na Web --}}
         {{-- <script type="text/javascript" src="{{ URL::asset('js/custom.js') }}"></script> --}}
 
+        <!-- Manual de uso referente aos alerts customizados "swal": https://sweetalert.js.org/guides/ -->
+        <script src="{{ URL::asset('https://unpkg.com/sweetalert/dist/sweetalert.min.js') }}" ></script>
+
         <!-- JQUERY -->
         <script src="{{ URL::asset('https://code.jquery.com/jquery-3.3.1.js') }}"></script>
 

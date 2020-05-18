@@ -13,6 +13,11 @@
 
         <title>Gamer Shopping</title>
 
+        <!-- Manual de uso referente aos alerts customizados "swal": https://sweetalert.js.org/guides/ -->
+        <script src="{{ URL::asset('https://unpkg.com/sweetalert/dist/sweetalert.min.js') }}" ></script>
+
+        <script type="text/javascript" src="{{ asset('shop/js/geral.js') }}"></script>
+
         <!-- For favicon png -->
         {{-- <link rel="shortcut icon" type="image/icon" href="shop/logo/favicon.png"/> --}}
         <link rel="shortcut icon" href="{{ asset('shop/images/shop.ico') }}" type="image/x-icon">
