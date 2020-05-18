@@ -31,8 +31,8 @@
                                     @csrf
 
                                     <div class="form-group">
-                                        <label for="name">Nome</label>
-                                        <input type="text" class='form-control' name="name" placeholder="Digite o nome da categoria" value="{{old('name')}}">
+                                        <label for="name">Nome*</label>
+                                        <input type="text" class='form-control' name="name" autofocus required placeholder="Digite o nome da categoria" value="{{old('name')}}">
                                     </div>
 
                                     <div class="form-group">

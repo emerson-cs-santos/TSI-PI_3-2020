@@ -31,18 +31,18 @@
                                     @csrf
 
                                     <div class="form-group">
-                                        <label for="Produto">Produto ID</label>
-                                        <input type="number" class='form-control' name="Produto" onkeydown="return event.keyCode !== 69" placeholder="Informe o produto" value="{{old('Produto')}}">
+                                        <label for="Produto">Produto ID*</label>
+                                        <input type="number" class='form-control' name="Produto" onkeydown="return event.keyCode !== 69" autofocus required placeholder="Informe o produto" value="{{old('Produto')}}">
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="Usuario">Usuário ID</label>
-                                        <input type="number" class='form-control' name="Usuario" onkeydown="return event.keyCode !== 69" placeholder="Informe o usuário" value="{{old('Usuario')}}">
+                                        <label for="Usuario">Usuário ID*</label>
+                                        <input type="number" class='form-control' name="Usuario" onkeydown="return event.keyCode !== 69" required placeholder="Informe o usuário" value="{{old('Usuario')}}">
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="Quantidade">Quantidade</label>
-                                        <input type="text" class='form-control' id='carrinhoQuantidade_create' name="Quantidade" maxlength="9" placeholder="Digite a quantidade" value="{{old('Quantidade')}}">
+                                        <label for="Quantidade">Quantidade*</label>
+                                        <input type="text" class='form-control' id='carrinhoQuantidade_create' name="Quantidade" maxlength="9" required placeholder="Digite a quantidade" value="{{old('Quantidade')}}">
                                     </div>
 
                                     <button type="submit" class="btn btn-success">Criar</button>

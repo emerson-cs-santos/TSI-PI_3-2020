@@ -197,10 +197,10 @@
 				            <!-- Collect the nav links, forms, and other content for toggling -->
 				            <div class="collapse navbar-collapse menu-ui-design" id="navbar-menu">
 				                <ul class="nav navbar-nav navbar-center" data-in="fadeInDown" data-out="fadeOutUp">
-				                    <li class=" {{ Str::of( Request::path() )->contains( ['jogos_shop', 'search/category', 'produto_loja'] )  ? ' active' : '' }} "><a href="/jogos_shop">Jogos</a></li>
-				                    <li class=" {{ \Request::is('novos_shop')           ? ' active' : '' }} "><a href="/novos_shop"     >Lançamentos</a></li>
-				                    <li class=" {{ \Request::is('destaque_shop')	    ? ' active' : '' }} "><a href="/destaque_shop"  >Mais vendidos</a></li>
-                                    <li class=" {{ Str::of( Request::path() )->contains( ['pedido-shop-index', 'item-pedido-shop-index'] ) ? ' active' : '' }} "><a href="{{route('pedido-shop-index')}}">Meus Pedidos</a></li>
+				                    <li class=" {{ Str::of( Request::path() )->contains( ['jogos_shop', 'search/category', 'produto_loja'] )  ? ' active' : '' }} "><a href="/jogos_shop" data-placement="top" data-toggle="tooltip" title="Ver catálogo de jogos">Jogos</a></li>
+				                    <li class=" {{ \Request::is('novos_shop')           ? ' active' : '' }} "><a href="/novos_shop" data-placement="top" data-toggle="tooltip" title="Ver últimas novidades"      >Lançamentos</a></li>
+				                    <li class=" {{ \Request::is('destaque_shop')	    ? ' active' : '' }} "><a href="/destaque_shop" data-placement="top" data-toggle="tooltip" title="Ver os jogos mais queridos"  >Mais vendidos</a></li>
+                                    <li class=" {{ Str::of( Request::path() )->contains( ['pedido-shop-index', 'item-pedido-shop-index'] ) ? ' active' : '' }} "><a href="{{route('pedido-shop-index')}}" data-placement="top" data-toggle="tooltip" title="Ver seus pedidos">Meus Pedidos</a></li>
 				                </ul><!--/.nav -->
 				            </div><!-- /.navbar-collapse -->
 				        </div><!--/.container-->
@@ -231,9 +231,9 @@
                                     </div><!--/.hm-foot-title-->
                                     <div class="hm-foot-menu">
                                         <ul>
-                                            <li><a href="#">Quem somos</a></li><!--/li-->
-                                            <li><a href="#">Contato</a></li><!--/li-->
-                                            <li><a href="#">a Loja</a></li><!--/li-->
+                                            <li><a href="#" data-placement="top" data-toggle="tooltip" title="Por trás da cortina">Quem somos</a></li><!--/li-->
+                                            <li><a href="#" data-placement="top" data-toggle="tooltip" title="Falar com a Loja">Contato</a></li><!--/li-->
+                                            <li><a href="#" data-placement="top" data-toggle="tooltip" title="Informações sobre a loja">a Loja</a></li><!--/li-->
                                         </ul><!--/ul-->
                                     </div><!--/.hm-foot-menu-->
                                 </div><!--/.hm-footer-widget-->
@@ -246,7 +246,7 @@
                                     <div class="hm-foot-menu">
                                         <ul>
                                             @foreach(\App\Category::all()->where('home','S')->sortBy('name') as $categoryFooter)
-                                                <li> <a href="{{ route('search-category', $categoryFooter->id) }}">{{$categoryFooter->name}}</a></li>
+                                                <li> <a href="{{ route('search-category', $categoryFooter->id) }}" data-placement="top" data-toggle="tooltip" title="Ver jogos dessa categoria">{{$categoryFooter->name}}</a></li>
                                             @endforeach
                                         </ul><!--/ul-->
                                     </div><!--/.hm-foot-menu-->
@@ -259,10 +259,10 @@
                                     </div><!--/.hm-foot-title-->
                                     <div class="hm-foot-menu">
                                         <ul>
-                                            <li><a href="{{route('usuario-shop')}}">Cadastro</a></li>
-                                            <li><a href="{{route('carrinho-shop-index')}}">Carrinho</a></li>
-                                            <li><a href="{{route('pedido-shop-index')}}">Pedidos</a></li>
-                                            <li><a href="#">Lista de desejos</a></li>
+                                            <li><a href="{{route('usuario-shop')}}" data-placement="top" data-toggle="tooltip" title="Suas informações">Cadastro</a></li>
+                                            <li><a href="{{route('carrinho-shop-index')}}" data-placement="top" data-toggle="tooltip" title="Ver carrinho de compra">Carrinho</a></li>
+                                            <li><a href="{{route('pedido-shop-index')}}" data-placement="top" data-toggle="tooltip" title="Ver pedidos">Pedidos</a></li>
+                                            <li><a href="#" data-placement="top" data-toggle="tooltip" title="Ver lista de desejos">Lista de desejos</a></li>
                                         </ul><!--/ul-->
                                     </div><!--/.hm-foot-menu-->
                                 </div><!--/.hm-footer-widget-->
@@ -279,10 +279,10 @@
                                     </div><!--/.hm-foot-para-->
                                     <div class="hm-foot-email">
                                         <div class="foot-email-box">
-                                            <input type="text" class="form-control" placeholder="Digite seu e-mail aqui....">
+                                            <input type="text" class="form-control" placeholder="Digite seu e-mail aqui...." data-placement="top" data-toggle="tooltip" title="Apenas para demonstração">
                                         </div><!--/.foot-email-box-->
                                         <div class="foot-email-subscribe">
-                                            <span><i class="fa fa-location-arrow"></i></span>
+                                            <span data-placement="top" data-toggle="tooltip" title="Apenas para demonstração"><i class="fa fa-location-arrow"></i></span>
                                         </div><!--/.foot-email-icon-->
                                     </div><!--/.hm-foot-email-->
                                 </div><!--/.hm-footer-widget-->

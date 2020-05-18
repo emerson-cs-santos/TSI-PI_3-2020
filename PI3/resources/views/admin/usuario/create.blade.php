@@ -26,13 +26,13 @@
                                     @csrf
 
                                     <div class="form-group">
-                                        <label for="name">Nome</label>
-                                        <input type="text" class='form-control' name="name" placeholder="Digite o nome do Usuário" value="{{old('name')}}">
+                                        <label for="name">Nome*</label>
+                                        <input type="text" class='form-control' name="name" required placeholder="Digite o nome do Usuário" autofocus value="{{old('name')}}">
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="email">E-mail</label>
-                                        <input type="email" class='form-control' name="email" placeholder="Digite o nome do E-mail" value="{{old('email')}}">
+                                        <label for="email">E-mail*</label>
+                                        <input type="email" class='form-control' name="email" required placeholder="Digite o nome do E-mail" value="{{old('email')}}">
                                     </div>
 
                                     <div class="form-group">
@@ -42,7 +42,7 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="type">Nível de Acesso</label>
+                                        <label for="type">Nível de Acesso*</label>
                                         <select name="type" class="form-control">
                                             <option value="padrao"  @if(old('type') == 'padrao') selected @endif >Padrão</option>
                                             <option value="adm"     @if(old('type') == 'adm') selected @endif    >Adminstrador</option>
@@ -50,12 +50,12 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="password">Senha</label>
+                                        <label for="password">Senha*</label>
                                         <input type="password" class="form-control @error('password') is-invalid @enderror" name="password" placeholder="Digite a senha" required autocomplete="new-password" >
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="password_confirmation">Confirme a senha</label>
+                                        <label for="password_confirmation">Confirme a senha*</label>
                                         <input type="password" class='form-control' name="password_confirmation" placeholder="Digite a senha" required autocomplete="new-password">
                                     </div>
 

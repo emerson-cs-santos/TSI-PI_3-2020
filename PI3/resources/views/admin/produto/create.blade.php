@@ -26,12 +26,12 @@
                                     @csrf
 
                                     <div class="form-group">
-                                        <label for="name">Nome</label>
-                                        <input type="text" class='form-control' name="name" placeholder="Digite o nome do produto" value="{{old('name')}}">
+                                        <label for="name">Nome*</label>
+                                        <input type="text" class='form-control' name="name" autofocus required placeholder="Digite o nome do produto" value="{{old('name')}}">
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="category">Categoria:</label>
+                                        <label for="category">Categoria*:</label>
                                         <select name="category_id" class="form-control">
                                             @foreach($categories as $category)
                                                 <option value="{{$category->id}}" @if( old('category_id') == $category->id ) selected @endif >{{$category->name}}</option>
@@ -40,13 +40,13 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="descricao">Descrição</label>
-                                        <textarea name="descricao" class='form-control' rows=10 placeholder="Digite uma descrição para o produto">{{old('descricao')}}</textarea>
+                                        <label for="descricao">Descrição*</label>
+                                        <textarea name="descricao" class='form-control' rows=10 required placeholder="Digite uma descrição para o produto">{{old('descricao')}}</textarea>
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="preco">Preço (R$)</label>
-                                        <input type="text" id="produtoPreco_create" class='form-control' name="preco" maxlength="10" placeholder="Digite o preço" value="{{old('preco')}}">
+                                        <label for="preco">Preço (R$)*</label>
+                                        <input type="text" id="produtoPreco_create" class='form-control' name="preco" maxlength="10" required placeholder="Digite o preço" value="{{old('preco')}}">
                                     </div>
 
                                     <div class="form-group">

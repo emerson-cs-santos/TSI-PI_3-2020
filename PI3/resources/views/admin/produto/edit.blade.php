@@ -27,12 +27,12 @@
                                     @method('PUT')
 
                                     <div class="form-group">
-                                        <label for="name">Nome</label>
-                                        <input type="text" class='form-control' name="name" placeholder="Digite o nome do produto" value="{{$product->name}}">
+                                        <label for="name">Nome*</label>
+                                        <input type="text" class='form-control' name="name" autofocus required placeholder="Digite o nome do produto" value="{{$product->name}}">
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="category">Categoria:</label>
+                                        <label for="category">Categoria*:</label>
                                         <select name="category_id" class="form-control">
                                             @foreach($categories as $category)
                                             <option value="{{$category->id}}" @if($category->id == $product->category_id) selected @endif>
@@ -43,13 +43,13 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="descricao">Descrição</label>
-                                        <textarea name="descricao" class='form-control' rows=10 placeholder="Digite uma descrição para o produto">{{$product->desc}}</textarea>
+                                        <label for="descricao">Descrição*</label>
+                                        <textarea name="descricao" class='form-control' rows=10 required placeholder="Digite uma descrição para o produto">{{$product->desc}}</textarea>
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="preco">Preço (R$)</label>
-                                        <input type="text" class='form-control' id="produtoPreco_edit" name="preco" maxlength="10" placeholder="Digite o preço" value="{{$product->price}}">
+                                        <label for="preco">Preço (R$)*</label>
+                                        <input type="text" class='form-control' id="produtoPreco_edit" name="preco" maxlength="10" required placeholder="Digite o preço" value="{{$product->price}}">
                                     </div>
 
                                     <div class="form-group">

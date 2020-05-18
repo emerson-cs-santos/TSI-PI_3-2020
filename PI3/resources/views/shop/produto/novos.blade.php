@@ -26,7 +26,7 @@
                                         <div class="col-md-8 col-sm-12">
                                             <div class="single-inner-populer-product-txt">
                                                 <h2>
-                                                    <a href="{{ route('produto-loja', $lancamento->id) }}">
+                                                    <a href="{{ route('produto-loja', $lancamento->id) }}" data-placement="top" data-toggle="tooltip" title="Ver produto">
                                                         {{$lancamento->name}}
                                                     </a>
                                                 </h2>

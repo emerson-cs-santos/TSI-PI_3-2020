@@ -15,7 +15,7 @@
                             <label for="email" class="col-md-4 col-form-label text-md-right MenuLogin">{{ __('Endereço de E-mail') }}</label>
 
                             <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus placeholder="email@servidor.com">
 
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
@@ -53,7 +53,7 @@
 
                         <div class="form-group row mb-0">
                             <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn botaoLogin">
+                                <button type="submit" class="btn botaoLogin" data-placement="top" data-toggle="tooltip" title="Acessar sua conta">
                                     {{ __('Entrar') }}
                                 </button>
 
@@ -70,4 +70,10 @@
         </div>
     </div>
 </div>
+@endsection
+
+@section('script')
+    <script>
+        document.getElementById('email').focus();
+    </script>
 @endsection

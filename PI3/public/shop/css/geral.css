@@ -246,3 +246,13 @@
         width: 100px;
     }
 }
+
+.lancamentosHome:hover
+{
+	color: #e99c2e!important;
+}
+
+.Jogos:hover
+{
+	color: #e99c2e!important;
+}

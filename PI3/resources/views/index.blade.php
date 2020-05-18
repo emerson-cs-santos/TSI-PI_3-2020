@@ -56,12 +56,12 @@
                                                 </div>
                                                 <form action="{{route('carrinho-shop-store',$carrossel_produto->id)}}" class='p-3 bg-white' method="post">
                                                     @csrf
-                                                    <button class="btn-cart welcome-add-cart">
+                                                    <button class="btn-cart welcome-add-cart" data-placement="top" data-toggle="tooltip" title="Adicionar jogo ao carrinho">
                                                         <span class="lnr lnr-plus-circle"></span>
                                                         Add ao carrinho
                                                     </button>
                                                 </form>
-                                                <button class="btn-cart welcome-add-cart welcome-more-info" onclick="window.location.href='{{ route('produto-loja', $carrossel_produto->id) }}'">
+                                                <button class="btn-cart welcome-add-cart welcome-more-info" onclick="window.location.href='{{ route('produto-loja', $carrossel_produto->id) }}'" data-placement="top" data-toggle="tooltip" title="Ver mais informações sobre o jogo">
                                                     Ver produto
                                                 </button>
                                             </div><!--/.welcome-hero-txt-->
@@ -105,7 +105,9 @@
                                     <a href="{{ route('produto-loja', $lancamento->id) }}" > <img class="imagemLancamentos" src="@if( empty($lancamento->image) )  {{asset('admin_assets/images/produto_sem_imagem.jpg')}} @else {{$lancamento->image}} @endif" alt="{{$lancamento->name}}" data-placement="top" data-toggle="tooltip" title="Ver Produto"> </a>
                                 </div>
 
-                                <h2><a href="{{ route('produto-loja', $lancamento->id) }}">{{$lancamento->name}}</a></h2>
+                                <div>
+                                    <a class="lancamentosHome" href="{{ route('produto-loja', $lancamento->id) }}" data-placement="top" data-toggle="tooltip" title="Ver produto">{{$lancamento->name}}</a>
+                                </div>
 
                                 <div class="single-populer-products-para">
                                     <p>{{ App\Category::find($lancamento->category_id)->name }}</p>
@@ -156,7 +158,7 @@
 
                                 <div class="single-feature-txt text-center">
 
-                                    <h3><a class="linkMaisVendidos" href="{{ route('produto-loja', $produto->id) }}">{{$produto->name}}</a></h3>
+                                    <h3><a class="linkMaisVendidos" href="{{ route('produto-loja', $produto->id) }}" data-placement="top" data-toggle="tooltip" title="Ver produto">{{$produto->name}}</a></h3>
 
                                     <p class="@if( $produto->discount > 0 ) old-price @endif">{{$produto->price()}}</p>
 

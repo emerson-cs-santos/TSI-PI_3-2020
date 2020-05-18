@@ -30,7 +30,7 @@
                                     @csrf
 
                                     <div class="form-group">
-                                        <label for="name">Tipo</label>
+                                        <label for="name">Tipo*</label>
                                        <select name="tipo" class="form-control">
                                             <option value="E" @if( old('tipo') == 'E' ) selected @endif >Entrada</option>
                                             <option value="S" @if( old('tipo') == 'S' ) selected @endif >Saída</option>
@@ -38,13 +38,13 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="quantidade">Quantidade</label>
-                                        <input type="text" class='form-control' id="movimentoQuantidade_create" name="quantidade" maxlength="9" placeholder="Digite a quantidade" value="{{old('quantidade')}}">
+                                        <label for="quantidade">Quantidade*</label>
+                                        <input type="text" class='form-control' id="movimentoQuantidade_create" name="quantidade" maxlength="9" autofocus required placeholder="Digite a quantidade" value="{{old('quantidade')}}">
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="fk_produto">Produto</label>
-                                        <input type="number" class='form-control' name="fk_produto" onkeydown="return event.keyCode !== 69" placeholder="Digite o id do produto" value="{{old('fk_produto')}}">
+                                        <label for="fk_produto">Produto*</label>
+                                        <input type="number" class='form-control' name="fk_produto" onkeydown="return event.keyCode !== 69" required placeholder="Digite o id do produto" value="{{old('fk_produto')}}">
                                     </div>
 
                                     <button type="submit" class="btn btn-success">Criar</button>

@@ -42,7 +42,7 @@
 
                                 <div class="single-feature-txt text-center">
 
-                                    <h3><a class="linkMaisVendidos" href="{{ route('produto-loja', $produto->id) }}">{{$produto->name}}</a></h3>
+                                    <h3><a class="linkMaisVendidos" href="{{ route('produto-loja', $produto->id) }}" data-placement="top" data-toggle="tooltip" title="Ver produto">{{$produto->name}}</a></h3>
 
                                     <p class="@if( $produto->discount > 0 ) old-price @endif">{{$produto->price()}}</p>
 

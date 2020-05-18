@@ -25,7 +25,7 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
-                <a class="navbar-brand" style="color:#616060; font-size:24px; font-family: 'Roboto', sans-serif; font-weight: bolder; " href="{{ url('/') }}">
+                <a class="navbar-brand" style="color:#616060; font-size:24px; font-family: 'Roboto', sans-serif; font-weight: bolder; " href="{{ url('/') }}" data-placement="top" data-toggle="tooltip" title="Voltar a home">
                     {{ config('app.name', 'Gamer Shopping') }}
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -43,11 +43,11 @@
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
-                                <a class="nav-link MenuLogin" href="{{ route('login') }}">{{ __('Entrar') }}</a>
+                                <a class="nav-link MenuLogin" href="{{ route('login') }}" data-placement="top" data-toggle="tooltip" title="Fazer login">{{ __('Entrar') }}</a>
                             </li>
                             @if (Route::has('register'))
                                 <li class="nav-item">
-                                    <a class="nav-link MenuLogin" href="{{ route('register') }}">{{ __('Registrar-se') }}</a>
+                                    <a class="nav-link MenuLogin" href="{{ route('register') }}" data-placement="top" data-toggle="tooltip" title="Criar novo acesso">{{ __('Registrar-se') }}</a>
                                 </li>
                             @endif
                         @else
@@ -77,6 +77,8 @@
         <main class="py-4">
             @yield('content')
         </main>
+
+        @yield('script')
 
         <footer class='container'>
             <p style="font-weight: bolder; text-align: center; color: #a5adb3">©Copyright. Senac 2020 - Sistemas Para Internet - Projeto Integrador 3</p>
