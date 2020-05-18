@@ -47,7 +47,7 @@
                                     </div>
 
                                     <button type="submit" class="btn btn-warning">Salvar</button>
-                                    <a href="{{route('carrinho.index')}}" class='btn btn-primary'>Voltar</a>
+                                    <a href="{{ url()->previous() }}" class='btn btn-primary'>Voltar</a>
                                 </form>
                             </div>
                         </div>

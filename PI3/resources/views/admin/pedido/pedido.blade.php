@@ -85,9 +85,9 @@
                                 <!---End of Pagination-->
 
                                 @if( $pedido->trashed() )
-                                    <a href="{{ route('trashed-pedido.index') }}" class='btn btn-info'>Voltar aos pedidos cancelados</a>
+                                    <a href="{{ url()->previous() }}" class='btn btn-info'>Voltar aos pedidos cancelados</a>
                                 @else
-                                    <a href="{{ route('index-pedido') }}" class='btn btn-info'>Voltar aos pedidos</a>
+                                    <a href="{{ url()->previous() }}" class='btn btn-info'>Voltar aos pedidos</a>
                                 @endif
                             </div>
                         </div>

@@ -76,12 +76,8 @@
                     <div class="container col-md-12">
                         <div class="text-center">
                             <span class="h3 col-md-12 font-weight-bold" >Valor Total: {{ $pedido->valorTotal() }} </span>
-                            <div>
-                                <form  action="{{ route('pedido-shop-index')}} " method="GET">
-                                    @csrf
-                                    <button type="submit" class="btn btn-warning float-center"> Voltar ao pedidos </a>
-                                </form>
-                            </div>
+
+                            <button class="btn btn-warning float-center" onclick="window.location.href='{{url()->previous()}}'">Voltar ao pedidos</button>
                         </div>
                     </div>
 

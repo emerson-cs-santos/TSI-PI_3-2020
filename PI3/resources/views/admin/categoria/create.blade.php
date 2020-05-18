@@ -44,7 +44,7 @@
                                     </div>
 
                                     <button type="submit" class="btn btn-success">Criar</button>
-                                    <a href="{{route('categories.index')}}" class='btn btn-primary'>Voltar</a>
+                                    <a href="{{ url()->previous() }}" class='btn btn-primary'>Voltar</a>
                                 </form>
                             </div>
                         </div>

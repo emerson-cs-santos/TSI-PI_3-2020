@@ -48,7 +48,7 @@
                                         <input type="text" value="{{ $DataAlteracao }}" class="form-control">
                                     </div>
 
-                                    <a href="{{route('carrinho.index')}}" class='btn btn-success'>Voltar</a>
+                                    <a href="{{ url()->previous() }}" class='btn btn-success'>Voltar</a>
                                 </div>
                             </div>
                         </div>

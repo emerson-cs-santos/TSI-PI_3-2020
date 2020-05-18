@@ -50,7 +50,7 @@
                                     <input type="text" value="{{ $DataAlteracao }}" class="form-control">
                                 </div>
 
-                                <a href="{{route('movimentos.index')}}" class='btn btn-primary'>Voltar</a>
+                                <a href="{{ url()->previous() }}" class='btn btn-primary'>Voltar</a>
                             </div>
                         </div>
                     </div>

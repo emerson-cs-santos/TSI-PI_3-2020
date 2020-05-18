@@ -33,7 +33,7 @@
 
                                     <div class="form-group">
                                         <label for="desc">Descrição</label>
-                                        <textarea name="desc" class='form-control' placeholder="Digite uma descrição para o produto">{{$product->desc}}</textarea>
+                                        <textarea name="desc" class='form-control' rows=10 placeholder="Digite uma descrição para o produto">{{$product->desc}}</textarea>
                                     </div>
 
                                     <div class="form-group">
@@ -78,7 +78,7 @@
                                         <input type="text" value="{{ $DataAlteracao }}" class="form-control">
                                     </div>
 
-                                    <a href="{{route('products.index')}}" class='btn btn-success'>Voltar</a>
+                                    <a href="{{ url()->previous() }}" class='btn btn-success'>Voltar</a>
                                 </div>
                             </div>
                         </div>
