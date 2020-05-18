@@ -32,17 +32,17 @@
 
                                     <div class="form-group">
                                         <label for="Produto">Produto ID</label>
-                                        <input type="text" class='form-control' name="Produto" placeholder="Informe o produto" value="{{old('Produto')}}">
+                                        <input type="number" class='form-control' name="Produto" onkeydown="return event.keyCode !== 69" placeholder="Informe o produto" value="{{old('Produto')}}">
                                     </div>
 
                                     <div class="form-group">
                                         <label for="Usuario">Usuário ID</label>
-                                        <input type="text" class='form-control' name="Usuario" placeholder="Informe o usuário" value="{{old('Usuario')}}">
+                                        <input type="number" class='form-control' name="Usuario" onkeydown="return event.keyCode !== 69" placeholder="Informe o usuário" value="{{old('Usuario')}}">
                                     </div>
 
                                     <div class="form-group">
                                         <label for="Quantidade">Quantidade</label>
-                                        <input type="number" class='form-control' name="Quantidade" placeholder="Digite a quantidade" value="{{old('Quantidade')}}">
+                                        <input type="text" class='form-control' id='carrinhoQuantidade_create' name="Quantidade" maxlength="9" placeholder="Digite a quantidade" value="{{old('Quantidade')}}">
                                     </div>
 
                                     <button type="submit" class="btn btn-success">Criar</button>
@@ -56,3 +56,16 @@
         </div>
     </section>
 @endsection
+
+@section('script')
+    <script>
+
+        // Máscara dos valores
+        $(document).ready(function($)
+        {
+            $('#carrinhoQuantidade_create').mask("#.##0", {reverse: true});
+        })
+
+    </script>
+@endsection
+

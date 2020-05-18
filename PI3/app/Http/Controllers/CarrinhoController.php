@@ -49,7 +49,9 @@ class CarrinhoController extends Controller
         $produtoCodigo  = $request->Produto;
         $produtoNome    = Product::find( $request->Produto)->name;
         $estoqueAtual   = Product::find( $request->Produto )->produtoSaldo->sum('quantidade');
+
         $quantidade     = $request->Quantidade;
+        $quantidade     = str_replace('.','',$quantidade);
 
         if ( $quantidade > $estoqueAtual )
         {
@@ -61,7 +63,7 @@ class CarrinhoController extends Controller
         Carrinho::create([
             'product_id'    => $request->Produto
             ,'user_id'      => $request->Usuario
-            ,'quantidade'   => $request->Quantidade
+            ,'quantidade'   => $quantidade
         ]);
 
        session()->flash('success', 'Produto adicionado com sucesso!');
@@ -102,6 +104,7 @@ class CarrinhoController extends Controller
         $estoqueAtual   = Product::find( $request->Produto )->produtoSaldo->sum('quantidade');
 
         $quantidade     = $request->Quantidade;
+        $quantidade = str_replace('.','',$quantidade);
 
         if ( $quantidade > $estoqueAtual )
         {
@@ -113,7 +116,7 @@ class CarrinhoController extends Controller
         $carrinho->update([
             'product_id'    => $request->Produto
             ,'user_id'      => $request->Usuario
-            ,'quantidade'   => $request->Quantidade
+            ,'quantidade'   => $quantidade
         ]);
 
         session()->flash('success', 'Carrinho alterado com sucesso!');

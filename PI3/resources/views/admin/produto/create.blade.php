@@ -34,7 +34,7 @@
                                         <label for="category">Categoria:</label>
                                         <select name="category_id" class="form-control">
                                             @foreach($categories as $category)
-                                            <option value="{{$category->id}}" @if( old('category_id') == $category->id ) selected @endif >{{$category->name}}</option>
+                                                <option value="{{$category->id}}" @if( old('category_id') == $category->id ) selected @endif >{{$category->name}}</option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -45,13 +45,13 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="preco">Preço</label>
-                                        <input type="number" class='form-control' name="preco" placeholder="Digite o preço" value="{{old('preco')}}">
+                                        <label for="preco">Preço (R$)</label>
+                                        <input type="text" id="produtoPreco_create" class='form-control' name="preco" maxlength="10" placeholder="Digite o preço" value="{{old('preco')}}">
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="discount">Desconto</label>
-                                        <input type="number" class='form-control' name="discount" placeholder="Digite o desconto" value="{{old('discount')}}">
+                                        <label for="discount">Desconto (%)</label>
+                                        <input type="text" id='produtoDesconto_create' class='form-control' name="discount" maxlength="5" placeholder="Digite o desconto" value="{{old('discount')}}">
                                     </div>
 
                                     <div class="form-group">
@@ -78,4 +78,17 @@
             </div>
         </div>
     </section>
+@endsection
+
+@section('script')
+    <script>
+
+        // Máscara dos valores
+        $(document).ready(function($)
+        {
+        $('#produtoPreco_create').mask("#.##0,00", {reverse: true});
+        $('#produtoDesconto_create').mask("#.##0,00", {reverse: true});
+        })
+
+    </script>
 @endsection

@@ -68,7 +68,7 @@
                                             <tr>
                                                 <td>{{$itemPedido->id}}</td>
                                                 <td> @if ( $itemPedido->product_id > 0 ) {{App\ItemPedido::find($itemPedido->id)->produto->name}} @else Sem produto @endif</td>
-                                                <td>{{$itemPedido->quantidade}}</td>
+                                                <td>{{number_format($itemPedido->quantidade,0,',','.')}}</td>
                                                 <td>{{'R$'.number_format($itemPedido->preco, 2) }}</td>
                                                 <td>{{'R$'.number_format($itemPedido->quantidade * $itemPedido->preco, 2) }}</td>
                                             </tr>

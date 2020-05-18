@@ -89,7 +89,7 @@
                                         @if( $produto->discount > 0 )  {{$produto->discountPrice()}} @endif
                                     </td>
 
-                                    <td>{{$item->qtd_total}}</td>
+                                    <td>{{number_format($item->qtd_total,0,',','.')}}</td>
 
                                     <td>{{ 'R$'.number_format($subTotal, 2,',','.') }}</td>
 

@@ -40,11 +40,11 @@
                     <div class="table-responsive mt-3">
                         <table class="table table-striped bg-light text-center table-bordered table-hover">
                             <thead class="text-dark">
-                                <th>Código</th>
-                                <th>Produto</th>
-                                <th>Quantidade</th>
-                                <th>Valor</th>
-                                <th>Sub Total</th>
+                                <th class="text-center">Código</th>
+                                <th class="text-center">Produto</th>
+                                <th class="text-center">Quantidade</th>
+                                <th class="text-center">Valor</th>
+                                <th class="text-center">Sub Total</th>
                             </thead>
                             <tbody>
                                 @foreach($itensPedido as $itemPedido)
@@ -63,7 +63,7 @@
                                     </a>
                                     </td>
 
-                                    <td>{{$itemPedido->quantidade}}</td>
+                                    <td>{{number_format($itemPedido->quantidade,0,',','.')}}</td>
                                     <td>{{'R$'.number_format($itemPedido->preco, 2,',','.') }}</td>
                                     <td>{{'R$'.number_format($itemPedido->quantidade * $itemPedido->preco, 2,',','.') }}</td>
                                 </tr>

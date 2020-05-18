@@ -19,7 +19,8 @@ class EditProductRequest extends FormRequest
             'name'          => 'required'
             ,'imagem'       => 'max:2000'
             ,'descricao'    => 'required'
-            ,'preco'        => 'required'
+            ,'preco'        => 'required|max:10'
+            ,'discount'     => 'max:5'
             ,'category_id'  => 'required'
         ];
     }

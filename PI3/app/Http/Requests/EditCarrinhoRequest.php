@@ -17,7 +17,7 @@ class EditCarrinhoRequest extends FormRequest
         return [
             'Produto' => 'required'
             ,'Usuario' => 'required'
-            ,'Quantidade' => [ 'required', new ProdutoQuantidadeNegativa ]
+            ,'Quantidade' => [ 'required', 'max:9', new ProdutoQuantidadeNegativa ]
         ];
     }
 }

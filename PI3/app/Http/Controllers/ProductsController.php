@@ -31,12 +31,17 @@ class ProductsController extends Controller
 
     public function create()
     {
-        return view('admin.produto.create')->with('categories', Category::all() );
+        return view('admin.produto.create')->with('categories', Category::orderBy('name')->get() );
     }
 
 
     public function store(CreateProductRequest $request)
     {
+
+        $preco = $request->preco;
+        $preco = str_replace('.','',$preco);
+        $preco = str_replace(',','.',$preco);
+
         $file = $request->file('imagem');
         $imagem_convertida = "";
 
@@ -55,11 +60,13 @@ class ProductsController extends Controller
             $desconto = 0;
         }
 
+        $desconto = str_replace(',','.',$desconto);
+
         Product::create([
             'name'          => $request->name
             ,'image'        => $imagem_convertida
             ,'desc'         => $request->descricao
-            ,'price'        => $request->preco
+            ,'price'        => $preco
             ,'discount'     => $desconto
             ,'category_id'  => $request->category_id
             ,'home'         => $request->home
@@ -72,18 +79,22 @@ class ProductsController extends Controller
 
     public function show(Product $product)
     {
-        return view('admin.produto.show')->with('product', $product)->with('categories', Category::all());
+        return view('admin.produto.show')->with('product', $product)->with('categories', Category::orderBy('name')->get() );
     }
 
 
     public function edit(Product $product)
     {
-        return view('admin.produto.edit')->with('product', $product)->with('categories', Category::all());
+        return view('admin.produto.edit')->with('product', $product)->with('categories', Category::orderBy('name')->get() );
     }
 
 
     public function update(EditProductRequest $request, Product $product)
     {
+        $preco = $request->preco;
+        $preco = str_replace('.','',$preco);
+        $preco = str_replace(',','.',$preco);
+
         // Apenas gravar imagem se foi alterada
         $file = $request->file('imagem');
         if ( !empty($file) )
@@ -105,10 +116,12 @@ class ProductsController extends Controller
             $desconto = 0;
         }
 
+        $desconto = str_replace(',','.',$desconto);
+
         $product->update([
             'name'          => $request->name
             ,'desc'         => $request->descricao
-            ,'price'        => $request->preco
+            ,'price'        => $preco
             ,'discount'     => $desconto
             ,'category_id'  => $request->category_id
             ,'home'         => $request->home

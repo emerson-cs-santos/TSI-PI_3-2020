@@ -39,12 +39,12 @@
 
                                     <div class="form-group">
                                         <label for="quantidade">Quantidade</label>
-                                        <input type="number" class='form-control' name="quantidade" placeholder="Digite a quantidade" value="{{old('quantidade')}}">
+                                        <input type="text" class='form-control' id="movimentoQuantidade_create" name="quantidade" maxlength="9" placeholder="Digite a quantidade" value="{{old('quantidade')}}">
                                     </div>
 
                                     <div class="form-group">
                                         <label for="fk_produto">Produto</label>
-                                        <input type="number" class='form-control' name="fk_produto" placeholder="Digite o id do produto" value="{{old('fk_produto')}}">
+                                        <input type="number" class='form-control' name="fk_produto" onkeydown="return event.keyCode !== 69" placeholder="Digite o id do produto" value="{{old('fk_produto')}}">
                                     </div>
 
                                     <button type="submit" class="btn btn-success">Criar</button>
@@ -57,4 +57,16 @@
             </div>
         </div>
     </section>
+@endsection
+
+@section('script')
+    <script>
+
+        // Máscara dos valores
+        $(document).ready(function($)
+        {
+            $('#movimentoQuantidade_create').mask("#.##0", {reverse: true});
+        })
+
+    </script>
 @endsection

@@ -33,17 +33,17 @@
 
                                     <div class="form-group">
                                         <label for="Produto">Produto ID</label>
-                                        <input type="text" class='form-control' name="Produto" placeholder="Informe o produto" value="{{$carrinho->product_id}}">
+                                        <input type="number" class='form-control' name="Produto" onkeydown="return event.keyCode !== 69" placeholder="Informe o produto" value="{{$carrinho->product_id}}">
                                     </div>
 
                                     <div class="form-group">
                                         <label for="Usuario">Usuário ID</label>
-                                        <input type="text" class='form-control' name="Usuario" placeholder="Informe o usuário" value="{{$carrinho->user_id}}">
+                                        <input type="number" class='form-control' name="Usuario" onkeydown="return event.keyCode !== 69" placeholder="Informe o usuário" value="{{$carrinho->user_id}}">
                                     </div>
 
                                     <div class="form-group">
                                         <label for="Quantidade">Quantidade</label>
-                                        <input type="number" class='form-control' name="Quantidade" placeholder="Digite a quantidade" value="{{$carrinho->quantidade}}">
+                                        <input type="text" class='form-control' id='carrinhoQuantidade_edit' name="Quantidade" maxlength="9" placeholder="Digite a quantidade" value="{{$carrinho->quantidade}}">
                                     </div>
 
                                     <button type="submit" class="btn btn-warning">Salvar</button>
@@ -56,4 +56,16 @@
             </div>
         </div>
     </section>
+@endsection
+
+@section('script')
+    <script>
+
+        // Máscara dos valores
+        $(document).ready(function($)
+        {
+            $('#carrinhoQuantidade_edit').mask("#.##0", {reverse: true});
+        })
+
+    </script>
 @endsection

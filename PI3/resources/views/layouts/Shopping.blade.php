@@ -160,8 +160,8 @@
                                                         <a href="{{ route('produto-loja', $produto->id) }}" class="photo"><img src="@if ( empty($produto->image) ) {{asset('admin_assets/images/produto_sem_imagem.jpg')}} @else {{$produto->image}} @endif" alt="Preview do produto" class="cart-thumb" data-placement="top" data-toggle="tooltip" title="Ver Produto" /></a>
                                                         <div class="cart-list-txt">
                                                             <span class="h6"><a href="{{ route('produto-loja', $produto->id) }}" class="carrinho_nome_produto" data-placement="top" data-toggle="tooltip" title="Ver Produto">{{$produto->name}}</a></span>
-                                                            <p>{{$item->qtd_total}} X - {{ 'R$'.number_format($produto->price, 2) }}</p>
-                                                            <p>SubTotal = {{ 'R$'.number_format($subTotal, 2) }}</p>
+                                                            <p>{{number_format($item->qtd_total,0,',','.')}} X {{ $produto->price() }}</p>
+                                                            <p>SubTotal = {{ 'R$'.number_format($subTotal, 2,',','.') }}</p>
                                                         </div>
                                                         <div class="cart-close">
                                                             <form action="{{ route('carrinho-shop-destroy', $produto->id) }}" method="POST" onsubmit="return confirm('Você tem certeza?')">
@@ -175,7 +175,7 @@
                                             @endif
 
                                             <li class="total">
-				                                <span>Total: {{ 'R$'.number_format($total, 2) }}</span>
+				                                <span>Total: {{ 'R$'.number_format($total, 2,',','.') }}</span>
 				                                <button class="btn-cart pull-right" onclick="window.location.href='{{route('carrinho-shop-index')}}'" data-placement="top" data-toggle="tooltip" title="Abrir Carrinho">Ver Carrinho</button>
 				                            </li>
 				                        </ul>

@@ -31,7 +31,15 @@ class MovimentoController extends Controller
 
     public function store(CreateMovimentoRequest $request)
     {
+        if ( is_null( Product::find( $request->fk_produto ) ) )
+        {
+            $produtoNaoEncontrado = $request->fk_produto;
+            session()->flash('error', "Produto não encontrado: $produtoNaoEncontrado!");
+            return redirect()->back();
+        }
+
         $quantidade = $request->quantidade;
+        $quantidade = str_replace('.','',$quantidade);
 
         // Validação comentada abaixo está sendo feita na propria request com uma custom rule, pois a validação abaixo não mantêm os OLD values
         // $estoqueAtual = Product::find($request->fk_produto)->produtoSaldo->sum('quantidade');
@@ -82,7 +90,15 @@ class MovimentoController extends Controller
 
     public function update(EditMovimentoRequest $request, Movimento $movimento)
     {
+        if ( is_null( Product::find( $request->fk_produto ) ) )
+        {
+            $produtoNaoEncontrado = $request->fk_produto;
+            session()->flash('error', "Produto não encontrado: $produtoNaoEncontrado!");
+            return redirect()->back();
+        }
+
         $quantidade = $request->quantidade;
+        $quantidade = str_replace('.','',$quantidade);
 
         // Tela de movimentação não tem esse campo, apenas a de pedido
         if ( property_exists('$request','fk_origem') )

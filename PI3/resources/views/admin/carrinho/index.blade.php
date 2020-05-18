@@ -45,7 +45,7 @@
                                             <tr>
                                                 <td>{{$carrinho->id}}</td>
                                                 <td> @if ( $carrinho->product_id > 0 ) {{App\Carrinho::withTrashed()->find($carrinho->id)->produto->name}} @else Sem produto @endif</td>
-                                                <td>{{$carrinho->quantidade}}</td>
+                                                <td>{{number_format($carrinho->quantidade,0,',','.')}}</td>
                                                 <td> @if ( $carrinho->user_id > 0 ) {{App\Carrinho::withTrashed()->find($carrinho->id)->usuario->name}} @else Sem usuário @endif</td>
 
                                                 @if(!$carrinho->trashed())

@@ -48,13 +48,13 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="preco">Preço</label>
-                                        <input type="number" class='form-control' name="preco" placeholder="Digite o preço" value="{{$product->price}}">
+                                        <label for="preco">Preço (R$)</label>
+                                        <input type="text" class='form-control' id="produtoPreco_edit" name="preco" maxlength="10" placeholder="Digite o preço" value="{{$product->price}}">
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="discount">Desconto</label>
-                                        <input type="number" class='form-control' name="discount" placeholder="Digite o desconto" value="{{$product->discount}}">
+                                        <label for="discount">Desconto (%)</label>
+                                        <input type="text" class='form-control' id="produtoDesconto_edit" name="discount" maxlength="5" placeholder="Digite o desconto" value="{{$product->discount}}">
                                     </div>
 
                                     <div class="form-group">
@@ -81,4 +81,17 @@
             </div>
         </div>
     </section>
+@endsection
+
+@section('script')
+    <script>
+
+        // Máscara dos valores
+        $(document).ready(function($)
+        {
+            $('#produtoPreco_edit').mask("#.##0,00", {reverse: true});
+            $('#produtoDesconto_edit').mask("#.##0,00", {reverse: true});
+        })
+
+    </script>
 @endsection

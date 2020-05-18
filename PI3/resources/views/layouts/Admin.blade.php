@@ -18,6 +18,12 @@
         {{-- Referenciar javascript na Web --}}
         {{-- <script type="text/javascript" src="{{ URL::asset('js/custom.js') }}"></script> --}}
 
+        <!-- JQUERY -->
+        <script src="{{ URL::asset('https://code.jquery.com/jquery-3.3.1.js') }}"></script>
+
+        <!-- Utilizado para formatar valores decimais -->
+        <script src="{{ URL::asset('https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js') }}" ></script>
+
         {{-- Referenciar CSS local --}}
         <link href="{{ asset('admin_assets/css/admin.css') }}" rel="stylesheet" type="text/css" >
 
@@ -103,6 +109,8 @@
       <main>
         @yield('content_Admin')
       </main>
+
+      @yield('script')
 
         <!---Modal-->
         <div id="sign-out" class="modal" role="dialog">

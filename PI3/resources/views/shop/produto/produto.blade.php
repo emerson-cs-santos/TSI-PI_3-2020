@@ -46,7 +46,7 @@
                         @endphp
 
                         @if ( $estoque > 0 )
-                            <span>{{ $estoque }}
+                            <span>{{ number_format($estoque,0,',','.') }}
                                 @if($estoque <= 10)
                                     Últimas unidades!!
                                 @endif
@@ -78,7 +78,7 @@
 
                 <div class="container">
                     <div class="col-md-12 mt-5">
-                        <span class="camposLoja h3">Descrição:</span>
+                        <span class="camposLoja h3">Informações:</span>
                     </div>
 
                     <div class="col-md-12 divLojaDesc mt-3">

@@ -46,7 +46,7 @@
                                                 <td>{{$movimento->id}}</th>
                                                 <td> @if ( $movimento->product_id > 0 ) {{App\Movimento::withTrashed()->find($movimento->id)->produto->name}} @else Sem produto @endif</td>
                                                 <td>@if( $movimento->tipo == 'E' ) Entrada @else Saída @endif</td>
-                                                <td>@if( $movimento->tipo == 'S' ) {{$movimento->quantidade*-1}} @else {{$movimento->quantidade}} @endif</td>
+                                                <td>@if( $movimento->tipo == 'S' ) {{number_format($movimento->quantidade*-1,0,',','.')}} @else {{number_format($movimento->quantidade,0,',','.')}} @endif</td>
                                                 <td>@if( $movimento->fk_origem == 0) Manual @else Pedido - ID {{$movimento->fk_origem}} @endif</td>
 
                                                 @if(!$movimento->trashed())

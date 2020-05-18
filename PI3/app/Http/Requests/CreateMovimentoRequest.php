@@ -18,7 +18,7 @@ class CreateMovimentoRequest extends FormRequest
     {
         return [
             'tipo'          => 'required'
-            ,'quantidade'   => [ 'required', new ProdutoQuantidadeNegativa ,new VerSaldo( request()->all() ) ]
+            ,'quantidade'   => [ 'required', 'max:9', new ProdutoQuantidadeNegativa ,new VerSaldo( request()->all() ) ]
             ,'fk_produto'   => 'required'
         ];
     }

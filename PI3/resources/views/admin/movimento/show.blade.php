@@ -23,12 +23,12 @@
 
                                 <div class="form-group">
                                     <label for="quantidade">Quantidade</label>
-                                    <input type="text" class='form-control' name="quantidade" placeholder="Digite a quantidade" value="@if( $movimento->tipo == 'S' ) {{$movimento->quantidade*-1}} @else {{$movimento->quantidade}} @endif">
+                                    <input type="text" class='form-control' id="movimentoQuantidade_show" name="quantidade" maxlength="9" placeholder="Digite a quantidade" value="@if( $movimento->tipo == 'S' ) {{$movimento->quantidade*-1}} @else {{$movimento->quantidade}} @endif">
                                 </div>
 
                                 <div class="form-group">
                                     <label for="fk_produto">Produto</label>
-                                    <input type="number" class='form-control' name="fk_produto" placeholder="Digite o id do produto" value="{{$movimento->product_id}}">
+                                    <input type="number" class='form-control' name="fk_produto" onkeydown="return event.keyCode !== 69" placeholder="Digite o id do produto" value="{{$movimento->product_id}}">
                                 </div>
 
                                 <div class="form-group">
@@ -58,4 +58,16 @@
             </div>
         </div>
     </section>
+@endsection
+
+@section('script')
+    <script>
+
+        // Máscara dos valores
+        $(document).ready(function($)
+        {
+            $('#movimentoQuantidade_show').mask("#.##0", {reverse: true});
+        })
+
+    </script>
 @endsection

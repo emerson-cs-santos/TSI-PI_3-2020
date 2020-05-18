@@ -20,6 +20,12 @@ class VerSaldo implements Rule
         $quantidade     = $this->data['quantidade'];
         $produtoID      = $this->data['fk_produto'];
 
+        // Validação de produto não encontrado vai ser exibida, por isso não precisa passar ou exibir essa validação
+        if ( is_null( Product::find( $produtoID  ) ) )
+        {
+            return true;
+        }
+
         if ( $produtoID == 0 ) // Sem essa proteção, a função abaixo para buscar o saldo do produto, ocorre erro quando produto está vazio
         {
             return true;
