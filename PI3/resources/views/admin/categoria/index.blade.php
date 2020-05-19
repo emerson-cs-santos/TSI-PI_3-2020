@@ -37,6 +37,7 @@
                                             <th>Código</th>
                                             <th>Nome</th>
                                             <th>Qtd de Produtos</th>
+                                            <th class="text-center" colspan="3">Ações</th>
                                         </thead>
                                         <tbody>
                                             @foreach($categories as $category)

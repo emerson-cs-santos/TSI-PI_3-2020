@@ -40,6 +40,7 @@
                                             <th>Estoque</th>
                                             <th>Preço</th>
                                             <th>Desconto</th>
+                                            <th class="text-center" colspan="3">Ações</th>
                                         </thead>
                                         <tbody>
                                             @foreach($products as $product)

@@ -44,10 +44,18 @@
 
                                     <h3><a class="linkMaisVendidos" href="{{ route('produto-loja', $produto->id) }}" data-placement="top" data-toggle="tooltip" title="Ver produto">{{$produto->name}}</a></h3>
 
-                                    <p class="@if( $produto->discount > 0 ) old-price @endif">{{$produto->price()}}</p>
+                                    @php
+                                        $estoque = App\Product::find($produto->id)->produtoSaldo->sum('quantidade');
+                                    @endphp
 
-                                    @if( $produto->discount > 0 )
-                                        <p>{{$produto->discountPrice()}}</p>
+                                    @if ( $estoque > 0 )
+                                        <p class="@if( $produto->discount > 0 ) old-price @endif">{{$produto->price()}}</p>
+
+                                        @if( $produto->discount > 0 )
+                                            <p>{{$produto->discountPrice()}}</p>
+                                        @endif
+                                    @else
+                                        <p class="text-danger"> Produto indisponível </p>
                                     @endif
                                 </div>
                             </div>

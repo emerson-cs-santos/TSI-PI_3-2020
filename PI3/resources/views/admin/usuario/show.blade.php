@@ -25,12 +25,14 @@
                                         <input type="email" class='form-control' name="email" placeholder="Digite o nome do E-mail" value="{{$usuario->email}}">
                                     </div>
 
-                                    <div class="form-group text-center">
-                                        <label>Imagem de usuário</label>
-                                        <img class="form-control rounded mx-auto d-block img_extra_small_cli img_small_cli img_normal_cli mt-1" alt="Imagem do Usuário" src="{{$usuario->image}}" >
+                                    <div class="form-group text-center mt-2">
+                                        <figure class="rounded mx-auto d-block img_small_cli img_normal_cli">
+                                            <img class="form-control img_small_cli img_normal_cli" alt="Imagem do Usuário" src="{{$usuario->image}}" data-placement="top" data-toggle="tooltip" title="Utilizado apenas aqui no Dashboard" >
+                                            <figcaption>Imagem de usuário</figcaption>
+                                        </figure>
                                     </div>
 
-                                    <div class="form-group">
+                                    <div class="form-group mt-4">
                                         <label for="type">Nível de Acesso</label>
                                         <select name="type" class="form-control">
                                             <option value="padrao"  @if( $usuario->type == "padrao" ) selected @endif   >Padrão</option>

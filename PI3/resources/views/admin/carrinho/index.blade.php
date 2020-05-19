@@ -39,6 +39,7 @@
                                             <th>Quantidade</th>
                                             <th>Usuário</th>
                                             <th>Pedido</th>
+                                            <th class="text-center" colspan="3">Ações</th>
                                         </thead>
                                         <tbody>
                                             @foreach($carrinhos as $carrinho)

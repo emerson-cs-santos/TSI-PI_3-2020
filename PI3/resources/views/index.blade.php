@@ -49,10 +49,20 @@
                                                     {{$carrossel_produto->desc}}
                                                 </p>
                                                 <div class="packages-price">
-                                                    <p>
-                                                        @if( $carrossel_produto->discount > 0 )  {{$carrossel_produto->discountPrice()}} @endif
-                                                        @if( $carrossel_produto->discount > 0 ) <del> {{$carrossel_produto->price()}} </del> @else {{$carrossel_produto->price()}}  @endif
-                                                    </p>
+
+                                                    @php
+                                                        $estoque = App\Product::find($carrossel_produto->id)->produtoSaldo->sum('quantidade');
+                                                    @endphp
+
+                                                    @if ( $estoque > 0 )
+                                                        <p>
+                                                            @if( $carrossel_produto->discount > 0 )  {{$carrossel_produto->discountPrice()}} @endif
+                                                            @if( $carrossel_produto->discount > 0 ) <del> {{$carrossel_produto->price()}} </del> @else {{$carrossel_produto->price()}}  @endif
+                                                        </p>
+                                                    @else
+                                                        <p class="text-danger"> Produto indisponível </p>
+                                                    @endif
+
                                                 </div>
                                                 <form action="{{route('carrinho-shop-store',$carrossel_produto->id)}}" class='p-3 bg-white' method="post">
                                                     @csrf
@@ -160,10 +170,18 @@
 
                                     <h3><a class="linkMaisVendidos" href="{{ route('produto-loja', $produto->id) }}" data-placement="top" data-toggle="tooltip" title="Ver produto">{{$produto->name}}</a></h3>
 
-                                    <p class="@if( $produto->discount > 0 ) old-price @endif">{{$produto->price()}}</p>
+                                    @php
+                                        $estoque = App\Product::find($produto->id)->produtoSaldo->sum('quantidade');
+                                    @endphp
 
-                                    @if( $produto->discount > 0 )
-                                        <p>{{$produto->discountPrice()}}</p>
+                                    @if ( $estoque > 0 )
+                                        <p class="@if( $produto->discount > 0 ) old-price @endif">{{$produto->price()}}</p>
+
+                                        @if( $produto->discount > 0 )
+                                            <p>{{$produto->discountPrice()}}</p>
+                                        @endif
+                                    @else
+                                        <p class="text-danger"> Produto indisponível </p>
                                     @endif
                                 </div>
                             </div>

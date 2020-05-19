@@ -34,10 +34,19 @@
                                                     {{App\Category::find($lancamento->category_id)->name}}
                                                 </p>
                                                 <div class="populer-products-price">
-                                                    <p>
-                                                        @if( $lancamento->discount > 0 )  {{$lancamento->discountPrice()}} @endif
-                                                        @if( $lancamento->discount > 0 ) <del> {{$lancamento->price()}} </del> @else {{$lancamento->price()}}  @endif
-                                                    </p>
+
+                                                    @php
+                                                        $estoque = App\Product::find($lancamento->id)->produtoSaldo->sum('quantidade');
+                                                    @endphp
+
+                                                    @if ( $estoque > 0 )
+                                                        <p>
+                                                            @if( $lancamento->discount > 0 )  {{$lancamento->discountPrice()}} @endif
+                                                            @if( $lancamento->discount > 0 ) <del> {{$lancamento->price()}} </del> @else {{$lancamento->price()}}  @endif
+                                                        </p>
+                                                    @else
+                                                        <p class="text-danger"> Produto indisponível </p>
+                                                    @endif
 
                                                 </div>
                                                 <form action="{{route('carrinho-shop-store',$lancamento->id)}}" class='p-3 bg-white' method="post">

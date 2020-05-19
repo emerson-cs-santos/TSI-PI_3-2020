@@ -39,6 +39,7 @@
                                             <th>Tipo</th>
                                             <th>Quantidade</th>
                                             <th>Origem</th>
+                                            <th class="text-center" colspan="3">Ações</th>
                                         </thead>
                                         <tbody>
                                             @foreach($movimentos as $movimento)

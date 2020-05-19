@@ -65,7 +65,7 @@
 				            <div class="container">
 				                <div class="input-group">
 				                    <span class="input-group-addon"><i class="fa fa-search"></i></span>
-				                    <input type="text" class="form-control" placeholder="O que está buscando?">
+				                    <input type="search" class="form-control" placeholder="O que está buscando?">
 				                    <span class="input-group-addon close-search"><i class="fa fa-times"></i></span>
 				                </div>
 				            </div>

@@ -47,6 +47,7 @@
                                 <th class="text-center">Valor</th>
                                 <th class="text-center">Quantidade</th>
                                 <th class="text-center">Sub-Total</th>
+                                <th class="text-center">Ação</th>
                             </thead>
 
                             <tbody>

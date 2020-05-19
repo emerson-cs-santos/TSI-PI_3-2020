@@ -44,6 +44,7 @@
                                             <th>Nome</th>
                                             <th>E-mail</th>
                                             <th>Nível</th>
+                                            <th class="text-center" colspan="3">Ações</th>
                                         </thead>
                                         <tbody>
                                             @foreach($usuarios as $usuario)

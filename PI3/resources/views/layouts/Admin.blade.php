@@ -86,7 +86,7 @@
                                     <div class="col-md-5">
                                         <form>
                                             <div class="input-group">
-                                                <input type="text" class="form-control search-input" placeholder="Procurar no site">
+                                                <input type="search" class="form-control search-input" placeholder="Procurar no site">
                                                 <button type="button" class="btn btn-white search-button">
                                                     <i class="fas fa-search text-dark"></i>
                                                 </button>

@@ -52,11 +52,21 @@
 
                             <a class="Jogos" href="{{ route('produto-loja', $product->id) }}" data-placement="top" data-toggle="tooltip" title="Ver produto">{{$product->name}}</a>
 
-                            <p class="arrival-product-price @if( $product->discount > 0 ) old-price @endif">{{$product->price()}}</p>
+                            @php
+                                $estoque = App\Product::find($product->id)->produtoSaldo->sum('quantidade');
+                            @endphp
 
-                            @if( $product->discount > 0 )
-                                <p class="arrival-product-price">{{$product->discountPrice()}}</p>
+                            @if ( $estoque > 0 )
+                                <p class="arrival-product-price @if( $product->discount > 0 ) old-price @endif">{{$product->price()}}</p>
+
+                                @if( $product->discount > 0 )
+                                    <p class="arrival-product-price">{{$product->discountPrice()}}</p>
+                                @endif
+                            @else
+                                <p class="text-danger"> Produto indisponível </p>
                             @endif
+
+
                         {{-- </div> --}}
                     </div>
                 @endforeach

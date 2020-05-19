@@ -35,13 +35,17 @@
                                         <input type="email" class='form-control' name="email" required placeholder="Digite o nome do E-mail" value="{{old('email')}}">
                                     </div>
 
-                                    <div class="form-group">
-                                        <label>Imagem de usuário</label>
+                                    <div class="form-group mt-4">
+                                        <label for="imagem">Definir imagem</label>
                                         <input class="form-control" type="file" name="imagem" accept="image/png, image/jpeg, image/jpg" onchange="preview_image(event)" >
-                                        <img id="ExibirIMG_inputfile" class="form-control rounded mx-auto d-block img_extra_small_cli img_small_cli img_normal_cli mt-5" alt="Imagem do Usuário" src=" @if( empty(old('imagem')) )  {{asset('admin_assets/images/produto_sem_imagem.jpg')}} @endif" >
+
+                                        <figure class="rounded mx-auto d-block img_small_cli img_normal_cli mt-4 text-center">
+                                            <img id="ExibirIMG_inputfile" class="form-control img_small_cli img_normal_cli" alt="Imagem do Usuário" src=" @if( empty(old('imagem')) )  {{asset('admin_assets/images/produto_sem_imagem.jpg')}} @endif" data-placement="top" data-toggle="tooltip" title="Utilizado apenas aqui no Dashboard" >
+                                            <figcaption>Imagem de usuário</figcaption>
+                                        </figure>
                                     </div>
 
-                                    <div class="form-group">
+                                    <div class="form-group mt-4">
                                         <label for="type">Nível de Acesso*</label>
                                         <select name="type" class="form-control">
                                             <option value="padrao"  @if(old('type') == 'padrao') selected @endif >Padrão</option>

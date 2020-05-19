@@ -65,14 +65,20 @@
                                         </select>
                                     </div>
 
-                                    <div class="form-group">
-                                        <label>Imagem do Produto</label>
+                                    <div class="form-group mt-4">
+                                        <label for="imagem">Definir imagem</label>
                                         <input class="form-control" type="file" name="imagem" accept="image/png, image/jpeg, image/jpg" onchange="preview_image(event)" >
-                                        <img id="ExibirIMG_inputfile" class="form-control img_extra_small_prod img_small_prod img_normal_prod mt-5" alt="Imagem do Produto" src=" @if( empty($product->image) )  {{asset('admin_assets/images/produto_sem_imagem.jpg')}} @else {{$product->image}} @endif" >
+
+                                        <figure class="rounded mx-auto d-block mt-4 img_extra_small_prod img_small_prod img_normal_prod img_grande_prod text-center">
+                                            <img id="ExibirIMG_inputfile" class="form-control img_extra_small_prod img_small_prod img_normal_prod img_grande_prod" alt="Imagem do Produto" src=" @if( empty($product->image) )  {{asset('admin_assets/images/produto_sem_imagem.jpg')}} @else {{$product->image}} @endif" >
+                                            <figcaption>Imagem do produto</figcaption>
+                                        </figure>
+
+
                                     </div>
 
-                                    <button type="submit" class="btn btn-warning">Salvar</button>
-                                    <a href="{{ url()->previous() }}" class='btn btn-primary'>Voltar</a>
+                                    <button type="submit" class="btn btn-warning mt-3">Salvar</button>
+                                    <a href="{{ url()->previous() }}" class='btn btn-primary mt-3'>Voltar</a>
                                 </form>
                             </div>
                         </div>

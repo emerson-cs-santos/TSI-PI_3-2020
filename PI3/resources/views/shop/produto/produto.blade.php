@@ -77,7 +77,7 @@
                 </div>
 
                 <div class="container">
-                    <div class="col-md-12 mt-5">
+                    <div class="row col-md-12 mt-5">
                         <span class="camposLoja h3">Informações:</span>
                     </div>
 

@@ -38,6 +38,7 @@
                                             <th>Usuário</th>
                                             <th>Data</th>
                                             <th>Valor Total</th>
+                                            <th class="text-center" colspan="2">Ações</th>
                                         </thead>
                                         <tbody>
                                             @foreach($pedidos as $pedido)

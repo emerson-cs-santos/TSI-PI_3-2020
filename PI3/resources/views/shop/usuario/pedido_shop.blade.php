@@ -44,6 +44,7 @@
                                 <th class="text-center">Data</th>
                                 <th class="text-center">Status</th>
                                 <th class="text-center">Entrega</th>
+                                <th class="text-center" colspan="2">Ações</th>
                             </thead>
                             <tbody>
                                 @foreach($pedidos as $pedido)
@@ -74,10 +75,10 @@
 
                                     <td>
                                         @if ( !$pedido->trashed()  )
-                                            <form  action="{{ route('pedido-shop-cancelar', $pedido->id) }}" method="POST" onsubmit="return confirm('Você tem certeza?')">
+                                            <form  action="{{ route('pedido-shop-cancelar', $pedido->id) }}" method="POST">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button type="submit" class="btn btn-danger float-center"> Cancelar Pedido </a>
+                                                <button type="button" class="btn btn-danger float-center" onclick="confirmar('Cancelamento de pedido','Você tem certeza?', this.form)"> Cancelar Pedido </a>
                                             </form>
                                         @else
                                         <form  action="{{ route('pedido-shop-cancelado') }}" method="GET">

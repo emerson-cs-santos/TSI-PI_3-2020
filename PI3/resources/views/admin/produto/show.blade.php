@@ -54,12 +54,14 @@
                                         </select>
                                     </div>
 
-                                    <div class="form-group">
-                                        <label>Imagem do Produto</label>
-                                        <img id="ExibirIMG_inputfile" class="form-control img_extra_small_prod img_small_prod img_normal_prod mt-5" alt="Imagem do Produto" src=" @if( empty($product->image) )  {{asset('admin_assets/images/produto_sem_imagem.jpg')}} @else {{$product->image}} @endif" >
+                                    <div class="form-group mt-4">
+                                        <figure class="rounded mx-auto d-block mt-4 img_extra_small_prod img_small_prod img_normal_prod img_grande_prod text-center">
+                                            <img id="ExibirIMG_inputfile" class="form-control img_extra_small_prod img_small_prod img_normal_prod img_grande_prod" alt="Imagem do Produto" src=" @if( empty($product->image) )  {{asset('admin_assets/images/produto_sem_imagem.jpg')}} @else {{$product->image}} @endif" >
+                                            <figcaption>Imagem do produto</figcaption>
+                                        </figure>
                                     </div>
 
-                                    <div class="form-group">
+                                    <div class="form-group mt-5">
                                         @php
                                             if ( $product->updated_at == null )
                                             {
