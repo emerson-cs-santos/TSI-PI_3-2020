@@ -19,7 +19,7 @@ class CarrinhoController extends Controller
 
     public function index()
     {
-        $carrinho = Carrinho::paginate(5);
+        $carrinho = Carrinho::selectRaw('carrinhos.*')->orderByDesc('id')->paginate(5);
         return view('admin.carrinho.index', ['carrinhos' => $carrinho]);
     }
 

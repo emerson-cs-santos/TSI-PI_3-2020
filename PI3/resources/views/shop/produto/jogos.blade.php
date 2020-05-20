@@ -5,7 +5,7 @@
         <div class="container">
             @include('exibirErros')
             <header class="section-header mt-5">
-                <h2>Os melhores Jogos!</h2>
+                <h2>Os Melhores Jogos!</h2>
             </header>
 
             <div class="container mt-4">

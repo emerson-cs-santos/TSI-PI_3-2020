@@ -6,7 +6,7 @@
         <div class="container">
             @include('exibirErros')
             <div class="section-header">
-                <h2>Mais vendidos</h2>
+                <h2>Mais Vendidos</h2>
             </div><!--/.section-header-->
 
             <div class="feature-content">
@@ -36,7 +36,7 @@
                                 <div class="text-center mt-4">
                                     <form action="{{route('carrinho-shop-store',$produto->id)}}" class='p-3 bg-white' method="post">
                                         @csrf
-                                        <button type="submit" class="btn btn-warning">Adicionar ao carrinho</button>
+                                        <button type="submit" class="btn btn-warning">Adicionar ao Carrinho</button>
                                     </form>
                                 </div>
 

@@ -43,7 +43,7 @@
                                         <div class="single-welcome-hero">
                                             @include('exibirErros')
                                             <div class="welcome-hero-txt">
-                                                <h2 >Os melhores jogos!</h2>
+                                                <h2 >Os Melhores Jogos!</h2>
                                                 <h3>{{$carrossel_produto->name}}</h3>
                                                 <p>
                                                     {{$carrossel_produto->desc}}
@@ -137,7 +137,7 @@
     <section id="feature" class="feature">
         <div class="container">
             <div class="section-header">
-                <h2>Mais vendidos</h2>
+                <h2>Mais Vendidos</h2>
             </div><!--/.section-header-->
 
             <div class="feature-content">

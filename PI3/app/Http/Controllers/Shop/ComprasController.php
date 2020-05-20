@@ -27,10 +27,11 @@ class ComprasController extends Controller
         //     carrinhos.product_id
         // order by
         //     carrinhos.product_id
-        $itens = Carrinho::selectRaw('carrinhos.product_id, sum(carrinhos.quantidade) as qtd_total')
+        $itens = Carrinho::selectRaw('carrinhos.product_id, products.name, sum(carrinhos.quantidade) as qtd_total')
+        ->join('products', 'products.id', '=', 'carrinhos.product_id')
         ->where('user_id', '=', auth()->user()->id )
-        ->groupBy('carrinhos.product_id')
-        ->orderBy('carrinhos.product_id')
+        ->groupBy('carrinhos.product_id','products.name')
+        ->orderBy('products.name')
         ->paginate(4);
 
         return view('shop.usuario.carrinho_shop')->with( 'itens', $itens ) ;
@@ -190,7 +191,13 @@ class ComprasController extends Controller
 
     public function pedido_Shop_index()
     {
-        $pedido = Pedido::withTrashed()->where('user_id', '=', auth()->user()->id )->paginate(5);
+     //   $pedido = Pedido::withTrashed()->where('user_id', '=', auth()->user()->id )->paginate(5);
+
+        $pedido = Pedido::withTrashed()->selectRaw('pedidos.*')
+        ->where('user_id', '=', auth()->user()->id )
+        ->orderByDesc('pedidos.id')
+        ->paginate(6);
+
         return view('shop.usuario.pedido_shop', ['pedidos' => $pedido]);
     }
 
@@ -231,7 +238,7 @@ class ComprasController extends Controller
 
     public function item_pedido_Shop_index($id)
     {
-        $itemPedido = ItemPedido::selectRaw('item_pedidos.*')->where('fk_pedido', '=', $id)->orderBy('id')->paginate(8);
+        $itemPedido = ItemPedido::selectRaw('item_pedidos.*')->where('fk_pedido', '=', $id)->orderByDesc('id')->paginate(8);
         $pedido     = Pedido::withTrashed()->find($id);
         return view('shop.usuario.itemPedidoShop', ['itensPedido' => $itemPedido] )->with( ['pedido' => $pedido] );
     }

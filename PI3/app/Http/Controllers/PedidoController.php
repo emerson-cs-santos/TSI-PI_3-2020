@@ -17,7 +17,7 @@ class PedidoController extends Controller
 
     public function index_pedido()
     {
-        $pedido = Pedido::paginate(5);
+        $pedido = Pedido::selectRaw('pedidos.*')->orderByDesc('id')->paginate(5);
         return view('admin.pedido.index', ['pedidos' => $pedido]);
     }
 

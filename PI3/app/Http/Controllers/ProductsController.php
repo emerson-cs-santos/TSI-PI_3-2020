@@ -23,10 +23,9 @@ class ProductsController extends Controller
 
     public function index()
     {
-        $products = Product::paginate(4);
-        return view('admin.produto.index', ['products' => $products]);
+        $products = Product::selectRaw('products.*')->orderByDesc('id')->paginate(4);
 
-      //return view('admin.produto.index')->with('products', Product::all() );
+        return view('admin.produto.index', ['products' => $products]);
     }
 
 

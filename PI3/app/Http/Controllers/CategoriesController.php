@@ -18,10 +18,9 @@ class CategoriesController extends Controller
 
     public function index()
     {
-        $categories = Category::paginate(5);
-        return view('admin.categoria.index', ['categories' => $categories]);
+        $categories = Category::selectRaw('categories.*')->orderByDesc('id')->paginate(5);
 
-        //return view('admin.categoria.index')->with('categories', Category::all());
+        return view('admin.categoria.index', ['categories' => $categories]);
     }
 
 

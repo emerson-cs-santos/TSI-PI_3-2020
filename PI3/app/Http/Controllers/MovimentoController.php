@@ -10,7 +10,6 @@ use App\Http\Requests\EditMovimentoRequest;
 
 class MovimentoController extends Controller
 {
-
     public function __construct()
     {
        $this->middleware('is_admin');
@@ -18,7 +17,7 @@ class MovimentoController extends Controller
 
     public function index()
     {
-        $Movimento = Movimento::paginate(5);
+        $Movimento = Movimento::selectRaw('movimentos.*')->orderByDesc('id')->paginate(5);
         return view('admin.movimento.index', ['movimentos' => $Movimento] );
     }
 

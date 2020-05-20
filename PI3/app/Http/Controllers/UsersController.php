@@ -21,10 +21,9 @@ class UsersController extends Controller
 
     public function index()
     {
-       $users = User::paginate(5);
-       return view('admin.usuario.index', ['usuarios' => $users]);
+       $users = User::selectRaw('users.*')->orderByDesc('id')->paginate(5);
 
-        //return view('admin.usuario.index')->with('usuarios', User::all());
+       return view('admin.usuario.index', ['usuarios' => $users]);
     }
 
 

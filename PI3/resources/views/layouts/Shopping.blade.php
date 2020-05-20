@@ -259,7 +259,7 @@
                             <div class=" col-md-3 col-sm-6 col-xs-12">
                                 <div class="hm-footer-widget">
                                     <div class="hm-foot-title">
-                                        <h4>Minha conta</h4>
+                                        <h4>Minha Conta</h4>
                                     </div><!--/.hm-foot-title-->
                                     <div class="hm-foot-menu">
                                         <ul>
@@ -274,7 +274,7 @@
                             <div class=" col-md-3 col-sm-6  col-xs-12">
                                 <div class="hm-footer-widget">
                                     <div class="hm-foot-title">
-                                        <h4>newsletter</h4>
+                                        <h4>Newsletter</h4>
                                     </div><!--/.hm-foot-title-->
                                     <div class="hm-foot-para">
                                         <p>
