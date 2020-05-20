@@ -236,9 +236,8 @@
                                     </div><!--/.hm-foot-title-->
                                     <div class="hm-foot-menu">
                                         <ul>
-                                            <li><a href="#" data-placement="top" data-toggle="tooltip" title="Por trás da cortina">Quem somos</a></li><!--/li-->
-                                            <li><a href="#" data-placement="top" data-toggle="tooltip" title="Falar com a Loja">Contato</a></li><!--/li-->
-                                            <li><a href="#" data-placement="top" data-toggle="tooltip" title="Informações sobre a loja">a Loja</a></li><!--/li-->
+                                            <li><a href="{{route('sobreShop-quemsomos')}}" data-placement="top" data-toggle="tooltip" title="Por trás da cortina">Quem somos</a></li><!--/li-->
+                                            <li><a href="{{route('sobreShop-contato')}}" data-placement="top" data-toggle="tooltip" title="Falar com a Loja">Contato</a></li><!--/li-->
                                         </ul><!--/ul-->
                                     </div><!--/.hm-foot-menu-->
                                 </div><!--/.hm-footer-widget-->

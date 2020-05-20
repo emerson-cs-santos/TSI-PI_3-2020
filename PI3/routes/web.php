@@ -29,6 +29,10 @@ Route::get('/novos_shop', 'HomeController@novos_shop');
 Route::get('/destaque_shop', 'HomeController@destaque_shop');
 Route::get('/produto_loja/{id}', 'HomeController@produto_loja')->name('produto-loja');
 
+// Quem Somos
+Route::get('/sobreShop-quemsomos', 'Shop\SobreNosShopController@sobreShop_quemsomos')->name('sobreShop-quemsomos');
+Route::get('/sobreShop-contato', 'Shop\SobreNosShopController@sobreShop_contato')->name('sobreShop-contato');
+
 Route::middleware('auth')->group(function()
 {
     // Usuario
@@ -96,6 +100,14 @@ Route::middleware('auth')->group(function()
     Route::resource('movimentos', 'MovimentoController');
     Route::get('trashed-movimentos', 'MovimentoController@trashed')->name('trashed-movimentos.index');
     Route::put('restore-movimentos/{movimento}', 'MovimentoController@restore')->name('restore-movimentos.update');
+
+    // Sobre a loja
+    Route::get('/sobre-index', 'SobreNosController@sobre_index')                              ->name('sobre-index');
+    Route::get('/sobre-quem-somos', 'SobreNosController@sobre_quem_somos')                    ->name('sobre-quem-somos');
+    Route::get('/sobre-contato', 'SobreNosController@sobre_contato')                          ->name('sobre-contato');
+    Route::put('sobre-quem-somos-atualizar', 'SobreNosController@sobre_quem_somos_atualizar') ->name('sobre-quem-somos-atualizar');
+    Route::put('sobre-contato-atualizar', 'SobreNosController@sobre_contato_atualizar')       ->name('sobre-contato-atualizar');
+
 });
 
 // ADMIN - DASHBOARD Fim **************************************************************************************************************************
