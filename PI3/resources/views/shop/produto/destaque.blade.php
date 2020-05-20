@@ -9,7 +9,7 @@
                 <h2>Mais Vendidos</h2>
             </div><!--/.section-header-->
 
-            <div class="feature-content">
+            <div class="feature-content mt-5">
                 <div class="row">
 
                     @foreach($maisVendidos as $maisVendido)

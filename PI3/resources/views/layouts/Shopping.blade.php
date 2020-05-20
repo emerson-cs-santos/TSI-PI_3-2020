@@ -63,12 +63,12 @@
 				        <!-- Start Top Search -->
 				        <div class="top-search">
 				            <div class="container">
-				                <div class="input-group">
-				                    <span class="input-group-addon"><i class="fa fa-search"></i></span>
-				                    <input type="search" class="form-control" placeholder="O que está buscando?">
-				                    <span class="input-group-addon close-search"><i class="fa fa-times"></i></span>
-				                </div>
-				            </div>
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-question"></i></span>
+                                    <input type="search" name="busca" class="form-control" placeholder="O que está buscando?">
+                                    <span class="input-group-addon close-search"><i class="fa fa-times"></i></span>
+                                </div>
+                            </div>
 				        </div>
 				        <!-- End Top Search -->
 
@@ -266,7 +266,6 @@
                                             <li><a href="{{route('usuario-shop')}}" data-placement="top" data-toggle="tooltip" title="Suas informações">Cadastro</a></li>
                                             <li><a href="{{route('carrinho-shop-index')}}" data-placement="top" data-toggle="tooltip" title="Ver carrinho de compra">Carrinho</a></li>
                                             <li><a href="{{route('pedido-shop-index')}}" data-placement="top" data-toggle="tooltip" title="Ver pedidos">Pedidos</a></li>
-                                            <li><a href="#" data-placement="top" data-toggle="tooltip" title="Ver lista de desejos">Lista de desejos</a></li>
                                         </ul><!--/ul-->
                                     </div><!--/.hm-foot-menu-->
                                 </div><!--/.hm-footer-widget-->

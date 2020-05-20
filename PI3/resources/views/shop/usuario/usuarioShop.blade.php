@@ -38,17 +38,18 @@
                         @csrf
                         @method('PUT')
 
-                    <div class="form-group">
-                        <label for="name">Nome</label>
-                        <input type="text" class='form-control' name="name" value="{{ Auth::user()->name }}">
-                    </div>
+                        <div class="form-group">
+                            <label for="name">Nome</label>
+                            <input type="text" class='form-control' name="name" value="{{ Auth::user()->name }}">
+                        </div>
 
-                    <div class="form-group">
-                        <label for="email">E-mail</label>
-                        <input type="email" class='form-control' name="email" placeholder="Digite o nome do E-mail" value="{{ Auth::user()->email }}">
-                    </div>
+                        <div class="form-group">
+                            <label for="email">E-mail</label>
+                            <input type="email" class='form-control' name="email" placeholder="Digite o nome do E-mail" value="{{ Auth::user()->email }}">
+                        </div>
 
-                    <button type="submit" class="btn btn-warning">Salvar</button>
+                        <button type="submit" class="btn btn-warning">Salvar</button>
+                    </form>
                 </div>
             </div>
         </div>

@@ -60,19 +60,13 @@
                         <p>{{ Str::limit($produto->desc,300)  }}</p>
                     </div> --}}
 
-                    <div class="col-md-12 text-center">
+                    <div class="col-md-12 text-center mt-5">
                         <form action="{{route('carrinho-shop-store',$produto->id)}}" class='p-3 bg-white' method="post">
                             @csrf
                             <button type="submit" class="btn-cart welcome-add-cart botao_comprar_loja_produto" data-placement="top" data-toggle="tooltip" title="Adicionar produto ao carrinho atual.">
                                 Adicionar ao carrinho
                             </button>
                         </form>
-                    </div>
-
-                    <div class="col-md-12 text-center mb-6">
-                        <button type="submit" class="btn-cart welcome-add-cart botao_comprar_loja_produto" onclick="window.location.href='#'" data-placement="top" data-toggle="tooltip" title="Adicionar produto a sua lista de desejos">
-                            Adicionar na lista de desejos
-                        </button>
                     </div>
                 </div>
 

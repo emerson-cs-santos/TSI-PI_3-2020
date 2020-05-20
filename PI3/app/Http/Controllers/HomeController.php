@@ -6,6 +6,7 @@ use App\Category;
 use App\ItemPedido;
 use Illuminate\Support\Facades\DB;
 
+
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -38,14 +39,13 @@ class HomeController extends Controller
         //$produtos =  Product::paginate(8);
         $produtos = Product::selectRaw('products.*')->orderBy('name')->paginate($this->itemPorPagina);
         //$produtos =  Product::take(8);
-        return view('shop.produto.jogos')->with('products',$produtos )->with('categoria','');
+        return view('shop.produto.jogos')
+            ->with('products',$produtos )
+            ->with('categoria','');
     }
 
-    //public function searchCategory(Category $category)
     public function searchCategory($id)
     {
-      //  dd($category->products());
-
     //   $produtos = DB::select('
     //     select
     //         prod.*
@@ -54,34 +54,13 @@ class HomeController extends Controller
     //     where
     //     prod.category_id = ?', [$id] );
 
-    //     dd($produtos);
-
         $produtos = Product::selectRaw('products.*')->where('category_id', '=', $id)->orderBy('name')->paginate($this->itemPorPagina);
 
-      //  dd($produtos);
-
-    // foreach ( $produtos as $product )
-    // {
-    //     dd($product);
-    // }
-
-        return view( 'shop.produto.jogos')  ->with('products', $produtos)   ->with('categoria',Category::find($id)->name );
-        //return view('shop.produto.jogos')->with('products', $category->products() );
+        return view( 'shop.produto.jogos')
+            ->with('products', $produtos)
+            ->with('categoria',Category::find($id)->name );
     }
 
-
-    public function searchCategoryTeste(Category $category)
-    {
-      //  dd($produtos);
-
-    // foreach ( $produtos as $product )
-    // {
-    //     dd($product);
-    // }
-
-    //  return view('shop.produto.jogos')->with('products', $category->products()->get() )->with('categoria','');
-        return view('shop.produto.jogos')->with('products', $category->products()->paginate($this->itemPorPagina) )->with('categoria','');
-    }
 
     public function novos_shop()
     {

@@ -26,7 +26,6 @@ class UsersController extends Controller
        return view('admin.usuario.index', ['usuarios' => $users]);
     }
 
-
     public function create()
     {
         return view('admin.usuario.create');
@@ -221,9 +220,8 @@ class UsersController extends Controller
 
     public function trashed()
     {
-        $users = User::onlyTrashed()->paginate(5);
+        $users = User::selectRaw('users.*')->onlyTrashed()->orderByDesc('id')->paginate(5);
         return view('admin.usuario.index', ['usuarios' => $users]);
-//      return view('admin.usuario.index')->with('usuarios',User::onlyTrashed()->get());
     }
 
     public function restore($id)

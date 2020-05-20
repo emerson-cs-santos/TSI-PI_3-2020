@@ -4,11 +4,12 @@
     <section class="new-arrivals">
         <div class="container">
             @include('exibirErros')
-            <header class="section-header mt-5">
+            <header class="section-header mt-3">
                 <h2>Os Melhores Jogos!</h2>
             </header>
 
-            <div class="container mt-4">
+            {{-- Filtro apenas por categoria inicio --}}
+            <div class="container text-center mt-4">
                 <div class="row">
                     <ul class="linkHover text-center">
                         @foreach(\App\Category::all()->sortBy('name') as $category)
@@ -16,13 +17,15 @@
                         @endforeach
                     </ul>
                 </div>
+            {{-- Filtro apenas por categoria fim --}}
+
             </div>
 
             <div class="feature-content row">
 
                 @foreach($products as $product)
 
-                    <div class="col-sm-12 col-md-3">
+                    <div class="col-sm-12 col-md-3 mt-5">
                         {{-- <div class="single-new-arrival"> --}}
                             <div class="single-new-arrival-bg">
                                <img class="imagemShop" src="@if( empty($product->image) )  {{asset('admin_assets/images/produto_sem_imagem.jpg')}} @else {{$product->image}} @endif" alt="{{$product->name}}">

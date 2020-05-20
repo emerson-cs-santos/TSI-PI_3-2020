@@ -93,7 +93,7 @@ class CategoriesController extends Controller
 
     public function trashed()
     {
-        $categories = Category::onlyTrashed()->paginate(5);
+        $categories = Category::selectRaw('categories.*')->onlyTrashed()->orderByDesc('id')->paginate(5);
         return view('admin.categoria.index', ['categories' => $categories]);
 
         //return view('admin.categoria.index')->with('categories',Category::onlyTrashed()->get());

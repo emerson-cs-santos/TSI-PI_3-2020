@@ -78,12 +78,12 @@
                                             <form  action="{{ route('pedido-shop-cancelar', $pedido->id) }}" method="POST">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button type="button" class="btn btn-danger float-center" onclick="confirmar('Cancelamento de pedido','Você tem certeza?', this.form)"> Cancelar Pedido </a>
+                                                <button type="button" class="btn btn-danger float-center" onclick="confirmar('Cancelamento de pedido','Você tem certeza?', this.form)"> Cancelar Pedido </button>
                                             </form>
                                         @else
                                         <form  action="{{ route('pedido-shop-cancelado') }}" method="GET">
                                             @csrf
-                                            <button type="submit" class="btn btn-danger float-center"> Cancelar Pedido </a>
+                                            <button type="submit" class="btn btn-danger float-center"> Cancelar Pedido </button>
                                         </form>
                                         @endif
                                     </td>

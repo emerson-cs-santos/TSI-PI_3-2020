@@ -145,7 +145,7 @@ class MovimentoController extends Controller
 
     public function trashed()
     {
-         $movimentos = Movimento::onlyTrashed()->paginate(5);
+         $movimentos = Movimento::selectRaw('movimentos.*')->onlyTrashed()->orderByDesc('id')->paginate(5);
          return view('admin.movimento.index', ['movimentos' => $movimentos]);
     }
 

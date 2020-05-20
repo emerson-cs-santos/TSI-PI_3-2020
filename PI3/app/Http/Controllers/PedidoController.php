@@ -59,7 +59,7 @@ class PedidoController extends Controller
 
     public function trashed()
     {
-        $pedido = Pedido::onlyTrashed()->paginate(5);
+        $pedido = Pedido::selectRaw('pedidos.*')->onlyTrashed()->orderByDesc('id')->paginate(5);
         return view('admin.pedido.index', ['pedidos' => $pedido]);
     }
 

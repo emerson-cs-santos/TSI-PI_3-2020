@@ -175,7 +175,7 @@ class ProductsController extends Controller
 
     public function trashed()
     {
-        $products = Product::onlyTrashed()->paginate(4);
+        $products = Product::selectRaw('products.*')->onlyTrashed()->orderByDesc('id')->paginate(4);
         return view('admin.produto.index', ['products' => $products]);
 
        // return view('admin.produto.index')->with('products',Product::onlyTrashed()->get());

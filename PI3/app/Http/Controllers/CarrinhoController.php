@@ -143,7 +143,7 @@ class CarrinhoController extends Controller
 
     public function trashed()
     {
-        $carrinho = Carrinho::onlyTrashed()->paginate(5);
+        $carrinho = Carrinho::selectRaw('carrinhos.*')->onlyTrashed()->orderByDesc('id')->paginate(5);
         return view('admin.carrinho.index', ['carrinhos' => $carrinho]);
     }
 
