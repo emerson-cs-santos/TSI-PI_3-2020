@@ -3,13 +3,13 @@
 @section('content_Admin')
 
     <section class='mt-5'>
-        <div class="container-fluid mt-5">
+        <div class="container-fluid mt-2">
             <div class="row">
                 <div class="col-xl-10 col-lg-9 col-md-8 ml-auto">
                     <div class="row align-items-center">
 
                         {{-- Conteiner final onde as informações são de fato exibidas --}}
-                        <div class="container mt-5">
+                        <div class="container mt-2">
                             <div class="col-12">
 
                                 @if (session()->has('success'))
@@ -22,13 +22,31 @@
                                     <div class="alert alert-danger">{{ session()->get('error') }}</div>
                                 @endif
 
-                                <h2 class="text-center"> {{ Request::path() == 'index-pedido' ? 'Controle de pedidos' : 'Pedidos Cancelados' }} </h2>
+                                <h2 class="text-center"> {{ Request::path() !== 'trashed-pedido' ? 'Controle de pedidos' : 'Pedidos Cancelados' }} </h2>
 
                                 {{-- @if( Request::path() == 'index-pedido' )
                                     <div class='d-flex mb-2 justify-content-center'>
                                         <a href="{{route('pedido.create')}}" class='btn btn-success'>Novo</a>
                                     </div>
                                 @endif --}}
+
+                                @if( Request::path() !== 'trashed-pedido')
+                                    <form action="/buscar-index-pedido" method="POST" role="search">
+                                    {{ csrf_field() }}
+                                        <div class="row">
+                                            <div class="col-12 col-sm-12 col-md-11 mt-2">
+                                                <input type="search" name="busca" class="form-control" placeholder="O que está buscando?" data-placement="top" data-toggle="tooltip" title="Essa busca não considera o valor total"
+                                                    @if( isset($busca) )  value="{{$busca}}"  @endif >
+                                            </div>
+
+                                            <div class="col-12 col-sm-12 col-md-1 mt-2">
+                                                <button type="submit" class="btn btn-secondary" data-placement="top" data-toggle="tooltip" title="Fazer busca">
+                                                    <span class="fa fa-search"></span>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                @endif
 
                                 {{-- Tabela inicio --}}
                                 <div class="table-responsive mt-3">
@@ -89,7 +107,7 @@
                                 </div>
                                 <!---End of Pagination-->
 
-                                @if( Request::path() == 'index-pedido' )
+                                @if( Request::path() !== 'trashed-pedido' )
                                     <a href="{{ route('trashed-pedido.index') }}" class="btn btn-xs btn-info" data-placement="top" data-toggle="tooltip" title="Acessar pedidos cancelados">Pedidos cancelados</a>
                                 @else
                                     <a href="{{route('index-pedido')}}" class='btn btn-info'>Voltar aos pedidos</a>

@@ -10,7 +10,7 @@
                 <h2>Quem Somos</h2>
             </div><!--/.section-header-->
 
-            <div class="feature-content">
+            <div class="feature-content mt-5">
                 <div class="col-12 text-center">
                     <h3>{{$quemSomos->titulo}}</h3>
 

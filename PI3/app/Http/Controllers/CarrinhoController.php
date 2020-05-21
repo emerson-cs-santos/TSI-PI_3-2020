@@ -154,4 +154,42 @@ class CarrinhoController extends Controller
         session()->flash('success', 'Carrinho ativado com sucesso!');
         return redirect()->back();
     }
+
+    public function buscar(Request $request)
+    {
+        $buscar = $request->input('busca');
+
+        if($buscar != "")
+        {
+            $carrinho = Carrinho::selectRaw('carrinhos.*')
+            ->join('users', 'users.id', 'carrinhos.user_id')
+            ->join('products', 'products.id', 'carrinhos.product_id')
+            ->where ( 'carrinhos.id', 'LIKE', '%' . $buscar . '%' )
+            ->orWhere ( 'carrinhos.quantidade', 'LIKE', '%' . $buscar . '%' )
+            ->orWhere ( 'users.id', 'LIKE', '%' . $buscar . '%' )
+            ->orWhere ( '.users.name', 'LIKE', '%' . $buscar . '%' )
+            ->orWhere ( 'products.id', 'LIKE', '%' . $buscar . '%' )
+            ->orWhere ( 'products.name', 'LIKE', '%' . $buscar . '%' )
+            ->orderByDesc('id')
+            ->paginate(5)
+            ->setPath ( '' );
+
+            $pagination = $carrinho->appends ( array ('busca' => $request->input('busca')  ) );
+
+            return view('admin.carrinho.index')
+            ->with('carrinhos',$carrinho )->withQuery ( $buscar )
+            ->with('busca',$buscar);
+        }
+        else
+        {
+            $carrinho = Carrinho::selectRaw('carrinhos.*')
+            ->orderByDesc('id')
+            ->paginate(5)
+            ->setPath ( '' );
+
+            return view('admin.carrinho.index')
+            ->with('carrinhos', $carrinho )
+            ->with('busca','');
+        }
+    }
 }

@@ -157,4 +157,41 @@ class MovimentoController extends Controller
         session()->flash('success', 'Movimento ativado com sucesso!');
         return redirect()->back();
     }
+
+    public function buscar(Request $request)
+    {
+        $buscar = $request->input('busca');
+
+        if($buscar != "")
+        {
+            $movimentos = Movimento::selectRaw('movimentos.*')
+            ->join('products', 'products.id', 'movimentos.product_id')
+            ->where ( 'movimentos.id', 'LIKE', '%' . $buscar . '%' )
+            ->orWhere ( 'products.id', 'LIKE', '%' . $buscar . '%' )
+            ->orWhere ( 'products.name', 'LIKE', '%' . $buscar . '%' )
+            ->orWhere ( 'movimentos.tipo', 'LIKE', '%' . $buscar . '%' )
+            ->orWhere ( 'movimentos.quantidade', 'LIKE', '%' . $buscar . '%' )
+            ->orWhere ( 'movimentos.fk_origem', 'LIKE', '%' . $buscar . '%' )
+            ->orderByDesc('id')
+            ->paginate(5)
+            ->setPath ( '' );
+
+            $pagination = $movimentos->appends ( array ('busca' => $request->input('busca')  ) );
+
+            return view('admin.movimento.index')
+            ->with('movimentos',$movimentos )->withQuery ( $buscar )
+            ->with('busca',$buscar);
+        }
+        else
+        {
+            $movimentos = Movimento::selectRaw('movimentos.*')
+            ->orderByDesc('id')
+            ->paginate(5)
+            ->setPath ( '' );
+
+            return view('admin.movimento.index')
+            ->with('movimentos', $movimentos )
+            ->with('busca','');
+        }
+    }
 }

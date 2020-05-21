@@ -63,11 +63,17 @@
 				        <!-- Start Top Search -->
 				        <div class="top-search">
 				            <div class="container">
-                                <div class="input-group">
-                                    <span class="input-group-addon"><i class="fa fa-question"></i></span>
-                                    <input type="search" name="busca" class="form-control" placeholder="O que está buscando?">
-                                    <span class="input-group-addon close-search"><i class="fa fa-times"></i></span>
-                                </div>
+                                <form action="/search" method="POST" role="search">
+                                    {{ csrf_field() }}
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-question"></i></span>
+                                        <input type="search" name="busca" class="form-control" placeholder="O que está buscando?">
+                                        <span class="input-group-addon close-search"><i class="fa fa-times"></i></span>
+                                    </div>
+                                    <button type="submit" class="btn btn-default">
+                                        <span class="glyphicon glyphicon-search"></span>
+                                    </button>
+                                </form>
                             </div>
 				        </div>
 				        <!-- End Top Search -->

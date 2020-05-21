@@ -106,4 +106,36 @@ class CategoriesController extends Controller
         session()->flash('success', 'Categoria ativada com sucesso!');
         return redirect()->back();
     }
+
+    public function buscar(Request $request)
+    {
+        $buscar = $request->input('busca');
+
+        if($buscar != "")
+        {
+            $categories = Category::selectRaw('categories.*')
+            ->where ( 'categories.name', 'LIKE', '%' . $buscar . '%' )
+            ->orWhere ( 'categories.id', 'LIKE', '%' . $buscar . '%' )
+            ->orderBy('name')
+            ->paginate(5)
+            ->setPath ( '' );
+
+            $pagination = $categories->appends ( array ('busca' => $request->input('busca')  ) );
+
+            return view('admin.categoria.index')
+            ->with('categories',$categories )->withQuery ( $buscar )
+            ->with('busca',$buscar);
+        }
+        else
+        {
+            $categories = Category::selectRaw('categories.*')
+            ->orderBy('name')
+            ->paginate(5)
+            ->setPath ( '' );
+
+            return view('admin.categoria.index')
+            ->with('categories', $categories )
+            ->with('busca','');
+        }
+    }
 }

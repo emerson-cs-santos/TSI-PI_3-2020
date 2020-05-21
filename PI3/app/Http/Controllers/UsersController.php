@@ -231,4 +231,38 @@ class UsersController extends Controller
         session()->flash('success', 'Usuário ativado com sucesso!');
         return redirect()->back();
     }
+
+    public function buscar(Request $request)
+    {
+        $buscar = $request->input('busca');
+
+        if($buscar != "")
+        {
+            $users = User::selectRaw('users.*')
+            ->where ( 'users.name', 'LIKE', '%' . $buscar . '%' )
+            ->orWhere ( 'users.id', 'LIKE', '%' . $buscar . '%' )
+            ->orWhere ( 'users.email', 'LIKE', '%' . $buscar . '%' )
+            ->orWhere ( 'users.type', 'LIKE', '%' . $buscar . '%' )
+            ->orderBy('name')
+            ->paginate(5)
+            ->setPath ( '' );
+
+            $pagination = $users->appends ( array ('busca' => $request->input('busca')  ) );
+
+            return view('admin.usuario.index')
+            ->with('usuarios',$users )->withQuery ( $buscar )
+            ->with('busca',$buscar);
+        }
+        else
+        {
+            $users = User::selectRaw('users.*')
+            ->orderBy('name')
+            ->paginate(5)
+            ->setPath ( '' );
+
+            return view('admin.usuario.index')
+            ->with('usuarios', $users )
+            ->with('busca','');
+        }
+    }
 }

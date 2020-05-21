@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Product;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,6 +29,40 @@ Route::get('/search/category/{id}', 'HomeController@searchCategory')->name('sear
 Route::get('/novos_shop', 'HomeController@novos_shop');
 Route::get('/destaque_shop', 'HomeController@destaque_shop');
 Route::get('/produto_loja/{id}', 'HomeController@produto_loja')->name('produto-loja');
+
+// Busca por produto ou categoria pelo nome
+Route::any ( '/search', function (Request $request)
+{
+    $buscar = $request->input('busca');
+
+    if($buscar != "")
+    {
+        $products = App\Product::selectRaw('products.*')
+        ->join('categories', 'categories.id', '=', 'products.category_id')
+        ->where ( 'products.name', 'LIKE', '%' . $buscar . '%' )
+        ->orWhere ( 'categories.name', 'LIKE', '%' . $buscar . '%' )
+        ->orderBy('name')
+        ->paginate(4)
+        ->setPath ( '' );
+
+        $pagination = $products->appends ( array ('busca' => $request->input('busca')  ) );
+
+        return view('shop.produto.jogos')
+        ->with('products',$products )->withQuery ( $buscar )
+        ->with('categoria',$buscar);
+    }
+    else
+    {
+        $products = App\Product::selectRaw('products.*')
+        ->orderBy('name')
+        ->paginate(4)
+        ->setPath ( '' );
+
+        return view('shop.produto.jogos')
+        ->with('products', $products )
+        ->with('categoria','');
+    }
+});
 
 // Quem Somos
 Route::get('/sobreShop-quemsomos', 'Shop\SobreNosShopController@sobreShop_quemsomos')->name('sobreShop-quemsomos');
@@ -68,16 +103,19 @@ Route::middleware('auth')->group(function()
     Route::resource('Users','UsersController');
     Route::get('trashed-Users','UsersController@trashed')->name('trashed-Users.index');
     Route::put('restore-Users/{category}','UsersController@restore')->name('restore-Users.update');
+    Route::any('buscar-Users','UsersController@buscar')->name('buscar-Users');
 
     // Categorias
     Route::resource('categories','CategoriesController');
     Route::get('trashed-categories','CategoriesController@trashed')->name('trashed-categories.index');
     Route::put('restore-categories/{category}','CategoriesController@restore')->name('restore-categories.update');
+    Route::any('buscar-categories','CategoriesController@buscar')->name('buscar-categories');
 
     // Produtos
     Route::resource('products','ProductsController');
     Route::get('trashed-product','ProductsController@trashed')->name('trashed-product.index');
     Route::put('restore-product/{product}','ProductsController@restore')->name('restore-product.update');
+    Route::any('buscar-products','ProductsController@buscar')->name('buscar-products');
 
     // Clientes
     Route::resource('clientes', 'ClientesController');
@@ -88,18 +126,21 @@ Route::middleware('auth')->group(function()
     Route::resource('carrinho','CarrinhoController');
     Route::get('trashed-carrinho','CarrinhoController@trashed')->name('trashed-carrinho.index');
     Route::put('restore-carrinho/{category}','CarrinhoController@restore')->name('restore-carrinho.update');
+    Route::any('buscar-carrinho','CarrinhoController@buscar')->name('buscar-carrinho');
 
     // Pedido e item
     Route::get('/index-pedido', 'PedidoController@index_pedido')->name('index-pedido');
     Route::delete('pedido-destroy/{id}', 'PedidoController@destroy')->name('pedido.destroy');
     Route::get('trashed-pedido', 'PedidoController@trashed')->name('trashed-pedido.index');
     Route::put('restore-pedido/{id}', 'PedidoController@restore')->name('restore-pedido.update');
+    Route::any('buscar-index-pedido','PedidoController@buscar')->name('buscar-index-pedido');
     Route::get('/item-pedido/{idPedido}','PedidoController@index_itensPedido')->name('item-pedido');
 
     // Movimentações
     Route::resource('movimentos', 'MovimentoController');
     Route::get('trashed-movimentos', 'MovimentoController@trashed')->name('trashed-movimentos.index');
     Route::put('restore-movimentos/{movimento}', 'MovimentoController@restore')->name('restore-movimentos.update');
+    Route::any('buscar-movimentos','MovimentoController@buscar')->name('buscar-movimentos');
 
     // Sobre a loja
     Route::get('/sobre-index', 'SobreNosController@sobre_index')                              ->name('sobre-index');

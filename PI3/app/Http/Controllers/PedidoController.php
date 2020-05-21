@@ -71,4 +71,39 @@ class PedidoController extends Controller
         return redirect()->back();
     }
 
+    public function buscar(Request $request)
+    {
+        $buscar = $request->input('busca');
+
+        if($buscar != "")
+        {
+            $pedidos = Pedido::selectRaw('pedidos.*')
+            ->join('users', 'users.id', 'pedidos.user_id')
+            ->where ( 'pedidos.id', 'LIKE', '%' . $buscar . '%' )
+            ->orWhere ( 'pedidos.updated_at', 'LIKE', '%' . $buscar . '%' )
+            ->orWhere ( 'users.id', 'LIKE', '%' . $buscar . '%' )
+            ->orWhere ( 'users.name', 'LIKE', '%' . $buscar . '%' )
+            ->orderByDesc('id')
+            ->paginate(5)
+            ->setPath ( '' );
+
+            $pagination = $pedidos->appends ( array ('busca' => $request->input('busca')  ) );
+
+            return view('admin.pedido.index')
+            ->with('pedidos',$pedidos )->withQuery ( $buscar )
+            ->with('busca',$buscar);
+        }
+        else
+        {
+            $pedidos = Pedido::selectRaw('pedidos.*')
+            ->orderByDesc('id')
+            ->paginate(5)
+            ->setPath ( '' );
+
+            return view('admin.pedido.index')
+            ->with('pedidos', $pedidos )
+            ->with('busca','');
+        }
+    }
+
 }

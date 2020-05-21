@@ -2,14 +2,14 @@
 
 @section('content_Admin')
 
-    <section class='mt-5'>
+    <section class='mt-2'>
         <div class="container-fluid mt-5">
             <div class="row">
                 <div class="col-xl-10 col-lg-9 col-md-8 ml-auto">
                     <div class="row align-items-center">
 
                         {{-- Conteiner final onde as informações são de fato exibidas --}}
-                        <div class="container mt-5">
+                        <div class="container mt-2">
                             <div class="col-12">
 
                                 @if (session()->has('success'))
@@ -22,12 +22,30 @@
                                     <div class="alert alert-danger">{{ session()->get('error') }}</div>
                                 @endif
 
-                                <h2 class="text-center"> {{ Request::path() == 'categories' ? 'Cadastro de Categorias' : 'Lixeira de Categorias' }} </h2>
+                                <h2 class="text-center"> {{ Request::path() == 'trashed-categories' ? 'Lixeira de Categorias' : 'Cadastro de Categorias' }} </h2>
 
-                                @if( Request::path() == 'categories' )
+                                @if( Request::path() !== 'trashed-categories' )
                                     <div class='d-flex mb-2 justify-content-center'>
                                         <a href="{{route('categories.create')}}" class='btn btn-success'>Novo</a>
                                     </div>
+                                @endif
+
+                                @if( Request::path() !== 'trashed-categories')
+                                    <form action="/buscar-categories" method="POST" role="search">
+                                    {{ csrf_field() }}
+                                        <div class="row">
+                                            <div class="col-12 col-sm-12 col-md-11 mt-2">
+                                                <input type="search" name="busca" class="form-control" placeholder="O que está buscando?" data-placement="top" data-toggle="tooltip" title="Essa busca não considera a Qtd de produtos"
+                                                    @if( isset($busca) )  value="{{$busca}}"  @endif >
+                                            </div>
+
+                                            <div class="col-12 col-sm-12 col-md-1 mt-2">
+                                                <button type="submit" class="btn btn-secondary" data-placement="top" data-toggle="tooltip" title="Fazer busca">
+                                                    <span class="fa fa-search"></span>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </form>
                                 @endif
 
                                 {{-- Tabela inicio --}}
@@ -86,10 +104,10 @@
                                 </div>
                                 <!---End of Pagination-->
 
-                                @if( Request::path() == 'categories' )
-                                    <a href="{{ route('trashed-categories.index') }}" class="btn btn-xs btn-info" data-placement="top" data-toggle="tooltip" title="Acessar registros excluídos">Lixeira</a>
-                                @else
+                                @if( Request::path() == 'trashed-categories' )
                                     <a href="{{route('categories.index')}}" class='btn btn-info'>Voltar ao cadastro</a>
+                                @else
+                                <a href="{{ route('trashed-categories.index') }}" class="btn btn-xs btn-info" data-placement="top" data-toggle="tooltip" title="Acessar registros excluídos">Lixeira</a>
                                 @endif
                             </div>
                         </div>

@@ -49,8 +49,7 @@
                                 <a href="/admin" class="navbar-brand text-white d-block  mx-auto text-center py-3 mb-4"><i class="fas fa-gamepad text-light fa-3x"></i></a>
 
                                 <div class="bottom-border pb-3">
-                                <img src=" @if( empty(Auth::user()->image)  )  {{asset('admin_assets/images/produto_sem_imagem.jpg')}} @else {{ Auth::user()->image }}@endif " alt="Imagem do perfil" width="50" class="rounded-circle mr-3">
-
+                                    <a href="{{ route( 'Users.edit', Auth::user()->id ) }}" data-placement="top" data-toggle="tooltip" title="Ver cadastro"><img src=" @if( empty(Auth::user()->image)  )  {{asset('admin_assets/images/produto_sem_imagem.jpg')}} @else {{ Auth::user()->image }}@endif " alt="Imagem do perfil" width="50" class="rounded-circle mr-3"></a>
                                     <a href="{{ route( 'Users.edit', Auth::user()->id ) }}" class="text-white " data-placement="top" data-toggle="tooltip" title="Abrir cadastro">{{ Auth::user()->name }}</a>
                                 </div>
 

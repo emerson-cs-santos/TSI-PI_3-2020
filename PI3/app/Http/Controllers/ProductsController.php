@@ -181,10 +181,45 @@ class ProductsController extends Controller
        // return view('admin.produto.index')->with('products',Product::onlyTrashed()->get());
     }
 
-    public function restore($id){
+    public function restore($id)
+    {
         $product = Product::withTrashed()->where('id', $id)->firstOrFail();
         $product->restore();
         session()->flash('success', 'Produto ativado com sucesso!');
         return redirect()->back();
+    }
+
+    public function buscar(Request $request)
+    {
+        $buscar = $request->input('busca');
+
+        if($buscar != "")
+        {
+            $products = Product::selectRaw('products.*')
+            ->where ( 'products.name', 'LIKE', '%' . $buscar . '%' )
+            ->orWhere ( 'products.id', 'LIKE', '%' . $buscar . '%' )
+            ->orWhere ( 'products.price', 'LIKE', '%' . $buscar . '%' )
+            ->orWhere ( 'products.discount', 'LIKE', '%' . $buscar . '%' )
+            ->orderBy('name')
+            ->paginate(4)
+            ->setPath ( '' );
+
+            $pagination = $products->appends ( array ('busca' => $request->input('busca')  ) );
+
+            return view('admin.produto.index')
+            ->with('products',$products )->withQuery ( $buscar )
+            ->with('busca',$buscar);
+        }
+        else
+        {
+            $products = Product::selectRaw('products.*')
+            ->orderBy('name')
+            ->paginate(4)
+            ->setPath ( '' );
+
+            return view('admin.produto.index')
+            ->with('products', $products )
+            ->with('busca','');
+        }
     }
 }

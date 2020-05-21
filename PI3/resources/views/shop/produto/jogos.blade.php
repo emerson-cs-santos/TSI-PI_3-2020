@@ -13,7 +13,7 @@
                 <div class="row">
                     <ul class="linkHover text-center">
                         @foreach(\App\Category::all()->sortBy('name') as $category)
-                            <li class="col-12 col-sm-6 col-md-2 mt-4{{ $categoria == $category->name  ? ' linkAtivo' : '' }} "> <a href="{{ route('search-category', $category->id) }}" data-placement="top" data-toggle="tooltip" title="Ver jogos da categoria">{{$category->name}}</a>       </li>
+                            <li class="col-12 col-sm-6 col-md-2 mt-4{{ strtoupper($categoria) == strtoupper($category->name)  ? ' linkAtivo' : '' }} "> <a href="{{ route('search-category', $category->id) }}" data-placement="top" data-toggle="tooltip" title="Ver jogos da categoria">{{$category->name}}</a>       </li>
                         @endforeach
                     </ul>
                 </div>
@@ -83,7 +83,7 @@
 
             <div class="container text-center">
                 <div>
-                    {{ $products->links() }}
+                    {{$products->links()}}
                 </div>
             </div>
 
