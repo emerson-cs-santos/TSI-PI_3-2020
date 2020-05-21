@@ -32,12 +32,12 @@
 
                                     <div class="form-group">
                                         <label for="name">Nome*</label>
-                                        <input type="text" class='form-control' name="name" autofocus required placeholder="Digite o nome da categoria" value="{{old('name')}}">
+                                        <input type="text" class='form-control' name="name" id="name" autofocus required placeholder="Digite o nome da categoria" value="{{old('name')}}">
                                     </div>
 
                                     <div class="form-group">
                                         <label for="home">Aparecer no rodapé do site?</label>
-                                        <select name="home" class="form-control">
+                                        <select name="home" class="form-control" id="home" >
                                             <option value="N" @if( old('home') == 'N') selected @endif >Não</option>
                                             <option value="S" @if( old('home') == 'S') selected @endif >Sim</option>
                                         </select>

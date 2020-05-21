@@ -28,12 +28,12 @@
 
                                     <div class="form-group">
                                         <label for="Titulo">Titulo*</label>
-                                        <input type="text" class='form-control' name="Titulo" autofocus required placeholder="Digite um título" value="{{$quemSomos->titulo}}">
+                                        <input type="text" class='form-control' name="Titulo" id="Titulo" autofocus required placeholder="Digite um título" value="{{$quemSomos->titulo}}">
                                     </div>
 
                                     <div class="form-group">
                                         <label for="Texto">Texto*</label>
-                                        <textarea name="Texto" class='form-control' rows=15 required placeholder="Digite a apresentação do site">{{$quemSomos->texto}}</textarea>
+                                        <textarea name="Texto" class='form-control' rows=15 id="Texto" required placeholder="Digite a apresentação do site">{{$quemSomos->texto}}</textarea>
                                     </div>
 
                                     <button type="submit" class="btn btn-success mt-3">Atualizar</button>

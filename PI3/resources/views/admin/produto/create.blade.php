@@ -27,12 +27,12 @@
 
                                     <div class="form-group">
                                         <label for="name">Nome*</label>
-                                        <input type="text" class='form-control' name="name" autofocus required placeholder="Digite o nome do produto" value="{{old('name')}}">
+                                        <input type="text" class='form-control' name="name" id="name" autofocus required placeholder="Digite o nome do produto" value="{{old('name')}}">
                                     </div>
 
                                     <div class="form-group">
                                         <label for="category_id">Categoria*:</label>
-                                        <select name="category_id" class="form-control">
+                                        <select name="category_id" class="form-control" id="category_id" >
                                             @foreach($categories as $category)
                                                 <option value="{{$category->id}}" @if( old('category_id') == $category->id ) selected @endif >{{$category->name}}</option>
                                             @endforeach
@@ -41,22 +41,22 @@
 
                                     <div class="form-group">
                                         <label for="descricao">Descrição*</label>
-                                        <textarea name="descricao" class='form-control' rows=10 required placeholder="Digite uma descrição para o produto">{{old('descricao')}}</textarea>
+                                        <textarea name="descricao" class='form-control' id="descricao" rows=10 required placeholder="Digite uma descrição para o produto">{{old('descricao')}}</textarea>
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="preco">Preço (R$)*</label>
+                                        <label>Preço (R$)*</label>
                                         <input type="text" id="produtoPreco_create" class='form-control' name="preco" maxlength="10" required placeholder="Digite o preço" value="{{old('preco')}}">
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="discount">Desconto (%)</label>
+                                        <label>Desconto (%)</label>
                                         <input type="text" id='produtoDesconto_create' class='form-control' name="discount" maxlength="5" placeholder="Digite o desconto" value="{{old('discount')}}">
                                     </div>
 
                                     <div class="form-group">
                                         <label for="home">Aparecer na Home?</label>
-                                        <select name="home" class="form-control">
+                                        <select name="home" class="form-control" id="home" >
                                             <option value="N" @if( old('home') == 'N') selected @endif >Não</option>
                                             <option value="S" @if( old('home') == 'S') selected @endif >Sim</option>
                                         </select>
@@ -64,7 +64,7 @@
 
                                     <div class="form-group mt-4">
                                         <label for="imagem">Definir imagem</label>
-                                        <input class="form-control" type="file" name="imagem" accept="image/png, image/jpeg, image/jpg" onchange="preview_image(event)" >
+                                        <input class="form-control" type="file" name="imagem" id="imagem" accept="image/png, image/jpeg, image/jpg" onchange="preview_image(event)" >
 
                                         <figure class="rounded mx-auto d-block mt-4 img_extra_small_prod img_small_prod img_normal_prod img_grande_prod text-center">
                                             <img id="ExibirIMG_inputfile" class="form-control img_extra_small_prod img_small_prod img_normal_prod img_grande_prod" alt="Imagem do Produto" src=" @if( empty(old('imagem')) )  {{asset('admin_assets/images/produto_sem_imagem.jpg')}} @endif" >

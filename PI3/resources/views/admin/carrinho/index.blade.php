@@ -52,12 +52,15 @@
                                 <div class="table-responsive mt-3">
                                     <table class="table table-striped bg-light text-center table-bordered table-hover">
                                         <thead class="text-dark">
-                                            <th>Código</th>
-                                            <th>Produto</th>
-                                            <th>Quantidade</th>
-                                            <th>Usuário</th>
-                                            <th>Pedido</th>
-                                            <th class="text-center" colspan="3">Ações</th>
+                                            <tr>
+                                                <th>Código</th>
+                                                <th>Produto</th>
+                                                <th>Quantidade</th>
+                                                <th>Usuário</th>
+                                                 @if( count($carrinhos) > 0 )
+                                                    <th class="text-center" @if( Request::path() == 'trashed-carrinho' ) colspan="2" @else colspan="3" @endif  >Ações</th>
+                                                @endif
+                                            </tr>
                                         </thead>
                                         <tbody>
                                             @foreach($carrinhos as $carrinho)
@@ -91,7 +94,7 @@
                                                         @php
                                                             $acaoDeletar = $carrinho->trashed() ? 'Apagar' : 'Mover para Lixeira';
                                                         @endphp
-                                                        <button type="button" onclick="confirmar('{{ $acaoDeletar }}','Você tem certeza?', this.form)" class="btn btn-danger btn-sm float-center"> {{ $acaoDeletar }} </a>
+                                                        <button type="button" onclick="confirmar('{{ $acaoDeletar }}','Você tem certeza?', this.form)" class="btn btn-danger btn-sm float-center"> {{ $acaoDeletar }} </button>
                                                     </form>
                                                 </td>
                                             </tr>

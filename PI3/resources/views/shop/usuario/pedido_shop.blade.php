@@ -39,12 +39,14 @@
                     <div class="table-responsive mt-3">
                         <table class="table table-striped bg-light text-center table-bordered table-hover">
                             <thead class="text-dark">
-                                <th class="text-center">Número do Pedido</th>
-                                <th class="text-center">Valor Total</th>
-                                <th class="text-center">Data</th>
-                                <th class="text-center">Status</th>
-                                <th class="text-center">Entrega</th>
-                                <th class="text-center" colspan="2">Ações</th>
+                                <tr>
+                                    <th class="text-center">Número do Pedido</th>
+                                    <th class="text-center">Valor Total</th>
+                                    <th class="text-center">Data</th>
+                                    <th class="text-center">Status</th>
+                                    <th class="text-center">Entrega</th>
+                                    <th class="text-center" colspan="2">Ações</th>
+                                </tr>
                             </thead>
                             <tbody>
                                 @foreach($pedidos as $pedido)
@@ -69,7 +71,7 @@
                                     <td>
                                         <form  action="{{ route('item-pedido-shop-index', $pedido->id) }}" method="GET">
                                             @csrf
-                                            <button type="submit" class="btn btn-warning float-center"> Ver Produtos </a>
+                                            <button type="submit" class="btn btn-warning float-center"> Ver Produtos </button>
                                         </form>
                                     </td>
 

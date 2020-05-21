@@ -33,16 +33,16 @@
 
                                     <div class="form-group">
                                         <label for="Produto">Produto ID*</label>
-                                        <input type="number" class='form-control' name="Produto" onkeydown="return event.keyCode !== 69" autofocus required placeholder="Informe o produto" value="{{$carrinho->product_id}}">
+                                        <input type="number" class='form-control' name="Produto" id="Produto" onkeydown="return event.keyCode !== 69" autofocus required placeholder="Informe o produto" value="{{$carrinho->product_id}}">
                                     </div>
 
                                     <div class="form-group">
                                         <label for="Usuario">Usuário ID*</label>
-                                        <input type="number" class='form-control' name="Usuario" onkeydown="return event.keyCode !== 69" required placeholder="Informe o usuário" value="{{$carrinho->user_id}}">
+                                        <input type="number" class='form-control' name="Usuario" id="Usuario" onkeydown="return event.keyCode !== 69" required placeholder="Informe o usuário" value="{{$carrinho->user_id}}">
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="Quantidade">Quantidade*</label>
+                                        <label>Quantidade*</label>
                                         <input type="text" class='form-control' id='carrinhoQuantidade_edit' name="Quantidade" maxlength="9" required placeholder="Digite a quantidade" value="{{$carrinho->quantidade}}">
                                     </div>
 

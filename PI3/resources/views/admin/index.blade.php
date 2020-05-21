@@ -133,28 +133,32 @@
                         <!---Table 1 BEGIN-->
                         <div class="col-xl-12 col-12">
                             <h3 class="text-dark text-center mb-3">Últimas Vendas</h3>
-                            <table class="table table-striped bg-light text-center table-bordered table-hover">
-                                <thead class="text-dark">
-                                    <th>Nro Pedido(ID)</th>
-                                    <th>Usuário</th>
-                                    <th>Valor Total</th>
-                                    <th>Data</th>
-                                </thead>
-                                <tbody>
-                                    @foreach($pedidosRecente as $pedido)
+                            <div class="table-responsive mt-3">
+                                <table class="table table-striped bg-light text-center table-bordered table-hover">
+                                    <thead class="text-dark">
                                         <tr>
-                                            <td>{{$pedido->id}}</td>
-                                            <td> @if ( $pedido->user_id > 0 ) {{App\Pedido::withTrashed()->find($pedido->id)->usuario->name}} @else Sem usuário @endif</td>
-                                            <td>{{ $pedido->valorTotal() }}</td>
-
-                                            @php
-                                                $date = DateTime::createFromFormat('Y-m-d H:i:s', $pedido->created_at );
-                                            @endphp
-                                            <td>{{$date->format('d/m/Y')}}</td>
+                                            <th>Nro Pedido(ID)</th>
+                                            <th>Usuário</th>
+                                            <th>Valor Total</th>
+                                            <th>Data</th>
                                         </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
+                                    </thead>
+                                    <tbody>
+                                        @foreach($pedidosRecente as $pedido)
+                                            <tr>
+                                                <td>{{$pedido->id}}</td>
+                                                <td> @if ( $pedido->user_id > 0 ) {{App\Pedido::withTrashed()->find($pedido->id)->usuario->name}} @else Sem usuário @endif</td>
+                                                <td>{{ $pedido->valorTotal() }}</td>
+
+                                                @php
+                                                    $date = DateTime::createFromFormat('Y-m-d H:i:s', $pedido->created_at );
+                                                @endphp
+                                                <td>{{$date->format('d/m/Y')}}</td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
 
                             <div class="pagination justify-content-center">
                                 {{ $pedidosRecente->links() }}
@@ -169,17 +173,19 @@
                             <div class="table-responsive mt-3">
                                 <table class="table table-striped bg-light text-center table-bordered table-hover">
                                     <thead class="text-dark">
-                                        <th>ID</th>
-                                        <th>Produto</th>
-                                        <th>Tipo</th>
-                                        <th>Quantidade</th>
-                                        <th>Origem</th>
-                                        <th>Data</th>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Produto</th>
+                                            <th>Tipo</th>
+                                            <th>Quantidade</th>
+                                            <th>Origem</th>
+                                            <th>Data</th>
+                                        </tr>
                                     </thead>
                                     <tbody>
                                         @foreach($movimentacaoRecente as $movimento)
                                         <tr>
-                                            <td>{{$movimento->id}}</th>
+                                            <td>{{$movimento->id}}</td>
                                             <td> @if ( $movimento->product_id > 0 ) {{App\Movimento::withTrashed()->find($movimento->id)->produto->name}} @else Sem produto @endif</td>
                                             <td>@if( $movimento->tipo == 'E' ) Entrada @else Saída @endif</td>
                                             <td>@if( $movimento->tipo == 'S' ) {{number_format($movimento->quantidade*-1,0,'.',',')}} @else {{number_format($movimento->quantidade,0,',','.')}} @endif</td>
@@ -194,6 +200,7 @@
                                         @endforeach
                                     </tbody>
                                 </table>
+                            </div>
 
                             <!---Pagination-->
                             <div class="pagination justify-content-center">

@@ -52,11 +52,15 @@
                                 <div class="table-responsive mt-3">
                                     <table class="table table-striped bg-light text-center table-bordered table-hover">
                                         <thead class="text-dark">
-                                            <th>Nro Pedido(ID)</th>
-                                            <th>Usuário</th>
-                                            <th>Data</th>
-                                            <th>Valor Total</th>
-                                            <th class="text-center" colspan="2">Ações</th>
+                                            <tr>
+                                                <th>Nro Pedido(ID)</th>
+                                                <th>Usuário</th>
+                                                <th>Data</th>
+                                                <th>Valor Total</th>
+                                                @if( count($pedidos) > 0 )
+                                                    <th class="text-center" @if( Request::path() == 'trashed-pedido' ) colspan="1" @else colspan="2" @endif  >Ações</th>
+                                                @endif
+                                            </tr>
                                         </thead>
                                         <tbody>
                                             @foreach($pedidos as $pedido)
@@ -90,7 +94,7 @@
                                                             <form  action="{{ route('pedido.destroy', $pedido->id) }}" method="POST">
                                                                 @csrf
                                                                 @method('DELETE')
-                                                                <button type="button" onclick="confirmar('Cancelar pedido','Você tem certeza?', this.form)" class="btn btn-danger btn-sm float-center"> Cancelar Pedido </a>
+                                                                <button type="button" onclick="confirmar('Cancelar pedido','Você tem certeza?', this.form)" class="btn btn-danger btn-sm float-center"> Cancelar Pedido </button>
                                                             </form>
                                                         </td>
                                                     @endif

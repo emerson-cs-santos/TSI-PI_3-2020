@@ -52,17 +52,21 @@
                                 <div class="table-responsive mt-3">
                                     <table class="table table-striped bg-light text-center table-bordered table-hover">
                                         <thead class="text-dark">
-                                            <th>ID</th>
-                                            <th>Produto</th>
-                                            <th>Tipo</th>
-                                            <th>Quantidade</th>
-                                            <th>Origem</th>
-                                            <th class="text-center" colspan="3">Ações</th>
+                                            <tr>
+                                                <th>ID</th>
+                                                <th>Produto</th>
+                                                <th>Tipo</th>
+                                                <th>Quantidade</th>
+                                                <th>Origem</th>
+                                                @if( count($movimentos) > 0 )
+                                                    <th class="text-center" @if( Request::path() == 'trashed-movimentos' ) colspan="2" @else colspan="3" @endif  >Ações</th>
+                                                @endif
+                                            </tr>
                                         </thead>
                                         <tbody>
                                             @foreach($movimentos as $movimento)
                                             <tr>
-                                                <td>{{$movimento->id}}</th>
+                                                <td>{{$movimento->id}}</td>
                                                 <td> @if ( $movimento->product_id > 0 ) {{App\Product::withTrashed()->find($movimento->product_id )->name}} @else Sem produto @endif</td>
                                                 <td>@if( $movimento->tipo == 'E' ) Entrada @else Saída @endif</td>
                                                 <td>@if( $movimento->tipo == 'S' ) {{number_format($movimento->quantidade*-1,0,',','.')}} @else {{number_format($movimento->quantidade,0,',','.')}} @endif</td>
@@ -92,7 +96,7 @@
                                                         @php
                                                             $acaoDeletar = $movimento->trashed() ? 'Apagar' : 'Mover para Lixeira';
                                                         @endphp
-                                                        <button type="button" onclick="confirmar('{{ $acaoDeletar }}','Você tem certeza?', this.form)" class="btn btn-danger btn-sm float-center"> {{ $acaoDeletar }} </a>
+                                                        <button type="button" onclick="confirmar('{{ $acaoDeletar }}','Você tem certeza?', this.form)" class="btn btn-danger btn-sm float-center"> {{ $acaoDeletar }} </button>
                                                     </form>
                                                 </td>
                                             </tr>

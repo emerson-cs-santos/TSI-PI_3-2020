@@ -42,12 +42,14 @@
                     <div class="table-responsive mt-3">
                         <table class="table table-striped bg-light text-center table-bordered table-hover">
                             <thead class="text-dark">
-                                <th class="text-center">Produto</th>
-                                <th class="text-center">Preview</th>
-                                <th class="text-center">Valor</th>
-                                <th class="text-center">Quantidade</th>
-                                <th class="text-center">Sub-Total</th>
-                                <th class="text-center">Ação</th>
+                                <tr>
+                                    <th class="text-center">Produto</th>
+                                    <th class="text-center">Preview</th>
+                                    <th class="text-center">Valor</th>
+                                    <th class="text-center">Quantidade</th>
+                                    <th class="text-center">Sub-Total</th>
+                                    <th class="text-center">Ação</th>
+                                </tr>
                             </thead>
 
                             <tbody>

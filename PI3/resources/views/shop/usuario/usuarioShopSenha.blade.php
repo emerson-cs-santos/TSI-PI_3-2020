@@ -38,22 +38,23 @@
                         @csrf
                         @method('PUT')
 
-                    <div class="form-group">
-                        <label for="SenhaAtual">Senha atual</label>
-                        <input type="password" class="form-control @error('password') is-invalid @enderror" name="SenhaAtual" required placeholder="Digite a senha atual" autocomplete="new-password" >
-                    </div>
+                        <div class="form-group">
+                            <label for="SenhaAtual">Senha atual</label>
+                            <input type="password" class="form-control @error('password') is-invalid @enderror" name="SenhaAtual" id="SenhaAtual" required placeholder="Digite a senha atual" autocomplete="new-password" >
+                        </div>
 
-                    <div class="form-group">
-                        <label for="password">Nova Senha</label>
-                        <input type="password" class="form-control @error('password') is-invalid @enderror" name="password" required placeholder="Digite a nova senha" autocomplete="new-password" >
-                    </div>
+                        <div class="form-group">
+                            <label for="password">Nova Senha</label>
+                            <input type="password" class="form-control @error('password') is-invalid @enderror" name="password" id="password" required placeholder="Digite a nova senha" autocomplete="new-password" >
+                        </div>
 
-                    <div class="form-group">
-                        <label for="password_confirmation">Confirmar Senha</label>
-                        <input type="password" class='form-control' name="password_confirmation" required placeholder="Digite novamente a nova senha" autocomplete="new-password" >
-                    </div>
+                        <div class="form-group">
+                            <label for="password_confirmation">Confirmar Senha</label>
+                            <input type="password" class='form-control' name="password_confirmation" id="password_confirmation" required placeholder="Digite novamente a nova senha" autocomplete="new-password" >
+                        </div>
 
-                    <button type="submit" class="btn btn-warning">Salvar</button>
+                        <button type="submit" class="btn btn-warning">Salvar</button>
+                    </form>
                 </div>
             </div>
         </div>

@@ -16,12 +16,12 @@
                                 <div class='form-group'>
                                     <div class="form-group">
                                         <label for="name">Nome</label>
-                                        <input type="text" class='form-control' name="name" placeholder="Digite o nome da categoria" value="{{$category->name}}">
+                                        <input type="text" class='form-control' name="name" id="name" placeholder="Digite o nome da categoria" value="{{$category->name}}">
                                     </div>
 
                                     <div class="form-group">
                                         <label for="home">Aparecer no rodapé do site?</label>
-                                        <select name="home" class="form-control">
+                                        <select name="home" class="form-control" id="home" >
                                             <option value="N" @if( $category->home == 'N') selected @endif >Não</option>
                                             <option value="S" @if( $category->home == 'S') selected @endif >Sim</option>
                                         </select>

@@ -17,12 +17,12 @@
 
                                     <div class="form-group">
                                         <label for="name">Nome</label>
-                                        <input type="text" class='form-control' name="name" placeholder="Digite o nome do produto" value="{{$product->name}}">
+                                        <input type="text" class='form-control' name="name" id="name" placeholder="Digite o nome do produto" value="{{$product->name}}">
                                     </div>
 
                                     <div class="form-group">
                                         <label for="category_id">Categoria:</label>
-                                        <select name="category_id" class="form-control">
+                                        <select name="category_id" class="form-control" id="category_id" >
                                             @foreach($categories as $category)
                                             <option value="{{$category->id}}" @if($category->id == $product->category_id) selected @endif>
                                                 {{$category->name}}
@@ -33,22 +33,22 @@
 
                                     <div class="form-group">
                                         <label for="desc">Descrição</label>
-                                        <textarea name="desc" class='form-control' rows=10 placeholder="Digite uma descrição para o produto">{{$product->desc}}</textarea>
+                                        <textarea name="desc" class='form-control' rows=10  id="desc" placeholder="Digite uma descrição para o produto">{{$product->desc}}</textarea>
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="price">Preço (R$)</label>
+                                        <label>Preço (R$)</label>
                                         <input type="text" class='form-control' id='produtoPreco_show' name="price" maxlength="10" placeholder="Digite o preço" value="{{$product->price}}">
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="discount">Desconto (%)</label>
+                                        <label>Desconto (%)</label>
                                         <input type="text" class='form-control' id='produtoDesconto_show' name="discount" maxlength="5" placeholder="Digite o desconto" value="{{$product->discount}}">
                                     </div>
 
                                     <div class="form-group">
                                         <label for="home">Aparecer na Home?</label>
-                                        <select name="home" class="form-control">
+                                        <select name="home" class="form-control" id="home" >
                                             <option value="N" @if( $product->home == 'N') selected @endif >Não</option>
                                             <option value="S" @if( $product->home == 'S') selected @endif >Sim</option>
                                         </select>

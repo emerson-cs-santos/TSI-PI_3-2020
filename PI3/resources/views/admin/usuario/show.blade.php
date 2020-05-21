@@ -17,12 +17,12 @@
 
                                     <div class="form-group">
                                         <label for="name">Nome</label>
-                                        <input type="text" class='form-control' name="name" placeholder="Digite o nome do Usuário" value="{{$usuario->name}}">
+                                        <input type="text" class='form-control' name="name" id="name" placeholder="Digite o nome do Usuário" value="{{$usuario->name}}">
                                     </div>
 
                                     <div class="form-group">
                                         <label for="email">E-mail</label>
-                                        <input type="email" class='form-control' name="email" placeholder="Digite o nome do E-mail" value="{{$usuario->email}}">
+                                        <input type="email" class='form-control' name="email" id="email" placeholder="Digite o nome do E-mail" value="{{$usuario->email}}">
                                     </div>
 
                                     <div class="form-group text-center mt-2">
@@ -34,7 +34,7 @@
 
                                     <div class="form-group mt-4">
                                         <label for="type">Nível de Acesso</label>
-                                        <select name="type" class="form-control">
+                                        <select name="type" class="form-control" id="type">
                                             <option value="padrao"  @if( $usuario->type == "padrao" ) selected @endif   >Padrão</option>
                                             <option value="adm"     @if( $usuario->type == "adm" )selected @endif       >Adminstrador</option>
                                         </select>

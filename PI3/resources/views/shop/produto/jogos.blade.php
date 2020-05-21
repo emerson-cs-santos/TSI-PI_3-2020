@@ -38,17 +38,10 @@
                                 @endif
 
                                 <div class="new-arrival-cart">
-                                    <p>
-                                        <form action="{{route('carrinho-shop-store',$product->id)}}" class='p-3 bg-white' method="post">
-                                        @csrf
-                                            <button type="submit"><span class="lnr lnr-cart"></span> Adicionar ao carrinho</button>
-                                        </form>
-                                    </p>
-
-                                    {{-- <p class="arrival-review pull-right">
-                                        <a href="#" data-placement="top" data-toggle="tooltip" title="Adicionar para lista de desejos"><span class="lnr lnr-heart"> </span></a>
-                                        <a href="#" data-placement="top" data-toggle="tooltip" title="Aumentar imagem"><span class="lnr lnr-frame-expand"> </span></a>
-                                    </p> --}}
+                                    <form action="{{route('carrinho-shop-store',$product->id)}}" class='p-3 bg-white' method="post">
+                                    @csrf
+                                        <button type="submit"><i class="lnr lnr-cart"></i> Adicionar ao carrinho</button>
+                                    </form>
                                 </div>
 
                             </div>

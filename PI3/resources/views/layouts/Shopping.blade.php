@@ -16,7 +16,7 @@
         <!-- Manual de uso referente aos alerts customizados "swal": https://sweetalert.js.org/guides/ -->
         <script src="{{ URL::asset('https://unpkg.com/sweetalert/dist/sweetalert.min.js') }}" ></script>
 
-        <script type="text/javascript" src="{{ asset('shop/js/geral.js') }}"></script>
+        <script src="{{ asset('shop/js/geral.js') }}"></script>
 
         <!-- For favicon png -->
         {{-- <link rel="shortcut icon" type="image/icon" href="shop/logo/favicon.png"/> --}}
@@ -66,12 +66,12 @@
                                 <form action="/search" method="POST" role="search">
                                     {{ csrf_field() }}
                                     <div class="input-group">
-                                        <span class="input-group-addon"><i class="fa fa-question"></i></span>
+                                        <label class="input-group-addon"><i class="fa fa-question"></i></label>
                                         <input type="search" name="busca" class="form-control" placeholder="O que está buscando?">
-                                        <span class="input-group-addon close-search"><i class="fa fa-times"></i></span>
+                                        <label class="input-group-addon close-search"><i class="fa fa-times"></i></label>
                                     </div>
                                     <button type="submit" class="btn btn-default">
-                                        <span class="glyphicon glyphicon-search"></span>
+                                        <i class="glyphicon glyphicon-search"></i>
                                     </button>
                                 </form>
                             </div>
@@ -174,13 +174,6 @@
                                                             <p>{{number_format($item->qtd_total,0,',','.')}} X {{ $produto->price() }}</p>
                                                             <p>SubTotal = {{ 'R$'.number_format($subTotal, 2,',','.') }}</p>
                                                         </div>
-                                                        <div class="cart-close">
-                                                            <form action="{{ route('carrinho-shop-destroy', $produto->id) }}" method="POST" onsubmit="return confirm('Você tem certeza?')">
-                                                                @csrf
-                                                                @method('DELETE')
-                                                                <button type="submit" href="#" class="lnr lnr-cross" data-placement="top" data-toggle="tooltip" title="Remover do carrinho"></button>
-                                                            </form>
-                                                        </div>
                                                     </li>
                                                 @endforeach
                                             @endif
@@ -208,7 +201,7 @@
 				            <!-- Collect the nav links, forms, and other content for toggling -->
 				            <div class="collapse navbar-collapse menu-ui-design" id="navbar-menu">
 				                <ul class="nav navbar-nav navbar-center" data-in="fadeInDown" data-out="fadeOutUp">
-				                    <li class=" {{ Str::of( Request::path() )->contains( ['jogos_shop', 'search/category', 'produto_loja'] )  ? ' active' : '' }} "><a href="/jogos_shop" data-placement="top" data-toggle="tooltip" title="Ver catálogo de jogos">Jogos</a></li>
+				                    <li class=" {{ Str::of( Request::path() )->contains( ['jogos_shop', 'search/category', 'produto_loja', 'search'] )  ? ' active' : '' }} "><a href="/jogos_shop" data-placement="top" data-toggle="tooltip" title="Ver catálogo de jogos">Jogos</a></li>
 				                    <li class=" {{ \Request::is('novos_shop')           ? ' active' : '' }} "><a href="/novos_shop" data-placement="top" data-toggle="tooltip" title="Ver últimas novidades"      >Lançamentos</a></li>
 				                    <li class=" {{ \Request::is('destaque_shop')	    ? ' active' : '' }} "><a href="/destaque_shop" data-placement="top" data-toggle="tooltip" title="Ver os jogos mais queridos"  >Mais vendidos</a></li>
                                     <li class=" {{ Str::of( Request::path() )->contains( ['pedido-shop-index', 'item-pedido-shop-index'] ) ? ' active' : '' }} "><a href="{{route('pedido-shop-index')}}" data-placement="top" data-toggle="tooltip" title="Ver seus pedidos">Meus Pedidos</a></li>

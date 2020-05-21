@@ -15,20 +15,20 @@
 
                                 <div class="form-group">
                                     <label for="name">Tipo</label>
-                                    <select name="tipo" class="form-control">
+                                    <select name="tipo" class="form-control" id="name" >
                                         <option value="E" @if( $movimento->tipo == 'E' ) selected @endif >Entrada</option>
                                         <option value="S" @if( $movimento->tipo == 'S' ) selected @endif >Saída</option>
                                     </select>
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="quantidade">Quantidade</label>
+                                    <label>Quantidade</label>
                                     <input type="text" class='form-control' id="movimentoQuantidade_show" name="quantidade" maxlength="9" placeholder="Digite a quantidade" value="@if( $movimento->tipo == 'S' ) {{$movimento->quantidade*-1}} @else {{$movimento->quantidade}} @endif">
                                 </div>
 
                                 <div class="form-group">
                                     <label for="fk_produto">Produto</label>
-                                    <input type="number" class='form-control' name="fk_produto" onkeydown="return event.keyCode !== 69" placeholder="Digite o id do produto" value="{{$movimento->product_id}}">
+                                    <input type="number" class='form-control' name="fk_produto" id="fk_produto" onkeydown="return event.keyCode !== 69" placeholder="Digite o id do produto" value="{{$movimento->product_id}}">
                                 </div>
 
                                 <div class="form-group">

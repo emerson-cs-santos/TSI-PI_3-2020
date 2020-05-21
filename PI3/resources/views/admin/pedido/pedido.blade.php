@@ -57,11 +57,13 @@
                                 <div class="table-responsive mt-3">
                                     <table class="table table-striped bg-light text-center table-bordered">
                                         <thead class="text-dark">
-                                            <th>Código</th>
-                                            <th>Produto</th>
-                                            <th>Quantidade</th>
-                                            <th>Valor</th>
-                                            <th>Sub Total</th>
+                                            <tr>
+                                                <th>Código</th>
+                                                <th>Produto</th>
+                                                <th>Quantidade</th>
+                                                <th>Valor</th>
+                                                <th>Sub Total</th>
+                                            </tr>
                                         </thead>
                                         <tbody>
                                             @foreach($itensPedido as $itemPedido)
