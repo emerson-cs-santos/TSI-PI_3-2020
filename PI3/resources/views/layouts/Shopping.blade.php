@@ -117,6 +117,25 @@
                                                 </form>
                                             </div>
                                         @endif
+                                    </li>
+
+                                    <li class="nav-setting">
+                                        @if( Auth::check() )
+                                            @if( Auth::user()->type == 'admin' )
+                                                <a href="/admin" data-placement="top" data-toggle="tooltip" title="Acessar Adm">
+                                                    <span class="lnr lnr-cog"></span>
+                                                </a>
+                                            @endif
+                                        @endif
+
+                                        @if( Auth::check() )
+                                            <div class="dropdown-content_shop text-center">
+                                                <div onclick="location.href=' {{ route('logout') }} '; event.preventDefault(); document.getElementById('logout-form').submit();" class="shop_sair" data-dismiss="modal" data-placement="top" data-toggle="tooltip" title="Encerrar acesso">Sair</div>
+                                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                                    @csrf
+                                                </form>
+                                            </div>
+                                        @endif
 				                	</li>
 
                                     <li class="dropdown">
