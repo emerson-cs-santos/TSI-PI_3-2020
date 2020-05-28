@@ -68,7 +68,7 @@
                 @endforeach
 
                 @if( $products->count() == 0)
-                    <div class="row text-center">
+                    <div class="row text-center mt-5">
                         <span>Não foram encontrados jogos...</span>
                     </div>
                 @endif
