@@ -84,7 +84,7 @@
                                                         <form action="{{ route('restore-movimentos.update', $movimento->id) }}"  method="POST">
                                                             @csrf
                                                             @method('PUT')
-                                                            <button type="button" onclick="confirmar('Reativar registro','Você tem certeza?', this.form)" class="btn btn-primary btn-sm float-center ml-1">Reativar</button>
+                                                            <button type="button" onclick="confirmar('Reativar registro','Você tem certeza?', this.form)" class="btn btn-primary btn-xs float-center ml-1">Reativar</button>
                                                         </form>
                                                     </td>
                                                 @endif
@@ -96,7 +96,7 @@
                                                         @php
                                                             $acaoDeletar = $movimento->trashed() ? 'Apagar' : 'Mover para Lixeira';
                                                         @endphp
-                                                        <button type="button" onclick="confirmar('{{ $acaoDeletar }}','Você tem certeza?', this.form)" class="btn btn-danger btn-sm float-center"> {{ $acaoDeletar }} </button>
+                                                        <button type="button" onclick="confirmar('{{ $acaoDeletar }}','Você tem certeza?', this.form)" class="btn btn-danger btn-xs float-center"> {{ $acaoDeletar }} </button>
                                                     </form>
                                                 </td>
                                             </tr>

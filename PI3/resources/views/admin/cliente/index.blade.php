@@ -58,7 +58,7 @@
                                                 <form action="{{ route('restore-cliente.update', $cliente->id) }}" class="d-inline" method="POST" onsubmit="return confirm('Você tem certeza que quer reativar?')">
                                                     @csrf
                                                     @method('PUT')
-                                                    <button type="submit" href="#" class="btn btn-primary btn-sm float-center">Reativar</a>
+                                                    <button type="submit" href="#" class="btn btn-primary btn-xs float-center">Reativar</a>
                                                 </form>
                                             </td>
                                             @endif
@@ -66,7 +66,7 @@
                                                 <form action="{{ route('clientes.destroy', $cliente->id) }}" class="d-inline" method="POST" onsubmit="return confirm('Você tem certeza que quer apagar?')">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" href="#" class="btn btn-danger btn-sm float-center">Enviar para Lixeira</a>
+                                                    <button type="submit" href="#" class="btn btn-danger btn-xs float-center">Enviar para Lixeira</a>
                                                 </form>
                                             </td>
                                         </tr>

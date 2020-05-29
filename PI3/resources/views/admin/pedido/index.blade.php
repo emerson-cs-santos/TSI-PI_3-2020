@@ -94,7 +94,7 @@
                                                             <form  action="{{ route('pedido.destroy', $pedido->id) }}" method="POST">
                                                                 @csrf
                                                                 @method('DELETE')
-                                                                <button type="button" onclick="confirmar('Cancelar pedido','Você tem certeza?', this.form)" class="btn btn-danger btn-sm float-center"> Cancelar Pedido </button>
+                                                                <button type="button" onclick="confirmar('Cancelar pedido','Você tem certeza?', this.form)" class="btn btn-danger btn-xs float-center"> Cancelar Pedido </button>
                                                             </form>
                                                         </td>
                                                     @endif

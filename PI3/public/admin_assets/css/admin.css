@@ -6,6 +6,7 @@ body{
 .sidebar {
 height: 100vh;
 background-color: rgb(66, 162, 179);
+overflow: scroll;
 
 background-position: center;
 background-repeat: no-repeat;

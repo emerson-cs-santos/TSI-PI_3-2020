@@ -45,7 +45,7 @@
                                     <th class="text-center">Data</th>
                                     <th class="text-center">Status</th>
                                     <th class="text-center">Entrega</th>
-                                    <th class="text-center" colspan="2">Ações</th>
+                                    <th class="text-center">Ação</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -75,7 +75,7 @@
                                         </form>
                                     </td>
 
-                                    <td>
+                                    {{-- <td>
                                         @if ( !$pedido->trashed()  )
                                             <form  action="{{ route('pedido-shop-cancelar', $pedido->id) }}" method="POST">
                                                 @csrf
@@ -88,7 +88,7 @@
                                             <button type="submit" class="btn btn-danger float-center"> Cancelar Pedido </button>
                                         </form>
                                         @endif
-                                    </td>
+                                    </td> --}}
                                 </tr>
                                 @endforeach
                             </tbody>

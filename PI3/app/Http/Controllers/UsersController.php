@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\Carrinho;
+use App\Pedido;
 use App\Http\Requests\CreateUsersRequest;
 use App\Http\Requests\EditUserRequest;
 use Illuminate\Support\Facades\Hash;
@@ -108,11 +110,11 @@ class UsersController extends Controller
     {
         //return view('admin.usuario.edit')->with('usuario',$user);
 
-        if ( auth()->user()->id  !== intval($id) )
-        {
-            session()->flash('error', "Só é possivel gerenciar seu próprio usuário!");
-            return redirect()->back();
-        }
+        // if ( auth()->user()->id  !== intval($id) )
+        // {
+        //     session()->flash('error', "Só é possivel gerenciar seu próprio usuário!");
+        //     return redirect()->back();
+        // }
 
         $usuario_editar =  User::find($id);
 
@@ -139,11 +141,22 @@ class UsersController extends Controller
 
        $usuario = User::find($request->id);
 
-       if ( auth()->user()->id  !== intval($request->id) )
-       {
-           session()->flash('error', "Só é possivel gerenciar seu próprio usuário!");
-           return redirect()->back();
-       }
+    //    if ( auth()->user()->id  !== intval($request->id) )
+    //    {
+    //        session()->flash('error', "Só é possivel gerenciar seu próprio usuário!");
+    //        return redirect()->back();
+    //    }
+
+        // $validarEmail = User::withTrashed()
+        // ->where('email','!=',$usuario->email)
+        // ->where('email','=',$request->email)
+        // ->count();
+
+        // if ( $validarEmail > 0 )
+        // {
+        //     session()->flash('error', "Email " . $request->email . " está sendo utilizado em outro cadastro!");
+        //     return redirect(route('Users.index'));
+        // }
 
        $usuario->name = $request->name;
        $usuario->email = $request->email;
@@ -201,9 +214,31 @@ class UsersController extends Controller
         // session()->flash('success', 'Usuário apagado com sucesso!');
         // return redirect(route('Users.index'));
 
-        if ( auth()->user()->id  !== intval($id) )
+        if ( auth()->user()->id  == intval($id) )
         {
-            session()->flash('error', "Só é possivel gerenciar seu próprio usuário!");
+            session()->flash('error', "Você não pode excluir seu próprio usuário!");
+            return redirect()->back();
+        }
+
+        // if ( auth()->user()->id  !== intval($id) )
+        // {
+        //     session()->flash('error', "Só é possivel gerenciar seu próprio usuário!");
+        //     return redirect()->back();
+        // }
+
+        $carrinhoQtd = Carrinho::withTrashed()->where('user_id',$id)->count();
+
+        if ( $carrinhoQtd > 0 )
+        {
+            session()->flash('error', "Usuário possui produto(s) no carrinho!");
+            return redirect()->back();
+        }
+
+        $pedidoQtd = Pedido::withTrashed()->where('user_id',$id)->count();
+
+        if ( $pedidoQtd > 0 )
+        {
+            session()->flash('error', "Usuário possui pedido(s)!");
             return redirect()->back();
         }
 
