@@ -85,7 +85,7 @@
                                         <h1 class="text-light text-uppercase mb-0 h4">Gamer Shopping</h1>
                                     </div>
 
-                                    <div class="col-md-5">
+                                    <div class="col-md-7">
                                         <form>
                                             <div class="input-group">
                                                 {{-- <input type="search" class="form-control search-input" placeholder="Procurar no site">
@@ -96,8 +96,9 @@
                                         </form>
                                     </div>
 
-                                    <div class="col-md-3">
+                                    <div class="col-md-1">
                                         <ul class="navbar-nav">
+                                            <li class="nav-item ml-md-auto" data-placement="top" data-toggle="tooltip" title="Voltar ao Shopping"><a href="{{route('home')}}" class="nav-link" > <i class="fa fa-shopping-basket text-white fa-lg"></i></a>
                                             <li class="nav-item ml-md-auto" data-placement="top" data-toggle="tooltip" title="Sair"><a href="#" class="nav-link" data-toggle="modal" data-target="#sign-out"> <i class="fas fa-sign-out-alt text-danger fa-lg"></i></a>
                                         </ul>
                                     </div>
