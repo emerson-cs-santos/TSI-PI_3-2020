@@ -10,6 +10,11 @@ Gerenciamento do site, incluir produtos, categorias etc.
 ## Site está online
 [Loja](http://gameshopp.herokuapp.com/)
 
+###
+Usuário padrão com acesso ao dashboard:
+Usuário: admin@ibest.com
+Senha: 12345678
+
 ## Desenvolvido utilizando Laravel
 E-Commerce feito utilizando Laravel 7.0.
 [Documentação](https://laravel.com/docs)
