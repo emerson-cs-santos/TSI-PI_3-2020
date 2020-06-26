@@ -71,8 +71,20 @@ npm install
 
 ### 5 - Banco
 
-#### 5.1 - Porta
-Se estiver usando mysql no apache, basta mudar a porta para 3307.
+#### 5.1 - Configuração
+Alterar arquivo .env:
+
+```bash
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3307
+DB_DATABASE=gamershop
+DB_USERNAME=root
+DB_PASSWORD=
+```
+
+Se estiver usando mysql no apache, basta mudar a porta para 3307 no próprio apache.
+
 
 #### 5.2 - Migrate
 Na pasta do projeto rodar: 
