@@ -60,7 +60,7 @@ Instalação [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git
 ### 3 - Git
 Baixar fontes: 
 ```bash
-git clone https://github.com/emerson-cs-santos/TSI-PI_3-2020.git <caminho_seu_pc>
+git clone https://github.com/emerson-cs-santos/TSI-PI_3-2020.git caminho_seu_pc
 ```
 
 ### 4 - NPM
