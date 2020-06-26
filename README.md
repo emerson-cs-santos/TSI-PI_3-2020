@@ -60,18 +60,24 @@ Instalação [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git
 ### 3 - Git
 Baixar fontes: git clone https://github.com/emerson-cs-santos/TSI-PI_3-2020.git <caminho_seu_pc>
 
-### 4 - Banco
+### 4 - NPM
+Exectar na pasta do projeto: 
+```bash
+npm install
+```
 
-#### 4.1 - Porta
+### 5 - Banco
+
+#### 5.1 - Porta
 Se estiver usando mysql no apache, basta mudar a porta para 3307.
 
-#### 4.2 - Migrate
+#### 5.2 - Migrate
 Na pasta do projeto rodar: php artisan migrate
 
-#### 4.3 - Seeder
+#### 5.3 - Seeder
 Para criar registros e usuário padrão, rodar: php artisan db:seed
 
-### 5 - Executar projeto
+### 6 - Executar projeto
 Rodar php artisan serve.
 Abrir no navegador o endereço que for mostrado.
 
