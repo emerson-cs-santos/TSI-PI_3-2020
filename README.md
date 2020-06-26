@@ -46,14 +46,14 @@ Recomendo instalar o apache, pois já vem com o mysql, que é a configuração j
 
 Observação: Essa configuração deve ser feita de acordo com o seu sistema operacional.
 
-#### php
+#### 2.1 - php
 Linguagem utilizada para desenvolver o site.
 
-#### composer
+#### 2.2 - composer
 Gerenciador de dependências do laravel.
 Instalação [Composer](https://getcomposer.org/download/)
 
-#### git
+#### 2.3 - git
 Controlador de versões.
 Instalação [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
 
