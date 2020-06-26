@@ -58,7 +58,10 @@ Controlador de versões.
 Instalação [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
 
 ### 3 - Git
-Baixar fontes: git clone https://github.com/emerson-cs-santos/TSI-PI_3-2020.git <caminho_seu_pc>
+Baixar fontes: 
+```bash
+git clone https://github.com/emerson-cs-santos/TSI-PI_3-2020.git <caminho_seu_pc>
+```
 
 ### 4 - NPM
 Exectar na pasta do projeto: 
@@ -72,13 +75,23 @@ npm install
 Se estiver usando mysql no apache, basta mudar a porta para 3307.
 
 #### 5.2 - Migrate
-Na pasta do projeto rodar: php artisan migrate
+Na pasta do projeto rodar: 
+```bash
+php artisan migrate
+```
 
 #### 5.3 - Seeder
-Para criar registros e usuário padrão, rodar: php artisan db:seed
+Para criar registros e usuário padrão, rodar: 
+```bash
+php artisan db:seed
+```
 
 ### 6 - Executar projeto
-Rodar php artisan serve.
+Rodar: 
+```bash
+php artisan serve.
+```
+
 Abrir no navegador o endereço que for mostrado.
 
 ## TSI-PI_3-2020
