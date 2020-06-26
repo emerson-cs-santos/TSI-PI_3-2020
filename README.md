@@ -101,7 +101,7 @@ php artisan db:seed
 ### 6 - Executar projeto
 Rodar: 
 ```bash
-php artisan serve.
+php artisan serve
 ```
 
 Abrir no navegador o endereço que for mostrado.
