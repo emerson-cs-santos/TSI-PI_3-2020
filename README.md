@@ -38,7 +38,7 @@ Observação: Essa configuração deve ser feita de acordo com o seu sistema ope
 
 ### 1 - PHP
 Versão minima 7. 
-Recomendo instalar o apache, pois já vem com o mysql, que é a configuração já feita do projeto (Esse site Funciona com vários bancos de dados).
+Recomendo instalar o apache, pois já vem com o mysql, que é a configuração já feita do projeto (Esse site Funciona com vários bancos de dados): 
 [Apache](https://www.apachefriends.org/pt_br/index.html)
 
 ### 2 - Variáveis de sistema:
@@ -50,12 +50,16 @@ Observação: Essa configuração deve ser feita de acordo com o seu sistema ope
 Linguagem utilizada para desenvolver o site.
 
 #### 2.2 - composer
-Gerenciador de dependências do laravel.
+Gerenciador de dependências do laravel. 
 Instalação [Composer](https://getcomposer.org/download/)
 
 #### 2.3 - git
-Controlador de versões.
+Controlador de versões. 
 Instalação [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
+
+#### 2.4 - NPM
+Node deve estar instalado na máquina:
+[NodeJS](https://nodejs.org/en/download/)
 
 ### 3 - Git
 Baixar fontes: 
@@ -63,17 +67,25 @@ Baixar fontes:
 git clone https://github.com/emerson-cs-santos/TSI-PI_3-2020.git caminho_seu_pc
 ```
 
-### 4 - NPM
-Node deve estar instalado na máquina para rodar o comando abaixo:
-[NodeJS](https://nodejs.org/en/download/)
+### 4 - Composer
+Executar na pasta do projeto: 
+```bash
+composer install
+```
+
+```bash
+composer update 
+```
+
+### 5 - NPM
 Executar na pasta do projeto: 
 ```bash
 npm install
 ```
 
-### 5 - Banco
+### 6 - Banco
 
-#### 5.1 - Configuração
+#### 6.1 - Configuração
 Alterar arquivo .env:
 
 ```bash
@@ -88,19 +100,19 @@ DB_PASSWORD=
 Se estiver usando mysql no apache, basta mudar a porta para 3307 no próprio apache.
 
 
-#### 5.2 - Migrate
+#### 6.2 - Migrate
 Na pasta do projeto rodar: 
 ```bash
 php artisan migrate
 ```
 
-#### 5.3 - Seeder
+#### 6.3 - Seeder
 Para criar registros e usuário padrão, rodar: 
 ```bash
 php artisan db:seed
 ```
 
-### 6 - Executar projeto
+### 7 - Executar projeto
 Rodar: 
 ```bash
 php artisan serve
