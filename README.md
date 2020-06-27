@@ -64,7 +64,9 @@ git clone https://github.com/emerson-cs-santos/TSI-PI_3-2020.git caminho_seu_pc
 ```
 
 ### 4 - NPM
-Exectar na pasta do projeto: 
+Node deve estar instalado na máquina para rodar o comando abaixo:
+[NodeJS](https://nodejs.org/en/download/)
+Executar na pasta do projeto: 
 ```bash
 npm install
 ```
