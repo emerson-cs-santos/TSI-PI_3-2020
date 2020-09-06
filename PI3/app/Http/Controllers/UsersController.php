@@ -101,6 +101,16 @@ class UsersController extends Controller
         $usuario_visualizar->image = asset('admin_assets/images/produto_sem_imagem.jpg');
        }
 
+        // Real tipo que fica salvo no Banco não ser exibido na página
+        if ($usuario_visualizar->type == 'admin')
+        {
+            $usuario_visualizar->type ='adm';
+        }
+        else
+        {
+            $usuario_visualizar->type ='padrao';
+        }
+
         return view('admin.usuario.show')->with('usuario', $usuario_visualizar );
     }
 
