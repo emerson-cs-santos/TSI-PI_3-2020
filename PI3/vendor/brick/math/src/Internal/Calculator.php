@@ -34,10 +34,8 @@ abstract class Calculator
 
     /**
      * The Calculator instance in use.
-     *
-     * @var Calculator|null
      */
-    private static $instance;
+    private static ?Calculator $instance = null;
 
     /**
      * Sets the Calculator instance to use.
@@ -99,7 +97,7 @@ abstract class Calculator
      * @param string $a The first operand.
      * @param string $b The second operand.
      *
-     * @return array{0: bool, 1: bool, 2: string, 3: string} Whether $a and $b are negative, followed by their digits.
+     * @return array{bool, bool, string, string} Whether $a and $b are negative, followed by their digits.
      */
     final protected function init(string $a, string $b) : array
     {
@@ -234,7 +232,7 @@ abstract class Calculator
      * @param string $a The dividend.
      * @param string $b The divisor, must not be zero.
      *
-     * @return string[] An array containing the quotient and remainder.
+     * @return array{string, string} An array containing the quotient and remainder.
      */
     abstract public function divQR(string $a, string $b) : array;
 
@@ -249,15 +247,59 @@ abstract class Calculator
     abstract public function pow(string $a, int $e) : string;
 
     /**
+     * @param string $a
+     * @param string $b The modulus; must not be zero.
+     *
+     * @return string
+     */
+    public function mod(string $a, string $b) : string
+    {
+        return $this->divR($this->add($this->divR($a, $b), $b), $b);
+    }
+
+    /**
+     * Returns the modular multiplicative inverse of $x modulo $m.
+     *
+     * If $x has no multiplicative inverse mod m, this method must return null.
+     *
+     * This method can be overridden by the concrete implementation if the underlying library has built-in support.
+     *
+     * @param string $x
+     * @param string $m The modulus; must not be negative or zero.
+     *
+     * @return string|null
+     */
+    public function modInverse(string $x, string $m) : ?string
+    {
+        if ($m === '1') {
+            return '0';
+        }
+
+        $modVal = $x;
+
+        if ($x[0] === '-' || ($this->cmp($this->abs($x), $m) >= 0)) {
+            $modVal = $this->mod($x, $m);
+        }
+
+        [$g, $x] = $this->gcdExtended($modVal, $m);
+
+        if ($g !== '1') {
+            return null;
+        }
+
+        return $this->mod($this->add($this->mod($x, $m), $m), $m);
+    }
+
+    /**
      * Raises a number into power with modulo.
      *
      * @param string $base The base number; must be positive or zero.
      * @param string $exp  The exponent; must be positive or zero.
-     * @param string $mod  The modulo; must be strictly positive.
+     * @param string $mod  The modulus; must be strictly positive.
      *
      * @return string The power.
      */
-    abstract function powmod(string $base, string $exp, string $mod) : string;
+    abstract public function modPow(string $base, string $exp, string $mod) : string;
 
     /**
      * Returns the greatest common divisor of the two numbers.
@@ -281,6 +323,23 @@ abstract class Calculator
         }
 
         return $this->gcd($b, $this->divR($a, $b));
+    }
+
+    /**
+     * @return array{string, string, string} GCD, X, Y
+     */
+    private function gcdExtended(string $a, string $b) : array
+    {
+        if ($a === '0') {
+            return [$b, '0', '1'];
+        }
+
+        [$gcd, $x1, $y1] = $this->gcdExtended($this->mod($b, $a), $a);
+
+        $x = $this->sub($y1, $this->mul($this->divQ($b, $a), $x1));
+        $y = $x1;
+
+        return [$gcd, $x, $y];
     }
 
     /**
@@ -420,13 +479,15 @@ abstract class Calculator
      * Rounding is performed when the remainder of the division is not zero.
      *
      * @param string $a            The dividend.
-     * @param string $b            The divisor.
+     * @param string $b            The divisor, must not be zero.
      * @param int    $roundingMode The rounding mode.
      *
      * @return string
      *
      * @throws \InvalidArgumentException  If the rounding mode is invalid.
      * @throws RoundingNecessaryException If RoundingMode::UNNECESSARY is provided but rounding is necessary.
+     *
+     * @psalm-suppress ImpureFunctionCall
      */
     final public function divRound(string $a, string $b, int $roundingMode) : string
     {
@@ -550,9 +611,9 @@ abstract class Calculator
     /**
      * Performs a bitwise operation on a decimal number.
      *
-     * @param string $operator The operator to use, must be "and", "or" or "xor".
-     * @param string $a        The left operand.
-     * @param string $b        The right operand.
+     * @param 'and'|'or'|'xor' $operator The operator to use.
+     * @param string           $a        The left operand.
+     * @param string           $b        The right operand.
      *
      * @return string
      */
@@ -619,7 +680,7 @@ abstract class Calculator
     {
         $xor = \str_repeat("\xff", \strlen($number));
 
-        $number = $number ^ $xor;
+        $number ^= $xor;
 
         for ($i = \strlen($number) - 1; $i >= 0; $i--) {
             $byte = \ord($number[$i]);
@@ -629,7 +690,11 @@ abstract class Calculator
                 break;
             }
 
-            $number[$i] = \chr(0);
+            $number[$i] = "\x00";
+
+            if ($i === 0) {
+                $number = "\x01" . $number;
+            }
         }
 
         return $number;
